@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { createRoleSdk, RoleApiError, RoleAuthError } from "../../src/index.js";
+import { createRoleSdk, RoleApiError, RoleAuthError } from "../../../src/index.js";
 
 const ISO_DATE = "2026-04-21T00:00:00.000Z";
 

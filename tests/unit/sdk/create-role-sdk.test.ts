@@ -7,7 +7,7 @@ import {
   RoleValidationError,
   type TokenPair,
   type TokenStore
-} from "../../src/index.js";
+} from "../../../src/index.js";
 
 const requestUrl = (input: Parameters<typeof fetch>[0]): string => {
   if (typeof input === "string") {

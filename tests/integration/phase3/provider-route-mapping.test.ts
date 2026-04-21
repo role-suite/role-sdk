@@ -1,6 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { createRoleSdk } from "../../src/index.js";
+import { createRoleSdk, type RoleSdkClient, type RoleSdkConfig } from "../../../src/index.js";
+
+const createTypedSdk: (config: RoleSdkConfig) => RoleSdkClient = createRoleSdk;
 
 const requestUrl = (input: Parameters<typeof fetch>[0]): string => {
   if (typeof input === "string") {
@@ -164,7 +166,7 @@ describe("phase 3 integration mapping", () => {
       return Promise.resolve(new Response("not found", { status: 404 }));
     });
 
-    const sdk = createRoleSdk({
+    const sdk: RoleSdkClient = createTypedSdk({
       backend: "node",
       baseUrl: "https://api.example.com",
       fetch: fetchMock,
@@ -350,7 +352,7 @@ describe("phase 3 integration mapping", () => {
       return Promise.resolve(new Response("not found", { status: 404 }));
     });
 
-    const sdk = createRoleSdk({
+    const sdk: RoleSdkClient = createTypedSdk({
       backend: "serverpod",
       baseUrl: "https://api.example.com",
       fetch: fetchMock,

@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { RoleNetworkError } from "../../src/core/errors/sdk-error.js";
-import { HttpClient } from "../../src/core/transport/http-client.js";
+import { RoleNetworkError } from "../../../../src/core/errors/sdk-error.js";
+import { HttpClient } from "../../../../src/core/transport/http-client.js";
 
 describe("HttpClient retry policy", () => {
   it("retries idempotent GET requests on network failures", async () => {

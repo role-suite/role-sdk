@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { RoleApiError } from "../../src/core/errors/sdk-error.js";
-import { HttpClient } from "../../src/core/transport/http-client.js";
+import { RoleApiError } from "../../../../src/core/errors/sdk-error.js";
+import { HttpClient } from "../../../../src/core/transport/http-client.js";
 
 describe("HttpClient hooks", () => {
   it("calls onRequest and onResponse with normalized metadata", async () => {
