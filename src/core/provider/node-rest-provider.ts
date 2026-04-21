@@ -1,5 +1,12 @@
 import { normalizeApiFailure } from "../errors/error-normalizer.js";
 import { RoleApiError } from "../errors/sdk-error.js";
+import {
+  mapNodeAuthSession,
+  mapNodeCurrentUser,
+  mapNodeLogout,
+  mapNodeWorkspaceList,
+  mapNodeWorkspaceSummary
+} from "../mappers/node/index.js";
 import type { HttpClient } from "../transport/http-client.js";
 import type { BackendProvider } from "./backend-provider.js";
 import { defaultCapabilities } from "./capabilities.js";
@@ -68,7 +75,7 @@ export const createNodeRestProvider = (
           path: "/api/auth/register",
           body: input,
           authenticated: false
-        });
+        }).then((result) => mapNodeAuthSession(result));
       },
       login: (input) => {
         return request({
@@ -78,7 +85,7 @@ export const createNodeRestProvider = (
           path: "/api/auth/login",
           body: input,
           authenticated: false
-        });
+        }).then((result) => mapNodeAuthSession(result));
       },
       refresh: (input) => {
         return request({
@@ -88,7 +95,7 @@ export const createNodeRestProvider = (
           path: "/api/auth/refresh",
           body: input,
           authenticated: false
-        });
+        }).then((result) => mapNodeAuthSession(result));
       },
       logout: (input) => {
         return request({
@@ -97,7 +104,7 @@ export const createNodeRestProvider = (
           method: "POST",
           path: "/api/auth/logout",
           body: input
-        });
+        }).then((result) => mapNodeLogout(result));
       },
       me: () => {
         return request({
@@ -105,7 +112,7 @@ export const createNodeRestProvider = (
           methodName: "me",
           method: "GET",
           path: "/api/auth/me"
-        });
+        }).then((result) => mapNodeCurrentUser(result));
       }
     },
     workspaces: {
@@ -115,7 +122,7 @@ export const createNodeRestProvider = (
           methodName: "list",
           method: "GET",
           path: "/api/workspaces"
-        });
+        }).then((result) => mapNodeWorkspaceList(result));
       },
       get: (input) => {
         return request({
@@ -123,7 +130,7 @@ export const createNodeRestProvider = (
           methodName: "get",
           method: "GET",
           path: `/api/workspaces/${String(input.workspaceId)}`
-        });
+        }).then((result) => mapNodeWorkspaceSummary(result));
       },
       create: (input) => {
         return request({
@@ -132,7 +139,7 @@ export const createNodeRestProvider = (
           method: "POST",
           path: "/api/workspaces",
           body: input
-        });
+        }).then((result) => mapNodeWorkspaceSummary(result));
       }
     },
     collections: {},

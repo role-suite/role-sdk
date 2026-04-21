@@ -11,6 +11,8 @@ import { createNodeRestProvider } from "./core/provider/node-rest-provider.js";
 import { createServerpodRpcProvider } from "./core/provider/serverpod-rpc-provider.js";
 import type { BackendCapabilities } from "./core/provider/capabilities.js";
 import { HttpClient } from "./core/transport/http-client.js";
+import type { AuthSessionResult, CurrentUserResult, LogoutResult } from "./modules/auth/types.js";
+import type { WorkspaceSummary } from "./modules/workspaces/types.js";
 
 export type ModuleClient = Record<string, (...args: unknown[]) => Promise<unknown>>;
 
@@ -23,16 +25,16 @@ export type WorkspaceScopedClient = {
 
 export type RoleSdkClient = {
   auth: {
-    register: (input: unknown) => Promise<unknown>;
-    login: (input: unknown) => Promise<unknown>;
-    refresh: (input?: unknown) => Promise<unknown>;
-    logout: (input?: unknown) => Promise<unknown>;
-    me: () => Promise<unknown>;
+    register: (input: unknown) => Promise<AuthSessionResult>;
+    login: (input: unknown) => Promise<AuthSessionResult>;
+    refresh: (input?: unknown) => Promise<AuthSessionResult>;
+    logout: (input?: unknown) => Promise<LogoutResult>;
+    me: () => Promise<CurrentUserResult>;
   };
   workspaces: {
-    list: () => Promise<unknown>;
-    get: (input: { workspaceId: Id }) => Promise<unknown>;
-    create: (input: unknown) => Promise<unknown>;
+    list: () => Promise<WorkspaceSummary[]>;
+    get: (input: { workspaceId: Id }) => Promise<WorkspaceSummary>;
+    create: (input: unknown) => Promise<WorkspaceSummary>;
   };
   collections: ModuleClient;
   environments: ModuleClient;
@@ -172,29 +174,17 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
     }
   };
 
-  const extractTokenPair = (result: unknown): TokenPair => {
-    if (!result || typeof result !== "object") {
-      throw new RoleAuthError("ROLE_AUTH_REFRESH_INVALID", "Refresh response is not an object.");
-    }
-
-    const payload = result as Record<string, unknown>;
-    const accessToken =
-      typeof payload.accessToken === "string"
-        ? payload.accessToken
-        : typeof payload.token === "string"
-          ? payload.token
-          : undefined;
-
-    if (!accessToken) {
+  const extractTokenPair = (result: AuthSessionResult): TokenPair => {
+    if (!result.accessToken) {
       throw new RoleAuthError(
         "ROLE_AUTH_REFRESH_INVALID",
         "Refresh response is missing accessToken."
       );
     }
 
-    const tokens: TokenPair = { accessToken };
-    if (typeof payload.refreshToken === "string") {
-      tokens.refreshToken = payload.refreshToken;
+    const tokens: TokenPair = { accessToken: result.accessToken };
+    if (result.refreshToken !== undefined) {
+      tokens.refreshToken = result.refreshToken;
     }
 
     return tokens;
@@ -247,7 +237,7 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
   };
 
   const auth = {
-    register: async (input: unknown): Promise<unknown> => {
+    register: async (input: unknown): Promise<AuthSessionResult> => {
       await initialization;
       const result = await provider.auth.register(input);
 
@@ -262,7 +252,7 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
 
       return result;
     },
-    login: async (input: unknown): Promise<unknown> => {
+    login: async (input: unknown): Promise<AuthSessionResult> => {
       await initialization;
       const result = await provider.auth.login(input);
 
@@ -277,34 +267,34 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
 
       return result;
     },
-    refresh: async (input?: unknown): Promise<unknown> => {
+    refresh: async (input?: unknown): Promise<AuthSessionResult> => {
       await initialization;
       const refreshed = await provider.auth.refresh(input ?? {});
       await authManager.setTokens(extractTokenPair(refreshed));
       return refreshed;
     },
-    logout: async (input?: unknown): Promise<unknown> => {
+    logout: async (input?: unknown): Promise<LogoutResult> => {
       await initialization;
       const result = await provider.auth.logout(input ?? {});
       await authManager.clearTokens();
       return result;
     },
-    me: async (): Promise<unknown> => {
+    me: async (): Promise<CurrentUserResult> => {
       await initialization;
       return invokeWithOptionalRefresh(() => provider.auth.me({}), refreshAuth);
     }
   };
 
   const workspaces = {
-    list: async (): Promise<unknown> => {
+    list: async (): Promise<WorkspaceSummary[]> => {
       await initialization;
       return invokeWithOptionalRefresh(() => provider.workspaces.list(), refreshAuth);
     },
-    get: async (input: { workspaceId: Id }): Promise<unknown> => {
+    get: async (input: { workspaceId: Id }): Promise<WorkspaceSummary> => {
       await initialization;
       return invokeWithOptionalRefresh(() => provider.workspaces.get(input), refreshAuth);
     },
-    create: async (input: unknown): Promise<unknown> => {
+    create: async (input: unknown): Promise<WorkspaceSummary> => {
       await initialization;
       return invokeWithOptionalRefresh(() => provider.workspaces.create(input), refreshAuth);
     }
