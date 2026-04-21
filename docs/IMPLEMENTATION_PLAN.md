@@ -29,10 +29,12 @@ Deliverables:
 - `createRoleSdk(config)` entrypoint.
 - Backend selection in config (`backend: "node" | "serverpod"`).
 - HTTP transport abstraction with pluggable `fetch`.
+- Locked transport defaults (`timeoutMs: 30000`, idempotent-only retries by default).
 - Request/response envelope parsing.
 - Error normalization.
 - Retry policy with exponential backoff.
 - Auth token manager with optional refresh flow.
+- User-provided token store interface with in-memory default.
 - `sdk.capabilities()` runtime feature introspection.
 
 Acceptance criteria:
@@ -40,6 +42,7 @@ Acceptance criteria:
 - Core unit tests cover retry/auth/error branches.
 - Config supports Node and browser usage.
 - Common error and capability behavior is identical across providers.
+- Date/time values are exposed as ISO strings in public models.
 
 ## Phase 2 - Provider adapters (MVP)
 
@@ -137,5 +140,5 @@ Planning is considered complete when:
 
 - All method signatures in `docs/API_SURFACE_SPEC.md` have mapping entries.
 - `docs/CONTRACT_MATRIX.md` includes parity/capability status for each method group.
-- Open decisions in `docs/OPEN_QUESTIONS.md` are either resolved or explicitly accepted as deferred.
+- Decisions in `docs/OPEN_QUESTIONS.md` are reflected in API, mapping, compatibility, and test docs.
 - Compatibility and test policies are linked in release checklist docs.

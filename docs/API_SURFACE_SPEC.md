@@ -42,6 +42,7 @@ type RoleSdkConfig = {
     accessToken?: string;
     refreshToken?: string;
     autoRefresh?: boolean;
+    tokenStore?: TokenStore;
   };
   hooks?: {
     onRequest?: (ctx: RequestHookContext) => void | Promise<void>;
@@ -50,6 +51,15 @@ type RoleSdkConfig = {
   };
 };
 ```
+
+Default behavior (v1):
+
+- `timeoutMs` defaults to `30000`.
+- Retry defaults to `enabled: true`, `maxAttempts: 3`, exponential backoff with jitter.
+- Retries apply only to safe/idempotent operations unless explicitly opted in.
+- Auth token persistence defaults to in-memory storage.
+- `tokenStore` is optional and user-provided.
+- Built-in persistence adapters (for example `localStorage`) are not part of core v1.
 
 ## 2) Root client contract
 
@@ -196,6 +206,7 @@ type ImportExportClient = {
 - All methods resolve with already-unwrapped `data` models.
 - Backend envelope/RPC shape is hidden from SDK consumers.
 - IDs remain `number | string` in SDK public types where cross-backend uncertainty exists.
+- Date/time fields are exposed as ISO strings in public models.
 - Public types should avoid backend naming leakage.
 
 ## 6) Error contract
@@ -232,6 +243,7 @@ type BackendCapabilities = {
 
 Rules:
 
+- Capability flags use nested method-group or method-level shape, not module-level booleans only.
 - Capability flags must be backend-specific and explicit.
 - Calling capability-gated methods when disabled must throw typed `RoleApiError` with deterministic code.
 
@@ -277,6 +289,12 @@ type TokenPair = {
   accessTokenTtlSeconds?: number;
   refreshTokenTtlSeconds?: number;
 };
+
+interface TokenStore {
+  get(): Promise<TokenPair | null> | TokenPair | null;
+  set(tokens: TokenPair | null): Promise<void> | void;
+  clear(): Promise<void> | void;
+}
 ```
 
 ## 10) Behavioral consistency rules

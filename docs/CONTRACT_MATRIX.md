@@ -67,7 +67,7 @@ This document defines method-level parity targets for a single SDK API that supp
 
 ## Capability flags (planned)
 
-The SDK capability shape is planned to include at least:
+The SDK capability shape uses nested method-group or method-level flags and is planned to include at least:
 
 ```ts
 type BackendCapabilities = {
@@ -85,6 +85,8 @@ type BackendCapabilities = {
   };
 };
 ```
+
+Note: the shape above is a minimum baseline and can be extended with additional nested capability flags in backward-compatible releases.
 
 ## Compatibility matrix policy
 

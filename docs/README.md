@@ -11,7 +11,7 @@ This folder contains planning and architecture documentation for the dual-backen
 5. `docs/IMPLEMENTATION_PLAN.md`
 6. `docs/TESTING_STRATEGY.md`
 7. `docs/VERSION_COMPATIBILITY_POLICY.md`
-8. `docs/OPEN_QUESTIONS.md`
+8. `docs/OPEN_QUESTIONS.md` (decision log)
 
 ## Document ownership
 

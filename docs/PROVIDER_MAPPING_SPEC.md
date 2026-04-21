@@ -75,7 +75,7 @@ It also defines field transformation and error mapping rules.
 
 ## 8.2 Date/time values
 
-- Normalize to ISO string for public types unless a module explicitly guarantees `Date`.
+- Normalize date/time values to ISO strings for public SDK types.
 
 ## 8.3 Enums and role values
 
@@ -96,7 +96,7 @@ Node provider:
 
 Serverpod provider:
 
-- RPC errors/exceptions -> mapped SDK errors using equivalent semantics.
+- RPC errors/exceptions -> mapped SDK errors using explicit mapping keyed by stable backend identifiers.
 
 Shared mapping examples:
 
@@ -104,6 +104,10 @@ Shared mapping examples:
 - validation failure -> `RoleValidationError`
 - unavailable/network -> `RoleNetworkError`
 - unknown/unclassified -> `RoleUnknownError`
+
+Rule:
+
+- Free-form string matching is fallback-only and must not be the primary mapping strategy.
 
 ## 10) Capability-gated behavior
 
