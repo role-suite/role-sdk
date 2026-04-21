@@ -4,7 +4,7 @@ Official TypeScript SDK for integrating with Role APIs, with typed clients, auth
 
 ## Project status
 
-This repository currently contains the architecture and implementation plan for the SDK foundation.
+This repository currently contains architecture docs and a Phase 0 SDK foundation scaffold (TypeScript package setup, lint/test/build tooling, CI, and provider contract types).
 
 - Architecture: `docs/ARCHITECTURE.md`
 - Documentation index: `docs/README.md`
