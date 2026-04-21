@@ -141,7 +141,9 @@ export class HttpClient {
           method: params.methodName,
           requestId,
           output,
-          durationMs: Date.now() - start
+          durationMs: Date.now() - start,
+          retryCount: attempt - 1,
+          status: response.status
         });
 
         return output;
@@ -152,7 +154,9 @@ export class HttpClient {
           module: params.module,
           method: params.methodName,
           requestId: normalized.requestId,
-          error: normalized
+          error: normalized,
+          retryCount: attempt - 1,
+          ...(normalized.status ? { status: normalized.status } : {})
         });
 
         const canRetry =

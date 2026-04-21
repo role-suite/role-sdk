@@ -30,6 +30,8 @@ export type ResponseHookContext = {
   requestId: string | undefined;
   output: unknown;
   durationMs: number;
+  retryCount: number;
+  status: number;
 };
 
 export type ErrorHookContext = {
@@ -38,6 +40,8 @@ export type ErrorHookContext = {
   method: string;
   requestId: string | undefined;
   error: RoleSdkErrorShape;
+  retryCount: number;
+  status?: number;
 };
 
 export type RoleSdkConfig = {
