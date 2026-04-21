@@ -1,19 +1,21 @@
 import type { BackendCapabilities } from "./capabilities.js";
+import type { AuthSessionResult, CurrentUserResult, LogoutResult } from "../../modules/auth/types.js";
+import type { WorkspaceSummary } from "../../modules/workspaces/types.js";
 
 export type ProviderMethod<Input = unknown, Output = unknown> = (input: Input) => Promise<Output>;
 
 export type AuthProvider = {
-  register: ProviderMethod;
-  login: ProviderMethod;
-  refresh: ProviderMethod;
-  logout: ProviderMethod;
-  me: ProviderMethod;
+  register: ProviderMethod<unknown, AuthSessionResult>;
+  login: ProviderMethod<unknown, AuthSessionResult>;
+  refresh: ProviderMethod<unknown, AuthSessionResult>;
+  logout: ProviderMethod<unknown, LogoutResult>;
+  me: ProviderMethod<unknown, CurrentUserResult>;
 };
 
 export type WorkspacesProvider = {
-  list: ProviderMethod<void, unknown>;
-  get: ProviderMethod<{ workspaceId: string | number }, unknown>;
-  create: ProviderMethod<unknown, unknown>;
+  list: ProviderMethod<void, WorkspaceSummary[]>;
+  get: ProviderMethod<{ workspaceId: string | number }, WorkspaceSummary>;
+  create: ProviderMethod<unknown, WorkspaceSummary>;
 };
 
 export type CollectionsProvider = Record<string, ProviderMethod>;

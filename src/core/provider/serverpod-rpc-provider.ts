@@ -1,4 +1,11 @@
 import { normalizeApiFailure } from "../errors/error-normalizer.js";
+import {
+  mapServerpodAuthSession,
+  mapServerpodCurrentUser,
+  mapServerpodLogout,
+  mapServerpodWorkspaceList,
+  mapServerpodWorkspaceSummary
+} from "../mappers/serverpod/index.js";
 import type { HttpClient } from "../transport/http-client.js";
 import type { BackendProvider } from "./backend-provider.js";
 import { defaultCapabilities } from "./capabilities.js";
@@ -66,18 +73,36 @@ export const createServerpodRpcProvider = (
   return {
     auth: {
       register: (input) =>
-        callRpc({ module: "auth", methodName: "register", payload: input, authenticated: false }),
+        callRpc({ module: "auth", methodName: "register", payload: input, authenticated: false }).then(
+          (result) => mapServerpodAuthSession(result)
+        ),
       login: (input) =>
-        callRpc({ module: "auth", methodName: "login", payload: input, authenticated: false }),
+        callRpc({ module: "auth", methodName: "login", payload: input, authenticated: false }).then(
+          (result) => mapServerpodAuthSession(result)
+        ),
       refresh: (input) =>
-        callRpc({ module: "auth", methodName: "refresh", payload: input, authenticated: false }),
-      logout: (input) => callRpc({ module: "auth", methodName: "logout", payload: input }),
-      me: () => callRpc({ module: "auth", methodName: "me" })
+        callRpc({ module: "auth", methodName: "refresh", payload: input, authenticated: false }).then(
+          (result) => mapServerpodAuthSession(result)
+        ),
+      logout: (input) =>
+        callRpc({ module: "auth", methodName: "logout", payload: input }).then((result) =>
+          mapServerpodLogout(result)
+        ),
+      me: () => callRpc({ module: "auth", methodName: "me" }).then((result) => mapServerpodCurrentUser(result))
     },
     workspaces: {
-      list: () => callRpc({ module: "workspaces", methodName: "list" }),
-      get: (input) => callRpc({ module: "workspaces", methodName: "get", payload: input }),
-      create: (input) => callRpc({ module: "workspaces", methodName: "create", payload: input })
+      list: () =>
+        callRpc({ module: "workspaces", methodName: "list" }).then((result) =>
+          mapServerpodWorkspaceList(result)
+        ),
+      get: (input) =>
+        callRpc({ module: "workspaces", methodName: "get", payload: input }).then((result) =>
+          mapServerpodWorkspaceSummary(result)
+        ),
+      create: (input) =>
+        callRpc({ module: "workspaces", methodName: "create", payload: input }).then((result) =>
+          mapServerpodWorkspaceSummary(result)
+        )
     },
     collections: {},
     environments: {},
