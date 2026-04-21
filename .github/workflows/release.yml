@@ -7,6 +7,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      HAS_NPM_TOKEN: ${{ secrets.NPM_TOKEN != '' }}
     permissions:
       contents: write
       issues: write
@@ -34,14 +36,14 @@ jobs:
         run: pnpm typecheck && pnpm lint && pnpm test && pnpm build
 
       - name: Release
-        if: ${{ secrets.NPM_TOKEN != '' }}
+        if: ${{ env.HAS_NPM_TOKEN == 'true' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm release
 
       - name: Skip release (missing NPM token)
-        if: ${{ secrets.NPM_TOKEN == '' }}
+        if: ${{ env.HAS_NPM_TOKEN != 'true' }}
         run: |
           echo "NPM_TOKEN is not configured."
           echo "Skipping semantic-release publish step."
