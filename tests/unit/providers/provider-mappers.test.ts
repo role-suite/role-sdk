@@ -5,13 +5,13 @@ import {
   mapNodeCurrentUser,
   mapNodeWorkspaceList,
   mapNodeWorkspaceSummary
-} from "../../src/core/mappers/node/index.js";
+} from "../../../src/core/mappers/node/index.js";
 import {
   mapServerpodAuthSession,
   mapServerpodCurrentUser,
   mapServerpodWorkspaceList,
   mapServerpodWorkspaceSummary
-} from "../../src/core/mappers/serverpod/index.js";
+} from "../../../src/core/mappers/serverpod/index.js";
 
 describe("provider mappers", () => {
   it("maps auth session payloads from both providers to same shape", () => {
