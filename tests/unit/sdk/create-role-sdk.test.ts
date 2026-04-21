@@ -169,7 +169,9 @@ describe("createRoleSdk", () => {
       const url = requestUrl(input);
 
       if (url.endsWith("/api/auth/me")) {
-        return Promise.resolve(new Response(JSON.stringify({ message: "unauthorized" }), { status: 401 }));
+        return Promise.resolve(
+          new Response(JSON.stringify({ message: "unauthorized" }), { status: 401 })
+        );
       }
 
       return Promise.resolve(new Response("not found", { status: 404 }));

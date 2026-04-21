@@ -72,11 +72,15 @@ describe("phase 3 integration mapping", () => {
       }
 
       if (url.endsWith("/api/workspaces/ws-1/collections") && init?.method === "POST") {
-        return Promise.resolve(nodeEnvelope({ id: "c-1", workspaceId: "ws-1", name: "Collection A" }));
+        return Promise.resolve(
+          nodeEnvelope({ id: "c-1", workspaceId: "ws-1", name: "Collection A" })
+        );
       }
 
       if (url.endsWith("/api/workspaces/ws-1/collections/c-1") && init?.method === "PATCH") {
-        return Promise.resolve(nodeEnvelope({ id: "c-1", workspaceId: "ws-1", name: "Collection B" }));
+        return Promise.resolve(
+          nodeEnvelope({ id: "c-1", workspaceId: "ws-1", name: "Collection B" })
+        );
       }
 
       if (url.endsWith("/api/workspaces/ws-1/collections/c-1") && init?.method === "DELETE") {
@@ -89,17 +93,26 @@ describe("phase 3 integration mapping", () => {
         );
       }
 
-      if (url.endsWith("/api/workspaces/ws-1/collections/c-1/folders/f-1") && init?.method === "PATCH") {
+      if (
+        url.endsWith("/api/workspaces/ws-1/collections/c-1/folders/f-1") &&
+        init?.method === "PATCH"
+      ) {
         return Promise.resolve(
           nodeEnvelope({ id: "f-1", workspaceId: "ws-1", collectionId: "c-1", name: "Folder B" })
         );
       }
 
-      if (url.endsWith("/api/workspaces/ws-1/collections/c-1/folders/f-1") && init?.method === "DELETE") {
+      if (
+        url.endsWith("/api/workspaces/ws-1/collections/c-1/folders/f-1") &&
+        init?.method === "DELETE"
+      ) {
         return Promise.resolve(nodeEnvelope({}));
       }
 
-      if (url.endsWith("/api/workspaces/ws-1/collections/c-1/endpoints") && init?.method === "POST") {
+      if (
+        url.endsWith("/api/workspaces/ws-1/collections/c-1/endpoints") &&
+        init?.method === "POST"
+      ) {
         return Promise.resolve(
           nodeEnvelope({
             id: "e-1",
@@ -112,7 +125,10 @@ describe("phase 3 integration mapping", () => {
         );
       }
 
-      if (url.endsWith("/api/workspaces/ws-1/collections/c-1/endpoints/e-1") && init?.method === "PATCH") {
+      if (
+        url.endsWith("/api/workspaces/ws-1/collections/c-1/endpoints/e-1") &&
+        init?.method === "PATCH"
+      ) {
         return Promise.resolve(
           nodeEnvelope({
             id: "e-1",
@@ -125,11 +141,17 @@ describe("phase 3 integration mapping", () => {
         );
       }
 
-      if (url.endsWith("/api/workspaces/ws-1/collections/c-1/endpoints/e-1") && init?.method === "DELETE") {
+      if (
+        url.endsWith("/api/workspaces/ws-1/collections/c-1/endpoints/e-1") &&
+        init?.method === "DELETE"
+      ) {
         return Promise.resolve(nodeEnvelope({}));
       }
 
-      if (url.endsWith("/api/workspaces/ws-1/collections/c-1/endpoints/e-1/examples") && init?.method === "POST") {
+      if (
+        url.endsWith("/api/workspaces/ws-1/collections/c-1/endpoints/e-1/examples") &&
+        init?.method === "POST"
+      ) {
         return Promise.resolve(
           nodeEnvelope({
             id: "ex-1",
@@ -184,16 +206,28 @@ describe("phase 3 integration mapping", () => {
     await sdk.workspaces.listUpdates({ workspaceId: "ws-1", cursor: "c1", limit: 20 });
 
     await sdk.collections.create({ workspaceId: "ws-1", name: "Collection A" });
-    await sdk.collections.update({ workspaceId: "ws-1", collectionId: "c-1", name: "Collection B" });
+    await sdk.collections.update({
+      workspaceId: "ws-1",
+      collectionId: "c-1",
+      name: "Collection B"
+    });
     await sdk.collections.remove({ workspaceId: "ws-1", collectionId: "c-1" });
-    await sdk.collections.createFolder({ workspaceId: "ws-1", collectionId: "c-1", name: "Folder A" });
+    await sdk.collections.createFolder({
+      workspaceId: "ws-1",
+      collectionId: "c-1",
+      name: "Folder A"
+    });
     await sdk.collections.updateFolder({
       workspaceId: "ws-1",
       collectionId: "c-1",
       folderId: "f-1",
       name: "Folder B"
     });
-    await sdk.collections.removeFolder({ workspaceId: "ws-1", collectionId: "c-1", folderId: "f-1" });
+    await sdk.collections.removeFolder({
+      workspaceId: "ws-1",
+      collectionId: "c-1",
+      folderId: "f-1"
+    });
     await sdk.collections.createEndpoint({
       workspaceId: "ws-1",
       collectionId: "c-1",
@@ -207,7 +241,11 @@ describe("phase 3 integration mapping", () => {
       endpointId: "e-1",
       name: "Endpoint B"
     });
-    await sdk.collections.removeEndpoint({ workspaceId: "ws-1", collectionId: "c-1", endpointId: "e-1" });
+    await sdk.collections.removeEndpoint({
+      workspaceId: "ws-1",
+      collectionId: "c-1",
+      endpointId: "e-1"
+    });
     await sdk.collections.createEndpointExample({
       workspaceId: "ws-1",
       collectionId: "c-1",
@@ -230,7 +268,10 @@ describe("phase 3 integration mapping", () => {
 
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.example.com/api/workspaces/ws-1/members",
-      expect.objectContaining({ method: "POST", body: JSON.stringify({ email: "a@example.com", role: "viewer" }) })
+      expect.objectContaining({
+        method: "POST",
+        body: JSON.stringify({ email: "a@example.com", role: "viewer" })
+      })
     );
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.example.com/api/workspaces/ws-1/updates?cursor=c1&limit=20",
@@ -370,16 +411,28 @@ describe("phase 3 integration mapping", () => {
     await sdk.workspaces.listUpdates({ workspaceId: "ws-1", cursor: "c1", limit: 20 });
 
     await sdk.collections.create({ workspaceId: "ws-1", name: "Collection A" });
-    await sdk.collections.update({ workspaceId: "ws-1", collectionId: "c-1", name: "Collection B" });
+    await sdk.collections.update({
+      workspaceId: "ws-1",
+      collectionId: "c-1",
+      name: "Collection B"
+    });
     await sdk.collections.remove({ workspaceId: "ws-1", collectionId: "c-1" });
-    await sdk.collections.createFolder({ workspaceId: "ws-1", collectionId: "c-1", name: "Folder A" });
+    await sdk.collections.createFolder({
+      workspaceId: "ws-1",
+      collectionId: "c-1",
+      name: "Folder A"
+    });
     await sdk.collections.updateFolder({
       workspaceId: "ws-1",
       collectionId: "c-1",
       folderId: "f-1",
       name: "Folder B"
     });
-    await sdk.collections.removeFolder({ workspaceId: "ws-1", collectionId: "c-1", folderId: "f-1" });
+    await sdk.collections.removeFolder({
+      workspaceId: "ws-1",
+      collectionId: "c-1",
+      folderId: "f-1"
+    });
     await sdk.collections.createEndpoint({
       workspaceId: "ws-1",
       collectionId: "c-1",
@@ -393,7 +446,11 @@ describe("phase 3 integration mapping", () => {
       endpointId: "e-1",
       name: "Endpoint B"
     });
-    await sdk.collections.removeEndpoint({ workspaceId: "ws-1", collectionId: "c-1", endpointId: "e-1" });
+    await sdk.collections.removeEndpoint({
+      workspaceId: "ws-1",
+      collectionId: "c-1",
+      endpointId: "e-1"
+    });
     await sdk.collections.createEndpointExample({
       workspaceId: "ws-1",
       collectionId: "c-1",

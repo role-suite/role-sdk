@@ -101,22 +101,31 @@ export const createServerpodRpcProvider = (
   return {
     auth: {
       register: (input) =>
-        callRpc({ module: "auth", methodName: "register", payload: input, authenticated: false }).then(
-          (result) => mapServerpodAuthSession(result)
-        ),
+        callRpc({
+          module: "auth",
+          methodName: "register",
+          payload: input,
+          authenticated: false
+        }).then((result) => mapServerpodAuthSession(result)),
       login: (input) =>
         callRpc({ module: "auth", methodName: "login", payload: input, authenticated: false }).then(
           (result) => mapServerpodAuthSession(result)
         ),
       refresh: (input) =>
-        callRpc({ module: "auth", methodName: "refresh", payload: input, authenticated: false }).then(
-          (result) => mapServerpodAuthSession(result)
-        ),
+        callRpc({
+          module: "auth",
+          methodName: "refresh",
+          payload: input,
+          authenticated: false
+        }).then((result) => mapServerpodAuthSession(result)),
       logout: (input) =>
         callRpc({ module: "auth", methodName: "logout", payload: input }).then((result) =>
           mapServerpodLogout(result)
         ),
-      me: () => callRpc({ module: "auth", methodName: "me" }).then((result) => mapServerpodCurrentUser(result))
+      me: () =>
+        callRpc({ module: "auth", methodName: "me" }).then((result) =>
+          mapServerpodCurrentUser(result)
+        )
     },
     workspaces: {
       list: () =>
@@ -132,38 +141,40 @@ export const createServerpodRpcProvider = (
           mapServerpodWorkspaceSummary(result)
         ),
       listMembers: (input) =>
-        callRpc({ module: "workspaces", methodName: "listMembers", payload: input }).then((result) =>
-          mapServerpodWorkspaceMembers(result)
+        callRpc({ module: "workspaces", methodName: "listMembers", payload: input }).then(
+          (result) => mapServerpodWorkspaceMembers(result)
         ),
       addMember: (input) =>
         callRpc({ module: "workspaces", methodName: "addMember", payload: input }).then((result) =>
           mapServerpodWorkspaceMember(result)
         ),
       updateMemberRole: (input) =>
-        callRpc({ module: "workspaces", methodName: "updateMemberRole", payload: input }).then((result) =>
-          mapServerpodWorkspaceMember(result)
+        callRpc({ module: "workspaces", methodName: "updateMemberRole", payload: input }).then(
+          (result) => mapServerpodWorkspaceMember(result)
         ),
       removeMember: (input) =>
         callRpc({ module: "workspaces", methodName: "removeMember", payload: input }).then(() =>
           mapServerpodDeleted()
         ),
       createInvitation: (input) =>
-        callRpc({ module: "workspaces", methodName: "createInvitation", payload: input }).then((result) =>
-          mapServerpodWorkspaceInvitation(result)
+        callRpc({ module: "workspaces", methodName: "createInvitation", payload: input }).then(
+          (result) => mapServerpodWorkspaceInvitation(result)
         ),
       joinWithInvitation: (input) =>
-        callRpc({ module: "workspaces", methodName: "joinWithInvitation", payload: input }).then((result) =>
-          mapServerpodWorkspaceSummary(result)
+        callRpc({ module: "workspaces", methodName: "joinWithInvitation", payload: input }).then(
+          (result) => mapServerpodWorkspaceSummary(result)
         ),
       leave: (input) =>
-        callRpc({ module: "workspaces", methodName: "leave", payload: input }).then(() => mapServerpodLeave()),
+        callRpc({ module: "workspaces", methodName: "leave", payload: input }).then(() =>
+          mapServerpodLeave()
+        ),
       convertToTeam: (input) =>
-        callRpc({ module: "workspaces", methodName: "convertToTeam", payload: input }).then((result) =>
-          mapServerpodWorkspaceSummary(result)
+        callRpc({ module: "workspaces", methodName: "convertToTeam", payload: input }).then(
+          (result) => mapServerpodWorkspaceSummary(result)
         ),
       listUpdates: (input) =>
-        callRpc({ module: "workspaces", methodName: "listUpdates", payload: input }).then((result) =>
-          mapServerpodWorkspaceUpdates(result)
+        callRpc({ module: "workspaces", methodName: "listUpdates", payload: input }).then(
+          (result) => mapServerpodWorkspaceUpdates(result)
         )
     },
     collections: {
@@ -188,36 +199,36 @@ export const createServerpodRpcProvider = (
           mapServerpodDeleted()
         ),
       listFolders: (input) =>
-        callRpc({ module: "collections", methodName: "listFolders", payload: input }).then((result) =>
-          mapServerpodCollectionFolders(result)
+        callRpc({ module: "collections", methodName: "listFolders", payload: input }).then(
+          (result) => mapServerpodCollectionFolders(result)
         ),
       createFolder: (input) =>
-        callRpc({ module: "collections", methodName: "createFolder", payload: input }).then((result) =>
-          mapServerpodCollectionFolder(result)
+        callRpc({ module: "collections", methodName: "createFolder", payload: input }).then(
+          (result) => mapServerpodCollectionFolder(result)
         ),
       updateFolder: (input) =>
-        callRpc({ module: "collections", methodName: "updateFolder", payload: input }).then((result) =>
-          mapServerpodCollectionFolder(result)
+        callRpc({ module: "collections", methodName: "updateFolder", payload: input }).then(
+          (result) => mapServerpodCollectionFolder(result)
         ),
       removeFolder: (input) =>
         callRpc({ module: "collections", methodName: "removeFolder", payload: input }).then(() =>
           mapServerpodDeleted()
         ),
       listEndpoints: (input) =>
-        callRpc({ module: "collections", methodName: "listEndpoints", payload: input }).then((result) =>
-          mapServerpodCollectionEndpoints(result)
+        callRpc({ module: "collections", methodName: "listEndpoints", payload: input }).then(
+          (result) => mapServerpodCollectionEndpoints(result)
         ),
       getEndpoint: (input) =>
-        callRpc({ module: "collections", methodName: "getEndpoint", payload: input }).then((result) =>
-          mapServerpodCollectionEndpoint(result)
+        callRpc({ module: "collections", methodName: "getEndpoint", payload: input }).then(
+          (result) => mapServerpodCollectionEndpoint(result)
         ),
       createEndpoint: (input) =>
-        callRpc({ module: "collections", methodName: "createEndpoint", payload: input }).then((result) =>
-          mapServerpodCollectionEndpoint(result)
+        callRpc({ module: "collections", methodName: "createEndpoint", payload: input }).then(
+          (result) => mapServerpodCollectionEndpoint(result)
         ),
       updateEndpoint: (input) =>
-        callRpc({ module: "collections", methodName: "updateEndpoint", payload: input }).then((result) =>
-          mapServerpodCollectionEndpoint(result)
+        callRpc({ module: "collections", methodName: "updateEndpoint", payload: input }).then(
+          (result) => mapServerpodCollectionEndpoint(result)
         ),
       removeEndpoint: (input) =>
         callRpc({ module: "collections", methodName: "removeEndpoint", payload: input }).then(() =>
@@ -228,17 +239,23 @@ export const createServerpodRpcProvider = (
           (result) => mapServerpodEndpointExamples(result)
         ),
       createEndpointExample: (input) =>
-        callRpc({ module: "collections", methodName: "createEndpointExample", payload: input }).then(
-          (result) => mapServerpodEndpointExample(result)
-        ),
+        callRpc({
+          module: "collections",
+          methodName: "createEndpointExample",
+          payload: input
+        }).then((result) => mapServerpodEndpointExample(result)),
       updateEndpointExample: (input) =>
-        callRpc({ module: "collections", methodName: "updateEndpointExample", payload: input }).then(
-          (result) => mapServerpodEndpointExample(result)
-        ),
+        callRpc({
+          module: "collections",
+          methodName: "updateEndpointExample",
+          payload: input
+        }).then((result) => mapServerpodEndpointExample(result)),
       removeEndpointExample: (input) =>
-        callRpc({ module: "collections", methodName: "removeEndpointExample", payload: input }).then(() =>
-          mapServerpodDeleted()
-        )
+        callRpc({
+          module: "collections",
+          methodName: "removeEndpointExample",
+          payload: input
+        }).then(() => mapServerpodDeleted())
     },
     environments: {},
     runs: {},

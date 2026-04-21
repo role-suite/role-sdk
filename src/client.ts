@@ -1,11 +1,7 @@
 import { resolveConfig, type Id, type RoleSdkConfig, type TokenPair } from "./config.js";
 import { AuthManager } from "./core/auth/auth-manager.js";
 import { normalizeUnknownError } from "./core/errors/error-normalizer.js";
-import {
-  RoleApiError,
-  RoleAuthError,
-  RoleValidationError
-} from "./core/errors/sdk-error.js";
+import { RoleApiError, RoleAuthError, RoleValidationError } from "./core/errors/sdk-error.js";
 import type { BackendProvider } from "./core/provider/backend-provider.js";
 import { createNodeRestProvider } from "./core/provider/node-rest-provider.js";
 import { createServerpodRpcProvider } from "./core/provider/serverpod-rpc-provider.js";
@@ -93,9 +89,16 @@ export type WorkspaceScopedCollectionsClient = {
     collectionId: Id,
     endpointId: Id,
     exampleId: Id,
-    input: Omit<UpdateEndpointExampleInput, "workspaceId" | "collectionId" | "endpointId" | "exampleId">
+    input: Omit<
+      UpdateEndpointExampleInput,
+      "workspaceId" | "collectionId" | "endpointId" | "exampleId"
+    >
   ) => Promise<EndpointExample>;
-  removeEndpointExample: (collectionId: Id, endpointId: Id, exampleId: Id) => Promise<{ deleted: true }>;
+  removeEndpointExample: (
+    collectionId: Id,
+    endpointId: Id,
+    exampleId: Id
+  ) => Promise<{ deleted: true }>;
 };
 
 export type WorkspaceScopedClient = {
@@ -136,12 +139,24 @@ export type RoleSdkClient = {
     listFolders: (input: { workspaceId: Id; collectionId: Id }) => Promise<CollectionFolder[]>;
     createFolder: (input: CreateCollectionFolderInput) => Promise<CollectionFolder>;
     updateFolder: (input: UpdateCollectionFolderInput) => Promise<CollectionFolder>;
-    removeFolder: (input: { workspaceId: Id; collectionId: Id; folderId: Id }) => Promise<{ deleted: true }>;
+    removeFolder: (input: {
+      workspaceId: Id;
+      collectionId: Id;
+      folderId: Id;
+    }) => Promise<{ deleted: true }>;
     listEndpoints: (input: { workspaceId: Id; collectionId: Id }) => Promise<CollectionEndpoint[]>;
-    getEndpoint: (input: { workspaceId: Id; collectionId: Id; endpointId: Id }) => Promise<CollectionEndpoint>;
+    getEndpoint: (input: {
+      workspaceId: Id;
+      collectionId: Id;
+      endpointId: Id;
+    }) => Promise<CollectionEndpoint>;
     createEndpoint: (input: CreateCollectionEndpointInput) => Promise<CollectionEndpoint>;
     updateEndpoint: (input: UpdateCollectionEndpointInput) => Promise<CollectionEndpoint>;
-    removeEndpoint: (input: { workspaceId: Id; collectionId: Id; endpointId: Id }) => Promise<{ deleted: true }>;
+    removeEndpoint: (input: {
+      workspaceId: Id;
+      collectionId: Id;
+      endpointId: Id;
+    }) => Promise<{ deleted: true }>;
     listEndpointExamples: (input: {
       workspaceId: Id;
       collectionId: Id;
@@ -427,19 +442,30 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
     },
     updateMemberRole: async (input: UpdateWorkspaceMemberRoleInput): Promise<WorkspaceMember> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.workspaces.updateMemberRole(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.workspaces.updateMemberRole(input),
+        refreshAuth
+      );
     },
     removeMember: async (input: RemoveWorkspaceMemberInput): Promise<{ deleted: true }> => {
       await initialization;
       return invokeWithOptionalRefresh(() => provider.workspaces.removeMember(input), refreshAuth);
     },
-    createInvitation: async (input: CreateWorkspaceInvitationInput): Promise<WorkspaceInvitation> => {
+    createInvitation: async (
+      input: CreateWorkspaceInvitationInput
+    ): Promise<WorkspaceInvitation> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.workspaces.createInvitation(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.workspaces.createInvitation(input),
+        refreshAuth
+      );
     },
     joinWithInvitation: async (input: JoinWorkspaceInput): Promise<WorkspaceSummary> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.workspaces.joinWithInvitation(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.workspaces.joinWithInvitation(input),
+        refreshAuth
+      );
     },
     leave: async (input: { workspaceId: Id }): Promise<{ left: true }> => {
       await initialization;
@@ -504,7 +530,10 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
       collectionId: Id;
     }): Promise<CollectionEndpoint[]> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.collections.listEndpoints(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.collections.listEndpoints(input),
+        refreshAuth
+      );
     },
     getEndpoint: async (input: {
       workspaceId: Id;
@@ -516,11 +545,17 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
     },
     createEndpoint: async (input: CreateCollectionEndpointInput): Promise<CollectionEndpoint> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.collections.createEndpoint(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.collections.createEndpoint(input),
+        refreshAuth
+      );
     },
     updateEndpoint: async (input: UpdateCollectionEndpointInput): Promise<CollectionEndpoint> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.collections.updateEndpoint(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.collections.updateEndpoint(input),
+        refreshAuth
+      );
     },
     removeEndpoint: async (input: {
       workspaceId: Id;
@@ -528,7 +563,10 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
       endpointId: Id;
     }): Promise<{ deleted: true }> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.collections.removeEndpoint(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.collections.removeEndpoint(input),
+        refreshAuth
+      );
     },
     listEndpointExamples: async (input: {
       workspaceId: Id;
@@ -536,15 +574,24 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
       endpointId: Id;
     }): Promise<EndpointExample[]> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.collections.listEndpointExamples(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.collections.listEndpointExamples(input),
+        refreshAuth
+      );
     },
     createEndpointExample: async (input: CreateEndpointExampleInput): Promise<EndpointExample> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.collections.createEndpointExample(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.collections.createEndpointExample(input),
+        refreshAuth
+      );
     },
     updateEndpointExample: async (input: UpdateEndpointExampleInput): Promise<EndpointExample> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.collections.updateEndpointExample(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.collections.updateEndpointExample(input),
+        refreshAuth
+      );
     },
     removeEndpointExample: async (input: {
       workspaceId: Id;
@@ -553,7 +600,10 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
       exampleId: Id;
     }): Promise<{ deleted: true }> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.collections.removeEndpointExample(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.collections.removeEndpointExample(input),
+        refreshAuth
+      );
     }
   };
   const environments = createUnsupportedModule("environments");
@@ -572,7 +622,8 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
         list: () => collections.list({ workspaceId }),
         get: (collectionId) => collections.get({ workspaceId, collectionId }),
         create: (input) => collections.create({ workspaceId, ...input }),
-        update: (collectionId, input) => collections.update({ workspaceId, collectionId, ...input }),
+        update: (collectionId, input) =>
+          collections.update({ workspaceId, collectionId, ...input }),
         remove: (collectionId) => collections.remove({ workspaceId, collectionId }),
         listFolders: (collectionId) => collections.listFolders({ workspaceId, collectionId }),
         createFolder: (collectionId, input) =>
@@ -595,7 +646,13 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
         createEndpointExample: (collectionId, endpointId, input) =>
           collections.createEndpointExample({ workspaceId, collectionId, endpointId, ...input }),
         updateEndpointExample: (collectionId, endpointId, exampleId, input) =>
-          collections.updateEndpointExample({ workspaceId, collectionId, endpointId, exampleId, ...input }),
+          collections.updateEndpointExample({
+            workspaceId,
+            collectionId,
+            endpointId,
+            exampleId,
+            ...input
+          }),
         removeEndpointExample: (collectionId, endpointId, exampleId) =>
           collections.removeEndpointExample({ workspaceId, collectionId, endpointId, exampleId })
       };

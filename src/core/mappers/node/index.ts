@@ -33,7 +33,10 @@ const mapWorkspace = (value: unknown): WorkspaceSummary => {
   const record = requireRecord(value, "Workspace payload must be an object.");
   const id = pickId(record, ["id", "workspaceId", "workspace_id"]);
   if (id === undefined) {
-    throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Workspace payload is missing id.");
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Workspace payload is missing id."
+    );
   }
 
   const workspace: WorkspaceSummary = { id };
@@ -126,7 +129,10 @@ const mapMember = (value: unknown): WorkspaceMember => {
   const workspaceId = pickId(record, ["workspaceId", "workspace_id"]);
 
   if (id === undefined || workspaceId === undefined) {
-    throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Workspace member payload is missing ids.");
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Workspace member payload is missing ids."
+    );
   }
 
   const member: WorkspaceMember = { id, workspaceId };
@@ -199,7 +205,10 @@ const mapWorkspaceUpdate = (value: unknown): WorkspaceUpdate => {
   const record = requireRecord(value, "Workspace update payload must be an object.");
   const id = pickId(record, ["id", "updateId", "update_id"]);
   if (id === undefined) {
-    throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Workspace update payload is missing id.");
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Workspace update payload is missing id."
+    );
   }
 
   const update: WorkspaceUpdate = { id };
@@ -231,7 +240,10 @@ const mapCollection = (value: unknown): CollectionSummary => {
   const id = pickId(record, ["id", "collectionId", "collection_id"]);
   const workspaceId = pickId(record, ["workspaceId", "workspace_id"]);
   if (id === undefined || workspaceId === undefined) {
-    throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Collection payload is missing ids.");
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Collection payload is missing ids."
+    );
   }
 
   const collection: CollectionSummary = { id, workspaceId };
@@ -261,7 +273,10 @@ const mapFolder = (value: unknown): CollectionFolder => {
   const workspaceId = pickId(record, ["workspaceId", "workspace_id"]);
   const collectionId = pickId(record, ["collectionId", "collection_id"]);
   if (id === undefined || workspaceId === undefined || collectionId === undefined) {
-    throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Collection folder payload is missing ids.");
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Collection folder payload is missing ids."
+    );
   }
 
   const folder: CollectionFolder = { id, workspaceId, collectionId };
@@ -294,7 +309,10 @@ const mapEndpoint = (value: unknown): CollectionEndpoint => {
   const workspaceId = pickId(record, ["workspaceId", "workspace_id"]);
   const collectionId = pickId(record, ["collectionId", "collection_id"]);
   if (id === undefined || workspaceId === undefined || collectionId === undefined) {
-    throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Collection endpoint payload is missing ids.");
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Collection endpoint payload is missing ids."
+    );
   }
 
   const endpoint: CollectionEndpoint = { id, workspaceId, collectionId };
@@ -339,8 +357,16 @@ const mapEndpointExample = (value: unknown): EndpointExample => {
   const workspaceId = pickId(record, ["workspaceId", "workspace_id"]);
   const collectionId = pickId(record, ["collectionId", "collection_id"]);
   const endpointId = pickId(record, ["endpointId", "endpoint_id"]);
-  if (id === undefined || workspaceId === undefined || collectionId === undefined || endpointId === undefined) {
-    throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Endpoint example payload is missing ids.");
+  if (
+    id === undefined ||
+    workspaceId === undefined ||
+    collectionId === undefined ||
+    endpointId === undefined
+  ) {
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Endpoint example payload is missing ids."
+    );
   }
 
   const example: EndpointExample = { id, workspaceId, collectionId, endpointId };
@@ -409,7 +435,10 @@ export const mapNodeAuthSession = (payload: unknown): AuthSessionResult => {
 export const mapNodeCurrentUser = (payload: unknown): CurrentUserResult => {
   const user = mapUser(payload);
   if (!user) {
-    throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Current user payload is invalid.");
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Current user payload is invalid."
+    );
   }
 
   return user;
@@ -428,7 +457,8 @@ export const mapNodeLogout = (payload: unknown): LogoutResult => {
   return { revoked: true };
 };
 
-export const mapNodeWorkspaceSummary = (payload: unknown): WorkspaceSummary => mapWorkspace(payload);
+export const mapNodeWorkspaceSummary = (payload: unknown): WorkspaceSummary =>
+  mapWorkspace(payload);
 
 export const mapNodeWorkspaceList = (payload: unknown): WorkspaceSummary[] => {
   if (Array.isArray(payload)) {
@@ -441,7 +471,10 @@ export const mapNodeWorkspaceList = (payload: unknown): WorkspaceSummary[] => {
     return container.map(mapWorkspace);
   }
 
-  throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Workspace list payload is missing array data.");
+  throw new RoleValidationError(
+    "ROLE_MAPPER_INVALID_PAYLOAD",
+    "Workspace list payload is missing array data."
+  );
 };
 
 export const mapNodeWorkspaceMember = (payload: unknown): WorkspaceMember => mapMember(payload);
@@ -456,10 +489,14 @@ export const mapNodeWorkspaceMembers = (payload: unknown): WorkspaceMember[] => 
     return container.map(mapMember);
   }
 
-  throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Workspace members payload is missing array data.");
+  throw new RoleValidationError(
+    "ROLE_MAPPER_INVALID_PAYLOAD",
+    "Workspace members payload is missing array data."
+  );
 };
 
-export const mapNodeWorkspaceInvitation = (payload: unknown): WorkspaceInvitation => mapInvitation(payload);
+export const mapNodeWorkspaceInvitation = (payload: unknown): WorkspaceInvitation =>
+  mapInvitation(payload);
 export const mapNodeLeave = (): { left: true } => mapLeft();
 export const mapNodeDeleted = (): { deleted: true } => mapDeleted();
 
@@ -467,7 +504,10 @@ export const mapNodeWorkspaceUpdates = (payload: unknown): WorkspaceUpdatesResul
   const record = requireRecord(payload, "Workspace updates payload is invalid.");
   const updatesRaw = record.items ?? record.updates ?? record.data;
   if (!Array.isArray(updatesRaw)) {
-    throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Workspace updates payload is missing items.");
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Workspace updates payload is missing items."
+    );
   }
 
   const result: WorkspaceUpdatesResult = {
@@ -485,7 +525,8 @@ export const mapNodeWorkspaceUpdates = (payload: unknown): WorkspaceUpdatesResul
   return result;
 };
 
-export const mapNodeCollectionSummary = (payload: unknown): CollectionSummary => mapCollection(payload);
+export const mapNodeCollectionSummary = (payload: unknown): CollectionSummary =>
+  mapCollection(payload);
 export const mapNodeCollectionList = (payload: unknown): CollectionSummary[] => {
   if (Array.isArray(payload)) {
     return payload.map(mapCollection);
@@ -497,7 +538,10 @@ export const mapNodeCollectionList = (payload: unknown): CollectionSummary[] => 
     return container.map(mapCollection);
   }
 
-  throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Collection list payload is missing array data.");
+  throw new RoleValidationError(
+    "ROLE_MAPPER_INVALID_PAYLOAD",
+    "Collection list payload is missing array data."
+  );
 };
 
 export const mapNodeCollectionFolder = (payload: unknown): CollectionFolder => mapFolder(payload);
@@ -512,10 +556,14 @@ export const mapNodeCollectionFolders = (payload: unknown): CollectionFolder[] =
     return container.map(mapFolder);
   }
 
-  throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Collection folders payload is missing array data.");
+  throw new RoleValidationError(
+    "ROLE_MAPPER_INVALID_PAYLOAD",
+    "Collection folders payload is missing array data."
+  );
 };
 
-export const mapNodeCollectionEndpoint = (payload: unknown): CollectionEndpoint => mapEndpoint(payload);
+export const mapNodeCollectionEndpoint = (payload: unknown): CollectionEndpoint =>
+  mapEndpoint(payload);
 export const mapNodeCollectionEndpoints = (payload: unknown): CollectionEndpoint[] => {
   if (Array.isArray(payload)) {
     return payload.map(mapEndpoint);
@@ -533,7 +581,8 @@ export const mapNodeCollectionEndpoints = (payload: unknown): CollectionEndpoint
   );
 };
 
-export const mapNodeEndpointExample = (payload: unknown): EndpointExample => mapEndpointExample(payload);
+export const mapNodeEndpointExample = (payload: unknown): EndpointExample =>
+  mapEndpointExample(payload);
 export const mapNodeEndpointExamples = (payload: unknown): EndpointExample[] => {
   if (Array.isArray(payload)) {
     return payload.map(mapEndpointExample);

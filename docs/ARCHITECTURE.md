@@ -174,7 +174,7 @@ Future split (only when needed):
 const sdk = createRoleSdk({
   backend: "node",
   baseUrl: "https://api.example.com",
-  auth: { mode: "token" },
+  auth: { mode: "token" }
 });
 ```
 

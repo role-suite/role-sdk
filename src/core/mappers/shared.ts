@@ -19,10 +19,7 @@ export const pickId = (record: Record<string, unknown>, keys: string[]): Id | un
   return undefined;
 };
 
-export const pickString = (
-  record: Record<string, unknown>,
-  keys: string[]
-): string | undefined => {
+export const pickString = (record: Record<string, unknown>, keys: string[]): string | undefined => {
   for (const key of keys) {
     const candidate = record[key];
     if (typeof candidate === "string") {

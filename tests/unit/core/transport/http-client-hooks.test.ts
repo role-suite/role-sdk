@@ -6,9 +6,15 @@ import { HttpClient } from "../../../../src/core/transport/http-client.js";
 describe("HttpClient hooks", () => {
   it("calls onRequest and onResponse with normalized metadata", async () => {
     const onRequest = vi.fn<(ctx: { module: string; method: string; input: unknown }) => void>();
-    const onResponse = vi.fn<
-      (ctx: { module: string; method: string; requestId: string | undefined; output: unknown }) => void
-    >();
+    const onResponse =
+      vi.fn<
+        (ctx: {
+          module: string;
+          method: string;
+          requestId: string | undefined;
+          output: unknown;
+        }) => void
+      >();
 
     const client = new HttpClient({
       baseUrl: "https://api.example.com",

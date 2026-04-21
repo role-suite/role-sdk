@@ -72,21 +72,36 @@ export type CollectionsProvider = {
   listFolders: ProviderMethod<{ workspaceId: Id; collectionId: Id }, CollectionFolder[]>;
   createFolder: ProviderMethod<CreateCollectionFolderInput, CollectionFolder>;
   updateFolder: ProviderMethod<UpdateCollectionFolderInput, CollectionFolder>;
-  removeFolder: ProviderMethod<{ workspaceId: Id; collectionId: Id; folderId: Id }, { deleted: true }>;
+  removeFolder: ProviderMethod<
+    { workspaceId: Id; collectionId: Id; folderId: Id },
+    { deleted: true }
+  >;
   listEndpoints: ProviderMethod<{ workspaceId: Id; collectionId: Id }, CollectionEndpoint[]>;
-  getEndpoint: ProviderMethod<{ workspaceId: Id; collectionId: Id; endpointId: Id }, CollectionEndpoint>;
+  getEndpoint: ProviderMethod<
+    { workspaceId: Id; collectionId: Id; endpointId: Id },
+    CollectionEndpoint
+  >;
   createEndpoint: ProviderMethod<CreateCollectionEndpointInput, CollectionEndpoint>;
   updateEndpoint: ProviderMethod<UpdateCollectionEndpointInput, CollectionEndpoint>;
-  removeEndpoint: ProviderMethod<{ workspaceId: Id; collectionId: Id; endpointId: Id }, { deleted: true }>;
-  listEndpointExamples: ProviderMethod<{ workspaceId: Id; collectionId: Id; endpointId: Id }, EndpointExample[]>;
+  removeEndpoint: ProviderMethod<
+    { workspaceId: Id; collectionId: Id; endpointId: Id },
+    { deleted: true }
+  >;
+  listEndpointExamples: ProviderMethod<
+    { workspaceId: Id; collectionId: Id; endpointId: Id },
+    EndpointExample[]
+  >;
   createEndpointExample: ProviderMethod<CreateEndpointExampleInput, EndpointExample>;
   updateEndpointExample: ProviderMethod<UpdateEndpointExampleInput, EndpointExample>;
-  removeEndpointExample: ProviderMethod<{
-    workspaceId: Id;
-    collectionId: Id;
-    endpointId: Id;
-    exampleId: Id;
-  }, { deleted: true }>;
+  removeEndpointExample: ProviderMethod<
+    {
+      workspaceId: Id;
+      collectionId: Id;
+      endpointId: Id;
+      exampleId: Id;
+    },
+    { deleted: true }
+  >;
 };
 export type EnvironmentsProvider = Record<string, ProviderMethod>;
 export type RunsProvider = Record<string, ProviderMethod>;

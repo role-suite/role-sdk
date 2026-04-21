@@ -90,7 +90,9 @@ describe("provider parity", () => {
       const url = requestUrl(input);
 
       if (url.endsWith("/api/auth/me")) {
-        return Promise.resolve(new Response(JSON.stringify({ message: "unauthorized" }), { status: 401 }));
+        return Promise.resolve(
+          new Response(JSON.stringify({ message: "unauthorized" }), { status: 401 })
+        );
       }
 
       return Promise.resolve(new Response("not found", { status: 404 }));
@@ -101,10 +103,13 @@ describe("provider parity", () => {
 
       if (url.endsWith("/rpc/auth/me")) {
         return Promise.resolve(
-          new Response(JSON.stringify({ error: { code: "ROLE_AUTH_ERROR", message: "unauthorized" } }), {
-            status: 200,
-            headers: { "content-type": "application/json" }
-          })
+          new Response(
+            JSON.stringify({ error: { code: "ROLE_AUTH_ERROR", message: "unauthorized" } }),
+            {
+              status: 200,
+              headers: { "content-type": "application/json" }
+            }
+          )
         );
       }
 

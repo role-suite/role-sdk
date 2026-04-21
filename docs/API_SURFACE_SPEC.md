@@ -147,18 +147,39 @@ type CollectionsClient = {
   listFolders(input: { workspaceId: Id; collectionId: Id }): Promise<CollectionFolder[]>;
   createFolder(input: CreateCollectionFolderInput): Promise<CollectionFolder>;
   updateFolder(input: UpdateCollectionFolderInput): Promise<CollectionFolder>;
-  removeFolder(input: { workspaceId: Id; collectionId: Id; folderId: Id }): Promise<{ deleted: true }>;
+  removeFolder(input: {
+    workspaceId: Id;
+    collectionId: Id;
+    folderId: Id;
+  }): Promise<{ deleted: true }>;
 
   listEndpoints(input: { workspaceId: Id; collectionId: Id }): Promise<CollectionEndpoint[]>;
-  getEndpoint(input: { workspaceId: Id; collectionId: Id; endpointId: Id }): Promise<CollectionEndpoint>;
+  getEndpoint(input: {
+    workspaceId: Id;
+    collectionId: Id;
+    endpointId: Id;
+  }): Promise<CollectionEndpoint>;
   createEndpoint(input: CreateCollectionEndpointInput): Promise<CollectionEndpoint>;
   updateEndpoint(input: UpdateCollectionEndpointInput): Promise<CollectionEndpoint>;
-  removeEndpoint(input: { workspaceId: Id; collectionId: Id; endpointId: Id }): Promise<{ deleted: true }>;
+  removeEndpoint(input: {
+    workspaceId: Id;
+    collectionId: Id;
+    endpointId: Id;
+  }): Promise<{ deleted: true }>;
 
-  listEndpointExamples(input: { workspaceId: Id; collectionId: Id; endpointId: Id }): Promise<EndpointExample[]>;
+  listEndpointExamples(input: {
+    workspaceId: Id;
+    collectionId: Id;
+    endpointId: Id;
+  }): Promise<EndpointExample[]>;
   createEndpointExample(input: CreateEndpointExampleInput): Promise<EndpointExample>;
   updateEndpointExample(input: UpdateEndpointExampleInput): Promise<EndpointExample>;
-  removeEndpointExample(input: { workspaceId: Id; collectionId: Id; endpointId: Id; exampleId: Id }): Promise<{ deleted: true }>;
+  removeEndpointExample(input: {
+    workspaceId: Id;
+    collectionId: Id;
+    endpointId: Id;
+    exampleId: Id;
+  }): Promise<{ deleted: true }>;
 };
 ```
 
@@ -173,10 +194,18 @@ type EnvironmentsClient = {
   remove(input: { workspaceId: Id; environmentId: Id }): Promise<{ deleted: true }>;
 
   listVariables(input: { workspaceId: Id; environmentId: Id }): Promise<EnvironmentVariable[]>;
-  getVariable(input: { workspaceId: Id; environmentId: Id; variableId: Id }): Promise<EnvironmentVariable>;
+  getVariable(input: {
+    workspaceId: Id;
+    environmentId: Id;
+    variableId: Id;
+  }): Promise<EnvironmentVariable>;
   createVariable(input: CreateEnvironmentVariableInput): Promise<EnvironmentVariable>;
   updateVariable(input: UpdateEnvironmentVariableInput): Promise<EnvironmentVariable>;
-  removeVariable(input: { workspaceId: Id; environmentId: Id; variableId: Id }): Promise<{ deleted: true }>;
+  removeVariable(input: {
+    workspaceId: Id;
+    environmentId: Id;
+    variableId: Id;
+  }): Promise<{ deleted: true }>;
 };
 ```
 
