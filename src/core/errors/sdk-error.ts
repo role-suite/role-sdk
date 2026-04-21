@@ -29,3 +29,83 @@ export class RoleSdkError extends Error implements RoleSdkErrorShape {
     this.details = options?.details;
   }
 }
+
+export class RoleApiError extends RoleSdkError {
+  constructor(
+    code: string,
+    message: string,
+    options?: {
+      status?: number;
+      requestId?: string;
+      details?: Record<string, unknown>;
+      cause?: unknown;
+    }
+  ) {
+    super(code, message, options);
+    this.name = "RoleApiError";
+  }
+}
+
+export class RoleAuthError extends RoleSdkError {
+  constructor(
+    code: string,
+    message: string,
+    options?: {
+      status?: number;
+      requestId?: string;
+      details?: Record<string, unknown>;
+      cause?: unknown;
+    }
+  ) {
+    super(code, message, options);
+    this.name = "RoleAuthError";
+  }
+}
+
+export class RoleNetworkError extends RoleSdkError {
+  constructor(
+    code: string,
+    message: string,
+    options?: {
+      status?: number;
+      requestId?: string;
+      details?: Record<string, unknown>;
+      cause?: unknown;
+    }
+  ) {
+    super(code, message, options);
+    this.name = "RoleNetworkError";
+  }
+}
+
+export class RoleValidationError extends RoleSdkError {
+  constructor(
+    code: string,
+    message: string,
+    options?: {
+      status?: number;
+      requestId?: string;
+      details?: Record<string, unknown>;
+      cause?: unknown;
+    }
+  ) {
+    super(code, message, options);
+    this.name = "RoleValidationError";
+  }
+}
+
+export class RoleUnknownError extends RoleSdkError {
+  constructor(
+    code: string,
+    message: string,
+    options?: {
+      status?: number;
+      requestId?: string;
+      details?: Record<string, unknown>;
+      cause?: unknown;
+    }
+  ) {
+    super(code, message, options);
+    this.name = "RoleUnknownError";
+  }
+}

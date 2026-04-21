@@ -13,4 +13,11 @@ export type {
 export type { RoleSdkClient, WorkspaceScopedClient } from "./client.js";
 export type { BackendCapabilities } from "./core/provider/capabilities.js";
 export type { BackendProvider } from "./core/provider/backend-provider.js";
-export { RoleSdkError } from "./core/errors/sdk-error.js";
+export {
+  RoleApiError,
+  RoleAuthError,
+  RoleNetworkError,
+  RoleSdkError,
+  RoleUnknownError,
+  RoleValidationError
+} from "./core/errors/sdk-error.js";
