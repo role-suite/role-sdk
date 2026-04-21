@@ -14,6 +14,14 @@ export default [
       parserOptions: {
         project: "./tsconfig.json",
         tsconfigRootDir: import.meta.dirname
+      },
+      globals: {
+        AbortController: "readonly",
+        DOMException: "readonly",
+        URL: "readonly",
+        clearTimeout: "readonly",
+        fetch: "readonly",
+        setTimeout: "readonly"
       }
     },
     plugins: {

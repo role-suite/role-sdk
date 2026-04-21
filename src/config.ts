@@ -19,7 +19,7 @@ export type RequestHookContext = {
   backend: "node" | "serverpod";
   module: string;
   method: string;
-  requestId?: string;
+  requestId: string | undefined;
   input: unknown;
 };
 
@@ -27,7 +27,7 @@ export type ResponseHookContext = {
   backend: "node" | "serverpod";
   module: string;
   method: string;
-  requestId?: string;
+  requestId: string | undefined;
   output: unknown;
   durationMs: number;
 };
@@ -36,7 +36,7 @@ export type ErrorHookContext = {
   backend: "node" | "serverpod";
   module: string;
   method: string;
-  requestId?: string;
+  requestId: string | undefined;
   error: RoleSdkErrorShape;
 };
 

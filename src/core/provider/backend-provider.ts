@@ -10,7 +10,12 @@ export type AuthProvider = {
   me: ProviderMethod;
 };
 
-export type WorkspacesProvider = Record<string, ProviderMethod>;
+export type WorkspacesProvider = {
+  list: ProviderMethod<void, unknown>;
+  get: ProviderMethod<{ workspaceId: string | number }, unknown>;
+  create: ProviderMethod<unknown, unknown>;
+};
+
 export type CollectionsProvider = Record<string, ProviderMethod>;
 export type EnvironmentsProvider = Record<string, ProviderMethod>;
 export type RunsProvider = Record<string, ProviderMethod>;
