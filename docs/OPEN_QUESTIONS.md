@@ -1,56 +1,56 @@
-# Role SDK Open Questions
+# Role SDK Decision Log
 
-This file tracks decisions that should be resolved before implementation reaches feature-complete state.
+This file tracks architecture and API decisions that were previously open questions.
 
 ## Q1) Token persistence strategy
 
-- **Question**: Should SDK ship built-in persistence adapters (`localStorage`, in-memory only, custom interface), or keep persistence fully user-provided in v1?
-- **Current default**: in-memory default + optional user-provided persistence interface.
-- **Impact**: affects auth DX, browser behavior, and security posture.
+- **Decision**: Use in-memory token storage by default and support an optional user-provided `TokenStore` interface.
+- **v1 non-goal**: No built-in persistent adapters (for example `localStorage`) in the core package.
+- **Impact**: secure-by-default behavior, runtime portability, and extensibility for app-specific persistence.
 
 ## Q2) Date representation in public models
 
-- **Question**: Should public models expose dates as ISO strings only, or support `Date` parsing option?
-- **Current default**: ISO string in public API.
-- **Impact**: type stability and serialization portability.
+- **Decision**: Public SDK models expose date/time values as ISO strings only in v1.
+- **Rule**: SDK does not return `Date` instances in public types.
+- **Impact**: stable serialization across Node/browser/edge and reduced type ambiguity.
 
 ## Q3) Workspace-scoped API final shape
 
-- **Question**: keep `inWorkspace(workspaceId)` as method wrappers, or expose module-specific scoped clients only for high-traffic modules?
-- **Current default**: broad scoped convenience for `collections`, `environments`, `runs`, and `importExport`.
-- **Impact**: surface area size and long-term maintenance.
+- **Decision**: Keep `inWorkspace(workspaceId)` in v1 for high-traffic modules (`collections`, `environments`, `runs`, `importExport`).
+- **Rule**: Scoped clients remove repeated `workspaceId` but keep behavior and return types aligned with root clients.
+- **Impact**: improved ergonomics without excessive API surface growth.
 
 ## Q4) Capability contract granularity
 
-- **Question**: should capabilities be module-level only, or method-level nested flags?
-- **Current default**: method-group flags.
-- **Impact**: precision vs complexity.
+- **Decision**: Use nested method-group or method-level capability flags (not module-level only).
+- **Rule**: Non-parity operations must have explicit capability flags and deterministic disabled behavior.
+- **Impact**: precise feature gating and predictable runtime checks.
 
 ## Q5) Serverpod error-to-SDK mapping source
 
-- **Question**: should error code mapping rely on stable Serverpod error enums, string matching, or shared backend-defined error contract?
-- **Current default**: explicit mapping table maintained in SDK.
-- **Impact**: drift resistance and reliability of typed errors.
+- **Decision**: Maintain an explicit SDK mapping table keyed by stable backend error identifiers.
+- **Rule**: String matching is fallback-only; unknown mappings resolve to `RoleUnknownError` with metadata.
+- **Impact**: deterministic typed errors with better drift resistance.
 
 ## Q6) Transport defaults
 
-- **Question**: default retry strategy and timeout values for v1.
-- **Current default**: retries enabled for idempotent operations; conservative timeout.
-- **Impact**: perceived reliability and unexpected request replay risk.
+- **Decision**: Default timeout is `30000` ms; retries enabled only for safe/idempotent operations.
+- **Rule**: Default retry policy is `maxAttempts: 3` with exponential backoff and jitter.
+- **Impact**: balanced reliability while minimizing accidental replay risk.
 
 ## Q7) Package strategy
 
-- **Question**: keep single package until v1+, or split `sdk-core` earlier?
-- **Current default**: single package for v1.
-- **Impact**: release complexity and internal modularity.
+- **Decision**: Keep a single package through v1.
+- **Rule**: Maintain clean internal boundaries so `sdk-core` extraction remains possible post-v1.
+- **Impact**: lower release complexity during early delivery.
 
 ## Q8) Contract test fixture source of truth
 
-- **Question**: should fixtures be derived from backend test snapshots, curated examples, or generated contracts?
-- **Current default**: curated provider fixtures + parity fixtures.
-- **Impact**: maintenance effort and drift detection strength.
+- **Decision**: Use curated SDK fixtures as canonical test inputs, periodically refreshed from backend snapshots/contracts.
+- **Rule**: Mapping and parity changes must update related fixtures in the same PR.
+- **Impact**: stable CI behavior with explicit drift management.
 
 ## Decision protocol
 
-- Resolve each question with owner + date in PR notes.
-- Reflect final decision in all affected docs listed in `docs/README.md`.
+- Record owner and decision date in PR notes for each related change.
+- Reflect each decision in affected docs listed in `docs/README.md`.

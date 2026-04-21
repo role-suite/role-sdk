@@ -14,4 +14,4 @@ This repository currently contains the architecture and implementation plan for 
 - Provider mapping spec: `docs/PROVIDER_MAPPING_SPEC.md`
 - Version and compatibility policy: `docs/VERSION_COMPATIBILITY_POLICY.md`
 - Testing strategy: `docs/TESTING_STRATEGY.md`
-- Open questions: `docs/OPEN_QUESTIONS.md`
+- Decision log (formerly open questions): `docs/OPEN_QUESTIONS.md`

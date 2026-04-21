@@ -57,6 +57,14 @@ const sdk = createRoleSdk({
 });
 ```
 
+Locked v1 defaults:
+
+- `timeoutMs` default is `30000`.
+- Retry defaults to `maxAttempts: 3` with exponential backoff and jitter.
+- Retries apply only to safe/idempotent operations unless explicitly enabled per call/policy.
+- Token storage is in-memory by default with optional user-provided `TokenStore`.
+- Built-in persistent token adapters are out of scope for core v1.
+
 ### 3.2 Provider adapter boundary
 
 All module clients call a backend adapter contract. Adapters are responsible for transport details and payload translation.
@@ -234,6 +242,7 @@ Responsibilities:
 - Attach access token automatically.
 - Refresh token on `401` where configured.
 - De-duplicate concurrent refresh calls (single-flight refresh).
+- Treat persistence failures as typed auth errors with deterministic error codes.
 
 ### 6.4 Retry engine
 
@@ -282,6 +291,7 @@ Rules:
 - Public types prioritize developer ergonomics and semver stability.
 - Internal generated types help detect backend drift during CI.
 - Mapping layer shields public API from backend naming churn.
+- Public date/time values are ISO strings in v1 SDK models.
 
 ## 8) Runtime compatibility
 

@@ -15,6 +15,17 @@ Public API includes:
 - Error classes and key error codes.
 - Capability object shape.
 
+## 1.1) Locked v1 baseline decisions
+
+The following are locked for v1 planning scope and should be treated as compatibility-sensitive behavior:
+
+- Token persistence defaults to in-memory storage, with optional user-provided `TokenStore`.
+- Core package does not ship built-in persistent token adapters.
+- Public date/time fields are ISO strings in public models.
+- Capability exposure uses nested method-group or method-level flags.
+- Default transport behavior: `timeoutMs = 30000`, retries for safe/idempotent operations only.
+- Package strategy remains a single package through v1.
+
 ## 2) Dual-backend support policy
 
 Every SDK release must declare tested minimum versions for:
@@ -55,6 +66,7 @@ The following require a major bump:
 - Changing resolved return type shape incompatibly.
 - Renaming/removing exported error classes.
 - Changing capability object structure incompatibly.
+- Changing public date/time representation away from ISO string contract.
 
 ## 6) Non-breaking change examples
 
@@ -64,6 +76,7 @@ The following can be minor or patch (depending on scope):
 - Adding optional fields to returned models.
 - Improving mapper tolerance for backend response variants.
 - Expanding capability flags with new optional feature sections.
+- Internal refactors that preserve single-package public entrypoint and exports.
 
 ## 7) Release checklist
 
