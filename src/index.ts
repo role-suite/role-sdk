@@ -52,6 +52,20 @@ export type {
   UpdateCollectionInput,
   UpdateEndpointExampleInput
 } from "./modules/collections/types.js";
+export type {
+  CreateEnvironmentInput,
+  CreateEnvironmentVariableInput,
+  EnvironmentSummary,
+  EnvironmentVariable,
+  UpdateEnvironmentInput,
+  UpdateEnvironmentVariableInput
+} from "./modules/environments/types.js";
+export type { CreateRunInput, RunExecutionResult, RunSource } from "./modules/runs/types.js";
+export type {
+  CreateExportJobInput,
+  CreateImportJobInput,
+  ImportExportJob
+} from "./modules/import-export/types.js";
 export {
   RoleApiError,
   RoleAuthError,
