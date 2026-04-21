@@ -18,6 +18,12 @@ import type {
   WorkspaceUpdate,
   WorkspaceUpdatesResult
 } from "../../../modules/workspaces/types.js";
+import type {
+  EnvironmentSummary,
+  EnvironmentVariable
+} from "../../../modules/environments/types.js";
+import type { RunExecutionResult, RunSource } from "../../../modules/runs/types.js";
+import type { ImportExportJob } from "../../../modules/import-export/types.js";
 import { asRecord, pickId, pickString, toIsoString } from "../shared.js";
 
 const requireRecord = (value: unknown, message: string): Record<string, unknown> => {
@@ -395,6 +401,237 @@ const mapEndpointExample = (value: unknown): EndpointExample => {
 const mapDeleted = (): { deleted: true } => ({ deleted: true });
 const mapLeft = (): { left: true } => ({ left: true });
 
+const mapEnvironment = (value: unknown): EnvironmentSummary => {
+  const record = requireRecord(value, "Environment payload must be an object.");
+  const id = pickId(record, ["id", "environmentId", "environment_id"]);
+  const workspaceId = pickId(record, ["workspaceId", "workspace_id"]);
+  if (id === undefined || workspaceId === undefined) {
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Environment payload is missing ids."
+    );
+  }
+
+  const environment: EnvironmentSummary = { id, workspaceId };
+  const name = pickString(record, ["name"]);
+  if (name !== undefined) {
+    environment.name = name;
+  }
+  const description = pickString(record, ["description"]);
+  if (description !== undefined) {
+    environment.description = description;
+  }
+  const createdAt = toIsoString(record.createdAt ?? record.created_at ?? record.created);
+  if (createdAt !== undefined) {
+    environment.createdAt = createdAt;
+  }
+  const updatedAt = toIsoString(record.updatedAt ?? record.updated_at ?? record.updated);
+  if (updatedAt !== undefined) {
+    environment.updatedAt = updatedAt;
+  }
+
+  return environment;
+};
+
+const mapEnvironmentVariable = (value: unknown): EnvironmentVariable => {
+  const record = requireRecord(value, "Environment variable payload must be an object.");
+  const id = pickId(record, ["id", "variableId", "variable_id"]);
+  const workspaceId = pickId(record, ["workspaceId", "workspace_id"]);
+  const environmentId = pickId(record, ["environmentId", "environment_id"]);
+  if (id === undefined || workspaceId === undefined || environmentId === undefined) {
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Environment variable payload is missing ids."
+    );
+  }
+
+  const variable: EnvironmentVariable = { id, workspaceId, environmentId };
+  const key = pickString(record, ["key", "name"]);
+  if (key !== undefined) {
+    variable.key = key;
+  }
+  const valueString = pickString(record, ["value"]);
+  if (valueString !== undefined) {
+    variable.value = valueString;
+  }
+  if (typeof record.enabled === "boolean") {
+    variable.enabled = record.enabled;
+  }
+  if (typeof record.isSecret === "boolean") {
+    variable.isSecret = record.isSecret;
+  }
+  if (typeof record.position === "number") {
+    variable.position = record.position;
+  }
+  const createdAt = toIsoString(record.createdAt ?? record.created_at ?? record.created);
+  if (createdAt !== undefined) {
+    variable.createdAt = createdAt;
+  }
+  const updatedAt = toIsoString(record.updatedAt ?? record.updated_at ?? record.updated);
+  if (updatedAt !== undefined) {
+    variable.updatedAt = updatedAt;
+  }
+
+  return variable;
+};
+
+const mapRunSource = (value: unknown): RunSource | undefined => {
+  const record = asRecord(value);
+  if (!record) {
+    return undefined;
+  }
+
+  const kind = pickString(record, ["kind", "type"]);
+  if (kind === "adhoc") {
+    const request = asRecord(record.request);
+    if (!request) {
+      return undefined;
+    }
+
+    const method = pickString(request, ["method"]);
+    const url = pickString(request, ["url", "uri"]);
+    if (!method || !url) {
+      return undefined;
+    }
+
+    const source: RunSource = {
+      kind: "adhoc",
+      request: {
+        method,
+        url
+      }
+    };
+
+    const headers = asRecord(request.headers);
+    if (headers !== null) {
+      const normalized: Record<string, string> = {};
+      for (const [key, raw] of Object.entries(headers)) {
+        if (typeof raw === "string") {
+          normalized[key] = raw;
+        }
+      }
+      source.request.headers = normalized;
+    }
+
+    if (request.body !== undefined) {
+      source.request.body = request.body;
+    }
+
+    return source;
+  }
+
+  if (kind === "collection") {
+    const collectionId = pickId(record, ["collectionId", "collection_id"]);
+    const endpointId = pickId(record, ["endpointId", "endpoint_id"]);
+    if (collectionId === undefined || endpointId === undefined) {
+      return undefined;
+    }
+
+    const source: RunSource = {
+      kind: "collection",
+      collectionId,
+      endpointId
+    };
+
+    const exampleId = pickId(record, ["exampleId", "example_id"]);
+    if (exampleId !== undefined) {
+      source.exampleId = exampleId;
+    }
+
+    const variables = asRecord(record.variables);
+    if (variables !== null) {
+      const normalized: Record<string, string | number | boolean> = {};
+      for (const [key, raw] of Object.entries(variables)) {
+        if (typeof raw === "string" || typeof raw === "number" || typeof raw === "boolean") {
+          normalized[key] = raw;
+        }
+      }
+      source.variables = normalized;
+    }
+
+    return source;
+  }
+
+  return undefined;
+};
+
+const mapRun = (value: unknown): RunExecutionResult => {
+  const record = requireRecord(value, "Run payload must be an object.");
+  const id = pickId(record, ["id", "runId", "run_id"]);
+  const workspaceId = pickId(record, ["workspaceId", "workspace_id"]);
+  if (id === undefined || workspaceId === undefined) {
+    throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Run payload is missing ids.");
+  }
+
+  const run: RunExecutionResult = { id, workspaceId };
+  const status = pickString(record, ["status"]);
+  if (status !== undefined) {
+    run.status = status;
+  }
+  const source = mapRunSource(record.source);
+  if (source !== undefined) {
+    run.source = source;
+  }
+  const request = asRecord(record.request);
+  if (request !== null) {
+    run.request = request;
+  }
+  const response = asRecord(record.response);
+  if (response !== null) {
+    run.response = response;
+  }
+  const error = asRecord(record.error);
+  if (error !== null) {
+    run.error = error;
+  }
+  const createdAt = toIsoString(record.createdAt ?? record.created_at ?? record.created);
+  if (createdAt !== undefined) {
+    run.createdAt = createdAt;
+  }
+  const updatedAt = toIsoString(record.updatedAt ?? record.updated_at ?? record.updated);
+  if (updatedAt !== undefined) {
+    run.updatedAt = updatedAt;
+  }
+
+  return run;
+};
+
+const mapImportExportJob = (value: unknown): ImportExportJob => {
+  const record = requireRecord(value, "Import/export job payload must be an object.");
+  const id = pickId(record, ["id", "jobId", "job_id"]);
+  const workspaceId = pickId(record, ["workspaceId", "workspace_id"]);
+  if (id === undefined || workspaceId === undefined) {
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Import/export job payload is missing ids."
+    );
+  }
+
+  const job: ImportExportJob = { id, workspaceId };
+  const type = pickString(record, ["type"]);
+  if (type === "import" || type === "export") {
+    job.type = type;
+  }
+  const status = pickString(record, ["status"]);
+  if (status !== undefined) {
+    job.status = status;
+  }
+  const summary = pickString(record, ["summary", "message"]);
+  if (summary !== undefined) {
+    job.summary = summary;
+  }
+  const createdAt = toIsoString(record.createdAt ?? record.created_at ?? record.created);
+  if (createdAt !== undefined) {
+    job.createdAt = createdAt;
+  }
+  const updatedAt = toIsoString(record.updatedAt ?? record.updated_at ?? record.updated);
+  if (updatedAt !== undefined) {
+    job.updatedAt = updatedAt;
+  }
+
+  return job;
+};
+
 export const mapNodeAuthSession = (payload: unknown): AuthSessionResult => {
   const record = requireRecord(payload, "Auth session payload must be an object.");
   const accessToken = pickString(record, ["accessToken", "access_token", "token"]);
@@ -597,5 +834,58 @@ export const mapNodeEndpointExamples = (payload: unknown): EndpointExample[] => 
   throw new RoleValidationError(
     "ROLE_MAPPER_INVALID_PAYLOAD",
     "Endpoint examples payload is missing array data."
+  );
+};
+
+export const mapNodeEnvironmentSummary = (payload: unknown): EnvironmentSummary =>
+  mapEnvironment(payload);
+export const mapNodeEnvironmentList = (payload: unknown): EnvironmentSummary[] => {
+  if (Array.isArray(payload)) {
+    return payload.map(mapEnvironment);
+  }
+  const record = requireRecord(payload, "Environment list payload is invalid.");
+  const container = record.items ?? record.environments ?? record.data;
+  if (Array.isArray(container)) {
+    return container.map(mapEnvironment);
+  }
+  throw new RoleValidationError(
+    "ROLE_MAPPER_INVALID_PAYLOAD",
+    "Environment list payload is missing array data."
+  );
+};
+
+export const mapNodeEnvironmentVariable = (payload: unknown): EnvironmentVariable =>
+  mapEnvironmentVariable(payload);
+export const mapNodeEnvironmentVariables = (payload: unknown): EnvironmentVariable[] => {
+  if (Array.isArray(payload)) {
+    return payload.map(mapEnvironmentVariable);
+  }
+  const record = requireRecord(payload, "Environment variables payload is invalid.");
+  const container = record.items ?? record.variables ?? record.data;
+  if (Array.isArray(container)) {
+    return container.map(mapEnvironmentVariable);
+  }
+  throw new RoleValidationError(
+    "ROLE_MAPPER_INVALID_PAYLOAD",
+    "Environment variables payload is missing array data."
+  );
+};
+
+export const mapNodeRunExecutionResult = (payload: unknown): RunExecutionResult => mapRun(payload);
+
+export const mapNodeImportExportJob = (payload: unknown): ImportExportJob =>
+  mapImportExportJob(payload);
+export const mapNodeImportExportJobs = (payload: unknown): ImportExportJob[] => {
+  if (Array.isArray(payload)) {
+    return payload.map(mapImportExportJob);
+  }
+  const record = requireRecord(payload, "Import/export jobs payload is invalid.");
+  const container = record.items ?? record.jobs ?? record.data;
+  if (Array.isArray(container)) {
+    return container.map(mapImportExportJob);
+  }
+  throw new RoleValidationError(
+    "ROLE_MAPPER_INVALID_PAYLOAD",
+    "Import/export jobs payload is missing array data."
   );
 };

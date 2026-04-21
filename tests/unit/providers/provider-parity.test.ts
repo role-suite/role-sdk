@@ -31,7 +31,7 @@ const serverpodResult = (result: unknown): Response => {
 };
 
 describe("provider parity", () => {
-  it("returns identical capabilities for node and serverpod", () => {
+  it("exposes backend-specific capabilities for optional features", () => {
     const nodeSdk = createRoleSdk({
       backend: "node",
       baseUrl: "https://api.example.com"
@@ -42,7 +42,12 @@ describe("provider parity", () => {
       baseUrl: "https://api.example.com"
     });
 
-    expect(nodeSdk.capabilities()).toEqual(serverpodSdk.capabilities());
+    expect(nodeSdk.capabilities().auth.refresh).toBe(true);
+    expect(serverpodSdk.capabilities().auth.refresh).toBe(true);
+    expect(nodeSdk.capabilities().workspaces.updates).toBe(true);
+    expect(serverpodSdk.capabilities().workspaces.updates).toBe(true);
+    expect(nodeSdk.capabilities().runs.cancel).toBe(true);
+    expect(serverpodSdk.capabilities().runs.cancel).toBe(false);
   });
 
   it("returns equivalent auth.me payloads from node and serverpod", async () => {
@@ -184,18 +189,27 @@ describe("provider parity", () => {
   });
 
   it("throws unsupported capability errors consistently", async () => {
-    const nodeSdk = createRoleSdk({
-      backend: "node",
-      baseUrl: "https://api.example.com"
+    const serverpodFetch = vi.fn<typeof fetch>((input) => {
+      const url = requestUrl(input);
+
+      if (url.endsWith("/rpc/runs/cancel")) {
+        return Promise.resolve(
+          serverpodResult({ id: "r-1", workspaceId: "ws-1", status: "cancelled" })
+        );
+      }
+
+      return Promise.resolve(new Response("not found", { status: 404 }));
     });
 
     const serverpodSdk = createRoleSdk({
       backend: "serverpod",
-      baseUrl: "https://api.example.com"
+      baseUrl: "https://api.example.com",
+      fetch: serverpodFetch
     });
 
-    await expect(nodeSdk.environments["list"]!()).rejects.toBeInstanceOf(RoleApiError);
-    await expect(serverpodSdk.environments["list"]!()).rejects.toBeInstanceOf(RoleApiError);
+    await expect(
+      serverpodSdk.runs.cancel({ workspaceId: "ws-1", runId: "r-1" })
+    ).rejects.toBeInstanceOf(RoleApiError);
   });
 
   it("keeps parity for auth register/login/refresh/logout methods", async () => {
@@ -388,5 +402,52 @@ describe("provider parity", () => {
       serverpodSdk.workspaces.create({ name: "Workspace Two" })
     ]);
     expect(nodeCreate).toEqual(serverpodCreate);
+  });
+
+  it("enforces capability-gated run cancellation", async () => {
+    const nodeFetch = vi.fn<typeof fetch>((input) => {
+      const url = requestUrl(input);
+
+      if (url.endsWith("/api/workspaces/ws-1/runs/r-1/cancel")) {
+        return Promise.resolve(
+          nodeEnvelope({ id: "r-1", workspaceId: "ws-1", status: "cancelled" })
+        );
+      }
+
+      return Promise.resolve(new Response("not found", { status: 404 }));
+    });
+
+    const serverpodFetch = vi.fn<typeof fetch>((input) => {
+      const url = requestUrl(input);
+
+      if (url.endsWith("/rpc/runs/cancel")) {
+        return Promise.resolve(
+          serverpodResult({ id: "r-1", workspaceId: "ws-1", status: "cancelled" })
+        );
+      }
+
+      return Promise.resolve(new Response("not found", { status: 404 }));
+    });
+
+    const nodeSdk = createRoleSdk({
+      backend: "node",
+      baseUrl: "https://api.example.com",
+      fetch: nodeFetch,
+      auth: { autoRefresh: false }
+    });
+
+    const serverpodSdk = createRoleSdk({
+      backend: "serverpod",
+      baseUrl: "https://api.example.com",
+      fetch: serverpodFetch,
+      auth: { autoRefresh: false }
+    });
+
+    await expect(nodeSdk.runs.cancel({ workspaceId: "ws-1", runId: "r-1" })).resolves.toEqual(
+      expect.objectContaining({ id: "r-1", status: "cancelled" })
+    );
+    await expect(
+      serverpodSdk.runs.cancel({ workspaceId: "ws-1", runId: "r-1" })
+    ).rejects.toBeInstanceOf(RoleApiError);
   });
 });

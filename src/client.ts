@@ -44,6 +44,20 @@ import type {
   UpdateCollectionInput,
   UpdateEndpointExampleInput
 } from "./modules/collections/types.js";
+import type {
+  CreateEnvironmentInput,
+  CreateEnvironmentVariableInput,
+  EnvironmentSummary,
+  EnvironmentVariable,
+  UpdateEnvironmentInput,
+  UpdateEnvironmentVariableInput
+} from "./modules/environments/types.js";
+import type { CreateRunInput, RunExecutionResult } from "./modules/runs/types.js";
+import type {
+  CreateExportJobInput,
+  CreateImportJobInput,
+  ImportExportJob
+} from "./modules/import-export/types.js";
 
 export type ModuleClient = Record<string, (...args: unknown[]) => Promise<unknown>>;
 
@@ -101,11 +115,47 @@ export type WorkspaceScopedCollectionsClient = {
   ) => Promise<{ deleted: true }>;
 };
 
+export type WorkspaceScopedEnvironmentsClient = {
+  list: () => Promise<EnvironmentSummary[]>;
+  get: (environmentId: Id) => Promise<EnvironmentSummary>;
+  create: (input: Omit<CreateEnvironmentInput, "workspaceId">) => Promise<EnvironmentSummary>;
+  update: (
+    environmentId: Id,
+    input: Omit<UpdateEnvironmentInput, "workspaceId" | "environmentId">
+  ) => Promise<EnvironmentSummary>;
+  remove: (environmentId: Id) => Promise<{ deleted: true }>;
+  listVariables: (environmentId: Id) => Promise<EnvironmentVariable[]>;
+  getVariable: (environmentId: Id, variableId: Id) => Promise<EnvironmentVariable>;
+  createVariable: (
+    environmentId: Id,
+    input: Omit<CreateEnvironmentVariableInput, "workspaceId" | "environmentId">
+  ) => Promise<EnvironmentVariable>;
+  updateVariable: (
+    environmentId: Id,
+    variableId: Id,
+    input: Omit<UpdateEnvironmentVariableInput, "workspaceId" | "environmentId" | "variableId">
+  ) => Promise<EnvironmentVariable>;
+  removeVariable: (environmentId: Id, variableId: Id) => Promise<{ deleted: true }>;
+};
+
+export type WorkspaceScopedRunsClient = {
+  create: (input: Omit<CreateRunInput, "workspaceId">) => Promise<RunExecutionResult>;
+  get: (runId: Id) => Promise<RunExecutionResult>;
+  cancel: (runId: Id) => Promise<RunExecutionResult>;
+};
+
+export type WorkspaceScopedImportExportClient = {
+  listJobs: () => Promise<ImportExportJob[]>;
+  getJob: (jobId: Id) => Promise<ImportExportJob>;
+  createExport: (input: Omit<CreateExportJobInput, "workspaceId">) => Promise<ImportExportJob>;
+  createImport: (input: Omit<CreateImportJobInput, "workspaceId">) => Promise<ImportExportJob>;
+};
+
 export type WorkspaceScopedClient = {
   collections: WorkspaceScopedCollectionsClient;
-  environments: ModuleClient;
-  runs: ModuleClient;
-  importExport: ModuleClient;
+  environments: WorkspaceScopedEnvironmentsClient;
+  runs: WorkspaceScopedRunsClient;
+  importExport: WorkspaceScopedImportExportClient;
 };
 
 export type RoleSdkClient = {
@@ -171,33 +221,44 @@ export type RoleSdkClient = {
       exampleId: Id;
     }) => Promise<{ deleted: true }>;
   };
-  environments: ModuleClient;
-  runs: ModuleClient;
-  importExport: ModuleClient;
+  environments: {
+    list: (input: { workspaceId: Id }) => Promise<EnvironmentSummary[]>;
+    get: (input: { workspaceId: Id; environmentId: Id }) => Promise<EnvironmentSummary>;
+    create: (input: CreateEnvironmentInput) => Promise<EnvironmentSummary>;
+    update: (input: UpdateEnvironmentInput) => Promise<EnvironmentSummary>;
+    remove: (input: { workspaceId: Id; environmentId: Id }) => Promise<{ deleted: true }>;
+    listVariables: (input: {
+      workspaceId: Id;
+      environmentId: Id;
+    }) => Promise<EnvironmentVariable[]>;
+    getVariable: (input: {
+      workspaceId: Id;
+      environmentId: Id;
+      variableId: Id;
+    }) => Promise<EnvironmentVariable>;
+    createVariable: (input: CreateEnvironmentVariableInput) => Promise<EnvironmentVariable>;
+    updateVariable: (input: UpdateEnvironmentVariableInput) => Promise<EnvironmentVariable>;
+    removeVariable: (input: {
+      workspaceId: Id;
+      environmentId: Id;
+      variableId: Id;
+    }) => Promise<{ deleted: true }>;
+  };
+  runs: {
+    create: (input: CreateRunInput) => Promise<RunExecutionResult>;
+    get: (input: { workspaceId: Id; runId: Id }) => Promise<RunExecutionResult>;
+    cancel: (input: { workspaceId: Id; runId: Id }) => Promise<RunExecutionResult>;
+  };
+  importExport: {
+    listJobs: (input: { workspaceId: Id }) => Promise<ImportExportJob[]>;
+    getJob: (input: { workspaceId: Id; jobId: Id }) => Promise<ImportExportJob>;
+    createExport: (input: CreateExportJobInput) => Promise<ImportExportJob>;
+    createImport: (input: CreateImportJobInput) => Promise<ImportExportJob>;
+  };
   inWorkspace: (workspaceId: Id) => WorkspaceScopedClient;
   capabilities: () => BackendCapabilities;
   setTokens: (tokens: Partial<TokenPair>) => Promise<void>;
   clearTokens: () => Promise<void>;
-};
-
-const createUnsupportedModule = (moduleName: string): ModuleClient => {
-  const moduleClient: ModuleClient = new Proxy(
-    {},
-    {
-      get: (_, methodName) => {
-        return () => {
-          return Promise.reject(
-            new RoleApiError(
-              "ROLE_UNSUPPORTED_CAPABILITY",
-              `Module '${moduleName}.${String(methodName)}' is not implemented yet in this phase.`
-            )
-          );
-        };
-      }
-    }
-  );
-
-  return moduleClient;
 };
 
 const validateConfig = (config: RoleSdkConfig): void => {
@@ -282,6 +343,15 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
   };
 
   const provider = createProvider(resolved.backend, httpClient, getAuthHeaders);
+
+  const ensureCapability = (supported: boolean, name: string): void => {
+    if (!supported) {
+      throw new RoleApiError(
+        "ROLE_UNSUPPORTED_CAPABILITY",
+        `Capability '${name}' is not supported by backend '${resolved.backend}'.`
+      );
+    }
+  };
 
   const invokeWithOptionalRefresh = async <T>(
     run: () => Promise<T>,
@@ -606,9 +676,114 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
       );
     }
   };
-  const environments = createUnsupportedModule("environments");
-  const runs = createUnsupportedModule("runs");
-  const importExport = createUnsupportedModule("importExport");
+  const environments = {
+    list: async (input: { workspaceId: Id }): Promise<EnvironmentSummary[]> => {
+      await initialization;
+      return invokeWithOptionalRefresh(() => provider.environments.list(input), refreshAuth);
+    },
+    get: async (input: { workspaceId: Id; environmentId: Id }): Promise<EnvironmentSummary> => {
+      await initialization;
+      return invokeWithOptionalRefresh(() => provider.environments.get(input), refreshAuth);
+    },
+    create: async (input: CreateEnvironmentInput): Promise<EnvironmentSummary> => {
+      await initialization;
+      return invokeWithOptionalRefresh(() => provider.environments.create(input), refreshAuth);
+    },
+    update: async (input: UpdateEnvironmentInput): Promise<EnvironmentSummary> => {
+      await initialization;
+      return invokeWithOptionalRefresh(() => provider.environments.update(input), refreshAuth);
+    },
+    remove: async (input: { workspaceId: Id; environmentId: Id }): Promise<{ deleted: true }> => {
+      await initialization;
+      return invokeWithOptionalRefresh(() => provider.environments.remove(input), refreshAuth);
+    },
+    listVariables: async (input: {
+      workspaceId: Id;
+      environmentId: Id;
+    }): Promise<EnvironmentVariable[]> => {
+      await initialization;
+      return invokeWithOptionalRefresh(
+        () => provider.environments.listVariables(input),
+        refreshAuth
+      );
+    },
+    getVariable: async (input: {
+      workspaceId: Id;
+      environmentId: Id;
+      variableId: Id;
+    }): Promise<EnvironmentVariable> => {
+      await initialization;
+      return invokeWithOptionalRefresh(() => provider.environments.getVariable(input), refreshAuth);
+    },
+    createVariable: async (input: CreateEnvironmentVariableInput): Promise<EnvironmentVariable> => {
+      await initialization;
+      return invokeWithOptionalRefresh(
+        () => provider.environments.createVariable(input),
+        refreshAuth
+      );
+    },
+    updateVariable: async (input: UpdateEnvironmentVariableInput): Promise<EnvironmentVariable> => {
+      await initialization;
+      return invokeWithOptionalRefresh(
+        () => provider.environments.updateVariable(input),
+        refreshAuth
+      );
+    },
+    removeVariable: async (input: {
+      workspaceId: Id;
+      environmentId: Id;
+      variableId: Id;
+    }): Promise<{ deleted: true }> => {
+      await initialization;
+      return invokeWithOptionalRefresh(
+        () => provider.environments.removeVariable(input),
+        refreshAuth
+      );
+    }
+  };
+
+  const runs = {
+    create: async (input: CreateRunInput): Promise<RunExecutionResult> => {
+      await initialization;
+      return invokeWithOptionalRefresh(() => provider.runs.create(input), refreshAuth);
+    },
+    get: async (input: { workspaceId: Id; runId: Id }): Promise<RunExecutionResult> => {
+      await initialization;
+      return invokeWithOptionalRefresh(() => provider.runs.get(input), refreshAuth);
+    },
+    cancel: async (input: { workspaceId: Id; runId: Id }): Promise<RunExecutionResult> => {
+      await initialization;
+      ensureCapability(provider.capabilities().runs.cancel, "runs.cancel");
+      return invokeWithOptionalRefresh(() => provider.runs.cancel(input), refreshAuth);
+    }
+  };
+
+  const importExport = {
+    listJobs: async (input: { workspaceId: Id }): Promise<ImportExportJob[]> => {
+      await initialization;
+      ensureCapability(provider.capabilities().importExport.jobs, "importExport.jobs");
+      return invokeWithOptionalRefresh(() => provider.importExport.listJobs(input), refreshAuth);
+    },
+    getJob: async (input: { workspaceId: Id; jobId: Id }): Promise<ImportExportJob> => {
+      await initialization;
+      ensureCapability(provider.capabilities().importExport.jobs, "importExport.jobs");
+      return invokeWithOptionalRefresh(() => provider.importExport.getJob(input), refreshAuth);
+    },
+    createExport: async (input: CreateExportJobInput): Promise<ImportExportJob> => {
+      await initialization;
+      return invokeWithOptionalRefresh(
+        () => provider.importExport.createExport(input),
+        refreshAuth
+      );
+    },
+    createImport: async (input: CreateImportJobInput): Promise<ImportExportJob> => {
+      await initialization;
+      return invokeWithOptionalRefresh(
+        () => provider.importExport.createImport(input),
+        refreshAuth
+      );
+    }
+  };
 
   return {
     auth,
@@ -657,11 +832,43 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
           collections.removeEndpointExample({ workspaceId, collectionId, endpointId, exampleId })
       };
 
+      const scopedEnvironments: WorkspaceScopedEnvironmentsClient = {
+        list: () => environments.list({ workspaceId }),
+        get: (environmentId) => environments.get({ workspaceId, environmentId }),
+        create: (input) => environments.create({ workspaceId, ...input }),
+        update: (environmentId, input) =>
+          environments.update({ workspaceId, environmentId, ...input }),
+        remove: (environmentId) => environments.remove({ workspaceId, environmentId }),
+        listVariables: (environmentId) =>
+          environments.listVariables({ workspaceId, environmentId }),
+        getVariable: (environmentId, variableId) =>
+          environments.getVariable({ workspaceId, environmentId, variableId }),
+        createVariable: (environmentId, input) =>
+          environments.createVariable({ workspaceId, environmentId, ...input }),
+        updateVariable: (environmentId, variableId, input) =>
+          environments.updateVariable({ workspaceId, environmentId, variableId, ...input }),
+        removeVariable: (environmentId, variableId) =>
+          environments.removeVariable({ workspaceId, environmentId, variableId })
+      };
+
+      const scopedRuns: WorkspaceScopedRunsClient = {
+        create: (input) => runs.create({ workspaceId, ...input }),
+        get: (runId) => runs.get({ workspaceId, runId }),
+        cancel: (runId) => runs.cancel({ workspaceId, runId })
+      };
+
+      const scopedImportExport: WorkspaceScopedImportExportClient = {
+        listJobs: () => importExport.listJobs({ workspaceId }),
+        getJob: (jobId) => importExport.getJob({ workspaceId, jobId }),
+        createExport: (input) => importExport.createExport({ workspaceId, ...input }),
+        createImport: (input) => importExport.createImport({ workspaceId, ...input })
+      };
+
       return {
         collections: scopedCollections,
-        environments,
-        runs,
-        importExport
+        environments: scopedEnvironments,
+        runs: scopedRuns,
+        importExport: scopedImportExport
       };
     },
     capabilities: () => provider.capabilities(),

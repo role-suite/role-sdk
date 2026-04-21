@@ -14,11 +14,11 @@ export type BackendCapabilities = {
 };
 
 export const defaultCapabilities = (backend: "node" | "serverpod"): BackendCapabilities => {
-  void backend;
+  const supportsRunCancel = backend === "node";
   return {
     auth: { refresh: true },
     workspaces: { updates: true },
-    runs: { cancel: true },
+    runs: { cancel: supportsRunCancel },
     importExport: { jobs: true }
   };
 };

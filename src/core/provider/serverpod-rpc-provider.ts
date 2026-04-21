@@ -9,10 +9,17 @@ import {
   mapServerpodCollectionSummary,
   mapServerpodCurrentUser,
   mapServerpodDeleted,
+  mapServerpodEnvironmentList,
+  mapServerpodEnvironmentSummary,
+  mapServerpodEnvironmentVariable,
+  mapServerpodEnvironmentVariables,
   mapServerpodEndpointExample,
   mapServerpodEndpointExamples,
+  mapServerpodImportExportJob,
+  mapServerpodImportExportJobs,
   mapServerpodLeave,
   mapServerpodLogout,
+  mapServerpodRunExecutionResult,
   mapServerpodWorkspaceInvitation,
   mapServerpodWorkspaceList,
   mapServerpodWorkspaceMember,
@@ -257,9 +264,80 @@ export const createServerpodRpcProvider = (
           payload: input
         }).then(() => mapServerpodDeleted())
     },
-    environments: {},
-    runs: {},
-    importExport: {},
+    environments: {
+      list: (input) =>
+        callRpc({ module: "environments", methodName: "list", payload: input }).then((result) =>
+          mapServerpodEnvironmentList(result)
+        ),
+      get: (input) =>
+        callRpc({ module: "environments", methodName: "get", payload: input }).then((result) =>
+          mapServerpodEnvironmentSummary(result)
+        ),
+      create: (input) =>
+        callRpc({ module: "environments", methodName: "create", payload: input }).then((result) =>
+          mapServerpodEnvironmentSummary(result)
+        ),
+      update: (input) =>
+        callRpc({ module: "environments", methodName: "update", payload: input }).then((result) =>
+          mapServerpodEnvironmentSummary(result)
+        ),
+      remove: (input) =>
+        callRpc({ module: "environments", methodName: "remove", payload: input }).then(() =>
+          mapServerpodDeleted()
+        ),
+      listVariables: (input) =>
+        callRpc({ module: "environments", methodName: "listVariables", payload: input }).then(
+          (result) => mapServerpodEnvironmentVariables(result)
+        ),
+      getVariable: (input) =>
+        callRpc({ module: "environments", methodName: "getVariable", payload: input }).then(
+          (result) => mapServerpodEnvironmentVariable(result)
+        ),
+      createVariable: (input) =>
+        callRpc({ module: "environments", methodName: "createVariable", payload: input }).then(
+          (result) => mapServerpodEnvironmentVariable(result)
+        ),
+      updateVariable: (input) =>
+        callRpc({ module: "environments", methodName: "updateVariable", payload: input }).then(
+          (result) => mapServerpodEnvironmentVariable(result)
+        ),
+      removeVariable: (input) =>
+        callRpc({ module: "environments", methodName: "removeVariable", payload: input }).then(() =>
+          mapServerpodDeleted()
+        )
+    },
+    runs: {
+      create: (input) =>
+        callRpc({ module: "runs", methodName: "create", payload: input }).then((result) =>
+          mapServerpodRunExecutionResult(result)
+        ),
+      get: (input) =>
+        callRpc({ module: "runs", methodName: "get", payload: input }).then((result) =>
+          mapServerpodRunExecutionResult(result)
+        ),
+      cancel: (input) =>
+        callRpc({ module: "runs", methodName: "cancel", payload: input }).then((result) =>
+          mapServerpodRunExecutionResult(result)
+        )
+    },
+    importExport: {
+      listJobs: (input) =>
+        callRpc({ module: "importExport", methodName: "listJobs", payload: input }).then((result) =>
+          mapServerpodImportExportJobs(result)
+        ),
+      getJob: (input) =>
+        callRpc({ module: "importExport", methodName: "getJob", payload: input }).then((result) =>
+          mapServerpodImportExportJob(result)
+        ),
+      createExport: (input) =>
+        callRpc({ module: "importExport", methodName: "createExport", payload: input }).then(
+          (result) => mapServerpodImportExportJob(result)
+        ),
+      createImport: (input) =>
+        callRpc({ module: "importExport", methodName: "createImport", payload: input }).then(
+          (result) => mapServerpodImportExportJob(result)
+        )
+    },
     capabilities: () => defaultCapabilities("serverpod")
   };
 };
