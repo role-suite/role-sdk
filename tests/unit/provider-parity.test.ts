@@ -189,8 +189,8 @@ describe("provider parity", () => {
       baseUrl: "https://api.example.com"
     });
 
-    await expect(nodeSdk.collections["list"]!()).rejects.toBeInstanceOf(RoleApiError);
-    await expect(serverpodSdk.collections["list"]!()).rejects.toBeInstanceOf(RoleApiError);
+    await expect(nodeSdk.environments["list"]!()).rejects.toBeInstanceOf(RoleApiError);
+    await expect(serverpodSdk.environments["list"]!()).rejects.toBeInstanceOf(RoleApiError);
   });
 
   it("keeps parity for auth register/login/refresh/logout methods", async () => {
@@ -289,14 +289,14 @@ describe("provider parity", () => {
     });
 
     const [nodeRegister, serverpodRegister] = await Promise.all([
-      nodeSdk.auth.register({ email: "user@example.com" }),
-      serverpodSdk.auth.register({ email: "user@example.com" })
+      nodeSdk.auth.register({ email: "user@example.com", password: "secret" }),
+      serverpodSdk.auth.register({ email: "user@example.com", password: "secret" })
     ]);
     expect(nodeRegister).toEqual(serverpodRegister);
 
     const [nodeLogin, serverpodLogin] = await Promise.all([
-      nodeSdk.auth.login({ email: "user@example.com" }),
-      serverpodSdk.auth.login({ email: "user@example.com" })
+      nodeSdk.auth.login({ email: "user@example.com", password: "secret" }),
+      serverpodSdk.auth.login({ email: "user@example.com", password: "secret" })
     ]);
     expect(nodeLogin).toEqual(serverpodLogin);
 

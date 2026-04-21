@@ -2,10 +2,24 @@ import { normalizeApiFailure } from "../errors/error-normalizer.js";
 import { RoleApiError } from "../errors/sdk-error.js";
 import {
   mapNodeAuthSession,
+  mapNodeCollectionEndpoint,
+  mapNodeCollectionEndpoints,
+  mapNodeCollectionFolder,
+  mapNodeCollectionFolders,
+  mapNodeCollectionList,
+  mapNodeCollectionSummary,
   mapNodeCurrentUser,
+  mapNodeDeleted,
+  mapNodeEndpointExample,
+  mapNodeEndpointExamples,
+  mapNodeLeave,
   mapNodeLogout,
+  mapNodeWorkspaceInvitation,
   mapNodeWorkspaceList,
-  mapNodeWorkspaceSummary
+  mapNodeWorkspaceMember,
+  mapNodeWorkspaceMembers,
+  mapNodeWorkspaceSummary,
+  mapNodeWorkspaceUpdates
 } from "../mappers/node/index.js";
 import type { HttpClient } from "../transport/http-client.js";
 import type { BackendProvider } from "./backend-provider.js";
@@ -47,20 +61,40 @@ export const createNodeRestProvider = (
     method: string;
     path: string;
     body?: unknown;
+    query?: Record<string, string | number | boolean | undefined>;
     authenticated?: boolean;
   }): Promise<unknown> => {
     const authHeaders = params.authenticated === false ? {} : await getAuthHeaders();
 
-    const response = await httpClient.requestJson({
+    const requestParams: {
+      backend: "node";
+      module: string;
+      methodName: string;
+      method: string;
+      path: string;
+      body?: unknown;
+      query?: Record<string, string | number | boolean | undefined>;
+      headers: Record<string, string>;
+      inputForHooks?: unknown;
+    } = {
       backend: "node",
       module: params.module,
       methodName: params.methodName,
       method: params.method,
       path: params.path,
-      body: params.body,
-      headers: authHeaders,
-      inputForHooks: params.body
-    });
+      headers: authHeaders
+    };
+
+    if (params.body !== undefined) {
+      requestParams.body = params.body;
+      requestParams.inputForHooks = params.body;
+    }
+
+    if (params.query !== undefined) {
+      requestParams.query = params.query;
+    }
+
+    const response = await httpClient.requestJson(requestParams);
 
     return unwrapEnvelope(response);
   };
@@ -140,9 +174,290 @@ export const createNodeRestProvider = (
           path: "/api/workspaces",
           body: input
         }).then((result) => mapNodeWorkspaceSummary(result));
+      },
+      listMembers: (input) => {
+        return request({
+          module: "workspaces",
+          methodName: "listMembers",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/members`
+        }).then((result) => mapNodeWorkspaceMembers(result));
+      },
+      addMember: (input) => {
+        return request({
+          module: "workspaces",
+          methodName: "addMember",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/members`,
+          body: {
+            email: input.email,
+            role: input.role
+          }
+        }).then((result) => mapNodeWorkspaceMember(result));
+      },
+      updateMemberRole: (input) => {
+        return request({
+          module: "workspaces",
+          methodName: "updateMemberRole",
+          method: "PATCH",
+          path: `/api/workspaces/${String(input.workspaceId)}/members/${String(input.memberId)}`,
+          body: {
+            role: input.role
+          }
+        }).then((result) => mapNodeWorkspaceMember(result));
+      },
+      removeMember: (input) => {
+        return request({
+          module: "workspaces",
+          methodName: "removeMember",
+          method: "DELETE",
+          path: `/api/workspaces/${String(input.workspaceId)}/members/${String(input.memberId)}`
+        }).then(() => mapNodeDeleted());
+      },
+      createInvitation: (input) => {
+        return request({
+          module: "workspaces",
+          methodName: "createInvitation",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/invitations`,
+          body: {
+            email: input.email,
+            role: input.role,
+            expiresAt: input.expiresAt
+          }
+        }).then((result) => mapNodeWorkspaceInvitation(result));
+      },
+      joinWithInvitation: (input) => {
+        return request({
+          module: "workspaces",
+          methodName: "joinWithInvitation",
+          method: "POST",
+          path: "/api/workspaces/join",
+          body: input
+        }).then((result) => mapNodeWorkspaceSummary(result));
+      },
+      leave: (input) => {
+        return request({
+          module: "workspaces",
+          methodName: "leave",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/leave`
+        }).then(() => mapNodeLeave());
+      },
+      convertToTeam: (input) => {
+        return request({
+          module: "workspaces",
+          methodName: "convertToTeam",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/convert-to-team`,
+          body: {
+            teamName: input.teamName
+          }
+        }).then((result) => mapNodeWorkspaceSummary(result));
+      },
+      listUpdates: (input) => {
+        return request({
+          module: "workspaces",
+          methodName: "listUpdates",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/updates`,
+          query: {
+            cursor: input.cursor,
+            limit: input.limit
+          }
+        }).then((result) => mapNodeWorkspaceUpdates(result));
       }
     },
-    collections: {},
+    collections: {
+      list: (input) => {
+        return request({
+          module: "collections",
+          methodName: "list",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections`
+        }).then((result) => mapNodeCollectionList(result));
+      },
+      get: (input) => {
+        return request({
+          module: "collections",
+          methodName: "get",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}`
+        }).then((result) => mapNodeCollectionSummary(result));
+      },
+      create: (input) => {
+        return request({
+          module: "collections",
+          methodName: "create",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections`,
+          body: {
+            name: input.name,
+            description: input.description
+          }
+        }).then((result) => mapNodeCollectionSummary(result));
+      },
+      update: (input) => {
+        return request({
+          module: "collections",
+          methodName: "update",
+          method: "PATCH",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}`,
+          body: {
+            name: input.name,
+            description: input.description
+          }
+        }).then((result) => mapNodeCollectionSummary(result));
+      },
+      remove: (input) => {
+        return request({
+          module: "collections",
+          methodName: "remove",
+          method: "DELETE",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}`
+        }).then(() => mapNodeDeleted());
+      },
+      listFolders: (input) => {
+        return request({
+          module: "collections",
+          methodName: "listFolders",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/folders`
+        }).then((result) => mapNodeCollectionFolders(result));
+      },
+      createFolder: (input) => {
+        return request({
+          module: "collections",
+          methodName: "createFolder",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/folders`,
+          body: {
+            name: input.name,
+            parentFolderId: input.parentFolderId,
+            position: input.position
+          }
+        }).then((result) => mapNodeCollectionFolder(result));
+      },
+      updateFolder: (input) => {
+        return request({
+          module: "collections",
+          methodName: "updateFolder",
+          method: "PATCH",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/folders/${String(input.folderId)}`,
+          body: {
+            name: input.name,
+            parentFolderId: input.parentFolderId,
+            position: input.position
+          }
+        }).then((result) => mapNodeCollectionFolder(result));
+      },
+      removeFolder: (input) => {
+        return request({
+          module: "collections",
+          methodName: "removeFolder",
+          method: "DELETE",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/folders/${String(input.folderId)}`
+        }).then(() => mapNodeDeleted());
+      },
+      listEndpoints: (input) => {
+        return request({
+          module: "collections",
+          methodName: "listEndpoints",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/endpoints`
+        }).then((result) => mapNodeCollectionEndpoints(result));
+      },
+      getEndpoint: (input) => {
+        return request({
+          module: "collections",
+          methodName: "getEndpoint",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/endpoints/${String(input.endpointId)}`
+        }).then((result) => mapNodeCollectionEndpoint(result));
+      },
+      createEndpoint: (input) => {
+        return request({
+          module: "collections",
+          methodName: "createEndpoint",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/endpoints`,
+          body: {
+            folderId: input.folderId,
+            name: input.name,
+            method: input.method,
+            url: input.url,
+            body: input.body,
+            auth: input.auth
+          }
+        }).then((result) => mapNodeCollectionEndpoint(result));
+      },
+      updateEndpoint: (input) => {
+        return request({
+          module: "collections",
+          methodName: "updateEndpoint",
+          method: "PATCH",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/endpoints/${String(input.endpointId)}`,
+          body: {
+            folderId: input.folderId,
+            name: input.name,
+            method: input.method,
+            url: input.url,
+            body: input.body,
+            auth: input.auth
+          }
+        }).then((result) => mapNodeCollectionEndpoint(result));
+      },
+      removeEndpoint: (input) => {
+        return request({
+          module: "collections",
+          methodName: "removeEndpoint",
+          method: "DELETE",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/endpoints/${String(input.endpointId)}`
+        }).then(() => mapNodeDeleted());
+      },
+      listEndpointExamples: (input) => {
+        return request({
+          module: "collections",
+          methodName: "listEndpointExamples",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/endpoints/${String(input.endpointId)}/examples`
+        }).then((result) => mapNodeEndpointExamples(result));
+      },
+      createEndpointExample: (input) => {
+        return request({
+          module: "collections",
+          methodName: "createEndpointExample",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/endpoints/${String(input.endpointId)}/examples`,
+          body: {
+            name: input.name,
+            request: input.request,
+            response: input.response
+          }
+        }).then((result) => mapNodeEndpointExample(result));
+      },
+      updateEndpointExample: (input) => {
+        return request({
+          module: "collections",
+          methodName: "updateEndpointExample",
+          method: "PATCH",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/endpoints/${String(input.endpointId)}/examples/${String(input.exampleId)}`,
+          body: {
+            name: input.name,
+            request: input.request,
+            response: input.response
+          }
+        }).then((result) => mapNodeEndpointExample(result));
+      },
+      removeEndpointExample: (input) => {
+        return request({
+          module: "collections",
+          methodName: "removeEndpointExample",
+          method: "DELETE",
+          path: `/api/workspaces/${String(input.workspaceId)}/collections/${String(input.collectionId)}/endpoints/${String(input.endpointId)}/examples/${String(input.exampleId)}`
+        }).then(() => mapNodeDeleted());
+      }
+    },
     environments: {},
     runs: {},
     importExport: {},
