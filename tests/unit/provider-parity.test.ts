@@ -192,4 +192,196 @@ describe("provider parity", () => {
     await expect(nodeSdk.collections["list"]!()).rejects.toBeInstanceOf(RoleApiError);
     await expect(serverpodSdk.collections["list"]!()).rejects.toBeInstanceOf(RoleApiError);
   });
+
+  it("keeps parity for auth register/login/refresh/logout methods", async () => {
+    const nodeFetch = vi.fn<typeof fetch>((input) => {
+      const url = requestUrl(input);
+
+      if (url.endsWith("/api/auth/register")) {
+        return Promise.resolve(
+          nodeEnvelope({
+            access_token: "access-register",
+            refresh_token: "refresh-register",
+            user: { id: "user-1", email: "user@example.com", created_at: ISO_DATE }
+          })
+        );
+      }
+
+      if (url.endsWith("/api/auth/login")) {
+        return Promise.resolve(
+          nodeEnvelope({
+            accessToken: "access-login",
+            refreshToken: "refresh-login",
+            user: { id: "user-1", email: "user@example.com", createdAt: ISO_DATE }
+          })
+        );
+      }
+
+      if (url.endsWith("/api/auth/refresh")) {
+        return Promise.resolve(
+          nodeEnvelope({
+            token: "access-refresh",
+            refresh_token: "refresh-refresh",
+            user: { id: "user-1", email: "user@example.com", created_at: ISO_DATE }
+          })
+        );
+      }
+
+      if (url.endsWith("/api/auth/logout")) {
+        return Promise.resolve(nodeEnvelope({ revoked: true }));
+      }
+
+      return Promise.resolve(new Response("not found", { status: 404 }));
+    });
+
+    const serverpodFetch = vi.fn<typeof fetch>((input) => {
+      const url = requestUrl(input);
+
+      if (url.endsWith("/rpc/auth/register")) {
+        return Promise.resolve(
+          serverpodResult({
+            accessToken: "access-register",
+            refreshToken: "refresh-register",
+            profile: { userId: "user-1", email: "user@example.com", createdAt: ISO_DATE }
+          })
+        );
+      }
+
+      if (url.endsWith("/rpc/auth/login")) {
+        return Promise.resolve(
+          serverpodResult({
+            accessToken: "access-login",
+            refreshToken: "refresh-login",
+            user: { id: "user-1", email: "user@example.com", createdAt: ISO_DATE }
+          })
+        );
+      }
+
+      if (url.endsWith("/rpc/auth/refresh")) {
+        return Promise.resolve(
+          serverpodResult({
+            token: "access-refresh",
+            refreshToken: "refresh-refresh",
+            me: { id: "user-1", email: "user@example.com", createdAt: ISO_DATE }
+          })
+        );
+      }
+
+      if (url.endsWith("/rpc/auth/logout")) {
+        return Promise.resolve(serverpodResult({ revoked: true }));
+      }
+
+      return Promise.resolve(new Response("not found", { status: 404 }));
+    });
+
+    const nodeSdk = createRoleSdk({
+      backend: "node",
+      baseUrl: "https://api.example.com",
+      fetch: nodeFetch,
+      auth: { autoRefresh: false }
+    });
+
+    const serverpodSdk = createRoleSdk({
+      backend: "serverpod",
+      baseUrl: "https://api.example.com",
+      fetch: serverpodFetch,
+      auth: { autoRefresh: false }
+    });
+
+    const [nodeRegister, serverpodRegister] = await Promise.all([
+      nodeSdk.auth.register({ email: "user@example.com" }),
+      serverpodSdk.auth.register({ email: "user@example.com" })
+    ]);
+    expect(nodeRegister).toEqual(serverpodRegister);
+
+    const [nodeLogin, serverpodLogin] = await Promise.all([
+      nodeSdk.auth.login({ email: "user@example.com" }),
+      serverpodSdk.auth.login({ email: "user@example.com" })
+    ]);
+    expect(nodeLogin).toEqual(serverpodLogin);
+
+    const [nodeRefresh, serverpodRefresh] = await Promise.all([
+      nodeSdk.auth.refresh({ refreshToken: "refresh-login" }),
+      serverpodSdk.auth.refresh({ refreshToken: "refresh-login" })
+    ]);
+    expect(nodeRefresh).toEqual(serverpodRefresh);
+
+    const [nodeLogout, serverpodLogout] = await Promise.all([
+      nodeSdk.auth.logout(),
+      serverpodSdk.auth.logout()
+    ]);
+    expect(nodeLogout).toEqual(serverpodLogout);
+  });
+
+  it("keeps parity for workspaces get/create methods", async () => {
+    const nodeFetch = vi.fn<typeof fetch>((input) => {
+      const url = requestUrl(input);
+
+      if (url.endsWith("/api/workspaces/ws-1")) {
+        return Promise.resolve(
+          nodeEnvelope({ id: "ws-1", name: "Workspace One", created_at: "2026-04-21T11:00:00Z" })
+        );
+      }
+
+      if (url.endsWith("/api/workspaces")) {
+        return Promise.resolve(
+          nodeEnvelope({ id: "ws-2", name: "Workspace Two", created_at: "2026-04-21T12:00:00Z" })
+        );
+      }
+
+      return Promise.resolve(new Response("not found", { status: 404 }));
+    });
+
+    const serverpodFetch = vi.fn<typeof fetch>((input) => {
+      const url = requestUrl(input);
+
+      if (url.endsWith("/rpc/workspaces/get")) {
+        return Promise.resolve(
+          serverpodResult({
+            workspaceId: "ws-1",
+            workspaceName: "Workspace One",
+            createdAt: "2026-04-21T11:00:00Z"
+          })
+        );
+      }
+
+      if (url.endsWith("/rpc/workspaces/create")) {
+        return Promise.resolve(
+          serverpodResult({
+            workspaceId: "ws-2",
+            workspaceName: "Workspace Two",
+            createdAt: "2026-04-21T12:00:00Z"
+          })
+        );
+      }
+
+      return Promise.resolve(new Response("not found", { status: 404 }));
+    });
+
+    const nodeSdk = createRoleSdk({
+      backend: "node",
+      baseUrl: "https://api.example.com",
+      fetch: nodeFetch,
+      auth: { autoRefresh: false }
+    });
+
+    const serverpodSdk = createRoleSdk({
+      backend: "serverpod",
+      baseUrl: "https://api.example.com",
+      fetch: serverpodFetch,
+      auth: { autoRefresh: false }
+    });
+
+    const [nodeGet, serverpodGet] = await Promise.all([
+      nodeSdk.workspaces.get({ workspaceId: "ws-1" }),
+      serverpodSdk.workspaces.get({ workspaceId: "ws-1" })
+    ]);
+    expect(nodeGet).toEqual(serverpodGet);
+
+    const [nodeCreate, serverpodCreate] = await Promise.all([
+      nodeSdk.workspaces.create({ name: "Workspace Two" }),
+      serverpodSdk.workspaces.create({ name: "Workspace Two" })
+    ]);
+    expect(nodeCreate).toEqual(serverpodCreate);
+  });
 });
