@@ -124,7 +124,10 @@ export type EnvironmentsProvider = {
   update: ProviderMethod<UpdateEnvironmentInput, EnvironmentSummary>;
   remove: ProviderMethod<{ workspaceId: Id; environmentId: Id }, { deleted: true }>;
   listVariables: ProviderMethod<{ workspaceId: Id; environmentId: Id }, EnvironmentVariable[]>;
-  getVariable: ProviderMethod<{ workspaceId: Id; environmentId: Id; variableId: Id }, EnvironmentVariable>;
+  getVariable: ProviderMethod<
+    { workspaceId: Id; environmentId: Id; variableId: Id },
+    EnvironmentVariable
+  >;
   createVariable: ProviderMethod<CreateEnvironmentVariableInput, EnvironmentVariable>;
   updateVariable: ProviderMethod<UpdateEnvironmentVariableInput, EnvironmentVariable>;
   removeVariable: ProviderMethod<

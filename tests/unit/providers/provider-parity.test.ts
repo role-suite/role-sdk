@@ -193,7 +193,9 @@ describe("provider parity", () => {
       const url = requestUrl(input);
 
       if (url.endsWith("/rpc/runs/cancel")) {
-        return Promise.resolve(serverpodResult({ id: "r-1", workspaceId: "ws-1", status: "cancelled" }));
+        return Promise.resolve(
+          serverpodResult({ id: "r-1", workspaceId: "ws-1", status: "cancelled" })
+        );
       }
 
       return Promise.resolve(new Response("not found", { status: 404 }));
@@ -407,7 +409,9 @@ describe("provider parity", () => {
       const url = requestUrl(input);
 
       if (url.endsWith("/api/workspaces/ws-1/runs/r-1/cancel")) {
-        return Promise.resolve(nodeEnvelope({ id: "r-1", workspaceId: "ws-1", status: "cancelled" }));
+        return Promise.resolve(
+          nodeEnvelope({ id: "r-1", workspaceId: "ws-1", status: "cancelled" })
+        );
       }
 
       return Promise.resolve(new Response("not found", { status: 404 }));
@@ -417,7 +421,9 @@ describe("provider parity", () => {
       const url = requestUrl(input);
 
       if (url.endsWith("/rpc/runs/cancel")) {
-        return Promise.resolve(serverpodResult({ id: "r-1", workspaceId: "ws-1", status: "cancelled" }));
+        return Promise.resolve(
+          serverpodResult({ id: "r-1", workspaceId: "ws-1", status: "cancelled" })
+        );
       }
 
       return Promise.resolve(new Response("not found", { status: 404 }));

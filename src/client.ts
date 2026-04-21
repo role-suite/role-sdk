@@ -227,7 +227,10 @@ export type RoleSdkClient = {
     create: (input: CreateEnvironmentInput) => Promise<EnvironmentSummary>;
     update: (input: UpdateEnvironmentInput) => Promise<EnvironmentSummary>;
     remove: (input: { workspaceId: Id; environmentId: Id }) => Promise<{ deleted: true }>;
-    listVariables: (input: { workspaceId: Id; environmentId: Id }) => Promise<EnvironmentVariable[]>;
+    listVariables: (input: {
+      workspaceId: Id;
+      environmentId: Id;
+    }) => Promise<EnvironmentVariable[]>;
     getVariable: (input: {
       workspaceId: Id;
       environmentId: Id;
@@ -694,9 +697,15 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
       await initialization;
       return invokeWithOptionalRefresh(() => provider.environments.remove(input), refreshAuth);
     },
-    listVariables: async (input: { workspaceId: Id; environmentId: Id }): Promise<EnvironmentVariable[]> => {
+    listVariables: async (input: {
+      workspaceId: Id;
+      environmentId: Id;
+    }): Promise<EnvironmentVariable[]> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.environments.listVariables(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.environments.listVariables(input),
+        refreshAuth
+      );
     },
     getVariable: async (input: {
       workspaceId: Id;
@@ -708,11 +717,17 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
     },
     createVariable: async (input: CreateEnvironmentVariableInput): Promise<EnvironmentVariable> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.environments.createVariable(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.environments.createVariable(input),
+        refreshAuth
+      );
     },
     updateVariable: async (input: UpdateEnvironmentVariableInput): Promise<EnvironmentVariable> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.environments.updateVariable(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.environments.updateVariable(input),
+        refreshAuth
+      );
     },
     removeVariable: async (input: {
       workspaceId: Id;
@@ -720,7 +735,10 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
       variableId: Id;
     }): Promise<{ deleted: true }> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.environments.removeVariable(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.environments.removeVariable(input),
+        refreshAuth
+      );
     }
   };
 
@@ -753,11 +771,17 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
     },
     createExport: async (input: CreateExportJobInput): Promise<ImportExportJob> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.importExport.createExport(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.importExport.createExport(input),
+        refreshAuth
+      );
     },
     createImport: async (input: CreateImportJobInput): Promise<ImportExportJob> => {
       await initialization;
-      return invokeWithOptionalRefresh(() => provider.importExport.createImport(input), refreshAuth);
+      return invokeWithOptionalRefresh(
+        () => provider.importExport.createImport(input),
+        refreshAuth
+      );
     }
   };
 
@@ -812,9 +836,11 @@ export const createRoleSdk = (config: RoleSdkConfig): RoleSdkClient => {
         list: () => environments.list({ workspaceId }),
         get: (environmentId) => environments.get({ workspaceId, environmentId }),
         create: (input) => environments.create({ workspaceId, ...input }),
-        update: (environmentId, input) => environments.update({ workspaceId, environmentId, ...input }),
+        update: (environmentId, input) =>
+          environments.update({ workspaceId, environmentId, ...input }),
         remove: (environmentId) => environments.remove({ workspaceId, environmentId }),
-        listVariables: (environmentId) => environments.listVariables({ workspaceId, environmentId }),
+        listVariables: (environmentId) =>
+          environments.listVariables({ workspaceId, environmentId }),
         getVariable: (environmentId, variableId) =>
           environments.getVariable({ workspaceId, environmentId, variableId }),
         createVariable: (environmentId, input) =>

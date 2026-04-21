@@ -107,7 +107,10 @@ describe("phase4 runs module", () => {
             id: "r-2",
             workspace_id: "ws-1",
             status: "pending",
-            source: { kind: "adhoc", request: { method: "POST", url: "https://api.example.com", body: { test: true } } }
+            source: {
+              kind: "adhoc",
+              request: { method: "POST", url: "https://api.example.com", body: { test: true } }
+            }
           })
         );
       }
@@ -136,7 +139,10 @@ describe("phase4 runs module", () => {
       expect.objectContaining({
         method: "POST",
         body: JSON.stringify({
-          source: { kind: "adhoc", request: { method: "POST", url: "https://api.example.com", body: { test: true } } }
+          source: {
+            kind: "adhoc",
+            request: { method: "POST", url: "https://api.example.com", body: { test: true } }
+          }
         })
       })
     );
@@ -152,7 +158,12 @@ describe("phase4 runs module", () => {
             runId: "r-2",
             workspaceId: "ws-1",
             status: "pending",
-            source: { kind: "collection", collectionId: "col-1", endpointId: "ep-1", exampleId: "ex-1" }
+            source: {
+              kind: "collection",
+              collectionId: "col-1",
+              endpointId: "ep-1",
+              exampleId: "ex-1"
+            }
           })
         );
       }
@@ -185,7 +196,7 @@ describe("phase4 runs module", () => {
     });
   });
 
-it("enforces capability gate for run cancellation on serverpod", async () => {
+  it("enforces capability gate for run cancellation on serverpod", async () => {
     const serverpodFetch = vi.fn<typeof fetch>(() => {
       return Promise.resolve(new Response("not found", { status: 404 }));
     });

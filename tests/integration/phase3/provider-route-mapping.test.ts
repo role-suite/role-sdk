@@ -503,22 +503,31 @@ describe("phase 3 integration mapping", () => {
       if (url.endsWith("/api/workspaces/ws-1/environments") && init?.method === "POST") {
         return Promise.resolve(nodeEnvelope({ id: "env-1", workspaceId: "ws-1", name: "Staging" }));
       }
-      if (url.endsWith("/api/workspaces/ws-1/environments/env-1/variables") && init?.method === "POST") {
+      if (
+        url.endsWith("/api/workspaces/ws-1/environments/env-1/variables") &&
+        init?.method === "POST"
+      ) {
         return Promise.resolve(
           nodeEnvelope({ id: "var-1", workspaceId: "ws-1", environmentId: "env-1", key: "TOKEN" })
         );
       }
       if (url.endsWith("/api/workspaces/ws-1/runs") && init?.method === "POST") {
-        return Promise.resolve(nodeEnvelope({ id: "run-1", workspaceId: "ws-1", status: "queued" }));
+        return Promise.resolve(
+          nodeEnvelope({ id: "run-1", workspaceId: "ws-1", status: "queued" })
+        );
       }
       if (url.endsWith("/api/workspaces/ws-1/runs/run-1") && init?.method === "GET") {
         return Promise.resolve(nodeEnvelope({ id: "run-1", workspaceId: "ws-1", status: "done" }));
       }
       if (url.endsWith("/api/workspaces/ws-1/runs/run-1/cancel") && init?.method === "POST") {
-        return Promise.resolve(nodeEnvelope({ id: "run-1", workspaceId: "ws-1", status: "cancelled" }));
+        return Promise.resolve(
+          nodeEnvelope({ id: "run-1", workspaceId: "ws-1", status: "cancelled" })
+        );
       }
       if (url.endsWith("/api/workspaces/ws-1/import-export/jobs") && init?.method === "GET") {
-        return Promise.resolve(nodeEnvelope([{ id: "job-1", workspaceId: "ws-1", type: "export" }]));
+        return Promise.resolve(
+          nodeEnvelope([{ id: "job-1", workspaceId: "ws-1", type: "export" }])
+        );
       }
       if (url.endsWith("/api/workspaces/ws-1/import-export/export") && init?.method === "POST") {
         return Promise.resolve(nodeEnvelope({ id: "job-2", workspaceId: "ws-1", type: "export" }));
@@ -538,7 +547,11 @@ describe("phase 3 integration mapping", () => {
     });
 
     await sdk.environments.create({ workspaceId: "ws-1", name: "Staging" });
-    await sdk.environments.createVariable({ workspaceId: "ws-1", environmentId: "env-1", key: "TOKEN" });
+    await sdk.environments.createVariable({
+      workspaceId: "ws-1",
+      environmentId: "env-1",
+      key: "TOKEN"
+    });
     await sdk.runs.create({
       workspaceId: "ws-1",
       source: {
@@ -550,7 +563,10 @@ describe("phase 3 integration mapping", () => {
     await sdk.runs.cancel({ workspaceId: "ws-1", runId: "run-1" });
     await sdk.importExport.listJobs({ workspaceId: "ws-1" });
     await sdk.importExport.createExport({ workspaceId: "ws-1", collectionIds: ["c-1"] });
-    await sdk.importExport.createImport({ workspaceId: "ws-1", sourceUrl: "https://example.com/data.json" });
+    await sdk.importExport.createImport({
+      workspaceId: "ws-1",
+      sourceUrl: "https://example.com/data.json"
+    });
 
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.example.com/api/workspaces/ws-1/runs",
@@ -607,7 +623,11 @@ describe("phase 3 integration mapping", () => {
     });
 
     await sdk.environments.create({ workspaceId: "ws-1", name: "Staging" });
-    await sdk.environments.createVariable({ workspaceId: "ws-1", environmentId: "env-1", key: "TOKEN" });
+    await sdk.environments.createVariable({
+      workspaceId: "ws-1",
+      environmentId: "env-1",
+      key: "TOKEN"
+    });
     await sdk.runs.create({
       workspaceId: "ws-1",
       source: {

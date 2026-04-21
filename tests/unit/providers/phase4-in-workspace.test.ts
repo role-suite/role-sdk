@@ -28,9 +28,7 @@ describe("phase4 inWorkspace scoped client", () => {
 
       if (url.endsWith("/api/workspaces/ws-1/environments")) {
         return Promise.resolve(
-          nodeEnvelope([
-            { id: "env-1", workspace_id: "ws-1", name: "Development" }
-          ])
+          nodeEnvelope([{ id: "env-1", workspace_id: "ws-1", name: "Development" }])
         );
       }
 
@@ -59,7 +57,9 @@ describe("phase4 inWorkspace scoped client", () => {
       const url = requestUrl(input);
 
       if (url.endsWith("/api/workspaces/ws-1/environments")) {
-        return Promise.resolve(nodeEnvelope({ id: "env-2", workspace_id: "ws-1", name: "New Env" }));
+        return Promise.resolve(
+          nodeEnvelope({ id: "env-2", workspace_id: "ws-1", name: "New Env" })
+        );
       }
 
       return Promise.resolve(new Response("not found", { status: 404 }));
@@ -126,9 +126,7 @@ describe("phase4 inWorkspace scoped client", () => {
 
       if (url.endsWith("/api/workspaces/ws-1/collections")) {
         return Promise.resolve(
-          nodeEnvelope([
-            { id: "col-1", workspace_id: "ws-1", name: "API Collection" }
-          ])
+          nodeEnvelope([{ id: "col-1", workspace_id: "ws-1", name: "API Collection" }])
         );
       }
 
@@ -184,9 +182,7 @@ describe("phase4 inWorkspace scoped client", () => {
       if (url.endsWith("/api/workspaces/ws-1/import-export/jobs")) {
         return Promise.resolve(
           nodeEnvelope({
-            items: [
-              { id: "job-1", workspace_id: "ws-1", type: "export", status: "completed" }
-            ]
+            items: [{ id: "job-1", workspace_id: "ws-1", type: "export", status: "completed" }]
           })
         );
       }
@@ -219,7 +215,9 @@ describe("phase4 inWorkspace scoped client", () => {
           return Promise.resolve(nodeEnvelope([]));
         }
         if (url.endsWith("/runs") && !url.includes("cancel")) {
-          return Promise.resolve(nodeEnvelope({ id: "r-1", workspace_id: "ws-1", status: "pending" }));
+          return Promise.resolve(
+            nodeEnvelope({ id: "r-1", workspace_id: "ws-1", status: "pending" })
+          );
         }
         if (url.endsWith("/import-export/jobs")) {
           return Promise.resolve(nodeEnvelope({ items: [] }));
@@ -239,7 +237,9 @@ describe("phase4 inWorkspace scoped client", () => {
 
     await wsScoped.environments.list();
     await wsScoped.collections.list();
-    await wsScoped.runs.create({ source: { kind: "adhoc", request: { method: "GET", url: "https://test.com" } } });
+    await wsScoped.runs.create({
+      source: { kind: "adhoc", request: { method: "GET", url: "https://test.com" } }
+    });
     await wsScoped.importExport.listJobs();
 
     const calls = nodeFetch.mock.calls;

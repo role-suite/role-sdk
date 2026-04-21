@@ -406,7 +406,10 @@ const mapEnvironment = (value: unknown): EnvironmentSummary => {
   const id = pickId(record, ["id", "environmentId", "environment_id"]);
   const workspaceId = pickId(record, ["workspaceId", "workspace_id"]);
   if (id === undefined || workspaceId === undefined) {
-    throw new RoleValidationError("ROLE_MAPPER_INVALID_PAYLOAD", "Environment payload is missing ids.");
+    throw new RoleValidationError(
+      "ROLE_MAPPER_INVALID_PAYLOAD",
+      "Environment payload is missing ids."
+    );
   }
 
   const environment: EnvironmentSummary = { id, workspaceId };
@@ -870,7 +873,8 @@ export const mapNodeEnvironmentVariables = (payload: unknown): EnvironmentVariab
 
 export const mapNodeRunExecutionResult = (payload: unknown): RunExecutionResult => mapRun(payload);
 
-export const mapNodeImportExportJob = (payload: unknown): ImportExportJob => mapImportExportJob(payload);
+export const mapNodeImportExportJob = (payload: unknown): ImportExportJob =>
+  mapImportExportJob(payload);
 export const mapNodeImportExportJobs = (payload: unknown): ImportExportJob[] => {
   if (Array.isArray(payload)) {
     return payload.map(mapImportExportJob);
