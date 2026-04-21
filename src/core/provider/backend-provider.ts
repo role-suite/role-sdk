@@ -36,6 +36,20 @@ import type {
   UpdateCollectionInput,
   UpdateEndpointExampleInput
 } from "../../modules/collections/types.js";
+import type {
+  CreateEnvironmentInput,
+  CreateEnvironmentVariableInput,
+  EnvironmentSummary,
+  EnvironmentVariable,
+  UpdateEnvironmentInput,
+  UpdateEnvironmentVariableInput
+} from "../../modules/environments/types.js";
+import type { CreateRunInput, RunExecutionResult } from "../../modules/runs/types.js";
+import type {
+  CreateExportJobInput,
+  CreateImportJobInput,
+  ImportExportJob
+} from "../../modules/import-export/types.js";
 import type { Id } from "../../config.js";
 
 export type ProviderMethod<Input = unknown, Output = unknown> = (input: Input) => Promise<Output>;
@@ -103,9 +117,34 @@ export type CollectionsProvider = {
     { deleted: true }
   >;
 };
-export type EnvironmentsProvider = Record<string, ProviderMethod>;
-export type RunsProvider = Record<string, ProviderMethod>;
-export type ImportExportProvider = Record<string, ProviderMethod>;
+export type EnvironmentsProvider = {
+  list: ProviderMethod<{ workspaceId: Id }, EnvironmentSummary[]>;
+  get: ProviderMethod<{ workspaceId: Id; environmentId: Id }, EnvironmentSummary>;
+  create: ProviderMethod<CreateEnvironmentInput, EnvironmentSummary>;
+  update: ProviderMethod<UpdateEnvironmentInput, EnvironmentSummary>;
+  remove: ProviderMethod<{ workspaceId: Id; environmentId: Id }, { deleted: true }>;
+  listVariables: ProviderMethod<{ workspaceId: Id; environmentId: Id }, EnvironmentVariable[]>;
+  getVariable: ProviderMethod<{ workspaceId: Id; environmentId: Id; variableId: Id }, EnvironmentVariable>;
+  createVariable: ProviderMethod<CreateEnvironmentVariableInput, EnvironmentVariable>;
+  updateVariable: ProviderMethod<UpdateEnvironmentVariableInput, EnvironmentVariable>;
+  removeVariable: ProviderMethod<
+    { workspaceId: Id; environmentId: Id; variableId: Id },
+    { deleted: true }
+  >;
+};
+
+export type RunsProvider = {
+  create: ProviderMethod<CreateRunInput, RunExecutionResult>;
+  get: ProviderMethod<{ workspaceId: Id; runId: Id }, RunExecutionResult>;
+  cancel: ProviderMethod<{ workspaceId: Id; runId: Id }, RunExecutionResult>;
+};
+
+export type ImportExportProvider = {
+  listJobs: ProviderMethod<{ workspaceId: Id }, ImportExportJob[]>;
+  getJob: ProviderMethod<{ workspaceId: Id; jobId: Id }, ImportExportJob>;
+  createExport: ProviderMethod<CreateExportJobInput, ImportExportJob>;
+  createImport: ProviderMethod<CreateImportJobInput, ImportExportJob>;
+};
 
 export type BackendProvider = {
   auth: AuthProvider;

@@ -10,10 +10,17 @@ import {
   mapNodeCollectionSummary,
   mapNodeCurrentUser,
   mapNodeDeleted,
+  mapNodeEnvironmentList,
+  mapNodeEnvironmentSummary,
+  mapNodeEnvironmentVariable,
+  mapNodeEnvironmentVariables,
   mapNodeEndpointExample,
   mapNodeEndpointExamples,
+  mapNodeImportExportJob,
+  mapNodeImportExportJobs,
   mapNodeLeave,
   mapNodeLogout,
+  mapNodeRunExecutionResult,
   mapNodeWorkspaceInvitation,
   mapNodeWorkspaceList,
   mapNodeWorkspaceMember,
@@ -458,9 +465,182 @@ export const createNodeRestProvider = (
         }).then(() => mapNodeDeleted());
       }
     },
-    environments: {},
-    runs: {},
-    importExport: {},
+    environments: {
+      list: (input) => {
+        return request({
+          module: "environments",
+          methodName: "list",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/environments`
+        }).then((result) => mapNodeEnvironmentList(result));
+      },
+      get: (input) => {
+        return request({
+          module: "environments",
+          methodName: "get",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/environments/${String(input.environmentId)}`
+        }).then((result) => mapNodeEnvironmentSummary(result));
+      },
+      create: (input) => {
+        return request({
+          module: "environments",
+          methodName: "create",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/environments`,
+          body: {
+            name: input.name,
+            description: input.description
+          }
+        }).then((result) => mapNodeEnvironmentSummary(result));
+      },
+      update: (input) => {
+        return request({
+          module: "environments",
+          methodName: "update",
+          method: "PATCH",
+          path: `/api/workspaces/${String(input.workspaceId)}/environments/${String(input.environmentId)}`,
+          body: {
+            name: input.name,
+            description: input.description
+          }
+        }).then((result) => mapNodeEnvironmentSummary(result));
+      },
+      remove: (input) => {
+        return request({
+          module: "environments",
+          methodName: "remove",
+          method: "DELETE",
+          path: `/api/workspaces/${String(input.workspaceId)}/environments/${String(input.environmentId)}`
+        }).then(() => mapNodeDeleted());
+      },
+      listVariables: (input) => {
+        return request({
+          module: "environments",
+          methodName: "listVariables",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/environments/${String(input.environmentId)}/variables`
+        }).then((result) => mapNodeEnvironmentVariables(result));
+      },
+      getVariable: (input) => {
+        return request({
+          module: "environments",
+          methodName: "getVariable",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/environments/${String(input.environmentId)}/variables/${String(input.variableId)}`
+        }).then((result) => mapNodeEnvironmentVariable(result));
+      },
+      createVariable: (input) => {
+        return request({
+          module: "environments",
+          methodName: "createVariable",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/environments/${String(input.environmentId)}/variables`,
+          body: {
+            key: input.key,
+            value: input.value,
+            enabled: input.enabled,
+            isSecret: input.isSecret,
+            position: input.position
+          }
+        }).then((result) => mapNodeEnvironmentVariable(result));
+      },
+      updateVariable: (input) => {
+        return request({
+          module: "environments",
+          methodName: "updateVariable",
+          method: "PATCH",
+          path: `/api/workspaces/${String(input.workspaceId)}/environments/${String(input.environmentId)}/variables/${String(input.variableId)}`,
+          body: {
+            key: input.key,
+            value: input.value,
+            enabled: input.enabled,
+            isSecret: input.isSecret,
+            position: input.position
+          }
+        }).then((result) => mapNodeEnvironmentVariable(result));
+      },
+      removeVariable: (input) => {
+        return request({
+          module: "environments",
+          methodName: "removeVariable",
+          method: "DELETE",
+          path: `/api/workspaces/${String(input.workspaceId)}/environments/${String(input.environmentId)}/variables/${String(input.variableId)}`
+        }).then(() => mapNodeDeleted());
+      }
+    },
+    runs: {
+      create: (input) => {
+        return request({
+          module: "runs",
+          methodName: "create",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/runs`,
+          body: {
+            source: input.source,
+            environmentId: input.environmentId
+          }
+        }).then((result) => mapNodeRunExecutionResult(result));
+      },
+      get: (input) => {
+        return request({
+          module: "runs",
+          methodName: "get",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/runs/${String(input.runId)}`
+        }).then((result) => mapNodeRunExecutionResult(result));
+      },
+      cancel: (input) => {
+        return request({
+          module: "runs",
+          methodName: "cancel",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/runs/${String(input.runId)}/cancel`
+        }).then((result) => mapNodeRunExecutionResult(result));
+      }
+    },
+    importExport: {
+      listJobs: (input) => {
+        return request({
+          module: "importExport",
+          methodName: "listJobs",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/import-export/jobs`
+        }).then((result) => mapNodeImportExportJobs(result));
+      },
+      getJob: (input) => {
+        return request({
+          module: "importExport",
+          methodName: "getJob",
+          method: "GET",
+          path: `/api/workspaces/${String(input.workspaceId)}/import-export/jobs/${String(input.jobId)}`
+        }).then((result) => mapNodeImportExportJob(result));
+      },
+      createExport: (input) => {
+        return request({
+          module: "importExport",
+          methodName: "createExport",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/import-export/export`,
+          body: {
+            collectionIds: input.collectionIds,
+            includeEnvironments: input.includeEnvironments
+          }
+        }).then((result) => mapNodeImportExportJob(result));
+      },
+      createImport: (input) => {
+        return request({
+          module: "importExport",
+          methodName: "createImport",
+          method: "POST",
+          path: `/api/workspaces/${String(input.workspaceId)}/import-export/import`,
+          body: {
+            sourceUrl: input.sourceUrl,
+            payload: input.payload
+          }
+        }).then((result) => mapNodeImportExportJob(result));
+      }
+    },
     capabilities: () => defaultCapabilities("node")
   };
 };
