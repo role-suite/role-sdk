@@ -2,7 +2,7 @@
 
 ## 1) Goals and design principles
 
-The TypeScript SDK should provide a stable, typed, and ergonomic interface for the Role platform APIs exposed by `role-node` and future Role backend services.
+The TypeScript SDK should provide a stable, typed, and ergonomic interface for the Role platform APIs, with v1 centered on `role-node` and a staged path for additional backend providers.
 
 Primary goals:
 
@@ -37,18 +37,26 @@ Based on the current `role-suite` landscape (`role-node`, `role-serverpod`, and 
 - Runs and request execution are a strategic feature (policy, limits, redaction), so SDK abstractions should support both simple and advanced run calls.
 - Workspace-scoped routes dominate API design, so SDK needs first-class workspace ergonomics.
 
-These patterns are the baseline for SDK module boundaries and the reason the SDK must support multiple backend providers.
+These patterns are the baseline for SDK module boundaries and a staged multi-provider architecture.
 
-## 3) Dual-backend architecture (node + serverpod)
+## 3) Provider support tiers for v1
+
+The SDK public API is designed to support multiple providers, but release messaging and support commitments are tiered:
+
+- `role-node` (`node-rest`) is the primary and officially supported backend for v1.
+- `role-serverpod` (`serverpod-rpc`) is experimental until parity and integration coverage are complete and a stable declaration is published.
+- Documentation and examples should prioritize the `role-node` path and label `role-serverpod` features as experimental where relevant.
+
+## 4) Multi-provider architecture (node + serverpod)
 
 The SDK is designed as one public API with two backend providers:
 
 - `node-rest` provider for `role-node` REST endpoints.
 - `serverpod-rpc` provider for `role-serverpod` RPC modules.
 
-Consumers should not need backend-specific code for common workflows.
+Consumers should not need backend-specific code for common workflows on stable surfaces. Experimental provider behavior may temporarily require capability checks and fallback handling.
 
-### 3.1 Public configuration
+### 4.1 Public configuration
 
 ```ts
 const sdk = createRoleSdk({
@@ -65,7 +73,7 @@ Locked v1 defaults:
 - Token storage is in-memory by default with optional user-provided `TokenStore`.
 - Built-in persistent token adapters are out of scope for core v1.
 
-### 3.2 Provider adapter boundary
+### 4.2 Provider adapter boundary
 
 All module clients call a backend adapter contract. Adapters are responsible for transport details and payload translation.
 
@@ -81,13 +89,13 @@ interface BackendProvider {
 }
 ```
 
-### 3.3 Normalization rules
+### 4.3 Normalization rules
 
 - REST envelope and RPC results are normalized into the same SDK result models.
 - Provider-specific payload fields are mapped into stable SDK types.
 - Backend-specific errors are normalized into shared SDK error classes.
 
-### 3.4 Capability model
+### 4.4 Capability model
 
 The SDK exposes feature availability at runtime:
 
@@ -95,13 +103,13 @@ The SDK exposes feature availability at runtime:
 - Consumers can gate optional UX/features safely.
 - Missing capabilities return explicit, typed SDK errors (not ambiguous failures).
 
-### 3.5 Provider resolution lifecycle
+### 4.5 Provider resolution lifecycle
 
 - Provider is selected once at `createRoleSdk(config)` time.
 - A client instance should not switch provider at runtime.
 - Multi-backend applications should instantiate separate SDK clients per backend.
 
-## 4) Proposed package shape
+## 5) Proposed package shape
 
 Start as a single package for faster iteration:
 
@@ -166,7 +174,7 @@ Future split (only when needed):
 - `@role-suite/sdk-core`: transport/auth/retry/error primitives.
 - `@role-suite/sdk`: platform clients built on core.
 
-## 5) Public API design
+## 6) Public API design
 
 ### Main entry
 
@@ -213,9 +221,9 @@ if (caps.runs.cancel) {
 }
 ```
 
-## 6) Core components
+## 7) Core components
 
-### 6.1 Transport layer
+### 7.1 Transport layer
 
 Responsibilities:
 
@@ -226,7 +234,7 @@ Responsibilities:
 
 Transport stays unaware of business domain details and provider mapping logic.
 
-### 6.2 Provider adapters
+### 7.2 Provider adapters
 
 Responsibilities:
 
@@ -234,7 +242,7 @@ Responsibilities:
 - `serverpod-rpc` provider: RPC module/method invocation mapping.
 - Map provider payloads into stable SDK domain models.
 
-### 6.3 Auth manager
+### 7.3 Auth manager
 
 Responsibilities:
 
@@ -244,7 +252,7 @@ Responsibilities:
 - De-duplicate concurrent refresh calls (single-flight refresh).
 - Treat persistence failures as typed auth errors with deterministic error codes.
 
-### 6.4 Retry engine
+### 7.4 Retry engine
 
 Responsibilities:
 
@@ -253,7 +261,7 @@ Responsibilities:
 - Exponential backoff with jitter.
 - Respect `AbortSignal` and total timeout.
 
-### 6.5 Error normalization
+### 7.5 Error normalization
 
 All failures map to one SDK error hierarchy:
 
@@ -271,7 +279,7 @@ Each error includes:
 - `requestId` (if header provided)
 - `details` (safe diagnostics)
 
-### 6.6 Mapping layer
+### 7.6 Mapping layer
 
 Mapping layer is mandatory to isolate SDK public types from backend contract drift:
 
@@ -279,7 +287,7 @@ Mapping layer is mandatory to isolate SDK public types from backend contract dri
 - `serverpod -> sdk` mappers
 - shared validation checks before returning public models
 
-## 7) Typing strategy
+## 8) Typing strategy
 
 Use a two-layer typing model:
 
@@ -293,7 +301,7 @@ Rules:
 - Mapping layer shields public API from backend naming churn.
 - Public date/time values are ISO strings in v1 SDK models.
 
-## 8) Runtime compatibility
+## 9) Runtime compatibility
 
 Targets:
 
@@ -306,17 +314,18 @@ Build outputs:
 - ESM + type declarations.
 - CJS optional if ecosystem demand exists.
 
-## 9) Quality and test plan
+## 10) Quality and test plan
 
 Test layers:
 
 - Unit: auth manager, retry policy, error normalization, request building.
 - Integration: module clients against mocked HTTP transport.
-- Contract: validate SDK expectations against contract samples for both `role-node` and `role-serverpod`.
+- Contract: validate SDK expectations against `role-node` contract samples as a required gate; run `role-serverpod` contract checks as experimental coverage until stable support is declared.
 
-Dual-backend test requirements:
+Provider test requirements:
 
-- Each public SDK method has provider parity tests (`node` and `serverpod`).
+- Each stable public SDK method must have `role-node` integration coverage.
+- `role-serverpod` parity tests are tracked and expanded incrementally; gaps are documented in `docs/CONTRACT_MATRIX.md`.
 - Capability tests verify unsupported methods fail with predictable typed errors.
 - Mapper tests lock transformation behavior for both provider families.
 
@@ -327,7 +336,7 @@ Initial CI gates:
 - Unit + integration tests
 - Build
 
-## 10) Release and compatibility policy
+## 11) Release and compatibility policy
 
 - Semver for SDK package.
 - Backward-compatible additions: minor.
@@ -337,32 +346,32 @@ Initial CI gates:
 Compatibility matrix to maintain in docs:
 
 - SDK version -> minimum tested `role-node` version.
-- SDK version -> minimum tested `role-serverpod` version.
+- SDK version -> `role-serverpod` compatibility state (`experimental` until stable support is declared, then minimum tested version).
 
-## 11) Security considerations
+## 12) Security considerations
 
 - Never log raw secrets/tokens by default.
 - Redact known sensitive headers and query keys in debug output.
 - Support `AbortController` for cancellation.
 - Safe defaults for timeout and retry.
 
-## 12) Suggested first milestone scope
+## 13) Suggested first milestone scope
 
-M1 should ship a practical baseline:
+M1 should ship a practical baseline with official `role-node` support:
 
 - SDK core (`client`, transport, auth manager, retry, error model)
 - provider adapter boundary (`node-rest` + `serverpod-rpc` skeleton)
-- `auth` + `workspaces` + `collections` modules for both providers
+- `auth` + `workspaces` + `collections` modules with production-ready `role-node` paths and experimental `role-serverpod` paths
 - token refresh flow
 - typed response models
 - minimal docs and examples
 
 Then expand in M2:
 
-- `environments`, `runs`, `import-export` for both providers
+- `environments`, `runs`, `import-export` with `role-node` as the release baseline and `role-serverpod` parity tracked progressively
 - workspace convenience API (`inWorkspace`)
 - middleware hooks and advanced retry policy
 
-## 13) Contract matrix reference
+## 14) Contract matrix reference
 
 Method-level backend parity is tracked in `docs/CONTRACT_MATRIX.md`.

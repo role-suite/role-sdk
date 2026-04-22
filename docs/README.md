@@ -1,6 +1,12 @@
 # Role SDK Documentation Index
 
-This folder contains planning and architecture documentation for the dual-backend SDK (`role-node` + `role-serverpod`).
+This folder contains planning and architecture documentation for the SDK with a v1-first `role-node` baseline and experimental `role-serverpod` support.
+
+## Backend support policy (v1)
+
+- `role-node` is the primary supported backend for v1 releases.
+- `role-serverpod` is documented as experimental until parity and integration coverage are complete and a stable support declaration is made.
+- Provider documentation should reflect current maturity; avoid positioning both providers as equally supported before stability criteria are met.
 
 ## Recommended reading order
 
