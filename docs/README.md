@@ -47,6 +47,7 @@ The SDK must not maintain route or schema assumptions independently of the backe
 ### Sync workflow
 
 1. **Fetch contracts** (manual or CI-triggered):
+
    ```bash
    # Option A: Clone role-node alongside role-sdk
    git clone https://github.com/.../role-node.git ../role-node
@@ -54,9 +55,11 @@ The SDK must not maintain route or schema assumptions independently of the backe
    ```
 
 2. **Validate SDK mappings**:
+
    ```bash
    pnpm test:contracts
    ```
+
    This runs contract validation tests that verify SDK route mappings match backend contracts.
 
 3. **Update on drift**:
@@ -68,6 +71,7 @@ The SDK must not maintain route or schema assumptions independently of the backe
 ### CI contract validation
 
 The CI pipeline includes a contract sync job that:
+
 - Checks out or fetches the latest contract artifacts (if available)
 - Validates SDK provider mappings against contract fixtures
 - Fails the build if SDK route assumptions drift from contracts
@@ -75,27 +79,27 @@ The CI pipeline includes a contract sync job that:
 Add the following job to `.github/workflows/ci.yml`:
 
 ```yaml
-  contract-sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout SDK
-        uses: actions/checkout@v4
+contract-sync:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout SDK
+      uses: actions/checkout@v4
 
-      - name: Checkout role-node contracts
-        uses: actions/checkout@v4
-        with:
-          repository: your-org/role-node
-          path: ../role-node
-          fetch-depth: 0
+    - name: Checkout role-node contracts
+      uses: actions/checkout@v4
+      with:
+        repository: your-org/role-node
+        path: ../role-node
+        fetch-depth: 0
 
-      - name: Copy contract fixtures
-        run: |
-          mkdir -p contracts/role-node
-          cp -r ../role-node/contracts/. contracts/role-node/ || echo "No contracts found"
+    - name: Copy contract fixtures
+      run: |
+        mkdir -p contracts/role-node
+        cp -r ../role-node/contracts/. contracts/role-node/ || echo "No contracts found"
 
-      - name: Validate contract mappings
-        run: pnpm test:contracts || true
-        continue-on-error: true
+    - name: Validate contract mappings
+      run: pnpm test:contracts || true
+      continue-on-error: true
 ```
 
 ### Contract test script

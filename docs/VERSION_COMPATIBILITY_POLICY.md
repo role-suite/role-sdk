@@ -43,8 +43,8 @@ This matrix should be published in release notes and `README`.
 ### Tested Version Matrix
 
 | SDK Version | role-node Min | role-serverpod Min |
-|-------------|---------------|--------------------|
-| 0.x.x (dev) | Not specified | Not specified |
+| ----------- | ------------- | ------------------ |
+| 0.x.x (dev) | Not specified | Not specified      |
 
 Note: Official version compatibility will be declared at v1.0.0 release.
 

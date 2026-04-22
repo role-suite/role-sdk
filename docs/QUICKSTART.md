@@ -213,14 +213,14 @@ try {
 
 ### `createRoleSdk(config)`
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `backend` | `"node"` or `"serverpod"` | required | Backend provider |
-| `baseUrl` | `string` | required | API base URL |
-| `timeoutMs` | `number` | 30000 | Request timeout |
-| `retry` | `RetryConfig` | see below | Retry options |
-| `auth` | `AuthConfig` | see below | Auth options |
-| `hooks` | `HooksConfig` | optional | Request hooks |
+| Option      | Type                      | Default   | Description      |
+| ----------- | ------------------------- | --------- | ---------------- |
+| `backend`   | `"node"` or `"serverpod"` | required  | Backend provider |
+| `baseUrl`   | `string`                  | required  | API base URL     |
+| `timeoutMs` | `number`                  | 30000     | Request timeout  |
+| `retry`     | `RetryConfig`             | see below | Retry options    |
+| `auth`      | `AuthConfig`              | see below | Auth options     |
+| `hooks`     | `HooksConfig`             | optional  | Request hooks    |
 
 ### RetryConfig
 
