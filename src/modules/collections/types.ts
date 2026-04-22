@@ -1,5 +1,8 @@
 import type { Id } from "../../config.js";
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type CollectionSummary = {
   id: Id;
   workspaceId: Id;
@@ -9,12 +12,18 @@ export type CollectionSummary = {
   updatedAt?: string;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type CreateCollectionInput = {
   workspaceId: Id;
   name: string;
   description?: string;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type UpdateCollectionInput = {
   workspaceId: Id;
   collectionId: Id;
@@ -22,6 +31,9 @@ export type UpdateCollectionInput = {
   description?: string;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type CollectionFolder = {
   id: Id;
   workspaceId: Id;
@@ -33,6 +45,9 @@ export type CollectionFolder = {
   updatedAt?: string;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type CreateCollectionFolderInput = {
   workspaceId: Id;
   collectionId: Id;
@@ -41,6 +56,9 @@ export type CreateCollectionFolderInput = {
   position?: number;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type UpdateCollectionFolderInput = {
   workspaceId: Id;
   collectionId: Id;
@@ -50,6 +68,9 @@ export type UpdateCollectionFolderInput = {
   position?: number;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type CollectionEndpoint = {
   id: Id;
   workspaceId: Id;
@@ -64,6 +85,9 @@ export type CollectionEndpoint = {
   updatedAt?: string;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type CreateCollectionEndpointInput = {
   workspaceId: Id;
   collectionId: Id;
@@ -75,6 +99,9 @@ export type CreateCollectionEndpointInput = {
   auth?: Record<string, unknown>;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type UpdateCollectionEndpointInput = {
   workspaceId: Id;
   collectionId: Id;
@@ -87,6 +114,9 @@ export type UpdateCollectionEndpointInput = {
   auth?: Record<string, unknown>;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type EndpointExample = {
   id: Id;
   workspaceId: Id;
@@ -99,6 +129,9 @@ export type EndpointExample = {
   updatedAt?: string;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type CreateEndpointExampleInput = {
   workspaceId: Id;
   collectionId: Id;
@@ -108,6 +141,9 @@ export type CreateEndpointExampleInput = {
   response?: unknown;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type UpdateEndpointExampleInput = {
   workspaceId: Id;
   collectionId: Id;

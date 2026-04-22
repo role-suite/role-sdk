@@ -2,6 +2,9 @@ import type { RoleSdkErrorShape } from "./core/errors/sdk-error.js";
 
 export type Id = string | number;
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type TokenPair = {
   accessToken: string;
   refreshToken?: string;
@@ -9,6 +12,9 @@ export type TokenPair = {
   refreshTokenTtlSeconds?: number;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type TokenStore = {
   get: () => Promise<TokenPair | null> | TokenPair | null;
   set: (tokens: TokenPair | null) => Promise<void> | void;

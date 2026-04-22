@@ -1,5 +1,8 @@
 import type { Id } from "../../config.js";
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type RunSource =
   | {
       kind: "adhoc";
@@ -18,12 +21,18 @@ export type RunSource =
       variables?: Record<string, string | number | boolean>;
     };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type CreateRunInput = {
   workspaceId: Id;
   source: RunSource;
   environmentId?: Id;
 };
 
+/**
+ * @experimental This type may change before 1.0.0.
+ */
 export type RunExecutionResult = {
   id: Id;
   workspaceId: Id;
