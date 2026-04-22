@@ -60,9 +60,7 @@ describe("workspaces module", () => {
   describe("create", () => {
     it("creates workspace", async () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
-        return Promise.resolve(
-          nodeEnvelope({ id: "ws-new", name: "New Workspace" })
-        );
+        return Promise.resolve(nodeEnvelope({ id: "ws-new", name: "New Workspace" }));
       });
 
       const sdk = createRoleSdk({
@@ -127,9 +125,7 @@ describe("workspaces module", () => {
 
     it("updates member role", async () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
-        return Promise.resolve(
-          nodeEnvelope({ id: "m-1", workspaceId: "ws-1", role: "admin" })
-        );
+        return Promise.resolve(nodeEnvelope({ id: "m-1", workspaceId: "ws-1", role: "admin" }));
       });
 
       const sdk = createRoleSdk({
@@ -173,7 +169,12 @@ describe("workspaces module", () => {
     it("creates invitation", async () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
         return Promise.resolve(
-          nodeEnvelope({ id: "inv-1", workspaceId: "ws-1", email: "invite@test.com", token: "tok-123" })
+          nodeEnvelope({
+            id: "inv-1",
+            workspaceId: "ws-1",
+            email: "invite@test.com",
+            token: "tok-123"
+          })
         );
       });
 
@@ -195,9 +196,7 @@ describe("workspaces module", () => {
 
     it("joins workspace with token", async () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
-        return Promise.resolve(
-          nodeEnvelope({ id: "ws-1", name: "Joined Workspace" })
-        );
+        return Promise.resolve(nodeEnvelope({ id: "ws-1", name: "Joined Workspace" }));
       });
 
       const sdk = createRoleSdk({
@@ -235,9 +234,7 @@ describe("workspaces module", () => {
   describe("convertToTeam", () => {
     it("converts workspace to team", async () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
-        return Promise.resolve(
-          nodeEnvelope({ id: "ws-1", name: "Team Workspace" })
-        );
+        return Promise.resolve(nodeEnvelope({ id: "ws-1", name: "Team Workspace" }));
       });
 
       const sdk = createRoleSdk({

@@ -1,10 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-import {
-  createRoleSdk,
-  type RoleSdkClient,
-  type RoleSdkConfig
-} from "../../src/index.js";
+import { createRoleSdk, type RoleSdkClient, type RoleSdkConfig } from "../../src/index.js";
 
 const createTypedSdk: (config: RoleSdkConfig) => RoleSdkClient = createRoleSdk;
 

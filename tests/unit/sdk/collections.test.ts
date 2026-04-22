@@ -37,7 +37,12 @@ describe("collections module", () => {
     it("gets collection by id", async () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
         return Promise.resolve(
-          nodeEnvelope({ id: "c-1", workspaceId: "ws-1", name: "Collection 1", description: "My API" })
+          nodeEnvelope({
+            id: "c-1",
+            workspaceId: "ws-1",
+            name: "Collection 1",
+            description: "My API"
+          })
         );
       });
 
@@ -149,7 +154,12 @@ describe("collections module", () => {
     it("creates folder", async () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
         return Promise.resolve(
-          nodeEnvelope({ id: "f-new", workspaceId: "ws-1", collectionId: "c-1", name: "New Folder" })
+          nodeEnvelope({
+            id: "f-new",
+            workspaceId: "ws-1",
+            collectionId: "c-1",
+            name: "New Folder"
+          })
         );
       });
 
@@ -172,7 +182,12 @@ describe("collections module", () => {
     it("updates folder", async () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
         return Promise.resolve(
-          nodeEnvelope({ id: "f-1", workspaceId: "ws-1", collectionId: "c-1", name: "Renamed Folder" })
+          nodeEnvelope({
+            id: "f-1",
+            workspaceId: "ws-1",
+            collectionId: "c-1",
+            name: "Renamed Folder"
+          })
         );
       });
 
@@ -220,8 +235,22 @@ describe("collections module", () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
         return Promise.resolve(
           nodeEnvelope([
-            { id: "e-1", workspaceId: "ws-1", collectionId: "c-1", name: "Get Users", method: "GET", url: "/users" },
-            { id: "e-2", workspaceId: "ws-1", collectionId: "c-1", name: "Create User", method: "POST", url: "/users" }
+            {
+              id: "e-1",
+              workspaceId: "ws-1",
+              collectionId: "c-1",
+              name: "Get Users",
+              method: "GET",
+              url: "/users"
+            },
+            {
+              id: "e-2",
+              workspaceId: "ws-1",
+              collectionId: "c-1",
+              name: "Create User",
+              method: "POST",
+              url: "/users"
+            }
           ])
         );
       });
@@ -278,7 +307,13 @@ describe("collections module", () => {
     it("updates endpoint", async () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
         return Promise.resolve(
-          nodeEnvelope({ id: "e-1", workspaceId: "ws-1", collectionId: "c-1", name: "Updated Endpoint", method: "POST" })
+          nodeEnvelope({
+            id: "e-1",
+            workspaceId: "ws-1",
+            collectionId: "c-1",
+            name: "Updated Endpoint",
+            method: "POST"
+          })
         );
       });
 
@@ -327,8 +362,20 @@ describe("collections module", () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
         return Promise.resolve(
           nodeEnvelope([
-            { id: "ex-1", workspaceId: "ws-1", collectionId: "c-1", endpointId: "e-1", name: "Example 1" },
-            { id: "ex-2", workspaceId: "ws-1", collectionId: "c-1", endpointId: "e-1", name: "Example 2" }
+            {
+              id: "ex-1",
+              workspaceId: "ws-1",
+              collectionId: "c-1",
+              endpointId: "e-1",
+              name: "Example 1"
+            },
+            {
+              id: "ex-2",
+              workspaceId: "ws-1",
+              collectionId: "c-1",
+              endpointId: "e-1",
+              name: "Example 2"
+            }
           ])
         );
       });
@@ -386,7 +433,13 @@ describe("collections module", () => {
     it("updates endpoint example", async () => {
       const fetchMock = vi.fn<typeof fetch>(() => {
         return Promise.resolve(
-          nodeEnvelope({ id: "ex-1", workspaceId: "ws-1", collectionId: "c-1", endpointId: "e-1", name: "Updated Example" })
+          nodeEnvelope({
+            id: "ex-1",
+            workspaceId: "ws-1",
+            collectionId: "c-1",
+            endpointId: "e-1",
+            name: "Updated Example"
+          })
         );
       });
 
