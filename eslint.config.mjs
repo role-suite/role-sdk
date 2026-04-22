@@ -4,7 +4,7 @@ import tsPlugin from "@typescript-eslint/eslint-plugin";
 
 export default [
   {
-    ignores: ["dist/**", "coverage/**"]
+    ignores: ["dist/**", "coverage/**", "vitest.*.config.ts"]
   },
   eslint.configs.recommended,
   {
@@ -21,7 +21,8 @@ export default [
         URL: "readonly",
         clearTimeout: "readonly",
         fetch: "readonly",
-        setTimeout: "readonly"
+        setTimeout: "readonly",
+        process: "readonly"
       }
     },
     plugins: {
