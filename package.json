@@ -1,12 +1,29 @@
 {
   "name": "role-sdk",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Official TypeScript SDK for Role APIs",
   "license": "MIT",
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/role-co/role-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/role-co/role-sdk/issues"
+  },
+  "homepage": "https://github.com/role-co/role-sdk#readme",
+  "keywords": [
+    "role",
+    "sdk",
+    "api",
+    "typescript",
+    "client",
+    "rest"
+  ],
+  "author": "Role Technologies, Inc. <hello@role.com>",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
