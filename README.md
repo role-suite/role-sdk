@@ -117,35 +117,66 @@ console.log(run.id, run.status);
 
 ## Error handling
 
-All SDK errors extend `RoleSdkError` with typed codes:
+All SDK errors include these properties:
+
+- `code` — Typed error code (see table below)
+- `message` — Human-readable description
+- `status` — HTTP status code (if available)
+- `requestId` — Backend request ID for debugging
+- `details` — Safe diagnostic data
+- `retryable` — Whether the operation can be retried
 
 ```ts
-import { RoleApiError, RoleAuthError, RoleValidationError } from "role-sdk";
+import { ErrorCodes, RoleApiError, RoleAuthError, RoleNetworkError, RoleValidationError } from "role-sdk";
 
 try {
   await sdk.auth.login({ email, password });
 } catch (error) {
   if (error instanceof RoleAuthError) {
-    console.log(error.code);   // ROLE_AUTH_INVALID_CREDENTIALS
+    console.log(error.code);      // e.g. "ROLE_AUTH_INVALID_CREDENTIALS"
     console.log(error.message);
+    console.log(error.retryable); // false for invalid credentials
+  } else if (error instanceof RoleNetworkError) {
+    console.log(error.code);      // e.g. "ROLE_NETWORK_TIMEOUT"
+    console.log(error.retryable); // true - safe to retry
   } else if (error instanceof RoleApiError) {
-    console.log(error.code);   // ROLE_API_ERROR
-    console.log(error.status); // HTTP status if available
+    console.log(error.code);      // e.g. "ROLE_API_ERROR"
+    console.log(error.status);   // HTTP status
+    console.log(error.requestId);  // for support
   } else if (error instanceof RoleValidationError) {
-    console.log(error.code);   // ROLE_VALIDATION_ERROR
-    console.log(error.details);
+    console.log(error.code);      // "ROLE_VALIDATION_ERROR"
+    console.log(error.details);   // field-level errors
   }
 }
 ```
 
-Error codes:
+### Error codes
 
-- `ROLE_API_ERROR` — Backend returned an error
-- `ROLE_AUTH_INVALID_CREDENTIALS` — Wrong email/password
-- `ROLE_AUTH_TOKEN_EXPIRED` — Access token expired
-- `ROLE_VALIDATION_ERROR` — Invalid input
-- `ROLE_NETWORK_ERROR` — Connection issue
-- `ROLE_UNKNOWN_ERROR` — Unexpected failure
+| Code | Class | Retryable | Description |
+|------|-------|-----------|-------------|
+| `ROLE_API_ERROR` | RoleApiError | ❌ | Backend returned an error |
+| `ROLE_AUTH_INVALID_CREDENTIALS` | RoleAuthError | ❌ | Wrong email or password |
+| `ROLE_AUTH_TOKEN_EXPIRED` | RoleAuthError | ✅ | Access token expired (auto-refresh attempted) |
+| `ROLE_AUTH_TOKEN_INVALID` | RoleAuthError | ❌ | Malformed or revoked token |
+| `ROLE_AUTH_REFRESH_FAILED` | RoleAuthError | ❌ | Token refresh failed |
+| `ROLE_VALIDATION_ERROR` | RoleValidationError | ❌ | Invalid input parameters |
+| `ROLE_NETWORK_ERROR` | RoleNetworkError | ❌ | General network failure |
+| `ROLE_NETWORK_TIMEOUT` | RoleNetworkError | ✅ | Request timed out |
+| `ROLE_NETWORK_CONNECTION_REFUSED` | RoleNetworkError | ✅ | Connection refused |
+| `ROLE_NETWORK_DNS_ERROR` | RoleNetworkError | ✅ | DNS resolution failed |
+| `ROLE_UNKNOWN_ERROR` | RoleUnknownError | ❌ | Unexpected failure |
+
+### Using ErrorCodes
+
+Import the constants to avoid typos:
+
+```ts
+import { ErrorCodes, RoleAuthError } from "role-sdk";
+
+if (error.code === ErrorCodes.AUTH_TOKEN_EXPIRED) {
+  // Handle token expiry
+}
+```
 
 ## Compatibility matrix
 

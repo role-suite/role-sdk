@@ -67,6 +67,8 @@ export type {
   ImportExportJob
 } from "./modules/import-export/types.js";
 export {
+  ErrorCodes,
+  type ErrorCode,
   RoleApiError,
   RoleAuthError,
   RoleNetworkError,
