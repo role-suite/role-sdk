@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequest
 void main() {
-  final PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequest? instance = /* PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequest(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequest, () {
     // GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerAuthAnyOf auth
@@ -17,7 +17,7 @@ void main() {
       // TODO
     });
 
-    // List<GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner> headers
+    // BuiltList<GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner> headers
     test('to test the property `headers`', () async {
       // TODO
     });
@@ -27,12 +27,12 @@ void main() {
       // TODO
     });
 
-    // List<GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner> queryParams
+    // BuiltList<GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner> queryParams
     test('to test the property `queryParams`', () async {
       // TODO
     });
 
-    // Map<String, String> resolvedVariables
+    // BuiltMap<String, String> resolvedVariables
     test('to test the property `resolvedVariables`', () async {
       // TODO
     });

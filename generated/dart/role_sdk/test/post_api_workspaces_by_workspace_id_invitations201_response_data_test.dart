@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdInvitations201ResponseData
 void main() {
-  final PostApiWorkspacesByWorkspaceIdInvitations201ResponseData? instance = /* PostApiWorkspacesByWorkspaceIdInvitations201ResponseData(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiWorkspacesByWorkspaceIdInvitations201ResponseData, () {
     // String email

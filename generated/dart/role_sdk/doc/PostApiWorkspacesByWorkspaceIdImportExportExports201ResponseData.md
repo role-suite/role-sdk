@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **format** | **String** |  | 
 **id** | **int** |  | 
 **status** | **String** |  | 
-**summary** | **Map&lt;String, Object&gt;** |  | 
+**summary** | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md) |  | 
 **type** | **String** |  | 
 **workspaceId** | **int** |  | 
 

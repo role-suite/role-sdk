@@ -6,104 +6,71 @@
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs_request_source_one_of1.dart';
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs_request_source_one_of_request.dart';
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs_request_source_one_of.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
 
 part 'post_api_workspaces_by_workspace_id_runs_request_source.g.dart';
 
+/// PostApiWorkspacesByWorkspaceIdRunsRequestSource
+///
+/// Properties:
+/// * [request] 
+/// * [type] 
+/// * [collectionId] 
+/// * [endpointId] 
+@BuiltValue()
+abstract class PostApiWorkspacesByWorkspaceIdRunsRequestSource implements Built<PostApiWorkspacesByWorkspaceIdRunsRequestSource, PostApiWorkspacesByWorkspaceIdRunsRequestSourceBuilder> {
+  /// One Of [PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf], [PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1]
+  OneOf get oneOf;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class PostApiWorkspacesByWorkspaceIdRunsRequestSource {
-  /// Returns a new [PostApiWorkspacesByWorkspaceIdRunsRequestSource] instance.
-  PostApiWorkspacesByWorkspaceIdRunsRequestSource({
+  PostApiWorkspacesByWorkspaceIdRunsRequestSource._();
 
-    required  this.request,
+  factory PostApiWorkspacesByWorkspaceIdRunsRequestSource([void updates(PostApiWorkspacesByWorkspaceIdRunsRequestSourceBuilder b)]) = _$PostApiWorkspacesByWorkspaceIdRunsRequestSource;
 
-    required  this.type,
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PostApiWorkspacesByWorkspaceIdRunsRequestSourceBuilder b) => b;
 
-    required  this.collectionId,
+  @BuiltValueSerializer(custom: true)
+  static Serializer<PostApiWorkspacesByWorkspaceIdRunsRequestSource> get serializer => _$PostApiWorkspacesByWorkspaceIdRunsRequestSourceSerializer();
+}
 
-    required  this.endpointId,
-  });
-
-  @JsonKey(
-    
-    name: r'request',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequest request;
-
-
-
-  @JsonKey(
-    
-    name: r'type',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String type;
-
-
-
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'collectionId',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final int collectionId;
-
-
-
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'endpointId',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final int endpointId;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is PostApiWorkspacesByWorkspaceIdRunsRequestSource &&
-      other.request == request &&
-      other.type == type &&
-      other.collectionId == collectionId &&
-      other.endpointId == endpointId;
-
-    @override
-    int get hashCode =>
-        request.hashCode +
-        type.hashCode +
-        collectionId.hashCode +
-        endpointId.hashCode;
-
-  factory PostApiWorkspacesByWorkspaceIdRunsRequestSource.fromJson(Map<String, dynamic> json) => _$PostApiWorkspacesByWorkspaceIdRunsRequestSourceFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostApiWorkspacesByWorkspaceIdRunsRequestSourceToJson(this);
+class _$PostApiWorkspacesByWorkspaceIdRunsRequestSourceSerializer implements PrimitiveSerializer<PostApiWorkspacesByWorkspaceIdRunsRequestSource> {
+  @override
+  final Iterable<Type> types = const [PostApiWorkspacesByWorkspaceIdRunsRequestSource, _$PostApiWorkspacesByWorkspaceIdRunsRequestSource];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'PostApiWorkspacesByWorkspaceIdRunsRequestSource';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdRunsRequestSource object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdRunsRequestSource object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final oneOf = object.oneOf;
+    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
+  }
+
+  @override
+  PostApiWorkspacesByWorkspaceIdRunsRequestSource deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = PostApiWorkspacesByWorkspaceIdRunsRequestSourceBuilder();
+    Object? oneOfDataSrc;
+    final targetType = const FullType(OneOf, [FullType(PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf), FullType(PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1), ]);
+    oneOfDataSrc = serialized;
+    result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
+    return result.build();
+  }
 }
 

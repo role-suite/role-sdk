@@ -14,12 +14,12 @@ Name | Type | Description | Notes
 **createdAt** | **String** |  | 
 **createdByUserId** | **int** |  | 
 **folderId** | [**PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId**](PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId.md) |  | 
-**headers** | [**List&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner.md) |  | 
+**headers** | [**BuiltList&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner.md) |  | 
 **id** | **int** |  | 
 **method** | **String** |  | 
 **name** | **String** |  | 
 **position** | **int** |  | 
-**queryParams** | [**List&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner.md) |  | 
+**queryParams** | [**BuiltList&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner.md) |  | 
 **updatedAt** | **String** |  | 
 **url** | **String** |  | 
 

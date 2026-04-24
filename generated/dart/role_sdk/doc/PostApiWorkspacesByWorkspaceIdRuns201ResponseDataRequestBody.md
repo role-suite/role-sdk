@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **contentType** | **String** |  | [optional] 
 **mode** | **String** |  | 
 **raw** | **String** |  | 
-**entries** | **List&lt;Object&gt;** |  | 
+**entries** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md) |  | 
 **dataBase64** | **String** |  | 
 **fileName** | **String** |  | 
 

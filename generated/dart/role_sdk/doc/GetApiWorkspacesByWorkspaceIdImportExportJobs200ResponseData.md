@@ -8,7 +8,7 @@ import 'package:role_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseData&gt;**](PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseData.md) |  | 
+**items** | [**BuiltList&lt;PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseData&gt;**](PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseData.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

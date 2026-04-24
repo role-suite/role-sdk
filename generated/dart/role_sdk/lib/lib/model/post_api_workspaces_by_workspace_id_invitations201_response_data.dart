@@ -3,147 +3,204 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'post_api_workspaces_by_workspace_id_invitations201_response_data.g.dart';
 
+/// PostApiWorkspacesByWorkspaceIdInvitations201ResponseData
+///
+/// Properties:
+/// * [email] 
+/// * [expiresAt] 
+/// * [id] 
+/// * [role] 
+/// * [token] 
+/// * [workspaceId] 
+@BuiltValue()
+abstract class PostApiWorkspacesByWorkspaceIdInvitations201ResponseData implements Built<PostApiWorkspacesByWorkspaceIdInvitations201ResponseData, PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataBuilder> {
+  @BuiltValueField(wireName: r'email')
+  String get email;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class PostApiWorkspacesByWorkspaceIdInvitations201ResponseData {
-  /// Returns a new [PostApiWorkspacesByWorkspaceIdInvitations201ResponseData] instance.
-  PostApiWorkspacesByWorkspaceIdInvitations201ResponseData({
+  @BuiltValueField(wireName: r'expiresAt')
+  String get expiresAt;
 
-    required  this.email,
+  @BuiltValueField(wireName: r'id')
+  int get id;
 
-    required  this.expiresAt,
+  @BuiltValueField(wireName: r'role')
+  PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum get role;
+  // enum roleEnum {  admin,  member,  };
 
-    required  this.id,
+  @BuiltValueField(wireName: r'token')
+  String get token;
 
-    required  this.role,
+  @BuiltValueField(wireName: r'workspaceId')
+  int get workspaceId;
 
-    required  this.token,
+  PostApiWorkspacesByWorkspaceIdInvitations201ResponseData._();
 
-    required  this.workspaceId,
-  });
+  factory PostApiWorkspacesByWorkspaceIdInvitations201ResponseData([void updates(PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataBuilder b)]) = _$PostApiWorkspacesByWorkspaceIdInvitations201ResponseData;
 
-  @JsonKey(
-    
-    name: r'email',
-    required: true,
-    includeIfNull: false
-  )
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataBuilder b) => b;
 
+  @BuiltValueSerializer(custom: true)
+  static Serializer<PostApiWorkspacesByWorkspaceIdInvitations201ResponseData> get serializer => _$PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataSerializer();
+}
 
-  final String email;
-
-
-
-  @JsonKey(
-    
-    name: r'expiresAt',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String expiresAt;
-
-
-
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'id',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final int id;
-
-
-
-  @JsonKey(
-    
-    name: r'role',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum role;
-
-
-
-  @JsonKey(
-    
-    name: r'token',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String token;
-
-
-
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'workspaceId',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final int workspaceId;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is PostApiWorkspacesByWorkspaceIdInvitations201ResponseData &&
-      other.email == email &&
-      other.expiresAt == expiresAt &&
-      other.id == id &&
-      other.role == role &&
-      other.token == token &&
-      other.workspaceId == workspaceId;
-
-    @override
-    int get hashCode =>
-        email.hashCode +
-        expiresAt.hashCode +
-        id.hashCode +
-        role.hashCode +
-        token.hashCode +
-        workspaceId.hashCode;
-
-  factory PostApiWorkspacesByWorkspaceIdInvitations201ResponseData.fromJson(Map<String, dynamic> json) => _$PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataToJson(this);
+class _$PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataSerializer implements PrimitiveSerializer<PostApiWorkspacesByWorkspaceIdInvitations201ResponseData> {
+  @override
+  final Iterable<Type> types = const [PostApiWorkspacesByWorkspaceIdInvitations201ResponseData, _$PostApiWorkspacesByWorkspaceIdInvitations201ResponseData];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'PostApiWorkspacesByWorkspaceIdInvitations201ResponseData';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdInvitations201ResponseData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    yield r'email';
+    yield serializers.serialize(
+      object.email,
+      specifiedType: const FullType(String),
+    );
+    yield r'expiresAt';
+    yield serializers.serialize(
+      object.expiresAt,
+      specifiedType: const FullType(String),
+    );
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(int),
+    );
+    yield r'role';
+    yield serializers.serialize(
+      object.role,
+      specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum),
+    );
+    yield r'token';
+    yield serializers.serialize(
+      object.token,
+      specifiedType: const FullType(String),
+    );
+    yield r'workspaceId';
+    yield serializers.serialize(
+      object.workspaceId,
+      specifiedType: const FullType(int),
+    );
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdInvitations201ResponseData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'email':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.email = valueDes;
+          break;
+        case r'expiresAt':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.expiresAt = valueDes;
+          break;
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.id = valueDes;
+          break;
+        case r'role':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum),
+          ) as PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum;
+          result.role = valueDes;
+          break;
+        case r'token':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.token = valueDes;
+          break;
+        case r'workspaceId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.workspaceId = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  PostApiWorkspacesByWorkspaceIdInvitations201ResponseData deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
 }
 
+class PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum extends EnumClass {
 
-enum PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum {
-  @JsonValue(r'admin')
-  admin,
-  @JsonValue(r'member')
-  member,
-  @JsonValue(r'unknown_default_open_api')
-  unknownDefaultOpenApi,
+  @BuiltValueEnumConst(wireName: r'admin')
+  static const PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum admin = _$postApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum_admin;
+  @BuiltValueEnumConst(wireName: r'member')
+  static const PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum member = _$postApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum_member;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum unknownDefaultOpenApi = _$postApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum_unknownDefaultOpenApi;
+
+  static Serializer<PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum> get serializer => _$postApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnumSerializer;
+
+  const PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum._(String name): super(name);
+
+  static BuiltSet<PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum> get values => _$postApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnumValues;
+  static PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum valueOf(String name) => _$postApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnumValueOf(name);
 }
-
 

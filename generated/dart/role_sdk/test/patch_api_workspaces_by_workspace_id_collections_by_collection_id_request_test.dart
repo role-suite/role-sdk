@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest
 void main() {
-  final PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest? instance = /* PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest(...) */ null;
-  // TODO add properties to the entity
+  final instance = PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequestBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest, () {
     // String description

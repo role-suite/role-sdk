@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiAuthLogin400ResponseError
 void main() {
-  final PostApiAuthLogin400ResponseError? instance = /* PostApiAuthLogin400ResponseError(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiAuthLogin400ResponseErrorBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiAuthLogin400ResponseError, () {
     // String code

@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200Response
 void main() {
-  final GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200Response? instance = /* GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200Response(...) */ null;
-  // TODO add properties to the entity
+  final instance = GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200ResponseBuilder();
+  // TODO add properties to the builder and call build()
 
   group(GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200Response, () {
     // GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200ResponseData data

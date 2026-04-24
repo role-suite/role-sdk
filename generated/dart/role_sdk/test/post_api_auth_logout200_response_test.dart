@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiAuthLogout200Response
 void main() {
-  final PostApiAuthLogout200Response? instance = /* PostApiAuthLogout200Response(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiAuthLogout200ResponseBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiAuthLogout200Response, () {
     // PostApiAuthLogout200ResponseData data

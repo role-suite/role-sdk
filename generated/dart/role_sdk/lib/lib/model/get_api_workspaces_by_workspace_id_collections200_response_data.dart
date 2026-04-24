@@ -4,54 +4,106 @@
 
 // ignore_for_file: unused_element
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_collections200_response_data_items_inner.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'get_api_workspaces_by_workspace_id_collections200_response_data.g.dart';
 
+/// GetApiWorkspacesByWorkspaceIdCollections200ResponseData
+///
+/// Properties:
+/// * [items] 
+@BuiltValue()
+abstract class GetApiWorkspacesByWorkspaceIdCollections200ResponseData implements Built<GetApiWorkspacesByWorkspaceIdCollections200ResponseData, GetApiWorkspacesByWorkspaceIdCollections200ResponseDataBuilder> {
+  @BuiltValueField(wireName: r'items')
+  BuiltList<GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner> get items;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class GetApiWorkspacesByWorkspaceIdCollections200ResponseData {
-  /// Returns a new [GetApiWorkspacesByWorkspaceIdCollections200ResponseData] instance.
-  GetApiWorkspacesByWorkspaceIdCollections200ResponseData({
+  GetApiWorkspacesByWorkspaceIdCollections200ResponseData._();
 
-    required  this.items,
-  });
+  factory GetApiWorkspacesByWorkspaceIdCollections200ResponseData([void updates(GetApiWorkspacesByWorkspaceIdCollections200ResponseDataBuilder b)]) = _$GetApiWorkspacesByWorkspaceIdCollections200ResponseData;
 
-  @JsonKey(
-    
-    name: r'items',
-    required: true,
-    includeIfNull: false
-  )
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(GetApiWorkspacesByWorkspaceIdCollections200ResponseDataBuilder b) => b;
 
+  @BuiltValueSerializer(custom: true)
+  static Serializer<GetApiWorkspacesByWorkspaceIdCollections200ResponseData> get serializer => _$GetApiWorkspacesByWorkspaceIdCollections200ResponseDataSerializer();
+}
 
-  final List<GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner> items;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is GetApiWorkspacesByWorkspaceIdCollections200ResponseData &&
-      other.items == items;
-
-    @override
-    int get hashCode =>
-        items.hashCode;
-
-  factory GetApiWorkspacesByWorkspaceIdCollections200ResponseData.fromJson(Map<String, dynamic> json) => _$GetApiWorkspacesByWorkspaceIdCollections200ResponseDataFromJson(json);
-
-  Map<String, dynamic> toJson() => _$GetApiWorkspacesByWorkspaceIdCollections200ResponseDataToJson(this);
+class _$GetApiWorkspacesByWorkspaceIdCollections200ResponseDataSerializer implements PrimitiveSerializer<GetApiWorkspacesByWorkspaceIdCollections200ResponseData> {
+  @override
+  final Iterable<Type> types = const [GetApiWorkspacesByWorkspaceIdCollections200ResponseData, _$GetApiWorkspacesByWorkspaceIdCollections200ResponseData];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'GetApiWorkspacesByWorkspaceIdCollections200ResponseData';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    GetApiWorkspacesByWorkspaceIdCollections200ResponseData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    yield r'items';
+    yield serializers.serialize(
+      object.items,
+      specifiedType: const FullType(BuiltList, [FullType(GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner)]),
+    );
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    GetApiWorkspacesByWorkspaceIdCollections200ResponseData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required GetApiWorkspacesByWorkspaceIdCollections200ResponseDataBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'items':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner)]),
+          ) as BuiltList<GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner>;
+          result.items.replace(valueDes);
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  GetApiWorkspacesByWorkspaceIdCollections200ResponseData deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = GetApiWorkspacesByWorkspaceIdCollections200ResponseDataBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
 }
 

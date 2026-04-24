@@ -3,11 +3,11 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf
 void main() {
-  final PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf? instance = /* PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOfBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf, () {
-    // List<Map<String, Object>> entries
+    // BuiltList<BuiltMap<String, JsonObject>> entries
     test('to test the property `entries`', () async {
       // TODO
     });

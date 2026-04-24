@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesJoinRequest
 void main() {
-  final PostApiWorkspacesJoinRequest? instance = /* PostApiWorkspacesJoinRequest(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiWorkspacesJoinRequestBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiWorkspacesJoinRequest, () {
     // String token

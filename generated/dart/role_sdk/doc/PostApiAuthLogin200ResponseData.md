@@ -8,7 +8,7 @@ import 'package:role_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**memberships** | [**List&lt;PostApiAuthLogin200ResponseDataMembershipsInner&gt;**](PostApiAuthLogin200ResponseDataMembershipsInner.md) |  | 
+**memberships** | [**BuiltList&lt;PostApiAuthLogin200ResponseDataMembershipsInner&gt;**](PostApiAuthLogin200ResponseDataMembershipsInner.md) |  | 
 **tokens** | [**PostApiAuthLogin200ResponseDataTokens**](PostApiAuthLogin200ResponseDataTokens.md) |  | 
 **user** | [**PostApiAuthLogin200ResponseDataUser**](PostApiAuthLogin200ResponseDataUser.md) |  | 
 **workspace** | [**PostApiAuthLogin200ResponseDataWorkspace**](PostApiAuthLogin200ResponseDataWorkspace.md) |  | 

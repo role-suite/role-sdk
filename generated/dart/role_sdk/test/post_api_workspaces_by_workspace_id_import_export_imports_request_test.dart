@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdImportExportImportsRequest
 void main() {
-  final PostApiWorkspacesByWorkspaceIdImportExportImportsRequest? instance = /* PostApiWorkspacesByWorkspaceIdImportExportImportsRequest(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiWorkspacesByWorkspaceIdImportExportImportsRequestBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiWorkspacesByWorkspaceIdImportExportImportsRequest, () {
     // String format (default value: 'json')
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // Map<String, Object> payload
+    // BuiltMap<String, JsonObject> payload
     test('to test the property `payload`', () async {
       // TODO
     });

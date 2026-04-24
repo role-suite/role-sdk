@@ -9,7 +9,7 @@ import 'package:role_sdk/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **body** | [**PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequestBody**](PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequestBody.md) |  | [optional] 
-**headers** | [**List&lt;PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestBodyAnyOf1EntriesInner&gt;**](PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestBodyAnyOf1EntriesInner.md) |  | [optional] 
+**headers** | [**BuiltList&lt;PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestBodyAnyOf1EntriesInner&gt;**](PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestBodyAnyOf1EntriesInner.md) |  | [optional] 
 **name** | **String** |  | [optional] 
 **position** | **int** |  | [optional] 
 **statusCode** | **int** |  | [optional] 

@@ -9,7 +9,7 @@ import 'package:role_sdk/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cursor** | [**GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor**](GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor.md) |  | 
-**items** | [**List&lt;GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner&gt;**](GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner.md) |  | 
+**items** | [**BuiltList&lt;GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner&gt;**](GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

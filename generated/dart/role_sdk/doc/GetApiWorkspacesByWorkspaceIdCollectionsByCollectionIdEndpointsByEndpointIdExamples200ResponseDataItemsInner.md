@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **createdAt** | **String** |  | 
 **createdByUserId** | **int** |  | 
 **endpointId** | **int** |  | 
-**headers** | [**List&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner.md) |  | 
+**headers** | [**BuiltList&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner.md) |  | 
 **id** | **int** |  | 
 **name** | **String** |  | 
 **position** | **int** |  | 

@@ -4,186 +4,244 @@
 
 // ignore_for_file: unused_element
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs201_response_data_error.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs201_response_data_response.dart';
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs201_response_data_duration_ms.dart';
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs201_response_data_request.dart';
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs201_response_data_completed_at.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'post_api_workspaces_by_workspace_id_runs201_response_data.g.dart';
 
+/// PostApiWorkspacesByWorkspaceIdRuns201ResponseData
+///
+/// Properties:
+/// * [completedAt] 
+/// * [durationMs] 
+/// * [error] 
+/// * [request] 
+/// * [response] 
+/// * [runId] 
+/// * [startedAt] 
+/// * [status] 
+@BuiltValue()
+abstract class PostApiWorkspacesByWorkspaceIdRuns201ResponseData implements Built<PostApiWorkspacesByWorkspaceIdRuns201ResponseData, PostApiWorkspacesByWorkspaceIdRuns201ResponseDataBuilder> {
+  @BuiltValueField(wireName: r'completedAt')
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAt get completedAt;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class PostApiWorkspacesByWorkspaceIdRuns201ResponseData {
-  /// Returns a new [PostApiWorkspacesByWorkspaceIdRuns201ResponseData] instance.
-  PostApiWorkspacesByWorkspaceIdRuns201ResponseData({
+  @BuiltValueField(wireName: r'durationMs')
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataDurationMs get durationMs;
 
-    required  this.completedAt,
+  @BuiltValueField(wireName: r'error')
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError get error;
 
-    required  this.durationMs,
+  @BuiltValueField(wireName: r'request')
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequest get request;
 
-    required  this.error,
+  @BuiltValueField(wireName: r'response')
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponse get response;
 
-    required  this.request,
+  @BuiltValueField(wireName: r'runId')
+  int get runId;
 
-    required  this.response,
+  @BuiltValueField(wireName: r'startedAt')
+  String get startedAt;
 
-    required  this.runId,
+  @BuiltValueField(wireName: r'status')
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum get status;
+  // enum statusEnum {  running,  completed,  failed,  cancelled,  };
 
-    required  this.startedAt,
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseData._();
 
-    required  this.status,
-  });
+  factory PostApiWorkspacesByWorkspaceIdRuns201ResponseData([void updates(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataBuilder b)]) = _$PostApiWorkspacesByWorkspaceIdRuns201ResponseData;
 
-  @JsonKey(
-    
-    name: r'completedAt',
-    required: true,
-    includeIfNull: false
-  )
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataBuilder b) => b;
 
+  @BuiltValueSerializer(custom: true)
+  static Serializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseData> get serializer => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataSerializer();
+}
 
-  final PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAt completedAt;
-
-
-
-  @JsonKey(
-    
-    name: r'durationMs',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final PostApiWorkspacesByWorkspaceIdRuns201ResponseDataDurationMs durationMs;
-
-
-
-  @JsonKey(
-    
-    name: r'error',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError error;
-
-
-
-  @JsonKey(
-    
-    name: r'request',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequest request;
-
-
-
-  @JsonKey(
-    
-    name: r'response',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponse response;
-
-
-
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'runId',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final int runId;
-
-
-
-  @JsonKey(
-    
-    name: r'startedAt',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String startedAt;
-
-
-
-  @JsonKey(
-    
-    name: r'status',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum status;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is PostApiWorkspacesByWorkspaceIdRuns201ResponseData &&
-      other.completedAt == completedAt &&
-      other.durationMs == durationMs &&
-      other.error == error &&
-      other.request == request &&
-      other.response == response &&
-      other.runId == runId &&
-      other.startedAt == startedAt &&
-      other.status == status;
-
-    @override
-    int get hashCode =>
-        completedAt.hashCode +
-        durationMs.hashCode +
-        error.hashCode +
-        request.hashCode +
-        response.hashCode +
-        runId.hashCode +
-        startedAt.hashCode +
-        status.hashCode;
-
-  factory PostApiWorkspacesByWorkspaceIdRuns201ResponseData.fromJson(Map<String, dynamic> json) => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataToJson(this);
+class _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataSerializer implements PrimitiveSerializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseData> {
+  @override
+  final Iterable<Type> types = const [PostApiWorkspacesByWorkspaceIdRuns201ResponseData, _$PostApiWorkspacesByWorkspaceIdRuns201ResponseData];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'PostApiWorkspacesByWorkspaceIdRuns201ResponseData';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdRuns201ResponseData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    yield r'completedAt';
+    yield serializers.serialize(
+      object.completedAt,
+      specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAt),
+    );
+    yield r'durationMs';
+    yield serializers.serialize(
+      object.durationMs,
+      specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataDurationMs),
+    );
+    yield r'error';
+    yield serializers.serialize(
+      object.error,
+      specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError),
+    );
+    yield r'request';
+    yield serializers.serialize(
+      object.request,
+      specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequest),
+    );
+    yield r'response';
+    yield serializers.serialize(
+      object.response,
+      specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponse),
+    );
+    yield r'runId';
+    yield serializers.serialize(
+      object.runId,
+      specifiedType: const FullType(int),
+    );
+    yield r'startedAt';
+    yield serializers.serialize(
+      object.startedAt,
+      specifiedType: const FullType(String),
+    );
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum),
+    );
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdRuns201ResponseData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required PostApiWorkspacesByWorkspaceIdRuns201ResponseDataBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'completedAt':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAt),
+          ) as PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAt;
+          result.completedAt.replace(valueDes);
+          break;
+        case r'durationMs':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataDurationMs),
+          ) as PostApiWorkspacesByWorkspaceIdRuns201ResponseDataDurationMs;
+          result.durationMs.replace(valueDes);
+          break;
+        case r'error':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError),
+          ) as PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError;
+          result.error.replace(valueDes);
+          break;
+        case r'request':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequest),
+          ) as PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequest;
+          result.request = valueDes;
+          break;
+        case r'response':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponse),
+          ) as PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponse;
+          result.response.replace(valueDes);
+          break;
+        case r'runId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.runId = valueDes;
+          break;
+        case r'startedAt':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.startedAt = valueDes;
+          break;
+        case r'status':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum),
+          ) as PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum;
+          result.status = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseData deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = PostApiWorkspacesByWorkspaceIdRuns201ResponseDataBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
 }
 
+class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum extends EnumClass {
 
-enum PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum {
-  @JsonValue(r'running')
-  running,
-  @JsonValue(r'completed')
-  completed,
-  @JsonValue(r'failed')
-  failed,
-  @JsonValue(r'cancelled')
-  cancelled,
-  @JsonValue(r'unknown_default_open_api')
-  unknownDefaultOpenApi,
+  @BuiltValueEnumConst(wireName: r'running')
+  static const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum running = _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum_running;
+  @BuiltValueEnumConst(wireName: r'completed')
+  static const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum completed = _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum_completed;
+  @BuiltValueEnumConst(wireName: r'failed')
+  static const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum failed = _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum_failed;
+  @BuiltValueEnumConst(wireName: r'cancelled')
+  static const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum cancelled = _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum_cancelled;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum unknownDefaultOpenApi = _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum_unknownDefaultOpenApi;
+
+  static Serializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum> get serializer => _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnumSerializer;
+
+  const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum._(String name): super(name);
+
+  static BuiltSet<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum> get values => _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnumValues;
+  static PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum valueOf(String name) => _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnumValueOf(name);
 }
-
 

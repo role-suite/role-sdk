@@ -4,171 +4,218 @@
 
 // ignore_for_file: unused_element
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints_request_folder_id.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'get_api_workspaces_by_workspace_id_collections_by_collection_id_folders200_response_data_items_inner.g.dart';
 
+/// GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner
+///
+/// Properties:
+/// * [collectionId] 
+/// * [createdAt] 
+/// * [createdByUserId] 
+/// * [id] 
+/// * [name] 
+/// * [parentFolderId] 
+/// * [position] 
+/// * [updatedAt] 
+@BuiltValue()
+abstract class GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner implements Built<GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner, GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInnerBuilder> {
+  @BuiltValueField(wireName: r'collectionId')
+  int get collectionId;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner {
-  /// Returns a new [GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner] instance.
-  GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner({
+  @BuiltValueField(wireName: r'createdAt')
+  String get createdAt;
 
-    required  this.collectionId,
+  @BuiltValueField(wireName: r'createdByUserId')
+  int get createdByUserId;
 
-    required  this.createdAt,
+  @BuiltValueField(wireName: r'id')
+  int get id;
 
-    required  this.createdByUserId,
+  @BuiltValueField(wireName: r'name')
+  String get name;
 
-    required  this.id,
+  @BuiltValueField(wireName: r'parentFolderId')
+  PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId get parentFolderId;
 
-    required  this.name,
+  @BuiltValueField(wireName: r'position')
+  int get position;
 
-    required  this.parentFolderId,
+  @BuiltValueField(wireName: r'updatedAt')
+  String get updatedAt;
 
-    required  this.position,
+  GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner._();
 
-    required  this.updatedAt,
-  });
+  factory GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner([void updates(GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInnerBuilder b)]) = _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner;
 
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'collectionId',
-    required: true,
-    includeIfNull: false
-  )
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInnerBuilder b) => b;
 
+  @BuiltValueSerializer(custom: true)
+  static Serializer<GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner> get serializer => _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInnerSerializer();
+}
 
-  final int collectionId;
-
-
-
-  @JsonKey(
-    
-    name: r'createdAt',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String createdAt;
-
-
-
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'createdByUserId',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final int createdByUserId;
-
-
-
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'id',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final int id;
-
-
-
-  @JsonKey(
-    
-    name: r'name',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String name;
-
-
-
-  @JsonKey(
-    
-    name: r'parentFolderId',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId parentFolderId;
-
-
-
-          // minimum: -9007199254740991
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'position',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final int position;
-
-
-
-  @JsonKey(
-    
-    name: r'updatedAt',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String updatedAt;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner &&
-      other.collectionId == collectionId &&
-      other.createdAt == createdAt &&
-      other.createdByUserId == createdByUserId &&
-      other.id == id &&
-      other.name == name &&
-      other.parentFolderId == parentFolderId &&
-      other.position == position &&
-      other.updatedAt == updatedAt;
-
-    @override
-    int get hashCode =>
-        collectionId.hashCode +
-        createdAt.hashCode +
-        createdByUserId.hashCode +
-        id.hashCode +
-        name.hashCode +
-        parentFolderId.hashCode +
-        position.hashCode +
-        updatedAt.hashCode;
-
-  factory GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner.fromJson(Map<String, dynamic> json) => _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInnerFromJson(json);
-
-  Map<String, dynamic> toJson() => _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInnerToJson(this);
+class _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInnerSerializer implements PrimitiveSerializer<GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner> {
+  @override
+  final Iterable<Type> types = const [GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner, _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    yield r'collectionId';
+    yield serializers.serialize(
+      object.collectionId,
+      specifiedType: const FullType(int),
+    );
+    yield r'createdAt';
+    yield serializers.serialize(
+      object.createdAt,
+      specifiedType: const FullType(String),
+    );
+    yield r'createdByUserId';
+    yield serializers.serialize(
+      object.createdByUserId,
+      specifiedType: const FullType(int),
+    );
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(int),
+    );
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'parentFolderId';
+    yield serializers.serialize(
+      object.parentFolderId,
+      specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId),
+    );
+    yield r'position';
+    yield serializers.serialize(
+      object.position,
+      specifiedType: const FullType(int),
+    );
+    yield r'updatedAt';
+    yield serializers.serialize(
+      object.updatedAt,
+      specifiedType: const FullType(String),
+    );
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInnerBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'collectionId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.collectionId = valueDes;
+          break;
+        case r'createdAt':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.createdAt = valueDes;
+          break;
+        case r'createdByUserId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.createdByUserId = valueDes;
+          break;
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.id = valueDes;
+          break;
+        case r'name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.name = valueDes;
+          break;
+        case r'parentFolderId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId),
+          ) as PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId;
+          result.parentFolderId.replace(valueDes);
+          break;
+        case r'position':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.position = valueDes;
+          break;
+        case r'updatedAt':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.updatedAt = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInner deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200ResponseDataItemsInnerBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
 }
 

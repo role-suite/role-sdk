@@ -3,160 +3,226 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'post_api_auth_login200_response_data_memberships_inner.g.dart';
 
+/// PostApiAuthLogin200ResponseDataMembershipsInner
+///
+/// Properties:
+/// * [legacyId] 
+/// * [name] 
+/// * [role] 
+/// * [slug] 
+/// * [type] 
+/// * [workspaceId] 
+@BuiltValue()
+abstract class PostApiAuthLogin200ResponseDataMembershipsInner implements Built<PostApiAuthLogin200ResponseDataMembershipsInner, PostApiAuthLogin200ResponseDataMembershipsInnerBuilder> {
+  @BuiltValueField(wireName: r'_id')
+  int? get legacyId;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class PostApiAuthLogin200ResponseDataMembershipsInner {
-  /// Returns a new [PostApiAuthLogin200ResponseDataMembershipsInner] instance.
-  PostApiAuthLogin200ResponseDataMembershipsInner({
+  @BuiltValueField(wireName: r'name')
+  String get name;
 
-     this.legacyId,
+  @BuiltValueField(wireName: r'role')
+  PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum get role;
+  // enum roleEnum {  owner,  admin,  member,  };
 
-    required  this.name,
+  @BuiltValueField(wireName: r'slug')
+  String get slug;
 
-    required  this.role,
+  @BuiltValueField(wireName: r'type')
+  PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum get type;
+  // enum typeEnum {  personal,  team,  };
 
-    required  this.slug,
+  @BuiltValueField(wireName: r'workspaceId')
+  int get workspaceId;
 
-    required  this.type,
+  PostApiAuthLogin200ResponseDataMembershipsInner._();
 
-    required  this.workspaceId,
-  });
+  factory PostApiAuthLogin200ResponseDataMembershipsInner([void updates(PostApiAuthLogin200ResponseDataMembershipsInnerBuilder b)]) = _$PostApiAuthLogin200ResponseDataMembershipsInner;
 
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'_id',
-    required: false,
-    includeIfNull: false
-  )
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PostApiAuthLogin200ResponseDataMembershipsInnerBuilder b) => b;
 
+  @BuiltValueSerializer(custom: true)
+  static Serializer<PostApiAuthLogin200ResponseDataMembershipsInner> get serializer => _$PostApiAuthLogin200ResponseDataMembershipsInnerSerializer();
+}
 
-  final int? legacyId;
-
-
-
-  @JsonKey(
-    
-    name: r'name',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String name;
-
-
-
-  @JsonKey(
-    
-    name: r'role',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum role;
-
-
-
-  @JsonKey(
-    
-    name: r'slug',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String slug;
-
-
-
-  @JsonKey(
-    
-    name: r'type',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum type;
-
-
-
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'workspaceId',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final int workspaceId;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is PostApiAuthLogin200ResponseDataMembershipsInner &&
-      other.legacyId == legacyId &&
-      other.name == name &&
-      other.role == role &&
-      other.slug == slug &&
-      other.type == type &&
-      other.workspaceId == workspaceId;
-
-    @override
-    int get hashCode =>
-        legacyId.hashCode +
-        name.hashCode +
-        role.hashCode +
-        slug.hashCode +
-        type.hashCode +
-        workspaceId.hashCode;
-
-  factory PostApiAuthLogin200ResponseDataMembershipsInner.fromJson(Map<String, dynamic> json) => _$PostApiAuthLogin200ResponseDataMembershipsInnerFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostApiAuthLogin200ResponseDataMembershipsInnerToJson(this);
+class _$PostApiAuthLogin200ResponseDataMembershipsInnerSerializer implements PrimitiveSerializer<PostApiAuthLogin200ResponseDataMembershipsInner> {
+  @override
+  final Iterable<Type> types = const [PostApiAuthLogin200ResponseDataMembershipsInner, _$PostApiAuthLogin200ResponseDataMembershipsInner];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'PostApiAuthLogin200ResponseDataMembershipsInner';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    PostApiAuthLogin200ResponseDataMembershipsInner object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    if (object.legacyId != null) {
+      yield r'_id';
+      yield serializers.serialize(
+        object.legacyId,
+        specifiedType: const FullType(int),
+      );
+    }
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'role';
+    yield serializers.serialize(
+      object.role,
+      specifiedType: const FullType(PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum),
+    );
+    yield r'slug';
+    yield serializers.serialize(
+      object.slug,
+      specifiedType: const FullType(String),
+    );
+    yield r'type';
+    yield serializers.serialize(
+      object.type,
+      specifiedType: const FullType(PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum),
+    );
+    yield r'workspaceId';
+    yield serializers.serialize(
+      object.workspaceId,
+      specifiedType: const FullType(int),
+    );
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    PostApiAuthLogin200ResponseDataMembershipsInner object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required PostApiAuthLogin200ResponseDataMembershipsInnerBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.legacyId = valueDes;
+          break;
+        case r'name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.name = valueDes;
+          break;
+        case r'role':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum),
+          ) as PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum;
+          result.role = valueDes;
+          break;
+        case r'slug':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.slug = valueDes;
+          break;
+        case r'type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum),
+          ) as PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum;
+          result.type = valueDes;
+          break;
+        case r'workspaceId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.workspaceId = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  PostApiAuthLogin200ResponseDataMembershipsInner deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = PostApiAuthLogin200ResponseDataMembershipsInnerBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
 }
 
+class PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum extends EnumClass {
 
-enum PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum {
-  @JsonValue(r'owner')
-  owner,
-  @JsonValue(r'admin')
-  admin,
-  @JsonValue(r'member')
-  member,
-  @JsonValue(r'unknown_default_open_api')
-  unknownDefaultOpenApi,
+  @BuiltValueEnumConst(wireName: r'owner')
+  static const PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum owner = _$postApiAuthLogin200ResponseDataMembershipsInnerRoleEnum_owner;
+  @BuiltValueEnumConst(wireName: r'admin')
+  static const PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum admin = _$postApiAuthLogin200ResponseDataMembershipsInnerRoleEnum_admin;
+  @BuiltValueEnumConst(wireName: r'member')
+  static const PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum member = _$postApiAuthLogin200ResponseDataMembershipsInnerRoleEnum_member;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum unknownDefaultOpenApi = _$postApiAuthLogin200ResponseDataMembershipsInnerRoleEnum_unknownDefaultOpenApi;
+
+  static Serializer<PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum> get serializer => _$postApiAuthLogin200ResponseDataMembershipsInnerRoleEnumSerializer;
+
+  const PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum._(String name): super(name);
+
+  static BuiltSet<PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum> get values => _$postApiAuthLogin200ResponseDataMembershipsInnerRoleEnumValues;
+  static PostApiAuthLogin200ResponseDataMembershipsInnerRoleEnum valueOf(String name) => _$postApiAuthLogin200ResponseDataMembershipsInnerRoleEnumValueOf(name);
 }
 
+class PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum extends EnumClass {
 
+  @BuiltValueEnumConst(wireName: r'personal')
+  static const PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum personal = _$postApiAuthLogin200ResponseDataMembershipsInnerTypeEnum_personal;
+  @BuiltValueEnumConst(wireName: r'team')
+  static const PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum team = _$postApiAuthLogin200ResponseDataMembershipsInnerTypeEnum_team;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum unknownDefaultOpenApi = _$postApiAuthLogin200ResponseDataMembershipsInnerTypeEnum_unknownDefaultOpenApi;
 
-enum PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum {
-  @JsonValue(r'personal')
-  personal,
-  @JsonValue(r'team')
-  team,
-  @JsonValue(r'unknown_default_open_api')
-  unknownDefaultOpenApi,
+  static Serializer<PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum> get serializer => _$postApiAuthLogin200ResponseDataMembershipsInnerTypeEnumSerializer;
+
+  const PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum._(String name): super(name);
+
+  static BuiltSet<PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum> get values => _$postApiAuthLogin200ResponseDataMembershipsInnerTypeEnumValues;
+  static PostApiAuthLogin200ResponseDataMembershipsInnerTypeEnum valueOf(String name) => _$postApiAuthLogin200ResponseDataMembershipsInnerTypeEnumValueOf(name);
 }
-
 

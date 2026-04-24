@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorAnyOf
 void main() {
-  final PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorAnyOf? instance = /* PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorAnyOf(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorAnyOfBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorAnyOf, () {
     // String code
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // Map<String, Object> details
+    // BuiltMap<String, JsonObject> details
     test('to test the property `details`', () async {
       // TODO
     });

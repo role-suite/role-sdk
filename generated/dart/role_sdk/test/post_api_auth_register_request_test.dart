@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiAuthRegisterRequest
 void main() {
-  final PostApiAuthRegisterRequest? instance = /* PostApiAuthRegisterRequest(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiAuthRegisterRequestBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiAuthRegisterRequest, () {
     // String accountType

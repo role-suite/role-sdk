@@ -3,11 +3,11 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for GetApiAuthMe200ResponseData
 void main() {
-  final GetApiAuthMe200ResponseData? instance = /* GetApiAuthMe200ResponseData(...) */ null;
-  // TODO add properties to the entity
+  final instance = GetApiAuthMe200ResponseDataBuilder();
+  // TODO add properties to the builder and call build()
 
   group(GetApiAuthMe200ResponseData, () {
-    // List<GetApiAuthMe200ResponseDataMembershipsInner> memberships
+    // BuiltList<GetApiAuthMe200ResponseDataMembershipsInner> memberships
     test('to test the property `memberships`', () async {
       // TODO
     });

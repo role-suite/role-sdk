@@ -4,70 +4,122 @@
 
 // ignore_for_file: unused_element
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_invitations201_response_data.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'post_api_workspaces_by_workspace_id_invitations201_response.g.dart';
 
+/// PostApiWorkspacesByWorkspaceIdInvitations201Response
+///
+/// Properties:
+/// * [data] 
+/// * [success] 
+@BuiltValue()
+abstract class PostApiWorkspacesByWorkspaceIdInvitations201Response implements Built<PostApiWorkspacesByWorkspaceIdInvitations201Response, PostApiWorkspacesByWorkspaceIdInvitations201ResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  PostApiWorkspacesByWorkspaceIdInvitations201ResponseData get data;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class PostApiWorkspacesByWorkspaceIdInvitations201Response {
-  /// Returns a new [PostApiWorkspacesByWorkspaceIdInvitations201Response] instance.
-  PostApiWorkspacesByWorkspaceIdInvitations201Response({
+  @BuiltValueField(wireName: r'success')
+  bool get success;
 
-    required  this.data,
+  PostApiWorkspacesByWorkspaceIdInvitations201Response._();
 
-    required  this.success,
-  });
+  factory PostApiWorkspacesByWorkspaceIdInvitations201Response([void updates(PostApiWorkspacesByWorkspaceIdInvitations201ResponseBuilder b)]) = _$PostApiWorkspacesByWorkspaceIdInvitations201Response;
 
-  @JsonKey(
-    
-    name: r'data',
-    required: true,
-    includeIfNull: false
-  )
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PostApiWorkspacesByWorkspaceIdInvitations201ResponseBuilder b) => b;
 
+  @BuiltValueSerializer(custom: true)
+  static Serializer<PostApiWorkspacesByWorkspaceIdInvitations201Response> get serializer => _$PostApiWorkspacesByWorkspaceIdInvitations201ResponseSerializer();
+}
 
-  final PostApiWorkspacesByWorkspaceIdInvitations201ResponseData data;
-
-
-
-  @JsonKey(
-    
-    name: r'success',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final bool success;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is PostApiWorkspacesByWorkspaceIdInvitations201Response &&
-      other.data == data &&
-      other.success == success;
-
-    @override
-    int get hashCode =>
-        data.hashCode +
-        success.hashCode;
-
-  factory PostApiWorkspacesByWorkspaceIdInvitations201Response.fromJson(Map<String, dynamic> json) => _$PostApiWorkspacesByWorkspaceIdInvitations201ResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostApiWorkspacesByWorkspaceIdInvitations201ResponseToJson(this);
+class _$PostApiWorkspacesByWorkspaceIdInvitations201ResponseSerializer implements PrimitiveSerializer<PostApiWorkspacesByWorkspaceIdInvitations201Response> {
+  @override
+  final Iterable<Type> types = const [PostApiWorkspacesByWorkspaceIdInvitations201Response, _$PostApiWorkspacesByWorkspaceIdInvitations201Response];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'PostApiWorkspacesByWorkspaceIdInvitations201Response';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdInvitations201Response object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    yield r'data';
+    yield serializers.serialize(
+      object.data,
+      specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdInvitations201ResponseData),
+    );
+    yield r'success';
+    yield serializers.serialize(
+      object.success,
+      specifiedType: const FullType(bool),
+    );
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdInvitations201Response object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required PostApiWorkspacesByWorkspaceIdInvitations201ResponseBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'data':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdInvitations201ResponseData),
+          ) as PostApiWorkspacesByWorkspaceIdInvitations201ResponseData;
+          result.data = valueDes;
+          break;
+        case r'success':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.success = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  PostApiWorkspacesByWorkspaceIdInvitations201Response deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = PostApiWorkspacesByWorkspaceIdInvitations201ResponseBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
 }
 

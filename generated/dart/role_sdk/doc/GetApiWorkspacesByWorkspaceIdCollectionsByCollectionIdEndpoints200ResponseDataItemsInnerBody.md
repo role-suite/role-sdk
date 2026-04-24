@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **contentType** | **String** |  | [optional] 
 **mode** | **String** |  | 
 **raw** | **String** |  | 
-**entries** | [**List&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner.md) |  | 
+**entries** | [**BuiltList&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner.md) |  | 
 **dataBase64** | **String** |  | 
 **fileName** | **String** |  | 
 

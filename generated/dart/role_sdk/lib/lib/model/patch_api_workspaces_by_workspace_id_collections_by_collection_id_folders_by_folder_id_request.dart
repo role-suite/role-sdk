@@ -4,88 +4,144 @@
 
 // ignore_for_file: unused_element
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints_request_folder_id.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'patch_api_workspaces_by_workspace_id_collections_by_collection_id_folders_by_folder_id_request.g.dart';
 
+/// PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest
+///
+/// Properties:
+/// * [name] 
+/// * [parentFolderId] 
+/// * [position] 
+@BuiltValue()
+abstract class PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest implements Built<PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest, PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequestBuilder> {
+  @BuiltValueField(wireName: r'name')
+  String? get name;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest {
-  /// Returns a new [PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest] instance.
-  PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest({
+  @BuiltValueField(wireName: r'parentFolderId')
+  PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId? get parentFolderId;
 
-     this.name,
+  @BuiltValueField(wireName: r'position')
+  int? get position;
 
-     this.parentFolderId,
+  PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest._();
 
-     this.position,
-  });
+  factory PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest([void updates(PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequestBuilder b)]) = _$PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest;
 
-  @JsonKey(
-    
-    name: r'name',
-    required: false,
-    includeIfNull: false
-  )
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequestBuilder b) => b;
 
+  @BuiltValueSerializer(custom: true)
+  static Serializer<PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest> get serializer => _$PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequestSerializer();
+}
 
-  final String? name;
-
-
-
-  @JsonKey(
-    
-    name: r'parentFolderId',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId? parentFolderId;
-
-
-
-          // minimum: 0
-          // maximum: 100000
-  @JsonKey(
-    
-    name: r'position',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final int? position;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest &&
-      other.name == name &&
-      other.parentFolderId == parentFolderId &&
-      other.position == position;
-
-    @override
-    int get hashCode =>
-        name.hashCode +
-        parentFolderId.hashCode +
-        position.hashCode;
-
-  factory PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest.fromJson(Map<String, dynamic> json) => _$PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequestFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequestToJson(this);
+class _$PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequestSerializer implements PrimitiveSerializer<PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest> {
+  @override
+  final Iterable<Type> types = const [PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest, _$PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    if (object.name != null) {
+      yield r'name';
+      yield serializers.serialize(
+        object.name,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.parentFolderId != null) {
+      yield r'parentFolderId';
+      yield serializers.serialize(
+        object.parentFolderId,
+        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId),
+      );
+    }
+    if (object.position != null) {
+      yield r'position';
+      yield serializers.serialize(
+        object.position,
+        specifiedType: const FullType(int),
+      );
+    }
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequestBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.name = valueDes;
+          break;
+        case r'parentFolderId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId),
+          ) as PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId;
+          result.parentFolderId.replace(valueDes);
+          break;
+        case r'position':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.position = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequestBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
 }
 

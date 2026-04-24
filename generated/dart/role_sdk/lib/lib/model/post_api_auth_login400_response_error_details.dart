@@ -3,54 +3,105 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'post_api_auth_login400_response_error_details.g.dart';
 
+/// PostApiAuthLogin400ResponseErrorDetails
+///
+/// Properties:
+/// * [fieldErrors] 
+@BuiltValue()
+abstract class PostApiAuthLogin400ResponseErrorDetails implements Built<PostApiAuthLogin400ResponseErrorDetails, PostApiAuthLogin400ResponseErrorDetailsBuilder> {
+  @BuiltValueField(wireName: r'fieldErrors')
+  BuiltMap<String, BuiltList<String>> get fieldErrors;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class PostApiAuthLogin400ResponseErrorDetails {
-  /// Returns a new [PostApiAuthLogin400ResponseErrorDetails] instance.
-  PostApiAuthLogin400ResponseErrorDetails({
+  PostApiAuthLogin400ResponseErrorDetails._();
 
-    required  this.fieldErrors,
-  });
+  factory PostApiAuthLogin400ResponseErrorDetails([void updates(PostApiAuthLogin400ResponseErrorDetailsBuilder b)]) = _$PostApiAuthLogin400ResponseErrorDetails;
 
-  @JsonKey(
-    
-    name: r'fieldErrors',
-    required: true,
-    includeIfNull: false
-  )
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PostApiAuthLogin400ResponseErrorDetailsBuilder b) => b;
 
+  @BuiltValueSerializer(custom: true)
+  static Serializer<PostApiAuthLogin400ResponseErrorDetails> get serializer => _$PostApiAuthLogin400ResponseErrorDetailsSerializer();
+}
 
-  final Map<String, List<String>> fieldErrors;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is PostApiAuthLogin400ResponseErrorDetails &&
-      other.fieldErrors == fieldErrors;
-
-    @override
-    int get hashCode =>
-        fieldErrors.hashCode;
-
-  factory PostApiAuthLogin400ResponseErrorDetails.fromJson(Map<String, dynamic> json) => _$PostApiAuthLogin400ResponseErrorDetailsFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostApiAuthLogin400ResponseErrorDetailsToJson(this);
+class _$PostApiAuthLogin400ResponseErrorDetailsSerializer implements PrimitiveSerializer<PostApiAuthLogin400ResponseErrorDetails> {
+  @override
+  final Iterable<Type> types = const [PostApiAuthLogin400ResponseErrorDetails, _$PostApiAuthLogin400ResponseErrorDetails];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'PostApiAuthLogin400ResponseErrorDetails';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    PostApiAuthLogin400ResponseErrorDetails object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    yield r'fieldErrors';
+    yield serializers.serialize(
+      object.fieldErrors,
+      specifiedType: const FullType(BuiltMap, [FullType(String), FullType(BuiltList, [FullType(String)])]),
+    );
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    PostApiAuthLogin400ResponseErrorDetails object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required PostApiAuthLogin400ResponseErrorDetailsBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'fieldErrors':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(BuiltList, [FullType(String)])]),
+          ) as BuiltMap<String, BuiltList<String>>;
+          result.fieldErrors.replace(valueDes);
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  PostApiAuthLogin400ResponseErrorDetails deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = PostApiAuthLogin400ResponseErrorDetailsBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
 }
 

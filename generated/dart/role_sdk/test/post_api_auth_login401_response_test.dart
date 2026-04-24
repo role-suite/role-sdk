@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiAuthLogin401Response
 void main() {
-  final PostApiAuthLogin401Response? instance = /* PostApiAuthLogin401Response(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiAuthLogin401ResponseBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiAuthLogin401Response, () {
     // PostApiAuthLogin401ResponseError error

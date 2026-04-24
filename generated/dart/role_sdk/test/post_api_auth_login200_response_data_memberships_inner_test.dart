@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiAuthLogin200ResponseDataMembershipsInner
 void main() {
-  final PostApiAuthLogin200ResponseDataMembershipsInner? instance = /* PostApiAuthLogin200ResponseDataMembershipsInner(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiAuthLogin200ResponseDataMembershipsInnerBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiAuthLogin200ResponseDataMembershipsInner, () {
     // int legacyId

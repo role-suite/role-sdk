@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiAuthLogoutRequest
 void main() {
-  final PostApiAuthLogoutRequest? instance = /* PostApiAuthLogoutRequest(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiAuthLogoutRequestBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiAuthLogoutRequest, () {
     // String refreshToken

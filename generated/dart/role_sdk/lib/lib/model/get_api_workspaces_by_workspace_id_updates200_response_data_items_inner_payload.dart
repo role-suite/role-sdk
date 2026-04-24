@@ -3,38 +3,67 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'package:one_of/any_of.dart';
 
 part 'get_api_workspaces_by_workspace_id_updates200_response_data_items_inner_payload.g.dart';
 
+/// GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload
+@BuiltValue()
+abstract class GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload implements Built<GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload, GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayloadBuilder> {
+  /// Any Of [BuiltMap<String, JsonObject>]
+  AnyOf get anyOf;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload {
-  /// Returns a new [GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload] instance.
-  GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload({
-  });
+  GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload._();
 
+  factory GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload([void updates(GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayloadBuilder b)]) = _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload;
 
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayloadBuilder b) => b;
 
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload &&
+  @BuiltValueSerializer(custom: true)
+  static Serializer<GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload> get serializer => _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayloadSerializer();
+}
 
-    @override
-    int get hashCode =>
-
-  factory GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload.fromJson(Map<String, dynamic> json) => _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayloadFromJson(json);
-
-  Map<String, dynamic> toJson() => _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayloadToJson(this);
+class _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayloadSerializer implements PrimitiveSerializer<GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload> {
+  @override
+  final Iterable<Type> types = const [GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload, _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final anyOf = object.anyOf;
+    return serializers.serialize(anyOf, specifiedType: FullType(AnyOf, anyOf.valueTypes.map((type) => FullType(type)).toList()))!;
+  }
+
+  @override
+  GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayloadBuilder();
+    Object? anyOfDataSrc;
+    final targetType = const FullType(AnyOf, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]), ]);
+    anyOfDataSrc = serialized;
+    result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
+    return result.build();
+  }
 }
 

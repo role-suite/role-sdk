@@ -3,139 +3,187 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_collections200_response_data_items_inner_description.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'post_api_workspaces_by_workspace_id_runs201_response_data_response_any_of.g.dart';
 
+/// PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf
+///
+/// Properties:
+/// * [body] 
+/// * [bodyBase64] 
+/// * [headers] 
+/// * [sizeBytes] 
+/// * [status] 
+/// * [truncated] 
+@BuiltValue()
+abstract class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf implements Built<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf, PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOfBuilder> {
+  @BuiltValueField(wireName: r'body')
+  GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription get body;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf {
-  /// Returns a new [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf] instance.
-  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf({
+  @BuiltValueField(wireName: r'bodyBase64')
+  GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription get bodyBase64;
 
-    required  this.body,
+  @BuiltValueField(wireName: r'headers')
+  BuiltMap<String, String> get headers;
 
-    required  this.bodyBase64,
+  @BuiltValueField(wireName: r'sizeBytes')
+  int get sizeBytes;
 
-    required  this.headers,
+  @BuiltValueField(wireName: r'status')
+  int get status;
 
-    required  this.sizeBytes,
+  @BuiltValueField(wireName: r'truncated')
+  bool get truncated;
 
-    required  this.status,
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf._();
 
-    required  this.truncated,
-  });
+  factory PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf([void updates(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOfBuilder b)]) = _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf;
 
-  @JsonKey(
-    
-    name: r'body',
-    required: true,
-    includeIfNull: false
-  )
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOfBuilder b) => b;
 
+  @BuiltValueSerializer(custom: true)
+  static Serializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf> get serializer => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOfSerializer();
+}
 
-  final GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription body;
-
-
-
-  @JsonKey(
-    
-    name: r'bodyBase64',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription bodyBase64;
-
-
-
-  @JsonKey(
-    
-    name: r'headers',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final Map<String, String> headers;
-
-
-
-          // minimum: 0
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'sizeBytes',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final int sizeBytes;
-
-
-
-          // minimum: -9007199254740991
-          // maximum: 9007199254740991
-  @JsonKey(
-    
-    name: r'status',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final int status;
-
-
-
-  @JsonKey(
-    
-    name: r'truncated',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final bool truncated;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf &&
-      other.body == body &&
-      other.bodyBase64 == bodyBase64 &&
-      other.headers == headers &&
-      other.sizeBytes == sizeBytes &&
-      other.status == status &&
-      other.truncated == truncated;
-
-    @override
-    int get hashCode =>
-        body.hashCode +
-        bodyBase64.hashCode +
-        headers.hashCode +
-        sizeBytes.hashCode +
-        status.hashCode +
-        truncated.hashCode;
-
-  factory PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf.fromJson(Map<String, dynamic> json) => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOfFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOfToJson(this);
+class _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOfSerializer implements PrimitiveSerializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf> {
+  @override
+  final Iterable<Type> types = const [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf, _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    yield r'body';
+    yield serializers.serialize(
+      object.body,
+      specifiedType: const FullType(GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription),
+    );
+    yield r'bodyBase64';
+    yield serializers.serialize(
+      object.bodyBase64,
+      specifiedType: const FullType(GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription),
+    );
+    yield r'headers';
+    yield serializers.serialize(
+      object.headers,
+      specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+    );
+    yield r'sizeBytes';
+    yield serializers.serialize(
+      object.sizeBytes,
+      specifiedType: const FullType(int),
+    );
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(int),
+    );
+    yield r'truncated';
+    yield serializers.serialize(
+      object.truncated,
+      specifiedType: const FullType(bool),
+    );
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOfBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'body':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription),
+          ) as GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription;
+          result.body.replace(valueDes);
+          break;
+        case r'bodyBase64':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription),
+          ) as GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription;
+          result.bodyBase64.replace(valueDes);
+          break;
+        case r'headers':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+          ) as BuiltMap<String, String>;
+          result.headers.replace(valueDes);
+          break;
+        case r'sizeBytes':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.sizeBytes = valueDes;
+          break;
+        case r'status':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.status = valueDes;
+          break;
+        case r'truncated':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.truncated = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOf deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseAnyOfBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
 }
 

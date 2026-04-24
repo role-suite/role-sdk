@@ -4,9 +4,7 @@
 
 import 'dart:async';
 
-// ignore: unused_import
-import 'dart:convert';
-import 'package:role_sdk/lib/deserialize.dart';
+import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:role_sdk/lib/model/get_api_auth_me200_response.dart';
@@ -23,7 +21,9 @@ class AuthApi {
 
   final Dio _dio;
 
-  const AuthApi(this._dio);
+  final Serializers _serializers;
+
+  const AuthApi(this._dio, this._serializers);
 
   /// getApiAuthMe
   /// 
@@ -76,8 +76,12 @@ class AuthApi {
     GetApiAuthMe200Response? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<GetApiAuthMe200Response, GetApiAuthMe200Response>(rawData, 'GetApiAuthMe200Response', growable: true);
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(GetApiAuthMe200Response),
+      ) as GetApiAuthMe200Response;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -140,7 +144,9 @@ _responseData = rawData == null ? null : deserialize<GetApiAuthMe200Response, Ge
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(postApiAuthLoginRequest);
+      const _type = FullType(PostApiAuthLoginRequest);
+      _bodyData = _serializers.serialize(postApiAuthLoginRequest, specifiedType: _type);
+
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -165,8 +171,12 @@ _bodyData=jsonEncode(postApiAuthLoginRequest);
     PostApiAuthLogin200Response? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PostApiAuthLogin200Response, PostApiAuthLogin200Response>(rawData, 'PostApiAuthLogin200Response', growable: true);
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(PostApiAuthLogin200Response),
+      ) as PostApiAuthLogin200Response;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -229,7 +239,9 @@ _responseData = rawData == null ? null : deserialize<PostApiAuthLogin200Response
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(postApiAuthLogoutRequest);
+      const _type = FullType(PostApiAuthLogoutRequest);
+      _bodyData = _serializers.serialize(postApiAuthLogoutRequest, specifiedType: _type);
+
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -254,8 +266,12 @@ _bodyData=jsonEncode(postApiAuthLogoutRequest);
     PostApiAuthLogout200Response? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PostApiAuthLogout200Response, PostApiAuthLogout200Response>(rawData, 'PostApiAuthLogout200Response', growable: true);
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(PostApiAuthLogout200Response),
+      ) as PostApiAuthLogout200Response;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -318,7 +334,9 @@ _responseData = rawData == null ? null : deserialize<PostApiAuthLogout200Respons
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(postApiAuthLogoutRequest);
+      const _type = FullType(PostApiAuthLogoutRequest);
+      _bodyData = _serializers.serialize(postApiAuthLogoutRequest, specifiedType: _type);
+
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -343,8 +361,12 @@ _bodyData=jsonEncode(postApiAuthLogoutRequest);
     PostApiAuthRefresh200Response? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PostApiAuthRefresh200Response, PostApiAuthRefresh200Response>(rawData, 'PostApiAuthRefresh200Response', growable: true);
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(PostApiAuthRefresh200Response),
+      ) as PostApiAuthRefresh200Response;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -407,7 +429,9 @@ _responseData = rawData == null ? null : deserialize<PostApiAuthRefresh200Respon
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(postApiAuthRegisterRequest);
+      const _type = FullType(PostApiAuthRegisterRequest);
+      _bodyData = _serializers.serialize(postApiAuthRegisterRequest, specifiedType: _type);
+
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -432,8 +456,12 @@ _bodyData=jsonEncode(postApiAuthRegisterRequest);
     PostApiAuthRefresh200Response? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PostApiAuthRefresh200Response, PostApiAuthRefresh200Response>(rawData, 'PostApiAuthRefresh200Response', growable: true);
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(PostApiAuthRefresh200Response),
+      ) as PostApiAuthRefresh200Response;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

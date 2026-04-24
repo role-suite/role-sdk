@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **body** | [**GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription**](GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription.md) |  | 
 **bodyBase64** | [**GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription**](GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription.md) |  | 
-**headers** | **Map&lt;String, String&gt;** |  | 
+**headers** | **BuiltMap&lt;String, String&gt;** |  | 
 **sizeBytes** | **int** |  | 
 **status** | **int** |  | 
 **truncated** | **bool** |  | 

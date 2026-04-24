@@ -4,86 +4,71 @@
 
 // ignore_for_file: unused_element
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs201_response_data_error_any_of.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'package:one_of/any_of.dart';
 
 part 'post_api_workspaces_by_workspace_id_runs201_response_data_error.g.dart';
 
+/// PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError
+///
+/// Properties:
+/// * [code] 
+/// * [details] 
+/// * [message] 
+@BuiltValue()
+abstract class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError implements Built<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError, PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorBuilder> {
+  /// Any Of [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorAnyOf]
+  AnyOf get anyOf;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError {
-  /// Returns a new [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError] instance.
-  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError({
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError._();
 
-    required  this.code,
+  factory PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError([void updates(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorBuilder b)]) = _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError;
 
-     this.details,
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorBuilder b) => b;
 
-    required  this.message,
-  });
+  @BuiltValueSerializer(custom: true)
+  static Serializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError> get serializer => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorSerializer();
+}
 
-  @JsonKey(
-    
-    name: r'code',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String code;
-
-
-
-  @JsonKey(
-    
-    name: r'details',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final Object? details;
-
-
-
-  @JsonKey(
-    
-    name: r'message',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String message;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError &&
-      other.code == code &&
-      other.details == details &&
-      other.message == message;
-
-    @override
-    int get hashCode =>
-        code.hashCode +
-        details.hashCode +
-        message.hashCode;
-
-  factory PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError.fromJson(Map<String, dynamic> json) => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorToJson(this);
+class _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorSerializer implements PrimitiveSerializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError> {
+  @override
+  final Iterable<Type> types = const [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError, _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final anyOf = object.anyOf;
+    return serializers.serialize(anyOf, specifiedType: FullType(AnyOf, anyOf.valueTypes.map((type) => FullType(type)).toList()))!;
+  }
+
+  @override
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorBuilder();
+    Object? anyOfDataSrc;
+    final targetType = const FullType(AnyOf, [FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorAnyOf), ]);
+    anyOfDataSrc = serialized;
+    result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
+    return result.build();
+  }
 }
 

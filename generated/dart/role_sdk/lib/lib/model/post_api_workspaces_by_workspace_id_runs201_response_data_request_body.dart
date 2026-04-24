@@ -6,136 +6,77 @@
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints200_response_data_items_inner_body_any_of_any_of4.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints200_response_data_items_inner_body_any_of_any_of1.dart';
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs201_response_data_request_body_any_of.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints200_response_data_items_inner_body_any_of_any_of3.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints200_response_data_items_inner_body_any_of_any_of.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'package:one_of/any_of.dart';
 
 part 'post_api_workspaces_by_workspace_id_runs201_response_data_request_body.g.dart';
 
+/// PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody
+///
+/// Properties:
+/// * [contentType] 
+/// * [mode] 
+/// * [raw] 
+/// * [entries] 
+/// * [dataBase64] 
+/// * [fileName] 
+@BuiltValue()
+abstract class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody implements Built<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody, PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyBuilder> {
+  /// Any Of [GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf], [GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1], [GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf3], [GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf4], [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf]
+  AnyOf get anyOf;
 
-@JsonSerializable(
-  checked: true,
-  createToJson: true,
-  disallowUnrecognizedKeys: false,
-  explicitToJson: true,
-)
-class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody {
-  /// Returns a new [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody] instance.
-  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody({
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody._();
 
-     this.contentType,
+  factory PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody([void updates(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyBuilder b)]) = _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody;
 
-    required  this.mode,
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyBuilder b) => b;
 
-    required  this.raw,
+  @BuiltValueSerializer(custom: true)
+  static Serializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody> get serializer => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodySerializer();
+}
 
-    required  this.entries,
-
-    required  this.dataBase64,
-
-    required  this.fileName,
-  });
-
-  @JsonKey(
-    
-    name: r'contentType',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? contentType;
-
-
-
-  @JsonKey(
-    
-    name: r'mode',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String mode;
-
-
-
-  @JsonKey(
-    
-    name: r'raw',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String raw;
-
-
-
-  @JsonKey(
-    
-    name: r'entries',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final List<Object> entries;
-
-
-
-  @JsonKey(
-    
-    name: r'dataBase64',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String dataBase64;
-
-
-
-  @JsonKey(
-    
-    name: r'fileName',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String fileName;
-
-
-
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody &&
-      other.contentType == contentType &&
-      other.mode == mode &&
-      other.raw == raw &&
-      other.entries == entries &&
-      other.dataBase64 == dataBase64 &&
-      other.fileName == fileName;
-
-    @override
-    int get hashCode =>
-        contentType.hashCode +
-        mode.hashCode +
-        raw.hashCode +
-        entries.hashCode +
-        dataBase64.hashCode +
-        fileName.hashCode;
-
-  factory PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody.fromJson(Map<String, dynamic> json) => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyToJson(this);
+class _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodySerializer implements PrimitiveSerializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody> {
+  @override
+  final Iterable<Type> types = const [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody, _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody];
 
   @override
-  String toString() {
-    return toJson().toString();
+  final String wireName = r'PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
   }
 
+  @override
+  Object serialize(
+    Serializers serializers,
+    PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final anyOf = object.anyOf;
+    return serializers.serialize(anyOf, specifiedType: FullType(AnyOf, anyOf.valueTypes.map((type) => FullType(type)).toList()))!;
+  }
+
+  @override
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyBuilder();
+    Object? anyOfDataSrc;
+    final targetType = const FullType(AnyOf, [FullType(GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf), FullType(GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1), FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf), FullType(GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf3), FullType(GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf4), ]);
+    anyOfDataSrc = serialized;
+    result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
+    return result.build();
+  }
 }
 

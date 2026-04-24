@@ -6,7 +6,8 @@ export 'package:role_sdk/lib/api.dart';
 export 'package:role_sdk/lib/auth/api_key_auth.dart';
 export 'package:role_sdk/lib/auth/basic_auth.dart';
 export 'package:role_sdk/lib/auth/oauth.dart';
-
+export 'package:role_sdk/lib/serializers.dart';
+export 'package:role_sdk/lib/model/date.dart';
 
 export 'package:role_sdk/lib/api/auth_api.dart';
 export 'package:role_sdk/lib/api/collections_api.dart';

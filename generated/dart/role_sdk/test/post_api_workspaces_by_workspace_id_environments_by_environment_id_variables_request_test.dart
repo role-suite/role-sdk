@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest
 void main() {
-  final PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest? instance = /* PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest(...) */ null;
-  // TODO add properties to the entity
+  final instance = PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequestBuilder();
+  // TODO add properties to the builder and call build()
 
   group(PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest, () {
     // bool enabled

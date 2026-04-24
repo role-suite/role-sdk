@@ -9,7 +9,7 @@ import 'package:role_sdk/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **String** |  | 
-**details** | **Map&lt;String, Object&gt;** |  | 
+**details** | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md) |  | 
 **message** | **String** |  | 
 **requestId** | **String** |  | 
 

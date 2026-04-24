@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **auth** | [**GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerAuthAnyOf**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerAuthAnyOf.md) |  | 
 **body** | [**PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody**](PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBody.md) |  | 
-**headers** | [**List&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner.md) |  | 
+**headers** | [**BuiltList&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner.md) |  | 
 **method** | **String** |  | 
-**queryParams** | [**List&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner.md) |  | 
-**resolvedVariables** | **Map&lt;String, String&gt;** |  | 
+**queryParams** | [**BuiltList&lt;GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner&gt;**](GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf1EntriesInner.md) |  | 
+**resolvedVariables** | **BuiltMap&lt;String, String&gt;** |  | 
 **timeoutMs** | **int** |  | 
 **url** | **String** |  | 
 

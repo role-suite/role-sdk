@@ -3,38 +3,150 @@
 part of 'post_api_workspaces_by_workspace_id_import_export_exports201_response.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// BuiltValueGenerator
 // **************************************************************************
 
-PostApiWorkspacesByWorkspaceIdImportExportExports201Response
-    _$PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseFromJson(
-            Map<String, dynamic> json) =>
-        $checkedCreate(
-          'PostApiWorkspacesByWorkspaceIdImportExportExports201Response',
-          json,
-          ($checkedConvert) {
-            $checkKeys(
-              json,
-              requiredKeys: const ['data', 'success'],
-            );
-            final val =
-                PostApiWorkspacesByWorkspaceIdImportExportExports201Response(
-              data: $checkedConvert(
-                  'data',
-                  (v) =>
-                      PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseData
-                          .fromJson(v as Map<String, dynamic>)),
-              success: $checkedConvert('success', (v) => v as bool),
-            );
-            return val;
-          },
-        );
+class _$PostApiWorkspacesByWorkspaceIdImportExportExports201Response
+    extends PostApiWorkspacesByWorkspaceIdImportExportExports201Response {
+  @override
+  final PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseData data;
+  @override
+  final bool success;
 
-Map<String, dynamic>
-    _$PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseToJson(
-            PostApiWorkspacesByWorkspaceIdImportExportExports201Response
-                instance) =>
-        <String, dynamic>{
-          'data': instance.data.toJson(),
-          'success': instance.success,
-        };
+  factory _$PostApiWorkspacesByWorkspaceIdImportExportExports201Response(
+          [void Function(
+                  PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseBuilder)?
+              updates]) =>
+      (PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseBuilder()
+            ..update(updates))
+          ._build();
+
+  _$PostApiWorkspacesByWorkspaceIdImportExportExports201Response._(
+      {required this.data, required this.success})
+      : super._();
+  @override
+  PostApiWorkspacesByWorkspaceIdImportExportExports201Response rebuild(
+          void Function(
+                  PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseBuilder
+      toBuilder() =>
+          PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is PostApiWorkspacesByWorkspaceIdImportExportExports201Response &&
+        data == other.data &&
+        success == other.success;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, data.hashCode);
+    _$hash = $jc(_$hash, success.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'PostApiWorkspacesByWorkspaceIdImportExportExports201Response')
+          ..add('data', data)
+          ..add('success', success))
+        .toString();
+  }
+}
+
+class PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseBuilder
+    implements
+        Builder<PostApiWorkspacesByWorkspaceIdImportExportExports201Response,
+            PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseBuilder> {
+  _$PostApiWorkspacesByWorkspaceIdImportExportExports201Response? _$v;
+
+  PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseDataBuilder?
+      _data;
+  PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseDataBuilder
+      get data => _$this._data ??=
+          PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseDataBuilder();
+  set data(
+          PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseDataBuilder?
+              data) =>
+      _$this._data = data;
+
+  bool? _success;
+  bool? get success => _$this._success;
+  set success(bool? success) => _$this._success = success;
+
+  PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseBuilder() {
+    PostApiWorkspacesByWorkspaceIdImportExportExports201Response._defaults(
+        this);
+  }
+
+  PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _data = $v.data.toBuilder();
+      _success = $v.success;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      PostApiWorkspacesByWorkspaceIdImportExportExports201Response other) {
+    _$v =
+        other as _$PostApiWorkspacesByWorkspaceIdImportExportExports201Response;
+  }
+
+  @override
+  void update(
+      void Function(
+              PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  PostApiWorkspacesByWorkspaceIdImportExportExports201Response build() =>
+      _build();
+
+  _$PostApiWorkspacesByWorkspaceIdImportExportExports201Response _build() {
+    _$PostApiWorkspacesByWorkspaceIdImportExportExports201Response _$result;
+    try {
+      _$result = _$v ??
+          _$PostApiWorkspacesByWorkspaceIdImportExportExports201Response._(
+            data: data.build(),
+            success: BuiltValueNullFieldError.checkNotNull(
+                success,
+                r'PostApiWorkspacesByWorkspaceIdImportExportExports201Response',
+                'success'),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'data';
+        data.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'PostApiWorkspacesByWorkspaceIdImportExportExports201Response',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint
