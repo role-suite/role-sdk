@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthOneOf
 void main() {
-  final instance = PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthOneOfBuilder();
-  // TODO add properties to the builder and call build()
+  final PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthOneOf? instance = /* PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthOneOf(...) */ null;
+  // TODO add properties to the entity
 
   group(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthOneOf, () {
     // String token

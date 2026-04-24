@@ -3,122 +3,72 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'get_api_workspaces_by_workspace_id_updates200_response_data_cursor.g.dart';
 
-/// GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor
-///
-/// Properties:
-/// * [hasMore] 
-/// * [next] 
-@BuiltValue()
-abstract class GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor implements Built<GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor, GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursorBuilder> {
-  @BuiltValueField(wireName: r'hasMore')
-  bool get hasMore;
 
-  @BuiltValueField(wireName: r'next')
-  int get next;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor {
+  /// Returns a new [GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor] instance.
+  GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor({
 
-  GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor._();
+    required  this.hasMore,
 
-  factory GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor([void updates(GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursorBuilder b)]) = _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor;
+    required  this.next,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursorBuilder b) => b;
+  @JsonKey(
+    
+    name: r'hasMore',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor> get serializer => _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursorSerializer();
-}
 
-class _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursorSerializer implements PrimitiveSerializer<GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor> {
-  @override
-  final Iterable<Type> types = const [GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor, _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor];
+  final bool hasMore;
 
-  @override
-  final String wireName = r'GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'hasMore';
-    yield serializers.serialize(
-      object.hasMore,
-      specifiedType: const FullType(bool),
-    );
-    yield r'next';
-    yield serializers.serialize(
-      object.next,
-      specifiedType: const FullType(int),
-    );
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+          // minimum: 0
+          // maximum: 9007199254740991
+  @JsonKey(
+    
+    name: r'next',
+    required: true,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursorBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'hasMore':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.hasMore = valueDes;
-          break;
-        case r'next':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.next = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final int next;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor &&
+      other.hasMore == hasMore &&
+      other.next == next;
+
+    @override
+    int get hashCode =>
+        hasMore.hashCode +
+        next.hashCode;
+
+  factory GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor.fromJson(Map<String, dynamic> json) => _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursorFromJson(json);
+
+  Map<String, dynamic> toJson() => _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursorToJson(this);
 
   @override
-  GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursorBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

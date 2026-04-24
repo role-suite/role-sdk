@@ -4,219 +4,170 @@
 
 // ignore_for_file: unused_element
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints_request_folder_id.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_updates200_response_data_items_inner_payload.dart';
-import 'package:built_value/json_object.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'get_api_workspaces_by_workspace_id_updates200_response_data_items_inner.g.dart';
 
-/// GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner
-///
-/// Properties:
-/// * [action] 
-/// * [actorUserId] 
-/// * [createdAt] 
-/// * [entity] 
-/// * [entityId] 
-/// * [id] 
-/// * [payload] 
-/// * [workspaceId] 
-@BuiltValue()
-abstract class GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner implements Built<GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner, GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerBuilder> {
-  @BuiltValueField(wireName: r'action')
-  String get action;
 
-  @BuiltValueField(wireName: r'actorUserId')
-  PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId get actorUserId;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner {
+  /// Returns a new [GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner] instance.
+  GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner({
 
-  @BuiltValueField(wireName: r'createdAt')
-  String get createdAt;
+    required  this.action,
 
-  @BuiltValueField(wireName: r'entity')
-  String get entity;
+    required  this.actorUserId,
 
-  @BuiltValueField(wireName: r'entityId')
-  int get entityId;
+    required  this.createdAt,
 
-  @BuiltValueField(wireName: r'id')
-  int get id;
+    required  this.entity,
 
-  @BuiltValueField(wireName: r'payload')
-  GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload get payload;
+    required  this.entityId,
 
-  @BuiltValueField(wireName: r'workspaceId')
-  int get workspaceId;
+    required  this.id,
 
-  GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner._();
+    required  this.payload,
 
-  factory GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner([void updates(GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerBuilder b)]) = _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner;
+    required  this.workspaceId,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerBuilder b) => b;
+  @JsonKey(
+    
+    name: r'action',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner> get serializer => _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerSerializer();
-}
 
-class _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerSerializer implements PrimitiveSerializer<GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner> {
-  @override
-  final Iterable<Type> types = const [GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner, _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner];
+  final String action;
 
-  @override
-  final String wireName = r'GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'action';
-    yield serializers.serialize(
-      object.action,
-      specifiedType: const FullType(String),
-    );
-    yield r'actorUserId';
-    yield serializers.serialize(
-      object.actorUserId,
-      specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId),
-    );
-    yield r'createdAt';
-    yield serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType(String),
-    );
-    yield r'entity';
-    yield serializers.serialize(
-      object.entity,
-      specifiedType: const FullType(String),
-    );
-    yield r'entityId';
-    yield serializers.serialize(
-      object.entityId,
-      specifiedType: const FullType(int),
-    );
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(int),
-    );
-    yield r'payload';
-    yield serializers.serialize(
-      object.payload,
-      specifiedType: const FullType(GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload),
-    );
-    yield r'workspaceId';
-    yield serializers.serialize(
-      object.workspaceId,
-      specifiedType: const FullType(int),
-    );
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'actorUserId',
+    required: true,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'action':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.action = valueDes;
-          break;
-        case r'actorUserId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId),
-          ) as PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId;
-          result.actorUserId.replace(valueDes);
-          break;
-        case r'createdAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.createdAt = valueDes;
-          break;
-        case r'entity':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.entity = valueDes;
-          break;
-        case r'entityId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.entityId = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.id = valueDes;
-          break;
-        case r'payload':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload),
-          ) as GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload;
-          result.payload.replace(valueDes);
-          break;
-        case r'workspaceId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.workspaceId = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId actorUserId;
+
+
+
+  @JsonKey(
+    
+    name: r'createdAt',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String createdAt;
+
+
+
+  @JsonKey(
+    
+    name: r'entity',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String entity;
+
+
+
+          // maximum: 9007199254740991
+  @JsonKey(
+    
+    name: r'entityId',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final int entityId;
+
+
+
+          // maximum: 9007199254740991
+  @JsonKey(
+    
+    name: r'id',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final int id;
+
+
+
+  @JsonKey(
+    
+    name: r'payload',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload payload;
+
+
+
+          // maximum: 9007199254740991
+  @JsonKey(
+    
+    name: r'workspaceId',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final int workspaceId;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner &&
+      other.action == action &&
+      other.actorUserId == actorUserId &&
+      other.createdAt == createdAt &&
+      other.entity == entity &&
+      other.entityId == entityId &&
+      other.id == id &&
+      other.payload == payload &&
+      other.workspaceId == workspaceId;
+
+    @override
+    int get hashCode =>
+        action.hashCode +
+        actorUserId.hashCode +
+        createdAt.hashCode +
+        entity.hashCode +
+        entityId.hashCode +
+        id.hashCode +
+        payload.hashCode +
+        workspaceId.hashCode;
+
+  factory GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner.fromJson(Map<String, dynamic> json) => _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerFromJson(json);
+
+  Map<String, dynamic> toJson() => _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerToJson(this);
 
   @override
-  GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInner deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

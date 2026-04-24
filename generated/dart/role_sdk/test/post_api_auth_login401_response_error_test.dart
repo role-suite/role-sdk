@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiAuthLogin401ResponseError
 void main() {
-  final instance = PostApiAuthLogin401ResponseErrorBuilder();
-  // TODO add properties to the builder and call build()
+  final PostApiAuthLogin401ResponseError? instance = /* PostApiAuthLogin401ResponseError(...) */ null;
+  // TODO add properties to the entity
 
   group(PostApiAuthLogin401ResponseError, () {
     // String code
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltMap<String, JsonObject> details
+    // Map<String, Object> details
     test('to test the property `details`', () async {
       // TODO
     });

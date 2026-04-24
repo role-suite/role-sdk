@@ -3,11 +3,11 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiAuthLogin200ResponseData
 void main() {
-  final instance = PostApiAuthLogin200ResponseDataBuilder();
-  // TODO add properties to the builder and call build()
+  final PostApiAuthLogin200ResponseData? instance = /* PostApiAuthLogin200ResponseData(...) */ null;
+  // TODO add properties to the entity
 
   group(PostApiAuthLogin200ResponseData, () {
-    // BuiltList<PostApiAuthLogin200ResponseDataMembershipsInner> memberships
+    // List<PostApiAuthLogin200ResponseDataMembershipsInner> memberships
     test('to test the property `memberships`', () async {
       // TODO
     });

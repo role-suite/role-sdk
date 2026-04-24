@@ -3,138 +3,88 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'post_api_workspaces_by_workspace_id_runs_request_source_one_of1.g.dart';
 
-/// PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1
-///
-/// Properties:
-/// * [collectionId] 
-/// * [endpointId] 
-/// * [type] 
-@BuiltValue()
-abstract class PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1 implements Built<PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1, PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1Builder> {
-  @BuiltValueField(wireName: r'collectionId')
-  int get collectionId;
 
-  @BuiltValueField(wireName: r'endpointId')
-  int get endpointId;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1 {
+  /// Returns a new [PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1] instance.
+  PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1({
 
-  @BuiltValueField(wireName: r'type')
-  String get type;
+    required  this.collectionId,
 
-  PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1._();
+    required  this.endpointId,
 
-  factory PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1([void updates(PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1Builder b)]) = _$PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1;
+    required  this.type,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1Builder b) => b;
+          // maximum: 9007199254740991
+  @JsonKey(
+    
+    name: r'collectionId',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1> get serializer => _$PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1Serializer();
-}
 
-class _$PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1Serializer implements PrimitiveSerializer<PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1> {
-  @override
-  final Iterable<Type> types = const [PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1, _$PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1];
+  final int collectionId;
 
-  @override
-  final String wireName = r'PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1 object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'collectionId';
-    yield serializers.serialize(
-      object.collectionId,
-      specifiedType: const FullType(int),
-    );
-    yield r'endpointId';
-    yield serializers.serialize(
-      object.endpointId,
-      specifiedType: const FullType(int),
-    );
-    yield r'type';
-    yield serializers.serialize(
-      object.type,
-      specifiedType: const FullType(String),
-    );
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1 object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+          // maximum: 9007199254740991
+  @JsonKey(
+    
+    name: r'endpointId',
+    required: true,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1Builder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'collectionId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.collectionId = valueDes;
-          break;
-        case r'endpointId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.endpointId = valueDes;
-          break;
-        case r'type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.type = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final int endpointId;
+
+
+
+  @JsonKey(
+    
+    name: r'type',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String type;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1 &&
+      other.collectionId == collectionId &&
+      other.endpointId == endpointId &&
+      other.type == type;
+
+    @override
+    int get hashCode =>
+        collectionId.hashCode +
+        endpointId.hashCode +
+        type.hashCode;
+
+  factory PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1.fromJson(Map<String, dynamic> json) => _$PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1FromJson(json);
+
+  Map<String, dynamic> toJson() => _$PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1ToJson(this);
 
   @override
-  PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1 deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOf1Builder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

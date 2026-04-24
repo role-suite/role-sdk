@@ -3,11 +3,11 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for GetApiWorkspacesByWorkspaceIdCollections200ResponseData
 void main() {
-  final instance = GetApiWorkspacesByWorkspaceIdCollections200ResponseDataBuilder();
-  // TODO add properties to the builder and call build()
+  final GetApiWorkspacesByWorkspaceIdCollections200ResponseData? instance = /* GetApiWorkspacesByWorkspaceIdCollections200ResponseData(...) */ null;
+  // TODO add properties to the entity
 
   group(GetApiWorkspacesByWorkspaceIdCollections200ResponseData, () {
-    // BuiltList<GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner> items
+    // List<GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner> items
     test('to test the property `items`', () async {
       // TODO
     });

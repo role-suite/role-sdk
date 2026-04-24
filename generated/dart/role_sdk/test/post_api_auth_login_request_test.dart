@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiAuthLoginRequest
 void main() {
-  final instance = PostApiAuthLoginRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final PostApiAuthLoginRequest? instance = /* PostApiAuthLoginRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(PostApiAuthLoginRequest, () {
     // String email

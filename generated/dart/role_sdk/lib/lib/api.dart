@@ -3,8 +3,6 @@
 //
 
 import 'package:dio/dio.dart';
-import 'package:built_value/serializer.dart';
-import 'package:role_sdk/lib/serializers.dart';
 import 'package:role_sdk/lib/auth/api_key_auth.dart';
 import 'package:role_sdk/lib/auth/basic_auth.dart';
 import 'package:role_sdk/lib/auth/bearer_auth.dart';
@@ -20,14 +18,11 @@ class RoleSdk {
   static const String basePath = r'http://localhost';
 
   final Dio dio;
-  final Serializers serializers;
-
   RoleSdk({
     Dio? dio,
-    Serializers? serializers,
     String? basePathOverride,
     List<Interceptor>? interceptors,
-  })  : this.serializers = serializers ?? standardSerializers,
+  })  : 
         this.dio = dio ??
             Dio(BaseOptions(
               baseUrl: basePathOverride ?? basePath,
@@ -73,36 +68,36 @@ class RoleSdk {
   /// Get AuthApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   AuthApi getAuthApi() {
-    return AuthApi(dio, serializers);
+    return AuthApi(dio);
   }
 
   /// Get CollectionsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   CollectionsApi getCollectionsApi() {
-    return CollectionsApi(dio, serializers);
+    return CollectionsApi(dio);
   }
 
   /// Get EnvironmentsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   EnvironmentsApi getEnvironmentsApi() {
-    return EnvironmentsApi(dio, serializers);
+    return EnvironmentsApi(dio);
   }
 
   /// Get ImportExportApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   ImportExportApi getImportExportApi() {
-    return ImportExportApi(dio, serializers);
+    return ImportExportApi(dio);
   }
 
   /// Get RunsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   RunsApi getRunsApi() {
-    return RunsApi(dio, serializers);
+    return RunsApi(dio);
   }
 
   /// Get WorkspacesApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   WorkspacesApi getWorkspacesApi() {
-    return WorkspacesApi(dio, serializers);
+    return WorkspacesApi(dio);
   }
 }

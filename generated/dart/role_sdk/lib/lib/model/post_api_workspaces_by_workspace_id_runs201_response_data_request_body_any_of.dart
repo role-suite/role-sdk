@@ -3,122 +3,70 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'post_api_workspaces_by_workspace_id_runs201_response_data_request_body_any_of.g.dart';
 
-/// PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf
-///
-/// Properties:
-/// * [entries] 
-/// * [mode] 
-@BuiltValue()
-abstract class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf implements Built<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf, PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOfBuilder> {
-  @BuiltValueField(wireName: r'entries')
-  BuiltList<BuiltMap<String, JsonObject?>> get entries;
 
-  @BuiltValueField(wireName: r'mode')
-  String get mode;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf {
+  /// Returns a new [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf] instance.
+  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf({
 
-  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf._();
+    required  this.entries,
 
-  factory PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf([void updates(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOfBuilder b)]) = _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf;
+    required  this.mode,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOfBuilder b) => b;
+  @JsonKey(
+    
+    name: r'entries',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf> get serializer => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOfSerializer();
-}
 
-class _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOfSerializer implements PrimitiveSerializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf> {
-  @override
-  final Iterable<Type> types = const [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf, _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf];
+  final List<Map<String, Object>> entries;
 
-  @override
-  final String wireName = r'PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'entries';
-    yield serializers.serialize(
-      object.entries,
-      specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
-    );
-    yield r'mode';
-    yield serializers.serialize(
-      object.mode,
-      specifiedType: const FullType(String),
-    );
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'mode',
+    required: true,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOfBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'entries':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
-          ) as BuiltList<BuiltMap<String, JsonObject?>>;
-          result.entries.replace(valueDes);
-          break;
-        case r'mode':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.mode = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String mode;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf &&
+      other.entries == entries &&
+      other.mode == mode;
+
+    @override
+    int get hashCode =>
+        entries.hashCode +
+        mode.hashCode;
+
+  factory PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf.fromJson(Map<String, dynamic> json) => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOfFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOfToJson(this);
 
   @override
-  PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOf deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestBodyAnyOfBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor
 void main() {
-  final instance = GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursorBuilder();
-  // TODO add properties to the builder and call build()
+  final GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor? instance = /* GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor(...) */ null;
+  // TODO add properties to the entity
 
   group(GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataCursor, () {
     // bool hasMore

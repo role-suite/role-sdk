@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestAuth
 void main() {
-  final instance = PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestAuthBuilder();
-  // TODO add properties to the builder and call build()
+  final PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestAuth? instance = /* PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestAuth(...) */ null;
+  // TODO add properties to the entity
 
   group(PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestAuth, () {
     // String type

@@ -5,74 +5,150 @@
 // ignore_for_file: unused_element
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints200_response_data_items_inner_body_any_of_any_of2_entries_inner_one_of.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints200_response_data_items_inner_body_any_of_any_of2_entries_inner_one_of1.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:one_of/one_of.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'get_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints200_response_data_items_inner_body_any_of_any_of2_entries_inner.g.dart';
 
-/// GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner
-///
-/// Properties:
-/// * [enabled] 
-/// * [key] 
-/// * [type] 
-/// * [value] 
-/// * [contentType] 
-/// * [dataBase64] 
-/// * [fileName] 
-@BuiltValue()
-abstract class GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner implements Built<GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner, GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerBuilder> {
-  /// One Of [GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerOneOf], [GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerOneOf1]
-  OneOf get oneOf;
 
-  GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner._();
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner {
+  /// Returns a new [GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner] instance.
+  GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner({
 
-  factory GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner([void updates(GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerBuilder b)]) = _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner;
+     this.enabled,
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerBuilder b) => b;
+    required  this.key,
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner> get serializer => _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerSerializer();
-}
+    required  this.type,
 
-class _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerSerializer implements PrimitiveSerializer<GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner> {
+    required  this.value,
+
+     this.contentType,
+
+    required  this.dataBase64,
+
+    required  this.fileName,
+  });
+
+  @JsonKey(
+    
+    name: r'enabled',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? enabled;
+
+
+
+  @JsonKey(
+    
+    name: r'key',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String key;
+
+
+
+  @JsonKey(
+    
+    name: r'type',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String type;
+
+
+
+  @JsonKey(
+    
+    name: r'value',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String value;
+
+
+
+  @JsonKey(
+    
+    name: r'contentType',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? contentType;
+
+
+
+  @JsonKey(
+    
+    name: r'dataBase64',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String dataBase64;
+
+
+
+  @JsonKey(
+    
+    name: r'fileName',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String fileName;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner &&
+      other.enabled == enabled &&
+      other.key == key &&
+      other.type == type &&
+      other.value == value &&
+      other.contentType == contentType &&
+      other.dataBase64 == dataBase64 &&
+      other.fileName == fileName;
+
+    @override
+    int get hashCode =>
+        enabled.hashCode +
+        key.hashCode +
+        type.hashCode +
+        value.hashCode +
+        contentType.hashCode +
+        dataBase64.hashCode +
+        fileName.hashCode;
+
+  factory GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner.fromJson(Map<String, dynamic> json) => _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerFromJson(json);
+
+  Map<String, dynamic> toJson() => _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerToJson(this);
+
   @override
-  final Iterable<Type> types = const [GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner, _$GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner];
-
-  @override
-  final String wireName = r'GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner';
-
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
+  String toString() {
+    return toJson().toString();
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final oneOf = object.oneOf;
-    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
-  }
-
-  @override
-  GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInner deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerBuilder();
-    Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerOneOf), FullType(GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerBodyAnyOfAnyOf2EntriesInnerOneOf1), ]);
-    oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
-    return result.build();
-  }
 }
 

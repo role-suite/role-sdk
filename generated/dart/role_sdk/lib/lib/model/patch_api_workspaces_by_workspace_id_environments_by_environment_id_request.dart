@@ -3,108 +3,54 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'patch_api_workspaces_by_workspace_id_environments_by_environment_id_request.g.dart';
 
-/// PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest
-///
-/// Properties:
-/// * [name] 
-@BuiltValue()
-abstract class PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest implements Built<PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest, PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequestBuilder> {
-  @BuiltValueField(wireName: r'name')
-  String? get name;
 
-  PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest._();
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest {
+  /// Returns a new [PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest] instance.
+  PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest({
 
-  factory PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest([void updates(PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequestBuilder b)]) = _$PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest;
+     this.name,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequestBuilder b) => b;
+  @JsonKey(
+    
+    name: r'name',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest> get serializer => _$PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequestSerializer();
-}
 
-class _$PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequestSerializer implements PrimitiveSerializer<PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest> {
-  @override
-  final Iterable<Type> types = const [PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest, _$PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest];
+  final String? name;
 
-  @override
-  final String wireName = r'PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequestBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.name = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest &&
+      other.name == name;
+
+    @override
+    int get hashCode =>
+        name.hashCode;
+
+  factory PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest.fromJson(Map<String, dynamic> json) => _$PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequestFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequestToJson(this);
 
   @override
-  PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequestBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

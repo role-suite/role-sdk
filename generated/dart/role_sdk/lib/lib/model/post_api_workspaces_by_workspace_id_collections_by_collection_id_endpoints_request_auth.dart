@@ -6,71 +6,102 @@
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints_request_auth_one_of1.dart';
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints_request_auth_one_of.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints200_response_data_items_inner_auth_any_of_one_of.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:one_of/one_of.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'post_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints_request_auth.g.dart';
 
-/// PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth
-///
-/// Properties:
-/// * [type] 
-/// * [token] 
-/// * [password] 
-/// * [username] 
-@BuiltValue()
-abstract class PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth implements Built<PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth, PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthBuilder> {
-  /// One Of [GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerAuthAnyOfOneOf], [PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthOneOf], [PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthOneOf1]
-  OneOf get oneOf;
 
-  PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth._();
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth {
+  /// Returns a new [PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth] instance.
+  PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth({
 
-  factory PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth([void updates(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthBuilder b)]) = _$PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth;
+    required  this.type,
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthBuilder b) => b;
+    required  this.token,
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth> get serializer => _$PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthSerializer();
-}
+    required  this.password,
 
-class _$PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthSerializer implements PrimitiveSerializer<PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth> {
+    required  this.username,
+  });
+
+  @JsonKey(
+    
+    name: r'type',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String type;
+
+
+
+  @JsonKey(
+    
+    name: r'token',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String token;
+
+
+
+  @JsonKey(
+    
+    name: r'password',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String password;
+
+
+
+  @JsonKey(
+    
+    name: r'username',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String username;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth &&
+      other.type == type &&
+      other.token == token &&
+      other.password == password &&
+      other.username == username;
+
+    @override
+    int get hashCode =>
+        type.hashCode +
+        token.hashCode +
+        password.hashCode +
+        username.hashCode;
+
+  factory PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth.fromJson(Map<String, dynamic> json) => _$PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthToJson(this);
+
   @override
-  final Iterable<Type> types = const [PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth, _$PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth];
-
-  @override
-  final String wireName = r'PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth';
-
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
+  String toString() {
+    return toJson().toString();
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final oneOf = object.oneOf;
-    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
-  }
-
-  @override
-  PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthBuilder();
-    Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200ResponseDataItemsInnerAuthAnyOfOneOf), FullType(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthOneOf), FullType(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuthOneOf1), ]);
-    oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
-    return result.build();
-  }
 }
 

@@ -3,107 +3,55 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_import_export_exports201_response_data.dart';
-import 'package:built_value/json_object.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'get_api_workspaces_by_workspace_id_import_export_jobs200_response_data.g.dart';
 
-/// GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData
-///
-/// Properties:
-/// * [items] 
-@BuiltValue()
-abstract class GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData implements Built<GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData, GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseDataBuilder> {
-  @BuiltValueField(wireName: r'items')
-  BuiltList<PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseData> get items;
 
-  GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData._();
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData {
+  /// Returns a new [GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData] instance.
+  GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData({
 
-  factory GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData([void updates(GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseDataBuilder b)]) = _$GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData;
+    required  this.items,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseDataBuilder b) => b;
+  @JsonKey(
+    
+    name: r'items',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData> get serializer => _$GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseDataSerializer();
-}
 
-class _$GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseDataSerializer implements PrimitiveSerializer<GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData> {
-  @override
-  final Iterable<Type> types = const [GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData, _$GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData];
+  final List<PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseData> items;
 
-  @override
-  final String wireName = r'GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'items';
-    yield serializers.serialize(
-      object.items,
-      specifiedType: const FullType(BuiltList, [FullType(PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseData)]),
-    );
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseDataBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'items':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseData)]),
-          ) as BuiltList<PostApiWorkspacesByWorkspaceIdImportExportExports201ResponseData>;
-          result.items.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData &&
+      other.items == items;
+
+    @override
+    int get hashCode =>
+        items.hashCode;
+
+  factory GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData.fromJson(Map<String, dynamic> json) => _$GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseDataToJson(this);
 
   @override
-  GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseData deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = GetApiWorkspacesByWorkspaceIdImportExportJobs200ResponseDataBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

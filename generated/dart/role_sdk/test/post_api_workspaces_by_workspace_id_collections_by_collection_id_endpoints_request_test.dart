@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest
 void main() {
-  final instance = PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest? instance = /* PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest, () {
     // PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestAuth auth
@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestBodyAnyOf1EntriesInner> headers
+    // List<PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestBodyAnyOf1EntriesInner> headers
     test('to test the property `headers`', () async {
       // TODO
     });
@@ -42,7 +42,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestBodyAnyOf1EntriesInner> queryParams
+    // List<PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestBodyAnyOf1EntriesInner> queryParams
     test('to test the property `queryParams`', () async {
       // TODO
     });

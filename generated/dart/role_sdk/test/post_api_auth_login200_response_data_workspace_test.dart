@@ -3,12 +3,12 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiAuthLogin200ResponseDataWorkspace
 void main() {
-  final instance = PostApiAuthLogin200ResponseDataWorkspaceBuilder();
-  // TODO add properties to the builder and call build()
+  final PostApiAuthLogin200ResponseDataWorkspace? instance = /* PostApiAuthLogin200ResponseDataWorkspace(...) */ null;
+  // TODO add properties to the entity
 
   group(PostApiAuthLogin200ResponseDataWorkspace, () {
-    // int id
-    test('to test the property `id`', () async {
+    // int legacyId
+    test('to test the property `legacyId`', () async {
       // TODO
     });
 

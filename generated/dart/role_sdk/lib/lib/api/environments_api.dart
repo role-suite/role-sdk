@@ -4,10 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:role_sdk/lib/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:role_sdk/lib/api_util.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_environments200_response.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_environments_by_environment_id_variables200_response.dart';
 import 'package:role_sdk/lib/model/patch_api_workspaces_by_workspace_id_environments_by_environment_id_request.dart';
@@ -24,9 +25,7 @@ class EnvironmentsApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const EnvironmentsApi(this._dio, this._serializers);
+  const EnvironmentsApi(this._dio);
 
   /// deleteApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId
   /// 
@@ -53,7 +52,7 @@ class EnvironmentsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString()).replaceAll('{' r'environmentId' '}', encodeQueryParameter(_serializers, environmentId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}'.replaceAll('{' r'workspaceId' '}', workspaceId.toString()).replaceAll('{' r'environmentId' '}', environmentId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -83,12 +82,8 @@ class EnvironmentsApi {
     PostApiAuthLogout200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiAuthLogout200Response),
-      ) as PostApiAuthLogout200Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiAuthLogout200Response, PostApiAuthLogout200Response>(rawData, 'PostApiAuthLogout200Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -138,7 +133,7 @@ class EnvironmentsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId}'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString()).replaceAll('{' r'environmentId' '}', encodeQueryParameter(_serializers, environmentId, const FullType(int)).toString()).replaceAll('{' r'variableId' '}', encodeQueryParameter(_serializers, variableId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId}'.replaceAll('{' r'workspaceId' '}', workspaceId.toString()).replaceAll('{' r'environmentId' '}', environmentId.toString()).replaceAll('{' r'variableId' '}', variableId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -168,12 +163,8 @@ class EnvironmentsApi {
     PostApiAuthLogout200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiAuthLogout200Response),
-      ) as PostApiAuthLogout200Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiAuthLogout200Response, PostApiAuthLogout200Response>(rawData, 'PostApiAuthLogout200Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -219,7 +210,7 @@ class EnvironmentsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/environments'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/environments'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -249,12 +240,8 @@ class EnvironmentsApi {
     GetApiWorkspacesByWorkspaceIdEnvironments200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GetApiWorkspacesByWorkspaceIdEnvironments200Response),
-      ) as GetApiWorkspacesByWorkspaceIdEnvironments200Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<GetApiWorkspacesByWorkspaceIdEnvironments200Response, GetApiWorkspacesByWorkspaceIdEnvironments200Response>(rawData, 'GetApiWorkspacesByWorkspaceIdEnvironments200Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -302,7 +289,7 @@ class EnvironmentsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString()).replaceAll('{' r'environmentId' '}', encodeQueryParameter(_serializers, environmentId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}'.replaceAll('{' r'workspaceId' '}', workspaceId.toString()).replaceAll('{' r'environmentId' '}', environmentId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -332,12 +319,8 @@ class EnvironmentsApi {
     PostApiWorkspacesByWorkspaceIdEnvironments201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdEnvironments201Response),
-      ) as PostApiWorkspacesByWorkspaceIdEnvironments201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdEnvironments201Response, PostApiWorkspacesByWorkspaceIdEnvironments201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdEnvironments201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -385,7 +368,7 @@ class EnvironmentsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}/variables'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString()).replaceAll('{' r'environmentId' '}', encodeQueryParameter(_serializers, environmentId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}/variables'.replaceAll('{' r'workspaceId' '}', workspaceId.toString()).replaceAll('{' r'environmentId' '}', environmentId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -415,12 +398,8 @@ class EnvironmentsApi {
     GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200Response),
-      ) as GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200Response, GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200Response>(rawData, 'GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -470,7 +449,7 @@ class EnvironmentsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId}'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString()).replaceAll('{' r'environmentId' '}', encodeQueryParameter(_serializers, environmentId, const FullType(int)).toString()).replaceAll('{' r'variableId' '}', encodeQueryParameter(_serializers, variableId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId}'.replaceAll('{' r'workspaceId' '}', workspaceId.toString()).replaceAll('{' r'environmentId' '}', environmentId.toString()).replaceAll('{' r'variableId' '}', variableId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -500,12 +479,8 @@ class EnvironmentsApi {
     PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response),
-      ) as PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response, PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -555,7 +530,7 @@ class EnvironmentsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString()).replaceAll('{' r'environmentId' '}', encodeQueryParameter(_serializers, environmentId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}'.replaceAll('{' r'workspaceId' '}', workspaceId.toString()).replaceAll('{' r'environmentId' '}', environmentId.toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -578,9 +553,7 @@ class EnvironmentsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest);
-      _bodyData = _serializers.serialize(patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -605,12 +578,8 @@ class EnvironmentsApi {
     PostApiWorkspacesByWorkspaceIdEnvironments201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdEnvironments201Response),
-      ) as PostApiWorkspacesByWorkspaceIdEnvironments201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdEnvironments201Response, PostApiWorkspacesByWorkspaceIdEnvironments201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdEnvironments201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -662,7 +631,7 @@ class EnvironmentsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId}'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString()).replaceAll('{' r'environmentId' '}', encodeQueryParameter(_serializers, environmentId, const FullType(int)).toString()).replaceAll('{' r'variableId' '}', encodeQueryParameter(_serializers, variableId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId}'.replaceAll('{' r'workspaceId' '}', workspaceId.toString()).replaceAll('{' r'environmentId' '}', environmentId.toString()).replaceAll('{' r'variableId' '}', variableId.toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -685,9 +654,7 @@ class EnvironmentsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest);
-      _bodyData = _serializers.serialize(patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -712,12 +679,8 @@ class EnvironmentsApi {
     PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response),
-      ) as PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response, PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -765,7 +728,7 @@ class EnvironmentsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/environments'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/environments'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -788,9 +751,7 @@ class EnvironmentsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PostApiWorkspacesByWorkspaceIdEnvironmentsRequest);
-      _bodyData = _serializers.serialize(postApiWorkspacesByWorkspaceIdEnvironmentsRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(postApiWorkspacesByWorkspaceIdEnvironmentsRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -815,12 +776,8 @@ class EnvironmentsApi {
     PostApiWorkspacesByWorkspaceIdEnvironments201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdEnvironments201Response),
-      ) as PostApiWorkspacesByWorkspaceIdEnvironments201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdEnvironments201Response, PostApiWorkspacesByWorkspaceIdEnvironments201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdEnvironments201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -870,7 +827,7 @@ class EnvironmentsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}/variables'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString()).replaceAll('{' r'environmentId' '}', encodeQueryParameter(_serializers, environmentId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/environments/{environmentId}/variables'.replaceAll('{' r'workspaceId' '}', workspaceId.toString()).replaceAll('{' r'environmentId' '}', environmentId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -893,9 +850,7 @@ class EnvironmentsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest);
-      _bodyData = _serializers.serialize(postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -920,12 +875,8 @@ class EnvironmentsApi {
     PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response),
-      ) as PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response, PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

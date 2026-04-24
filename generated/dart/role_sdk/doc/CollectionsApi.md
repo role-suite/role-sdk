@@ -1,46 +1,46 @@
 # role_sdk.api.CollectionsApi
 
 ## Load the API package
-
 ```dart
 import 'package:role_sdk/api.dart';
 ```
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *http://localhost*
 
-| Method                                                                                                                                                                                                                       | HTTP request                                                                                                    | Description |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ----------- |
-| [**deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionId**](CollectionsApi.md#deleteapiworkspacesbyworkspaceidcollectionsbycollectionid)                                                                                 | **DELETE** /api/workspaces/{workspaceId}/collections/{collectionId}                                             |
-| [**deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId**](CollectionsApi.md#deleteapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointid)                                       | **DELETE** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId}                      |
-| [**deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleId**](CollectionsApi.md#deleteapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointidexamplesbyexampleid) | **DELETE** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId}/examples/{exampleId} |
-| [**deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderId**](CollectionsApi.md#deleteapiworkspacesbyworkspaceidcollectionsbycollectionidfoldersbyfolderid)                                               | **DELETE** /api/workspaces/{workspaceId}/collections/{collectionId}/folders/{folderId}                          |
-| [**getApiWorkspacesByWorkspaceIdCollections**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollections)                                                                                                                   | **GET** /api/workspaces/{workspaceId}/collections                                                               |
-| [**getApiWorkspacesByWorkspaceIdCollectionsByCollectionId**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollectionsbycollectionid)                                                                                       | **GET** /api/workspaces/{workspaceId}/collections/{collectionId}                                                |
-| [**getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollectionsbycollectionidendpoints)                                                                     | **GET** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints                                      |
-| [**getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointid)                                             | **GET** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId}                         |
-| [**getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointidexamples)                             | **GET** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId}/examples                |
-| [**getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollectionsbycollectionidfolders)                                                                         | **GET** /api/workspaces/{workspaceId}/collections/{collectionId}/folders                                        |
-| [**patchApiWorkspacesByWorkspaceIdCollectionsByCollectionId**](CollectionsApi.md#patchapiworkspacesbyworkspaceidcollectionsbycollectionid)                                                                                   | **PATCH** /api/workspaces/{workspaceId}/collections/{collectionId}                                              |
-| [**patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId**](CollectionsApi.md#patchapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointid)                                         | **PATCH** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId}                       |
-| [**patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleId**](CollectionsApi.md#patchapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointidexamplesbyexampleid)   | **PATCH** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId}/examples/{exampleId}  |
-| [**patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderId**](CollectionsApi.md#patchapiworkspacesbyworkspaceidcollectionsbycollectionidfoldersbyfolderid)                                                 | **PATCH** /api/workspaces/{workspaceId}/collections/{collectionId}/folders/{folderId}                           |
-| [**postApiWorkspacesByWorkspaceIdCollections**](CollectionsApi.md#postapiworkspacesbyworkspaceidcollections)                                                                                                                 | **POST** /api/workspaces/{workspaceId}/collections                                                              |
-| [**postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints**](CollectionsApi.md#postapiworkspacesbyworkspaceidcollectionsbycollectionidendpoints)                                                                   | **POST** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints                                     |
-| [**postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples**](CollectionsApi.md#postapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointidexamples)                           | **POST** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId}/examples               |
-| [**postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders**](CollectionsApi.md#postapiworkspacesbyworkspaceidcollectionsbycollectionidfolders)                                                                       | **POST** /api/workspaces/{workspaceId}/collections/{collectionId}/folders                                       |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionId**](CollectionsApi.md#deleteapiworkspacesbyworkspaceidcollectionsbycollectionid) | **DELETE** /api/workspaces/{workspaceId}/collections/{collectionId} | 
+[**deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId**](CollectionsApi.md#deleteapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointid) | **DELETE** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId} | 
+[**deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleId**](CollectionsApi.md#deleteapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointidexamplesbyexampleid) | **DELETE** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId}/examples/{exampleId} | 
+[**deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderId**](CollectionsApi.md#deleteapiworkspacesbyworkspaceidcollectionsbycollectionidfoldersbyfolderid) | **DELETE** /api/workspaces/{workspaceId}/collections/{collectionId}/folders/{folderId} | 
+[**getApiWorkspacesByWorkspaceIdCollections**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollections) | **GET** /api/workspaces/{workspaceId}/collections | 
+[**getApiWorkspacesByWorkspaceIdCollectionsByCollectionId**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollectionsbycollectionid) | **GET** /api/workspaces/{workspaceId}/collections/{collectionId} | 
+[**getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollectionsbycollectionidendpoints) | **GET** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints | 
+[**getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointid) | **GET** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId} | 
+[**getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointidexamples) | **GET** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId}/examples | 
+[**getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders**](CollectionsApi.md#getapiworkspacesbyworkspaceidcollectionsbycollectionidfolders) | **GET** /api/workspaces/{workspaceId}/collections/{collectionId}/folders | 
+[**patchApiWorkspacesByWorkspaceIdCollectionsByCollectionId**](CollectionsApi.md#patchapiworkspacesbyworkspaceidcollectionsbycollectionid) | **PATCH** /api/workspaces/{workspaceId}/collections/{collectionId} | 
+[**patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId**](CollectionsApi.md#patchapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointid) | **PATCH** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId} | 
+[**patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleId**](CollectionsApi.md#patchapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointidexamplesbyexampleid) | **PATCH** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId}/examples/{exampleId} | 
+[**patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderId**](CollectionsApi.md#patchapiworkspacesbyworkspaceidcollectionsbycollectionidfoldersbyfolderid) | **PATCH** /api/workspaces/{workspaceId}/collections/{collectionId}/folders/{folderId} | 
+[**postApiWorkspacesByWorkspaceIdCollections**](CollectionsApi.md#postapiworkspacesbyworkspaceidcollections) | **POST** /api/workspaces/{workspaceId}/collections | 
+[**postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints**](CollectionsApi.md#postapiworkspacesbyworkspaceidcollectionsbycollectionidendpoints) | **POST** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints | 
+[**postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples**](CollectionsApi.md#postapiworkspacesbyworkspaceidcollectionsbycollectionidendpointsbyendpointidexamples) | **POST** /api/workspaces/{workspaceId}/collections/{collectionId}/endpoints/{endpointId}/examples | 
+[**postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders**](CollectionsApi.md#postapiworkspacesbyworkspaceidcollectionsbycollectionidfolders) | **POST** /api/workspaces/{workspaceId}/collections/{collectionId}/folders | 
+
 
 # **deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionId**
-
 > PostApiAuthLogout200Response deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionId(workspaceId, collectionId)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
 
 try {
     final response = api.deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionId(workspaceId, collectionId);
@@ -52,10 +52,10 @@ try {
 
 ### Parameters
 
-| Name             | Type    | Description | Notes |
-| ---------------- | ------- | ----------- | ----- |
-| **workspaceId**  | **int** |             |
-| **collectionId** | **int** |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
 
 ### Return type
 
@@ -67,24 +67,24 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId**
-
 > PostApiAuthLogout200Response deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId(workspaceId, collectionId, endpointId)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final int endpointId = 56; // int |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final int endpointId = 56; // int | 
 
 try {
     final response = api.deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId(workspaceId, collectionId, endpointId);
@@ -96,11 +96,11 @@ try {
 
 ### Parameters
 
-| Name             | Type    | Description | Notes |
-| ---------------- | ------- | ----------- | ----- |
-| **workspaceId**  | **int** |             |
-| **collectionId** | **int** |             |
-| **endpointId**   | **int** |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **endpointId** | **int**|  | 
 
 ### Return type
 
@@ -112,25 +112,25 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleId**
-
 > PostApiAuthLogout200Response deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleId(workspaceId, collectionId, endpointId, exampleId)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final int endpointId = 56; // int |
-final int exampleId = 56; // int |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final int endpointId = 56; // int | 
+final int exampleId = 56; // int | 
 
 try {
     final response = api.deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleId(workspaceId, collectionId, endpointId, exampleId);
@@ -142,12 +142,12 @@ try {
 
 ### Parameters
 
-| Name             | Type    | Description | Notes |
-| ---------------- | ------- | ----------- | ----- |
-| **workspaceId**  | **int** |             |
-| **collectionId** | **int** |             |
-| **endpointId**   | **int** |             |
-| **exampleId**    | **int** |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **endpointId** | **int**|  | 
+ **exampleId** | **int**|  | 
 
 ### Return type
 
@@ -159,24 +159,24 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderId**
-
 > PostApiAuthLogout200Response deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderId(workspaceId, collectionId, folderId)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final int folderId = 56; // int |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final int folderId = 56; // int | 
 
 try {
     final response = api.deleteApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderId(workspaceId, collectionId, folderId);
@@ -188,11 +188,11 @@ try {
 
 ### Parameters
 
-| Name             | Type    | Description | Notes |
-| ---------------- | ------- | ----------- | ----- |
-| **workspaceId**  | **int** |             |
-| **collectionId** | **int** |             |
-| **folderId**     | **int** |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **folderId** | **int**|  | 
 
 ### Return type
 
@@ -204,22 +204,22 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdCollections**
-
 > GetApiWorkspacesByWorkspaceIdCollections200Response getApiWorkspacesByWorkspaceIdCollections(workspaceId)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
+final int workspaceId = 56; // int | 
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdCollections(workspaceId);
@@ -231,9 +231,9 @@ try {
 
 ### Parameters
 
-| Name            | Type    | Description | Notes |
-| --------------- | ------- | ----------- | ----- |
-| **workspaceId** | **int** |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
 
 ### Return type
 
@@ -245,23 +245,23 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdCollectionsByCollectionId**
-
 > PostApiWorkspacesByWorkspaceIdCollections201Response getApiWorkspacesByWorkspaceIdCollectionsByCollectionId(workspaceId, collectionId)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdCollectionsByCollectionId(workspaceId, collectionId);
@@ -273,10 +273,10 @@ try {
 
 ### Parameters
 
-| Name             | Type    | Description | Notes |
-| ---------------- | ------- | ----------- | ----- |
-| **workspaceId**  | **int** |             |
-| **collectionId** | **int** |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
 
 ### Return type
 
@@ -288,23 +288,23 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints**
-
 > GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints200Response getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints(workspaceId, collectionId)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints(workspaceId, collectionId);
@@ -316,10 +316,10 @@ try {
 
 ### Parameters
 
-| Name             | Type    | Description | Notes |
-| ---------------- | ------- | ----------- | ----- |
-| **workspaceId**  | **int** |             |
-| **collectionId** | **int** |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
 
 ### Return type
 
@@ -331,24 +331,24 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId**
-
 > PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints201Response getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId(workspaceId, collectionId, endpointId)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final int endpointId = 56; // int |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final int endpointId = 56; // int | 
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId(workspaceId, collectionId, endpointId);
@@ -360,11 +360,11 @@ try {
 
 ### Parameters
 
-| Name             | Type    | Description | Notes |
-| ---------------- | ------- | ----------- | ----- |
-| **workspaceId**  | **int** |             |
-| **collectionId** | **int** |             |
-| **endpointId**   | **int** |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **endpointId** | **int**|  | 
 
 ### Return type
 
@@ -376,24 +376,24 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples**
-
 > GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples200Response getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples(workspaceId, collectionId, endpointId)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final int endpointId = 56; // int |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final int endpointId = 56; // int | 
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples(workspaceId, collectionId, endpointId);
@@ -405,11 +405,11 @@ try {
 
 ### Parameters
 
-| Name             | Type    | Description | Notes |
-| ---------------- | ------- | ----------- | ----- |
-| **workspaceId**  | **int** |             |
-| **collectionId** | **int** |             |
-| **endpointId**   | **int** |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **endpointId** | **int**|  | 
 
 ### Return type
 
@@ -421,23 +421,23 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders**
-
 > GetApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders200Response getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders(workspaceId, collectionId)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders(workspaceId, collectionId);
@@ -449,10 +449,10 @@ try {
 
 ### Parameters
 
-| Name             | Type    | Description | Notes |
-| ---------------- | ------- | ----------- | ----- |
-| **workspaceId**  | **int** |             |
-| **collectionId** | **int** |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
 
 ### Return type
 
@@ -464,24 +464,24 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionId**
-
 > PostApiWorkspacesByWorkspaceIdCollections201Response patchApiWorkspacesByWorkspaceIdCollectionsByCollectionId(workspaceId, collectionId, patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest = ; // PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest = ; // PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest | 
 
 try {
     final response = api.patchApiWorkspacesByWorkspaceIdCollectionsByCollectionId(workspaceId, collectionId, patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest);
@@ -493,11 +493,11 @@ try {
 
 ### Parameters
 
-| Name                                                                | Type                                                                                                                                      | Description | Notes |
-| ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
-| **workspaceId**                                                     | **int**                                                                                                                                   |             |
-| **collectionId**                                                    | **int**                                                                                                                                   |             |
-| **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest** | [**PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest**](PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest** | [**PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest**](PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdRequest.md)|  | 
 
 ### Return type
 
@@ -509,25 +509,25 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId**
-
 > PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints201Response patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId(workspaceId, collectionId, endpointId, patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final int endpointId = 56; // int |
-final PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest = ; // PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final int endpointId = 56; // int | 
+final PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest = ; // PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest | 
 
 try {
     final response = api.patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointId(workspaceId, collectionId, endpointId, patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest);
@@ -539,12 +539,12 @@ try {
 
 ### Parameters
 
-| Name                                                                                     | Type                                                                                                                                                                                | Description | Notes |
-| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
-| **workspaceId**                                                                          | **int**                                                                                                                                                                             |             |
-| **collectionId**                                                                         | **int**                                                                                                                                                                             |             |
-| **endpointId**                                                                           | **int**                                                                                                                                                                             |             |
-| **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest** | [**PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest**](PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **endpointId** | **int**|  | 
+ **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest** | [**PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest**](PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdRequest.md)|  | 
 
 ### Return type
 
@@ -556,26 +556,26 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleId**
-
 > PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples201Response patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleId(workspaceId, collectionId, endpointId, exampleId, patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final int endpointId = 56; // int |
-final int exampleId = 56; // int |
-final PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest = ; // PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final int endpointId = 56; // int | 
+final int exampleId = 56; // int | 
+final PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest = ; // PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest | 
 
 try {
     final response = api.patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleId(workspaceId, collectionId, endpointId, exampleId, patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest);
@@ -587,13 +587,13 @@ try {
 
 ### Parameters
 
-| Name                                                                                                        | Type                                                                                                                                                                                                                      | Description | Notes |
-| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
-| **workspaceId**                                                                                             | **int**                                                                                                                                                                                                                   |             |
-| **collectionId**                                                                                            | **int**                                                                                                                                                                                                                   |             |
-| **endpointId**                                                                                              | **int**                                                                                                                                                                                                                   |             |
-| **exampleId**                                                                                               | **int**                                                                                                                                                                                                                   |             |
-| **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest** | [**PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest**](PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **endpointId** | **int**|  | 
+ **exampleId** | **int**|  | 
+ **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest** | [**PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest**](PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesByExampleIdRequest.md)|  | 
 
 ### Return type
 
@@ -605,25 +605,25 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderId**
-
 > PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders201Response patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderId(workspaceId, collectionId, folderId, patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final int folderId = 56; // int |
-final PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest = ; // PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final int folderId = 56; // int | 
+final PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest = ; // PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest | 
 
 try {
     final response = api.patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderId(workspaceId, collectionId, folderId, patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest);
@@ -635,12 +635,12 @@ try {
 
 ### Parameters
 
-| Name                                                                                 | Type                                                                                                                                                                        | Description | Notes |
-| ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
-| **workspaceId**                                                                      | **int**                                                                                                                                                                     |             |
-| **collectionId**                                                                     | **int**                                                                                                                                                                     |             |
-| **folderId**                                                                         | **int**                                                                                                                                                                     |             |
-| **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest** | [**PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest**](PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **folderId** | **int**|  | 
+ **patchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest** | [**PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest**](PatchApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersByFolderIdRequest.md)|  | 
 
 ### Return type
 
@@ -652,23 +652,23 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspacesByWorkspaceIdCollections**
-
 > PostApiWorkspacesByWorkspaceIdCollections201Response postApiWorkspacesByWorkspaceIdCollections(workspaceId, postApiWorkspacesByWorkspaceIdCollectionsRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final PostApiWorkspacesByWorkspaceIdCollectionsRequest postApiWorkspacesByWorkspaceIdCollectionsRequest = ; // PostApiWorkspacesByWorkspaceIdCollectionsRequest |
+final int workspaceId = 56; // int | 
+final PostApiWorkspacesByWorkspaceIdCollectionsRequest postApiWorkspacesByWorkspaceIdCollectionsRequest = ; // PostApiWorkspacesByWorkspaceIdCollectionsRequest | 
 
 try {
     final response = api.postApiWorkspacesByWorkspaceIdCollections(workspaceId, postApiWorkspacesByWorkspaceIdCollectionsRequest);
@@ -680,10 +680,10 @@ try {
 
 ### Parameters
 
-| Name                                                 | Type                                                                                                        | Description | Notes |
-| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------- | ----- |
-| **workspaceId**                                      | **int**                                                                                                     |             |
-| **postApiWorkspacesByWorkspaceIdCollectionsRequest** | [**PostApiWorkspacesByWorkspaceIdCollectionsRequest**](PostApiWorkspacesByWorkspaceIdCollectionsRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **postApiWorkspacesByWorkspaceIdCollectionsRequest** | [**PostApiWorkspacesByWorkspaceIdCollectionsRequest**](PostApiWorkspacesByWorkspaceIdCollectionsRequest.md)|  | 
 
 ### Return type
 
@@ -695,24 +695,24 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints**
-
 > PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints201Response postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints(workspaceId, collectionId, postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest = ; // PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest = ; // PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest | 
 
 try {
     final response = api.postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpoints(workspaceId, collectionId, postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest);
@@ -724,11 +724,11 @@ try {
 
 ### Parameters
 
-| Name                                                                        | Type                                                                                                                                                      | Description | Notes |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
-| **workspaceId**                                                             | **int**                                                                                                                                                   |             |
-| **collectionId**                                                            | **int**                                                                                                                                                   |             |
-| **postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest** | [**PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest**](PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest** | [**PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest**](PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequest.md)|  | 
 
 ### Return type
 
@@ -740,25 +740,25 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples**
-
 > PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples201Response postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples(workspaceId, collectionId, endpointId, postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final int endpointId = 56; // int |
-final PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest = ; // PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final int endpointId = 56; // int | 
+final PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest = ; // PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest | 
 
 try {
     final response = api.postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamples(workspaceId, collectionId, endpointId, postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest);
@@ -770,12 +770,12 @@ try {
 
 ### Parameters
 
-| Name                                                                                            | Type                                                                                                                                                                                              | Description | Notes |
-| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
-| **workspaceId**                                                                                 | **int**                                                                                                                                                                                           |             |
-| **collectionId**                                                                                | **int**                                                                                                                                                                                           |             |
-| **endpointId**                                                                                  | **int**                                                                                                                                                                                           |             |
-| **postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest** | [**PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest**](PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **endpointId** | **int**|  | 
+ **postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest** | [**PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest**](PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsByEndpointIdExamplesRequest.md)|  | 
 
 ### Return type
 
@@ -787,24 +787,24 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders**
-
 > PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders201Response postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders(workspaceId, collectionId, postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getCollectionsApi();
-final int workspaceId = 56; // int |
-final int collectionId = 56; // int |
-final PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest = ; // PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest |
+final int workspaceId = 56; // int | 
+final int collectionId = 56; // int | 
+final PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest = ; // PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest | 
 
 try {
     final response = api.postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFolders(workspaceId, collectionId, postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest);
@@ -816,11 +816,11 @@ try {
 
 ### Parameters
 
-| Name                                                                      | Type                                                                                                                                                  | Description | Notes |
-| ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
-| **workspaceId**                                                           | **int**                                                                                                                                               |             |
-| **collectionId**                                                          | **int**                                                                                                                                               |             |
-| **postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest** | [**PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest**](PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **int**|  | 
+ **collectionId** | **int**|  | 
+ **postApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest** | [**PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest**](PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdFoldersRequest.md)|  | 
 
 ### Return type
 
@@ -832,7 +832,8 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

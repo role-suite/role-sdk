@@ -3,123 +3,71 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces200_response_data.dart';
-import 'package:built_value/json_object.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'get_api_workspaces200_response.g.dart';
 
-/// GetApiWorkspaces200Response
-///
-/// Properties:
-/// * [data] 
-/// * [success] 
-@BuiltValue()
-abstract class GetApiWorkspaces200Response implements Built<GetApiWorkspaces200Response, GetApiWorkspaces200ResponseBuilder> {
-  @BuiltValueField(wireName: r'data')
-  GetApiWorkspaces200ResponseData get data;
 
-  @BuiltValueField(wireName: r'success')
-  bool get success;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class GetApiWorkspaces200Response {
+  /// Returns a new [GetApiWorkspaces200Response] instance.
+  GetApiWorkspaces200Response({
 
-  GetApiWorkspaces200Response._();
+    required  this.data,
 
-  factory GetApiWorkspaces200Response([void updates(GetApiWorkspaces200ResponseBuilder b)]) = _$GetApiWorkspaces200Response;
+    required  this.success,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GetApiWorkspaces200ResponseBuilder b) => b;
+  @JsonKey(
+    
+    name: r'data',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<GetApiWorkspaces200Response> get serializer => _$GetApiWorkspaces200ResponseSerializer();
-}
 
-class _$GetApiWorkspaces200ResponseSerializer implements PrimitiveSerializer<GetApiWorkspaces200Response> {
-  @override
-  final Iterable<Type> types = const [GetApiWorkspaces200Response, _$GetApiWorkspaces200Response];
+  final GetApiWorkspaces200ResponseData data;
 
-  @override
-  final String wireName = r'GetApiWorkspaces200Response';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    GetApiWorkspaces200Response object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'data';
-    yield serializers.serialize(
-      object.data,
-      specifiedType: const FullType(GetApiWorkspaces200ResponseData),
-    );
-    yield r'success';
-    yield serializers.serialize(
-      object.success,
-      specifiedType: const FullType(bool),
-    );
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    GetApiWorkspaces200Response object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'success',
+    required: true,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required GetApiWorkspaces200ResponseBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'data':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(GetApiWorkspaces200ResponseData),
-          ) as GetApiWorkspaces200ResponseData;
-          result.data = valueDes;
-          break;
-        case r'success':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.success = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final bool success;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is GetApiWorkspaces200Response &&
+      other.data == data &&
+      other.success == success;
+
+    @override
+    int get hashCode =>
+        data.hashCode +
+        success.hashCode;
+
+  factory GetApiWorkspaces200Response.fromJson(Map<String, dynamic> json) => _$GetApiWorkspaces200ResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$GetApiWorkspaces200ResponseToJson(this);
 
   @override
-  GetApiWorkspaces200Response deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = GetApiWorkspaces200ResponseBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

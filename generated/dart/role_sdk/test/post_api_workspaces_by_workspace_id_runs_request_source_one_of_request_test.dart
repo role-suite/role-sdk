@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequest
 void main() {
-  final instance = PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequest? instance = /* PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequest, () {
     // PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestAuth auth
@@ -17,7 +17,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodyAnyOfAnyOfEntriesInner> headers
+    // List<PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodyAnyOfAnyOfEntriesInner> headers
     test('to test the property `headers`', () async {
       // TODO
     });
@@ -27,7 +27,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodyAnyOfAnyOfEntriesInner> queryParams
+    // List<PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodyAnyOfAnyOfEntriesInner> queryParams
     test('to test the property `queryParams`', () async {
       // TODO
     });

@@ -4,10 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:role_sdk/lib/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:role_sdk/lib/api_util.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces200_response.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_members200_response.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_updates200_response.dart';
@@ -27,9 +28,7 @@ class WorkspacesApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const WorkspacesApi(this._dio, this._serializers);
+  const WorkspacesApi(this._dio);
 
   /// deleteApiWorkspacesByWorkspaceIdMembersByMemberUserId
   /// 
@@ -56,7 +55,7 @@ class WorkspacesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/members/{memberUserId}'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString()).replaceAll('{' r'memberUserId' '}', encodeQueryParameter(_serializers, memberUserId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/members/{memberUserId}'.replaceAll('{' r'workspaceId' '}', workspaceId.toString()).replaceAll('{' r'memberUserId' '}', memberUserId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -86,12 +85,8 @@ class WorkspacesApi {
     PostApiAuthLogout200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiAuthLogout200Response),
-      ) as PostApiAuthLogout200Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiAuthLogout200Response, PostApiAuthLogout200Response>(rawData, 'PostApiAuthLogout200Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -165,12 +160,8 @@ class WorkspacesApi {
     GetApiWorkspaces200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GetApiWorkspaces200Response),
-      ) as GetApiWorkspaces200Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<GetApiWorkspaces200Response, GetApiWorkspaces200Response>(rawData, 'GetApiWorkspaces200Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -216,7 +207,7 @@ class WorkspacesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -246,12 +237,8 @@ class WorkspacesApi {
     PostApiWorkspaces201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspaces201Response),
-      ) as PostApiWorkspaces201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspaces201Response, PostApiWorkspaces201Response>(rawData, 'PostApiWorkspaces201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -297,7 +284,7 @@ class WorkspacesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/members'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/members'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -327,12 +314,8 @@ class WorkspacesApi {
     GetApiWorkspacesByWorkspaceIdMembers200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GetApiWorkspacesByWorkspaceIdMembers200Response),
-      ) as GetApiWorkspacesByWorkspaceIdMembers200Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<GetApiWorkspacesByWorkspaceIdMembers200Response, GetApiWorkspacesByWorkspaceIdMembers200Response>(rawData, 'GetApiWorkspacesByWorkspaceIdMembers200Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -382,7 +365,7 @@ class WorkspacesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/updates'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/updates'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -402,8 +385,8 @@ class WorkspacesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
-      if (since != null) r'since': encodeQueryParameter(_serializers, since, const FullType(int)),
+      if (limit != null) r'limit': limit,
+      if (since != null) r'since': since,
     };
 
     final _response = await _dio.request<Object>(
@@ -418,12 +401,8 @@ class WorkspacesApi {
     GetApiWorkspacesByWorkspaceIdUpdates200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GetApiWorkspacesByWorkspaceIdUpdates200Response),
-      ) as GetApiWorkspacesByWorkspaceIdUpdates200Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<GetApiWorkspacesByWorkspaceIdUpdates200Response, GetApiWorkspacesByWorkspaceIdUpdates200Response>(rawData, 'GetApiWorkspacesByWorkspaceIdUpdates200Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -473,7 +452,7 @@ class WorkspacesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/members/{memberUserId}'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString()).replaceAll('{' r'memberUserId' '}', encodeQueryParameter(_serializers, memberUserId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/members/{memberUserId}'.replaceAll('{' r'workspaceId' '}', workspaceId.toString()).replaceAll('{' r'memberUserId' '}', memberUserId.toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -496,9 +475,7 @@ class WorkspacesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PatchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest);
-      _bodyData = _serializers.serialize(patchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(patchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -523,12 +500,8 @@ class WorkspacesApi {
     PostApiWorkspacesByWorkspaceIdMembers201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdMembers201Response),
-      ) as PostApiWorkspacesByWorkspaceIdMembers201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdMembers201Response, PostApiWorkspacesByWorkspaceIdMembers201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdMembers201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -597,9 +570,7 @@ class WorkspacesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PostApiWorkspacesRequest);
-      _bodyData = _serializers.serialize(postApiWorkspacesRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(postApiWorkspacesRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -624,12 +595,8 @@ class WorkspacesApi {
     PostApiWorkspaces201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspaces201Response),
-      ) as PostApiWorkspaces201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspaces201Response, PostApiWorkspaces201Response>(rawData, 'PostApiWorkspaces201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -677,7 +644,7 @@ class WorkspacesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/convert-to-team'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/convert-to-team'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -700,9 +667,7 @@ class WorkspacesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PostApiWorkspacesByWorkspaceIdConvertToTeamRequest);
-      _bodyData = _serializers.serialize(postApiWorkspacesByWorkspaceIdConvertToTeamRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(postApiWorkspacesByWorkspaceIdConvertToTeamRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -727,12 +692,8 @@ class WorkspacesApi {
     PostApiWorkspaces201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspaces201Response),
-      ) as PostApiWorkspaces201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspaces201Response, PostApiWorkspaces201Response>(rawData, 'PostApiWorkspaces201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -780,7 +741,7 @@ class WorkspacesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/invitations'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/invitations'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -803,9 +764,7 @@ class WorkspacesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PostApiWorkspacesByWorkspaceIdInvitationsRequest);
-      _bodyData = _serializers.serialize(postApiWorkspacesByWorkspaceIdInvitationsRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(postApiWorkspacesByWorkspaceIdInvitationsRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -830,12 +789,8 @@ class WorkspacesApi {
     PostApiWorkspacesByWorkspaceIdInvitations201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdInvitations201Response),
-      ) as PostApiWorkspacesByWorkspaceIdInvitations201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdInvitations201Response, PostApiWorkspacesByWorkspaceIdInvitations201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdInvitations201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -881,7 +836,7 @@ class WorkspacesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/leave'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/leave'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -911,12 +866,8 @@ class WorkspacesApi {
     PostApiAuthLogout200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiAuthLogout200Response),
-      ) as PostApiAuthLogout200Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiAuthLogout200Response, PostApiAuthLogout200Response>(rawData, 'PostApiAuthLogout200Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -964,7 +915,7 @@ class WorkspacesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/members'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/members'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -987,9 +938,7 @@ class WorkspacesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PostApiWorkspacesByWorkspaceIdInvitationsRequest);
-      _bodyData = _serializers.serialize(postApiWorkspacesByWorkspaceIdInvitationsRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(postApiWorkspacesByWorkspaceIdInvitationsRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -1014,12 +963,8 @@ class WorkspacesApi {
     PostApiWorkspacesByWorkspaceIdMembers201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdMembers201Response),
-      ) as PostApiWorkspacesByWorkspaceIdMembers201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdMembers201Response, PostApiWorkspacesByWorkspaceIdMembers201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdMembers201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1088,9 +1033,7 @@ class WorkspacesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PostApiWorkspacesJoinRequest);
-      _bodyData = _serializers.serialize(postApiWorkspacesJoinRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(postApiWorkspacesJoinRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -1115,12 +1058,8 @@ class WorkspacesApi {
     PostApiWorkspaces201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspaces201Response),
-      ) as PostApiWorkspaces201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspaces201Response, PostApiWorkspaces201Response>(rawData, 'PostApiWorkspaces201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

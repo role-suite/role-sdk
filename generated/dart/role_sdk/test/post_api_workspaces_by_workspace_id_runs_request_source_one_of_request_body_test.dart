@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBody
 void main() {
-  final instance = PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodyBuilder();
-  // TODO add properties to the builder and call build()
+  final PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBody? instance = /* PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBody(...) */ null;
+  // TODO add properties to the entity
 
   group(PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBody, () {
     // String contentType
@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestBodyAnyOf2EntriesInner> entries
+    // List<PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestBodyAnyOf2EntriesInner> entries
     test('to test the property `entries`', () async {
       // TODO
     });

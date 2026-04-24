@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for GetApiWorkspacesByWorkspaceIdMembers200ResponseDataItemsInner
 void main() {
-  final instance = GetApiWorkspacesByWorkspaceIdMembers200ResponseDataItemsInnerBuilder();
-  // TODO add properties to the builder and call build()
+  final GetApiWorkspacesByWorkspaceIdMembers200ResponseDataItemsInner? instance = /* GetApiWorkspacesByWorkspaceIdMembers200ResponseDataItemsInner(...) */ null;
+  // TODO add properties to the entity
 
   group(GetApiWorkspacesByWorkspaceIdMembers200ResponseDataItemsInner, () {
     // String email

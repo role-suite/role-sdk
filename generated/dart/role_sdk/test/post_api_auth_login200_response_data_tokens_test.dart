@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiAuthLogin200ResponseDataTokens
 void main() {
-  final instance = PostApiAuthLogin200ResponseDataTokensBuilder();
-  // TODO add properties to the builder and call build()
+  final PostApiAuthLogin200ResponseDataTokens? instance = /* PostApiAuthLogin200ResponseDataTokens(...) */ null;
+  // TODO add properties to the entity
 
   group(PostApiAuthLogin200ResponseDataTokens, () {
     // String accessToken

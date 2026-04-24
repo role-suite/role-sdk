@@ -4,10 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:role_sdk/lib/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:role_sdk/lib/api_util.dart';
 import 'package:role_sdk/lib/model/get_api_workspaces_by_workspace_id_import_export_jobs200_response.dart';
 import 'package:role_sdk/lib/model/post_api_auth_login400_response.dart';
 import 'package:role_sdk/lib/model/post_api_auth_login401_response.dart';
@@ -19,9 +20,7 @@ class ImportExportApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const ImportExportApi(this._dio, this._serializers);
+  const ImportExportApi(this._dio);
 
   /// getApiWorkspacesByWorkspaceIdImportExportJobs
   /// 
@@ -46,7 +45,7 @@ class ImportExportApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/import-export/jobs'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/import-export/jobs'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -76,12 +75,8 @@ class ImportExportApi {
     GetApiWorkspacesByWorkspaceIdImportExportJobs200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GetApiWorkspacesByWorkspaceIdImportExportJobs200Response),
-      ) as GetApiWorkspacesByWorkspaceIdImportExportJobs200Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<GetApiWorkspacesByWorkspaceIdImportExportJobs200Response, GetApiWorkspacesByWorkspaceIdImportExportJobs200Response>(rawData, 'GetApiWorkspacesByWorkspaceIdImportExportJobs200Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -129,7 +124,7 @@ class ImportExportApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/import-export/jobs/{jobId}'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString()).replaceAll('{' r'jobId' '}', encodeQueryParameter(_serializers, jobId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/import-export/jobs/{jobId}'.replaceAll('{' r'workspaceId' '}', workspaceId.toString()).replaceAll('{' r'jobId' '}', jobId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -159,12 +154,8 @@ class ImportExportApi {
     PostApiWorkspacesByWorkspaceIdImportExportExports201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdImportExportExports201Response),
-      ) as PostApiWorkspacesByWorkspaceIdImportExportExports201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdImportExportExports201Response, PostApiWorkspacesByWorkspaceIdImportExportExports201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdImportExportExports201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -212,7 +203,7 @@ class ImportExportApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/import-export/exports'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/import-export/exports'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -235,9 +226,7 @@ class ImportExportApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PostApiWorkspacesByWorkspaceIdImportExportExportsRequest);
-      _bodyData = _serializers.serialize(postApiWorkspacesByWorkspaceIdImportExportExportsRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(postApiWorkspacesByWorkspaceIdImportExportExportsRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -262,12 +251,8 @@ class ImportExportApi {
     PostApiWorkspacesByWorkspaceIdImportExportExports201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdImportExportExports201Response),
-      ) as PostApiWorkspacesByWorkspaceIdImportExportExports201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdImportExportExports201Response, PostApiWorkspacesByWorkspaceIdImportExportExports201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdImportExportExports201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -315,7 +300,7 @@ class ImportExportApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/workspaces/{workspaceId}/import-export/imports'.replaceAll('{' r'workspaceId' '}', encodeQueryParameter(_serializers, workspaceId, const FullType(int)).toString());
+    final _path = r'/api/workspaces/{workspaceId}/import-export/imports'.replaceAll('{' r'workspaceId' '}', workspaceId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -338,9 +323,7 @@ class ImportExportApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PostApiWorkspacesByWorkspaceIdImportExportImportsRequest);
-      _bodyData = _serializers.serialize(postApiWorkspacesByWorkspaceIdImportExportImportsRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(postApiWorkspacesByWorkspaceIdImportExportImportsRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -365,12 +348,8 @@ class ImportExportApi {
     PostApiWorkspacesByWorkspaceIdImportExportExports201Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PostApiWorkspacesByWorkspaceIdImportExportExports201Response),
-      ) as PostApiWorkspacesByWorkspaceIdImportExportExports201Response;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PostApiWorkspacesByWorkspaceIdImportExportExports201Response, PostApiWorkspacesByWorkspaceIdImportExportExports201Response>(rawData, 'PostApiWorkspacesByWorkspaceIdImportExportExports201Response', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

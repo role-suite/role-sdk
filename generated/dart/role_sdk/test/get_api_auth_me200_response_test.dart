@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for GetApiAuthMe200Response
 void main() {
-  final instance = GetApiAuthMe200ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final GetApiAuthMe200Response? instance = /* GetApiAuthMe200Response(...) */ null;
+  // TODO add properties to the entity
 
   group(GetApiAuthMe200Response, () {
     // GetApiAuthMe200ResponseData data

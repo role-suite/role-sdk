@@ -3,8 +3,8 @@ import 'package:role_sdk/role_sdk.dart';
 
 // tests for PostApiWorkspacesByWorkspaceIdRunsRequest
 void main() {
-  final instance = PostApiWorkspacesByWorkspaceIdRunsRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final PostApiWorkspacesByWorkspaceIdRunsRequest? instance = /* PostApiWorkspacesByWorkspaceIdRunsRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(PostApiWorkspacesByWorkspaceIdRunsRequest, () {
     // int environmentId
@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<PostApiWorkspacesByWorkspaceIdRunsRequestVariableOverridesInner> variableOverrides
+    // List<PostApiWorkspacesByWorkspaceIdRunsRequestVariableOverridesInner> variableOverrides
     test('to test the property `variableOverrides`', () async {
       // TODO
     });
