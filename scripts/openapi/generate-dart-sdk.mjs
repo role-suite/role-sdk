@@ -8,6 +8,7 @@ const workspaceRoot = process.cwd();
 const dockerImage =
   process.env.OPENAPI_GENERATOR_IMAGE ?? "openapitools/openapi-generator-cli:v7.7.0";
 const outputDir = process.env.DART_SDK_OUTPUT_DIR ?? "generated/dart/role_sdk";
+const dockerVolumeOptions = process.env.OPENAPI_DOCKER_VOLUME_OPTIONS ?? "";
 
 if (!existsSync(targetOpenApiPath)) {
   console.error(
@@ -21,7 +22,7 @@ const inputOpenApiPath = existsSync(generatedDartOpenApiPath)
   ? "/local/contracts/generated/role-node-openapi-dart.json"
   : "/local/contracts/role-node/openapi.json";
 
-const mountPath = `${workspaceRoot}:/local`;
+const mountPath = `${workspaceRoot}:/local${dockerVolumeOptions}`;
 const outputPath = `/local/${outputDir.replace(/^[./]+/, "")}`;
 
 const dockerArgs = [
