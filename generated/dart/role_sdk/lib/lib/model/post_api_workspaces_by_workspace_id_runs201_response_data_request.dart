@@ -238,6 +238,8 @@ class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestMethodEnum extends
   static const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestMethodEnum HEAD = _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestMethodEnum_HEAD;
   @BuiltValueEnumConst(wireName: r'OPTIONS')
   static const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestMethodEnum OPTIONS = _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestMethodEnum_OPTIONS;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestMethodEnum unknownDefaultOpenApi = _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestMethodEnum_unknownDefaultOpenApi;
 
   static Serializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestMethodEnum> get serializer => _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataRequestMethodEnumSerializer;
 

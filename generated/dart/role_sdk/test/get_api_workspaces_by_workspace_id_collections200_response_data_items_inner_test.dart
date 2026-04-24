@@ -7,8 +7,8 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner, () {
-    // int id
-    test('to test the property `id`', () async {
+    // int legacyId
+    test('to test the property `legacyId`', () async {
       // TODO
     });
 

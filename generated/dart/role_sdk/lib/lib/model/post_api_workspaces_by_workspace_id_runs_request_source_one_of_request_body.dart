@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs_request_source_one_of_request_body_any_of.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:role_sdk/lib/model/model_null.dart';
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints_request_body_any_of2_entries_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -24,7 +23,7 @@ part 'post_api_workspaces_by_workspace_id_runs_request_source_one_of_request_bod
 /// * [fileName] 
 @BuiltValue()
 abstract class PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBody implements Built<PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBody, PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodyBuilder> {
-  /// Any Of [ModelNull], [PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodyAnyOf]
+  /// Any Of [PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodyAnyOf]
   AnyOf get anyOf;
 
   PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBody._();
@@ -70,7 +69,7 @@ class _$PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodySerialize
   }) {
     final result = PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodyBuilder();
     Object? anyOfDataSrc;
-    final targetType = const FullType(AnyOf, [FullType(PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodyAnyOf), FullType(ModelNull), ]);
+    final targetType = const FullType(AnyOf, [FullType(PostApiWorkspacesByWorkspaceIdRunsRequestSourceOneOfRequestBodyAnyOf), ]);
     anyOfDataSrc = serialized;
     result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
     return result.build();

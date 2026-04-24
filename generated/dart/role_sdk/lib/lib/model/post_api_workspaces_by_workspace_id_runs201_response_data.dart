@@ -234,6 +234,8 @@ class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum extends EnumCl
   static const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum failed = _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum_failed;
   @BuiltValueEnumConst(wireName: r'cancelled')
   static const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum cancelled = _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum_cancelled;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum unknownDefaultOpenApi = _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum_unknownDefaultOpenApi;
 
   static Serializer<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnum> get serializer => _$postApiWorkspacesByWorkspaceIdRuns201ResponseDataStatusEnumSerializer;
 

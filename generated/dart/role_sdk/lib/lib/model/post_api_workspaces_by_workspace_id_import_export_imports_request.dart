@@ -130,6 +130,8 @@ class PostApiWorkspacesByWorkspaceIdImportExportImportsRequestFormatEnum extends
 
   @BuiltValueEnumConst(wireName: r'json')
   static const PostApiWorkspacesByWorkspaceIdImportExportImportsRequestFormatEnum json = _$postApiWorkspacesByWorkspaceIdImportExportImportsRequestFormatEnum_json;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiWorkspacesByWorkspaceIdImportExportImportsRequestFormatEnum unknownDefaultOpenApi = _$postApiWorkspacesByWorkspaceIdImportExportImportsRequestFormatEnum_unknownDefaultOpenApi;
 
   static Serializer<PostApiWorkspacesByWorkspaceIdImportExportImportsRequestFormatEnum> get serializer => _$postApiWorkspacesByWorkspaceIdImportExportImportsRequestFormatEnumSerializer;
 

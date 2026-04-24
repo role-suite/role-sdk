@@ -16,6 +16,12 @@ import { afterEach, describe, expect, it } from "vitest";
 const checkScriptPath = join(process.cwd(), "scripts", "openapi", "check-openapi-artifact.mjs");
 const syncScriptPath = join(process.cwd(), "scripts", "openapi", "sync-role-node-openapi.mjs");
 const buildScriptPath = join(process.cwd(), "scripts", "openapi", "build-sdk-spec.mjs");
+const buildDartOpenApiScriptPath = join(
+  process.cwd(),
+  "scripts",
+  "openapi",
+  "build-dart-openapi.mjs"
+);
 const generateDartScriptPath = join(process.cwd(), "scripts", "openapi", "generate-dart-sdk.mjs");
 
 const tempDirs: string[] = [];
@@ -304,6 +310,98 @@ describe("openapi scripts", () => {
     expect(result.stderr).toContain("Missing OpenAPI artifact");
   });
 
+  it("builds dart-compatible OpenAPI by relaxing _id required field", () => {
+    const workspace = createTempWorkspace();
+    writeOpenApi(workspace, {
+      openapi: "3.1.0",
+      info: { title: "Compat API", version: "1.0.0" },
+      paths: {
+        "/api/workspaces": {
+          get: {
+            operationId: "getWorkspaces",
+            responses: {
+              "200": {
+                description: "ok",
+                content: {
+                  "application/json": {
+                    schema: {
+                      type: "object",
+                      properties: {
+                        success: { type: "boolean" },
+                        data: {
+                          type: "object",
+                          properties: {
+                            items: {
+                              type: "array",
+                              items: {
+                                type: "object",
+                                properties: {
+                                  id: { type: "integer" },
+                                  _id: { type: "integer" },
+                                  name: { type: "string" }
+                                },
+                                required: ["id", "_id", "name"]
+                              }
+                            }
+                          },
+                          required: ["items"]
+                        }
+                      },
+                      required: ["success", "data"]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    });
+
+    const result = runNodeScript(buildDartOpenApiScriptPath, workspace);
+    expect(result.status).toBe(0);
+
+    const compatPath = join(workspace, "contracts", "generated", "role-node-openapi-dart.json");
+    expect(existsSync(compatPath)).toBe(true);
+
+    const compat = JSON.parse(readFileSync(compatPath, "utf8")) as {
+      paths: {
+        "/api/workspaces": {
+          get: {
+            responses: {
+              "200": {
+                content: {
+                  "application/json": {
+                    schema: {
+                      properties: {
+                        data: {
+                          properties: {
+                            items: {
+                              items: {
+                                required: string[];
+                              };
+                            };
+                          };
+                        };
+                      };
+                    };
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+
+    const requiredFields =
+      compat.paths["/api/workspaces"].get.responses["200"].content["application/json"].schema
+        .properties.data.properties.items.items.required;
+
+    expect(requiredFields).toContain("id");
+    expect(requiredFields).not.toContain("_id");
+  });
+
   it("runs dart generation through docker with expected args", () => {
     const workspace = createTempWorkspace();
     writeOpenApi(workspace, {
@@ -318,6 +416,14 @@ describe("openapi scripts", () => {
         }
       }
     });
+
+    const compatDir = join(workspace, "contracts", "generated");
+    mkdirSync(compatDir, { recursive: true });
+    writeFileSync(
+      join(compatDir, "role-node-openapi-dart.json"),
+      JSON.stringify({ openapi: "3.1.0", info: { title: "Compat", version: "1.0.0" }, paths: {} }),
+      "utf8"
+    );
 
     const fakeDocker = createFakeDocker(workspace);
     const result = runNodeScript(generateDartScriptPath, workspace, [], {
@@ -335,6 +441,6 @@ describe("openapi scripts", () => {
     expect(dockerArgs).toContain("-g");
     expect(dockerArgs).toContain("dart-dio");
     expect(dockerArgs).toContain("/local/out/sdk");
-    expect(dockerArgs).toContain("/local/contracts/role-node/openapi.json");
+    expect(dockerArgs).toContain("/local/contracts/generated/role-node-openapi-dart.json");
   });
 });

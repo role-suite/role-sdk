@@ -14,7 +14,7 @@ part 'get_api_workspaces_by_workspace_id_collections200_response_data_items_inne
 /// GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner
 ///
 /// Properties:
-/// * [id] 
+/// * [legacyId] 
 /// * [createdAt] 
 /// * [createdByUserId] 
 /// * [description] 
@@ -25,7 +25,7 @@ part 'get_api_workspaces_by_workspace_id_collections200_response_data_items_inne
 @BuiltValue()
 abstract class GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner implements Built<GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner, GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerBuilder> {
   @BuiltValueField(wireName: r'_id')
-  int get id;
+  int? get legacyId;
 
   @BuiltValueField(wireName: r'createdAt')
   String get createdAt;
@@ -71,11 +71,13 @@ class _$GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerSeriali
     GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'_id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(int),
-    );
+    if (object.legacyId != null) {
+      yield r'_id';
+      yield serializers.serialize(
+        object.legacyId,
+        specifiedType: const FullType(int),
+      );
+    }
     yield r'createdAt';
     yield serializers.serialize(
       object.createdAt,
@@ -139,7 +141,7 @@ class _$GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerSeriali
             value,
             specifiedType: const FullType(int),
           ) as int;
-          result.id = valueDes;
+          result.legacyId = valueDes;
           break;
         case r'createdAt':
           final valueDes = serializers.deserialize(

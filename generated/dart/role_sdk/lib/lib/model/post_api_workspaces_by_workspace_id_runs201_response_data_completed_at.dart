@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:role_sdk/lib/model/model_null.dart';
 import 'dart:core';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -14,7 +13,7 @@ part 'post_api_workspaces_by_workspace_id_runs201_response_data_completed_at.g.d
 /// PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAt
 @BuiltValue()
 abstract class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAt implements Built<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAt, PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAtBuilder> {
-  /// Any Of [ModelNull], [String]
+  /// Any Of [String]
   AnyOf get anyOf;
 
   PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAt._();
@@ -60,7 +59,7 @@ class _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAtSerializer i
   }) {
     final result = PostApiWorkspacesByWorkspaceIdRuns201ResponseDataCompletedAtBuilder();
     Object? anyOfDataSrc;
-    final targetType = const FullType(AnyOf, [FullType(String), FullType(ModelNull), ]);
+    final targetType = const FullType(AnyOf, [FullType(String), ]);
     anyOfDataSrc = serialized;
     result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
     return result.build();

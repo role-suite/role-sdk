@@ -178,6 +178,8 @@ class PostApiAuthRegisterRequestAccountTypeEnum extends EnumClass {
   static const PostApiAuthRegisterRequestAccountTypeEnum single = _$postApiAuthRegisterRequestAccountTypeEnum_single;
   @BuiltValueEnumConst(wireName: r'team')
   static const PostApiAuthRegisterRequestAccountTypeEnum team = _$postApiAuthRegisterRequestAccountTypeEnum_team;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiAuthRegisterRequestAccountTypeEnum unknownDefaultOpenApi = _$postApiAuthRegisterRequestAccountTypeEnum_unknownDefaultOpenApi;
 
   static Serializer<PostApiAuthRegisterRequestAccountTypeEnum> get serializer => _$postApiAuthRegisterRequestAccountTypeEnumSerializer;
 

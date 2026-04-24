@@ -1,27 +1,27 @@
 # role_sdk.api.AuthApi
 
 ## Load the API package
-
 ```dart
 import 'package:role_sdk/api.dart';
 ```
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *http://localhost*
 
-| Method                                                    | HTTP request                | Description |
-| --------------------------------------------------------- | --------------------------- | ----------- |
-| [**getApiAuthMe**](AuthApi.md#getapiauthme)               | **GET** /api/auth/me        |
-| [**postApiAuthLogin**](AuthApi.md#postapiauthlogin)       | **POST** /api/auth/login    |
-| [**postApiAuthLogout**](AuthApi.md#postapiauthlogout)     | **POST** /api/auth/logout   |
-| [**postApiAuthRefresh**](AuthApi.md#postapiauthrefresh)   | **POST** /api/auth/refresh  |
-| [**postApiAuthRegister**](AuthApi.md#postapiauthregister) | **POST** /api/auth/register |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**getApiAuthMe**](AuthApi.md#getapiauthme) | **GET** /api/auth/me | 
+[**postApiAuthLogin**](AuthApi.md#postapiauthlogin) | **POST** /api/auth/login | 
+[**postApiAuthLogout**](AuthApi.md#postapiauthlogout) | **POST** /api/auth/logout | 
+[**postApiAuthRefresh**](AuthApi.md#postapiauthrefresh) | **POST** /api/auth/refresh | 
+[**postApiAuthRegister**](AuthApi.md#postapiauthregister) | **POST** /api/auth/register | 
+
 
 # **getApiAuthMe**
-
 > GetApiAuthMe200Response getApiAuthMe()
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
@@ -36,7 +36,6 @@ try {
 ```
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -49,22 +48,22 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiAuthLogin**
-
 > PostApiAuthLogin200Response postApiAuthLogin(postApiAuthLoginRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getAuthApi();
-final PostApiAuthLoginRequest postApiAuthLoginRequest = ; // PostApiAuthLoginRequest |
+final PostApiAuthLoginRequest postApiAuthLoginRequest = ; // PostApiAuthLoginRequest | 
 
 try {
     final response = api.postApiAuthLogin(postApiAuthLoginRequest);
@@ -76,9 +75,9 @@ try {
 
 ### Parameters
 
-| Name                        | Type                                                      | Description | Notes |
-| --------------------------- | --------------------------------------------------------- | ----------- | ----- |
-| **postApiAuthLoginRequest** | [**PostApiAuthLoginRequest**](PostApiAuthLoginRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postApiAuthLoginRequest** | [**PostApiAuthLoginRequest**](PostApiAuthLoginRequest.md)|  | 
 
 ### Return type
 
@@ -90,22 +89,22 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiAuthLogout**
-
 > PostApiAuthLogout200Response postApiAuthLogout(postApiAuthLogoutRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getAuthApi();
-final PostApiAuthLogoutRequest postApiAuthLogoutRequest = ; // PostApiAuthLogoutRequest |
+final PostApiAuthLogoutRequest postApiAuthLogoutRequest = ; // PostApiAuthLogoutRequest | 
 
 try {
     final response = api.postApiAuthLogout(postApiAuthLogoutRequest);
@@ -117,9 +116,9 @@ try {
 
 ### Parameters
 
-| Name                         | Type                                                        | Description | Notes |
-| ---------------------------- | ----------------------------------------------------------- | ----------- | ----- |
-| **postApiAuthLogoutRequest** | [**PostApiAuthLogoutRequest**](PostApiAuthLogoutRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postApiAuthLogoutRequest** | [**PostApiAuthLogoutRequest**](PostApiAuthLogoutRequest.md)|  | 
 
 ### Return type
 
@@ -131,22 +130,22 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiAuthRefresh**
-
 > PostApiAuthRefresh200Response postApiAuthRefresh(postApiAuthLogoutRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getAuthApi();
-final PostApiAuthLogoutRequest postApiAuthLogoutRequest = ; // PostApiAuthLogoutRequest |
+final PostApiAuthLogoutRequest postApiAuthLogoutRequest = ; // PostApiAuthLogoutRequest | 
 
 try {
     final response = api.postApiAuthRefresh(postApiAuthLogoutRequest);
@@ -158,9 +157,9 @@ try {
 
 ### Parameters
 
-| Name                         | Type                                                        | Description | Notes |
-| ---------------------------- | ----------------------------------------------------------- | ----------- | ----- |
-| **postApiAuthLogoutRequest** | [**PostApiAuthLogoutRequest**](PostApiAuthLogoutRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postApiAuthLogoutRequest** | [**PostApiAuthLogoutRequest**](PostApiAuthLogoutRequest.md)|  | 
 
 ### Return type
 
@@ -172,22 +171,22 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiAuthRegister**
-
 > PostApiAuthRefresh200Response postApiAuthRegister(postApiAuthRegisterRequest)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:role_sdk/api.dart';
 
 final api = RoleSdk().getAuthApi();
-final PostApiAuthRegisterRequest postApiAuthRegisterRequest = ; // PostApiAuthRegisterRequest |
+final PostApiAuthRegisterRequest postApiAuthRegisterRequest = ; // PostApiAuthRegisterRequest | 
 
 try {
     final response = api.postApiAuthRegister(postApiAuthRegisterRequest);
@@ -199,9 +198,9 @@ try {
 
 ### Parameters
 
-| Name                           | Type                                                            | Description | Notes |
-| ------------------------------ | --------------------------------------------------------------- | ----------- | ----- |
-| **postApiAuthRegisterRequest** | [**PostApiAuthRegisterRequest**](PostApiAuthRegisterRequest.md) |             |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postApiAuthRegisterRequest** | [**PostApiAuthRegisterRequest**](PostApiAuthRegisterRequest.md)|  | 
 
 ### Return type
 
@@ -213,7 +212,8 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

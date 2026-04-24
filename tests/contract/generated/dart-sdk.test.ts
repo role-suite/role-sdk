@@ -82,4 +82,26 @@ describe("generated dart sdk", () => {
       expect(methodRegex.test(source)).toBe(true);
     }
   });
+
+  it("applies _id name mapping to avoid duplicate model fields", () => {
+    if (!existsSync(DART_SDK_ROOT)) {
+      expect(true).toBe(true);
+      return;
+    }
+
+    const workspaceModelPath = join(
+      DART_SDK_ROOT,
+      "lib",
+      "lib",
+      "model",
+      "post_api_auth_login200_response_data_workspace.dart"
+    );
+    expect(existsSync(workspaceModelPath)).toBe(true);
+
+    const source = readFileSync(workspaceModelPath, "utf8");
+    expect(source).toContain("int? get legacyId;");
+    expect(source).not.toContain(
+      "int get id;\n\n  @BuiltValueField(wireName: r'id')\n  int get id;"
+    );
+  });
 });

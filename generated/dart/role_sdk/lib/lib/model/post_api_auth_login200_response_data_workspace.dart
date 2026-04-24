@@ -13,7 +13,7 @@ part 'post_api_auth_login200_response_data_workspace.g.dart';
 /// PostApiAuthLogin200ResponseDataWorkspace
 ///
 /// Properties:
-/// * [id] 
+/// * [legacyId] 
 /// * [id] 
 /// * [name] 
 /// * [role] 
@@ -22,7 +22,7 @@ part 'post_api_auth_login200_response_data_workspace.g.dart';
 @BuiltValue()
 abstract class PostApiAuthLogin200ResponseDataWorkspace implements Built<PostApiAuthLogin200ResponseDataWorkspace, PostApiAuthLogin200ResponseDataWorkspaceBuilder> {
   @BuiltValueField(wireName: r'_id')
-  int get id;
+  int? get legacyId;
 
   @BuiltValueField(wireName: r'id')
   int get id;
@@ -64,11 +64,13 @@ class _$PostApiAuthLogin200ResponseDataWorkspaceSerializer implements PrimitiveS
     PostApiAuthLogin200ResponseDataWorkspace object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'_id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(int),
-    );
+    if (object.legacyId != null) {
+      yield r'_id';
+      yield serializers.serialize(
+        object.legacyId,
+        specifiedType: const FullType(int),
+      );
+    }
     yield r'id';
     yield serializers.serialize(
       object.id,
@@ -122,7 +124,7 @@ class _$PostApiAuthLogin200ResponseDataWorkspaceSerializer implements PrimitiveS
             value,
             specifiedType: const FullType(int),
           ) as int;
-          result.id = valueDes;
+          result.legacyId = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(
@@ -196,6 +198,8 @@ class PostApiAuthLogin200ResponseDataWorkspaceRoleEnum extends EnumClass {
   static const PostApiAuthLogin200ResponseDataWorkspaceRoleEnum admin = _$postApiAuthLogin200ResponseDataWorkspaceRoleEnum_admin;
   @BuiltValueEnumConst(wireName: r'member')
   static const PostApiAuthLogin200ResponseDataWorkspaceRoleEnum member = _$postApiAuthLogin200ResponseDataWorkspaceRoleEnum_member;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiAuthLogin200ResponseDataWorkspaceRoleEnum unknownDefaultOpenApi = _$postApiAuthLogin200ResponseDataWorkspaceRoleEnum_unknownDefaultOpenApi;
 
   static Serializer<PostApiAuthLogin200ResponseDataWorkspaceRoleEnum> get serializer => _$postApiAuthLogin200ResponseDataWorkspaceRoleEnumSerializer;
 
@@ -211,6 +215,8 @@ class PostApiAuthLogin200ResponseDataWorkspaceTypeEnum extends EnumClass {
   static const PostApiAuthLogin200ResponseDataWorkspaceTypeEnum personal = _$postApiAuthLogin200ResponseDataWorkspaceTypeEnum_personal;
   @BuiltValueEnumConst(wireName: r'team')
   static const PostApiAuthLogin200ResponseDataWorkspaceTypeEnum team = _$postApiAuthLogin200ResponseDataWorkspaceTypeEnum_team;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiAuthLogin200ResponseDataWorkspaceTypeEnum unknownDefaultOpenApi = _$postApiAuthLogin200ResponseDataWorkspaceTypeEnum_unknownDefaultOpenApi;
 
   static Serializer<PostApiAuthLogin200ResponseDataWorkspaceTypeEnum> get serializer => _$postApiAuthLogin200ResponseDataWorkspaceTypeEnumSerializer;
 

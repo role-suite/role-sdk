@@ -12,7 +12,8 @@ export default [
     languageOptions: {
       globals: {
         console: "readonly",
-        process: "readonly"
+        process: "readonly",
+        structuredClone: "readonly"
       }
     }
   },

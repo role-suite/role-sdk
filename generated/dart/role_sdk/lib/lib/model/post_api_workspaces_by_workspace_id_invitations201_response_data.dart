@@ -193,6 +193,8 @@ class PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum extends E
   static const PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum admin = _$postApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum_admin;
   @BuiltValueEnumConst(wireName: r'member')
   static const PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum member = _$postApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum_member;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum unknownDefaultOpenApi = _$postApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum_unknownDefaultOpenApi;
 
   static Serializer<PostApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnum> get serializer => _$postApiWorkspacesByWorkspaceIdInvitations201ResponseDataRoleEnumSerializer;
 

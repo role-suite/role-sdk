@@ -131,6 +131,8 @@ class PostApiWorkspacesByWorkspaceIdInvitationsRequestRoleEnum extends EnumClass
   static const PostApiWorkspacesByWorkspaceIdInvitationsRequestRoleEnum admin = _$postApiWorkspacesByWorkspaceIdInvitationsRequestRoleEnum_admin;
   @BuiltValueEnumConst(wireName: r'member')
   static const PostApiWorkspacesByWorkspaceIdInvitationsRequestRoleEnum member = _$postApiWorkspacesByWorkspaceIdInvitationsRequestRoleEnum_member;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const PostApiWorkspacesByWorkspaceIdInvitationsRequestRoleEnum unknownDefaultOpenApi = _$postApiWorkspacesByWorkspaceIdInvitationsRequestRoleEnum_unknownDefaultOpenApi;
 
   static Serializer<PostApiWorkspacesByWorkspaceIdInvitationsRequestRoleEnum> get serializer => _$postApiWorkspacesByWorkspaceIdInvitationsRequestRoleEnumSerializer;
 

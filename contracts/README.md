@@ -25,12 +25,15 @@ Generated local artifacts:
 
 - `contracts/role-node/openapi.json` (synced source artifact)
 - `contracts/generated/role-node-sdk-spec.json` (SDK-generation metadata)
+- `contracts/generated/role-node-openapi-dart.json` (Dart-compatible OpenAPI normalization)
 
 ## Generate Dart SDK (OpenAPI)
 
 ```bash
 pnpm contracts:openapi:generate:dart
 ```
+
+This command automatically builds a Dart-compatible OpenAPI variant before generation.
 
 Optional env overrides:
 

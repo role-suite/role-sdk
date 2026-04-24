@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:role_sdk/lib/model/model_null.dart';
 import 'dart:core';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -14,7 +13,7 @@ part 'post_api_workspaces_by_workspace_id_collections_by_collection_id_endpoints
 /// PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId
 @BuiltValue()
 abstract class PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId implements Built<PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId, PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderIdBuilder> {
-  /// Any Of [ModelNull], [int]
+  /// Any Of [int]
   AnyOf get anyOf;
 
   PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderId._();
@@ -60,7 +59,7 @@ class _$PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestF
   }) {
     final result = PostApiWorkspacesByWorkspaceIdCollectionsByCollectionIdEndpointsRequestFolderIdBuilder();
     Object? anyOfDataSrc;
-    final targetType = const FullType(AnyOf, [FullType(int), FullType(ModelNull), ]);
+    final targetType = const FullType(AnyOf, [FullType(int), ]);
     anyOfDataSrc = serialized;
     result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
     return result.build();

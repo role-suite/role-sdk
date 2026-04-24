@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:role_sdk/lib/model/post_api_workspaces_by_workspace_id_runs201_response_data_error_any_of.dart';
-import 'package:role_sdk/lib/model/model_null.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -20,7 +19,7 @@ part 'post_api_workspaces_by_workspace_id_runs201_response_data_error.g.dart';
 /// * [message] 
 @BuiltValue()
 abstract class PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError implements Built<PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError, PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorBuilder> {
-  /// Any Of [ModelNull], [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorAnyOf]
+  /// Any Of [PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorAnyOf]
   AnyOf get anyOf;
 
   PostApiWorkspacesByWorkspaceIdRuns201ResponseDataError._();
@@ -66,7 +65,7 @@ class _$PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorSerializer impleme
   }) {
     final result = PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorBuilder();
     Object? anyOfDataSrc;
-    final targetType = const FullType(AnyOf, [FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorAnyOf), FullType(ModelNull), ]);
+    final targetType = const FullType(AnyOf, [FullType(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataErrorAnyOf), ]);
     anyOfDataSrc = serialized;
     result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
     return result.build();

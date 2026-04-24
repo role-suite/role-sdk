@@ -13,7 +13,7 @@ part 'get_api_auth_me200_response_data_memberships_inner.g.dart';
 /// GetApiAuthMe200ResponseDataMembershipsInner
 ///
 /// Properties:
-/// * [id] 
+/// * [legacyId] 
 /// * [name] 
 /// * [role] 
 /// * [slug] 
@@ -22,7 +22,7 @@ part 'get_api_auth_me200_response_data_memberships_inner.g.dart';
 @BuiltValue()
 abstract class GetApiAuthMe200ResponseDataMembershipsInner implements Built<GetApiAuthMe200ResponseDataMembershipsInner, GetApiAuthMe200ResponseDataMembershipsInnerBuilder> {
   @BuiltValueField(wireName: r'_id')
-  int get id;
+  int? get legacyId;
 
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -64,11 +64,13 @@ class _$GetApiAuthMe200ResponseDataMembershipsInnerSerializer implements Primiti
     GetApiAuthMe200ResponseDataMembershipsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'_id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(int),
-    );
+    if (object.legacyId != null) {
+      yield r'_id';
+      yield serializers.serialize(
+        object.legacyId,
+        specifiedType: const FullType(int),
+      );
+    }
     yield r'name';
     yield serializers.serialize(
       object.name,
@@ -122,7 +124,7 @@ class _$GetApiAuthMe200ResponseDataMembershipsInnerSerializer implements Primiti
             value,
             specifiedType: const FullType(int),
           ) as int;
-          result.id = valueDes;
+          result.legacyId = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
@@ -196,6 +198,8 @@ class GetApiAuthMe200ResponseDataMembershipsInnerRoleEnum extends EnumClass {
   static const GetApiAuthMe200ResponseDataMembershipsInnerRoleEnum admin = _$getApiAuthMe200ResponseDataMembershipsInnerRoleEnum_admin;
   @BuiltValueEnumConst(wireName: r'member')
   static const GetApiAuthMe200ResponseDataMembershipsInnerRoleEnum member = _$getApiAuthMe200ResponseDataMembershipsInnerRoleEnum_member;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const GetApiAuthMe200ResponseDataMembershipsInnerRoleEnum unknownDefaultOpenApi = _$getApiAuthMe200ResponseDataMembershipsInnerRoleEnum_unknownDefaultOpenApi;
 
   static Serializer<GetApiAuthMe200ResponseDataMembershipsInnerRoleEnum> get serializer => _$getApiAuthMe200ResponseDataMembershipsInnerRoleEnumSerializer;
 
@@ -211,6 +215,8 @@ class GetApiAuthMe200ResponseDataMembershipsInnerTypeEnum extends EnumClass {
   static const GetApiAuthMe200ResponseDataMembershipsInnerTypeEnum personal = _$getApiAuthMe200ResponseDataMembershipsInnerTypeEnum_personal;
   @BuiltValueEnumConst(wireName: r'team')
   static const GetApiAuthMe200ResponseDataMembershipsInnerTypeEnum team = _$getApiAuthMe200ResponseDataMembershipsInnerTypeEnum_team;
+  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
+  static const GetApiAuthMe200ResponseDataMembershipsInnerTypeEnum unknownDefaultOpenApi = _$getApiAuthMe200ResponseDataMembershipsInnerTypeEnum_unknownDefaultOpenApi;
 
   static Serializer<GetApiAuthMe200ResponseDataMembershipsInnerTypeEnum> get serializer => _$getApiAuthMe200ResponseDataMembershipsInnerTypeEnumSerializer;
 

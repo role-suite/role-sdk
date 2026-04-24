@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:role_sdk/lib/model/model_null.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -15,7 +14,7 @@ part 'get_api_workspaces_by_workspace_id_updates200_response_data_items_inner_pa
 /// GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload
 @BuiltValue()
 abstract class GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload implements Built<GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload, GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayloadBuilder> {
-  /// Any Of [BuiltMap<String, JsonObject>], [ModelNull]
+  /// Any Of [BuiltMap<String, JsonObject>]
   AnyOf get anyOf;
 
   GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayload._();
@@ -61,7 +60,7 @@ class _$GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayloadSeri
   }) {
     final result = GetApiWorkspacesByWorkspaceIdUpdates200ResponseDataItemsInnerPayloadBuilder();
     Object? anyOfDataSrc;
-    final targetType = const FullType(AnyOf, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]), FullType(ModelNull), ]);
+    final targetType = const FullType(AnyOf, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]), ]);
     anyOfDataSrc = serialized;
     result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
     return result.build();
