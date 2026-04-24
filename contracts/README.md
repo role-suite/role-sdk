@@ -26,6 +26,17 @@ Generated local artifacts:
 - `contracts/role-node/openapi.json` (synced source artifact)
 - `contracts/generated/role-node-sdk-spec.json` (SDK-generation metadata)
 
+## Generate Dart SDK (OpenAPI)
+
+```bash
+pnpm contracts:openapi:generate:dart
+```
+
+Optional env overrides:
+
+- `OPENAPI_GENERATOR_IMAGE` (default: `openapitools/openapi-generator-cli:v7.7.0`)
+- `DART_SDK_OUTPUT_DIR` (default: `generated/dart/role_sdk`)
+
 ## Environment override
 
 If `role-node` is in a different location, set:

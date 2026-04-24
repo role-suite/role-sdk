@@ -45,6 +45,7 @@
     "contracts:openapi:check": "node ./scripts/openapi/check-openapi-artifact.mjs",
     "contracts:openapi:check:required": "node ./scripts/openapi/check-openapi-artifact.mjs --required --strict",
     "contracts:openapi:build-spec": "node ./scripts/openapi/build-sdk-spec.mjs",
+    "contracts:openapi:generate:dart": "node ./scripts/openapi/generate-dart-sdk.mjs",
     "contracts:openapi:prepare": "pnpm contracts:openapi:sync && pnpm contracts:openapi:check && pnpm contracts:openapi:build-spec",
     "lint": "eslint .",
     "format": "prettier --check .",
