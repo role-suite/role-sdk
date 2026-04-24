@@ -26,6 +26,13 @@ export const generatedSdkSpecPath = path.resolve(
   "role-node-sdk-spec.json"
 );
 
+export const generatedDartOpenApiPath = path.resolve(
+  workspaceRoot,
+  "contracts",
+  "generated",
+  "role-node-openapi-dart.json"
+);
+
 export const resolveSourceOpenApiPath = () => {
   const override = process.env.ROLE_NODE_OPENAPI_PATH;
   return override ? path.resolve(override) : defaultSourceOpenApiPath;
