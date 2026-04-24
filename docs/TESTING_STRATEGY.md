@@ -67,12 +67,24 @@ Target:
 
 Focus:
 
-- validate SDK assumptions against canonical backend fixtures/docs.
+- validate SDK assumptions against canonical backend OpenAPI/contracts.
 - catch breaking API response changes from backend side.
 
 Target:
 
 - CI gate before release.
+
+## 2.6 OpenAPI artifact checks
+
+Focus:
+
+- validate synced OpenAPI artifact shape and conventions.
+- enforce brace-style path params and unique `operationId` values.
+- verify generated SDK-spec metadata can be built from OpenAPI.
+
+Target:
+
+- run in CI as part of default checks before typecheck/test.
 
 ## 3) Fixture strategy
 
@@ -110,6 +122,7 @@ tests/fixtures/
 
 - typecheck
 - lint
+- OpenAPI artifact validation (`pnpm contracts:openapi:check`)
 - unit tests
 - mapper tests
 - provider integration tests
@@ -122,11 +135,12 @@ Release should be blocked if parity or contract tests fail.
 
 When backend contracts change:
 
-1. update backend fixtures
-2. run contract + parity tests
-3. update mapping docs/spec if required
-4. apply SDK type/mapping adjustments
-5. publish compatibility matrix updates
+1. sync backend OpenAPI artifact (`pnpm contracts:openapi:sync`)
+2. validate artifact + rebuild SDK spec (`pnpm contracts:openapi:check` + `pnpm contracts:openapi:build-spec`)
+3. run contract + parity tests
+4. update mapping docs/spec if required
+5. apply SDK type/mapping adjustments
+6. publish compatibility matrix updates
 
 ## 7) Failure triage rules
 

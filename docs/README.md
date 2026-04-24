@@ -41,7 +41,7 @@ The SDK must not maintain route or schema assumptions independently of the backe
 
 ### Contract artifact sources
 
-- **role-node**: REST API contracts are maintained in the `role-node` repository under `contracts/` or equivalent. Routes and response schemas are the authoritative source.
+- **role-node**: REST API contracts are maintained in the `role-node` repository under `contracts/` and exported as OpenAPI at `contracts/generated/openapi.json`.
 - **role-serverpod**: RPC module contracts are maintained in the `role-serverpod` repository.
 
 ### Sync workflow
@@ -51,19 +51,22 @@ The SDK must not maintain route or schema assumptions independently of the backe
    ```bash
    # Option A: Clone role-node alongside role-sdk
    git clone https://github.com/.../role-node.git ../role-node
-   cp -r ../role-node/contracts/. ./contracts/role-node/
+   pnpm contracts:openapi:sync
    ```
 
-2. **Validate SDK mappings**:
+2. **Validate OpenAPI artifact and SDK mappings**:
 
    ```bash
+   pnpm contracts:openapi:check
    pnpm test:contracts
    ```
 
    This runs contract validation tests that verify SDK route mappings match backend contracts.
 
 3. **Update on drift**:
-   - If backend contracts change, pull new fixtures
+   - If backend contracts change, pull new OpenAPI artifact
+   - Rebuild SDK-spec metadata from OpenAPI
+   - `pnpm contracts:openapi:build-spec`
    - Run contract tests to identify mapping drift
    - Update SDK types/mappers as needed
    - Do not manually edit route definitions in SDK
@@ -92,10 +95,11 @@ contract-sync:
         path: ../role-node
         fetch-depth: 0
 
-    - name: Copy contract fixtures
-      run: |
-        mkdir -p contracts/role-node
-        cp -r ../role-node/contracts/. contracts/role-node/ || echo "No contracts found"
+    - name: Sync OpenAPI artifact
+      run: pnpm contracts:openapi:sync
+
+    - name: Validate OpenAPI artifact
+      run: pnpm contracts:openapi:check
 
     - name: Validate contract mappings
       run: pnpm test:contracts || true
@@ -119,19 +123,14 @@ Add to `package.json`:
 ```
 contracts/
   role-node/
-    auth/
-      login.success.json
-      login.error.json
-      register.success.json
-      ...
-    workspaces/
-    collections/
-    ...
+    openapi.json
+  generated/
+    role-node-sdk-spec.json
 ```
 
 ### Rules
 
 - Never hardcode routes in SDK mappers without checking the contract source.
-- Contract fixtures are the source of truth for route paths and response shapes.
+- OpenAPI artifact is the source of truth for route paths and response shapes consumed by SDK generation.
 - If contracts are unavailable, SDK CI should warn but not block (use `continue-on-error: true`).
-- Mapping changes require corresponding contract fixture updates in the same PR.
+- Mapping changes require corresponding contract/OpenAPI artifact updates in the same PR.

@@ -205,6 +205,27 @@ See `docs/VERSION_COMPATIBILITY_POLICY.md` for full matrix.
 - Contract matrix: `docs/CONTRACT_MATRIX.md`
 - Version policy: `docs/VERSION_COMPATIBILITY_POLICY.md`
 
+## Contract + OpenAPI workflow
+
+`role-sdk` consumes contract artifacts from `role-node`.
+
+```bash
+# Sync role-node generated OpenAPI into this repo
+pnpm contracts:openapi:sync
+
+# Validate artifact quality
+pnpm contracts:openapi:check
+
+# Build SDK-generation metadata from OpenAPI
+pnpm contracts:openapi:build-spec
+```
+
+If `role-node` is not at `../role-node`, set:
+
+```bash
+ROLE_NODE_OPENAPI_PATH=/absolute/path/to/openapi.json pnpm contracts:openapi:sync
+```
+
 ## License
 
 MIT — see `LICENSE` file.

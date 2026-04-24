@@ -96,16 +96,32 @@ Deliverables:
 - Better diagnostics (`requestId`, retry count, timing metadata).
 - Documentation site-ready markdown (quickstart + API reference + migration notes).
 - Compatibility matrix between SDK and both backend versions.
+- OpenAPI artifact ingestion pipeline (`contracts:openapi:sync`, `check`, `build-spec`).
 
 Acceptance criteria:
 
 - Examples cover browser and Node usage.
 - Public docs include auth best practices and error handling recipes.
 - Contract matrix is published and maintained.
+- OpenAPI artifact can be synced from `role-node` and validated in CI.
+
+## Phase 6 - Contract-driven generation (next)
+
+Deliverables:
+
+- Generate SDK operation metadata from OpenAPI (`contracts/generated/role-node-sdk-spec.json`).
+- Introduce generated API surface for TypeScript from OpenAPI operation/model definitions.
+- Introduce generated Dart API surface from the same OpenAPI artifact.
+- Keep runtime concerns handwritten and shared by policy (auth lifecycle, retry, hooks, error normalization).
+
+Acceptance criteria:
+
+- Generated TS and Dart API layers come from the same OpenAPI artifact version.
+- SDK code generation is deterministic and CI-verified.
+- Manual edits to generated output are disallowed and enforced by checks.
 
 ## Suggested backlog after v1
 
-- Optional OpenAPI contract ingestion and generated types pipeline.
 - Optional plugin package for persistence adapters (localStorage, secure store wrappers).
 - Optional batching and caching helpers for high-frequency queries.
 - Optional strongly typed event stream client if workspace updates gain streaming endpoints.
@@ -114,6 +130,7 @@ Acceptance criteria:
 ## Risks and mitigation
 
 - API contract drift: add contract tests against role-node examples and snapshots.
+- OpenAPI drift between backend and SDK: enforce sync + artifact validation in CI.
 - API contract drift (dual backend): add parity test suite against node and serverpod fixtures.
 - Token refresh race conditions: implement single-flight refresh mutex early.
 - Runtime differences (Node vs browser): centralize transport and avoid Node-only globals.

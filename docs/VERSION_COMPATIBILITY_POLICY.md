@@ -90,11 +90,17 @@ The following can be minor or patch (depending on scope):
 
 Before release:
 
+- Sync and validate OpenAPI contract artifact (`pnpm contracts:openapi:prepare`).
 - Update `docs/CONTRACT_MATRIX.md` for any method changes.
 - Update `docs/PROVIDER_MAPPING_SPEC.md` for any mapping changes.
 - Update compatibility matrix (node and serverpod minimum tested versions).
 - Run full parity and contract test suites.
 - Generate release notes with migration details when needed.
+
+## 7.1) Contract artifact pinning
+
+- SDK releases should reference a concrete `role-node` OpenAPI artifact revision (commit SHA or tagged backend release).
+- Any SDK behavior change caused by OpenAPI contract drift must include that reference in release notes.
 
 ## 8) Emergency policy
 

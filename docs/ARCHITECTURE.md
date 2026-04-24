@@ -109,12 +109,33 @@ The SDK exposes feature availability at runtime:
 - A client instance should not switch provider at runtime.
 - Multi-backend applications should instantiate separate SDK clients per backend.
 
+### 4.6 Contract artifact boundary
+
+- `role-node` owns endpoint/schema source-of-truth and exports `contracts/generated/openapi.json`.
+- `role-sdk` consumes that artifact into `contracts/role-node/openapi.json`.
+- SDK metadata for generation is derived into `contracts/generated/role-node-sdk-spec.json`.
+- Current local pipeline commands:
+  - `pnpm contracts:openapi:sync`
+  - `pnpm contracts:openapi:check`
+  - `pnpm contracts:openapi:build-spec`
+- Generated SDK layers (TypeScript and Dart) should be produced from the same OpenAPI artifact revision.
+
 ## 5) Proposed package shape
 
 Start as a single package for faster iteration:
 
 ```text
 role-sdk/
+  contracts/
+    role-node/
+      openapi.json
+    generated/
+      role-node-sdk-spec.json
+  scripts/
+    openapi/
+      sync-role-node-openapi.mjs
+      check-openapi-artifact.mjs
+      build-sdk-spec.mjs
   src/
     index.ts
     client.ts
@@ -162,7 +183,7 @@ role-sdk/
         client.ts
         types.ts
     generated/
-      (future contract-generated types)
+      (SDK generated code output target)
   tests/
     unit/
     integration/
