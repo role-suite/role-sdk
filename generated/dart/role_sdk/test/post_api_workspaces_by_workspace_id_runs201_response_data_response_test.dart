@@ -1,0 +1,41 @@
+import 'package:test/test.dart';
+import 'package:role_sdk/role_sdk.dart';
+
+// tests for PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponse
+void main() {
+  final instance = PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponseBuilder();
+  // TODO add properties to the builder and call build()
+
+  group(PostApiWorkspacesByWorkspaceIdRuns201ResponseDataResponse, () {
+    // GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription body
+    test('to test the property `body`', () async {
+      // TODO
+    });
+
+    // GetApiWorkspacesByWorkspaceIdCollections200ResponseDataItemsInnerDescription bodyBase64
+    test('to test the property `bodyBase64`', () async {
+      // TODO
+    });
+
+    // BuiltMap<String, String> headers
+    test('to test the property `headers`', () async {
+      // TODO
+    });
+
+    // int sizeBytes
+    test('to test the property `sizeBytes`', () async {
+      // TODO
+    });
+
+    // int status
+    test('to test the property `status`', () async {
+      // TODO
+    });
+
+    // bool truncated
+    test('to test the property `truncated`', () async {
+      // TODO
+    });
+
+  });
+}
