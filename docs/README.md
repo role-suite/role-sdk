@@ -71,7 +71,7 @@ The SDK must not maintain route or schema assumptions independently of the backe
    - `pnpm contracts:openapi:build-spec`
    - Run contract tests to identify mapping drift
    - Update SDK types/mappers as needed
-    - Do not manually edit route definitions in SDK
+   - Do not manually edit route definitions in SDK
 
 4. **Sync and generate gRPC Dart artifacts**:
 

@@ -23,9 +23,7 @@ if (!existsSync(protoIncludeDir)) {
 const protoFiles = listProtoFiles(protoIncludeDir);
 
 if (protoFiles.length === 0) {
-  console.error(
-    `[contracts:grpc:generate:dart] No .proto files found in ${protoIncludeDir}.`
-  );
+  console.error(`[contracts:grpc:generate:dart] No .proto files found in ${protoIncludeDir}.`);
   process.exit(1);
 }
 
@@ -52,11 +50,7 @@ if (activatePluginResult.status !== 0) {
   process.exit(activatePluginResult.status ?? 1);
 }
 
-const protocArgs = [
-  `-I${protoIncludeDir}`,
-  `--dart_out=grpc:${outputDir}`,
-  ...protoFiles
-];
+const protocArgs = [`-I${protoIncludeDir}`, `--dart_out=grpc:${outputDir}`, ...protoFiles];
 
 console.log(
   `[contracts:grpc:generate:dart] Generating Dart gRPC client from ${protoFiles.length} proto files...`
@@ -100,6 +94,4 @@ writeTextFile(
   ].join("\n")
 );
 
-console.log(
-  `[contracts:grpc:generate:dart] Done. Output written to ${outputDir}`
-);
+console.log(`[contracts:grpc:generate:dart] Done. Output written to ${outputDir}`);

@@ -1,11 +1,6 @@
 import { existsSync } from "node:fs";
 
-import {
-  copyProtoDir,
-  listProtoFiles,
-  resolveSourceProtoDir,
-  targetProtoDir
-} from "./utils.mjs";
+import { copyProtoDir, listProtoFiles, resolveSourceProtoDir, targetProtoDir } from "./utils.mjs";
 
 const required = process.argv.slice(2).includes("--required");
 const sourceDir = resolveSourceProtoDir();
@@ -35,11 +30,11 @@ if (!copied) {
 const protoFiles = listProtoFiles(targetProtoDir);
 
 if (protoFiles.length === 0) {
-  console.error(
-    `[contracts:grpc:sync] No .proto files found after sync in ${targetProtoDir}.`
-  );
+  console.error(`[contracts:grpc:sync] No .proto files found after sync in ${targetProtoDir}.`);
   process.exit(1);
 }
 
 console.log(`[contracts:grpc:sync] Synced ${sourceDir} -> ${targetProtoDir}`);
-console.log(`[contracts:grpc:sync] Proto files: ${protoFiles.map((filePath) => filePath.split("/").pop()).join(", ")}`);
+console.log(
+  `[contracts:grpc:sync] Proto files: ${protoFiles.map((filePath) => filePath.split("/").pop()).join(", ")}`
+);

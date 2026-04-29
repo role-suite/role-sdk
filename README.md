@@ -209,27 +209,53 @@ See `docs/VERSION_COMPATIBILITY_POLICY.md` for full matrix.
 
 `role-sdk` consumes contract artifacts from `role-node`.
 
+### Script quick reference
+
+| Script | What it does |
+| --- | --- |
+| `pnpm build` | Build the TypeScript SDK into `dist/` |
+| `pnpm lint` | Run ESLint |
+| `pnpm typecheck` | Run TypeScript type checks without emitting files |
+| `pnpm test` | Run unit tests once |
+| `pnpm check` | Run `lint + typecheck + test` |
+| `pnpm fmt` | Check Prettier formatting |
+| `pnpm fmt:fix` | Auto-fix formatting with Prettier |
+| `pnpm verify` | Run `fmt + check` |
+| `pnpm openapi:sync` | Pull OpenAPI artifact from `role-node` |
+| `pnpm openapi:check` | Validate OpenAPI artifact quality |
+| `pnpm openapi:check:strict` | Strict validation (required + strict mode) |
+| `pnpm openapi:spec` | Build SDK generation metadata from OpenAPI |
+| `pnpm openapi:dart:bundle` | Build Dart-focused OpenAPI input artifact |
+| `pnpm openapi:dart:gen` | Generate Dart REST SDK |
+| `pnpm openapi:prep` | Run `openapi:sync + openapi:check + openapi:spec` |
+| `pnpm openapi:remote:preflight` | Validate remote generation prerequisites |
+| `pnpm openapi:remote:gen` | Trigger remote Dart SDK generation |
+| `pnpm openapi:remote:pull` | Pull remote-generated Dart SDK into repo |
+| `pnpm openapi:remote:refresh` | Run `remote:preflight + remote:gen + remote:pull` |
+| `pnpm grpc:sync` | Sync proto contracts from `role-node` |
+| `pnpm grpc:gen` | Sync proto contracts and generate Dart gRPC SDK |
+
 ```bash
 # Sync role-node generated OpenAPI into this repo
-pnpm contracts:openapi:sync
+pnpm openapi:sync
 
 # Validate artifact quality
-pnpm contracts:openapi:check
+pnpm openapi:check
 
 # Build SDK-generation metadata from OpenAPI
-pnpm contracts:openapi:build-spec
+pnpm openapi:spec
 ```
 
 If `role-node` is not at `../role-node`, set:
 
 ```bash
-ROLE_NODE_OPENAPI_PATH=/absolute/path/to/openapi.json pnpm contracts:openapi:sync
+ROLE_NODE_OPENAPI_PATH=/absolute/path/to/openapi.json pnpm openapi:sync
 ```
 
 Generate Dart REST SDK (renamed target):
 
 ```bash
-pnpm contracts:openapi:generate:dart-rest
+pnpm openapi:dart:gen
 ```
 
 Default output: `generated/dart/role_rest_sdk`.
@@ -240,10 +266,10 @@ You can generate a Dart gRPC client SDK directly from `role-node` proto contract
 
 ```bash
 # Sync proto contracts from role-node
-pnpm contracts:grpc:sync
+pnpm grpc:sync
 
 # Generate Dart gRPC SDK files
-pnpm contracts:grpc:generate:dart
+pnpm grpc:gen
 ```
 
 Defaults:
@@ -255,8 +281,8 @@ Defaults:
 Optional overrides:
 
 ```bash
-ROLE_NODE_PROTO_DIR=/absolute/path/to/role-node/proto pnpm contracts:grpc:sync
-DART_GRPC_SDK_OUTPUT_DIR=generated/dart/custom_role_grpc_sdk pnpm contracts:grpc:generate:dart
+ROLE_NODE_PROTO_DIR=/absolute/path/to/role-node/proto pnpm grpc:sync
+DART_GRPC_SDK_OUTPUT_DIR=generated/dart/custom_role_grpc_sdk pnpm grpc:gen
 ```
 
 Requirements:

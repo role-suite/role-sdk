@@ -57,7 +57,12 @@ const isNullableOnly = (schema) => {
     return true;
   }
 
-  if (schema.enum && Array.isArray(schema.enum) && schema.enum.length === 1 && schema.enum[0] === null) {
+  if (
+    schema.enum &&
+    Array.isArray(schema.enum) &&
+    schema.enum.length === 1 &&
+    schema.enum[0] === null
+  ) {
     return true;
   }
 

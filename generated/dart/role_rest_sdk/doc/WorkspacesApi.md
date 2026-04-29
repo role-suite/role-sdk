@@ -1,40 +1,40 @@
 # role_rest_sdk.api.WorkspacesApi
 
 ## Load the API package
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 ```
 
-All URIs are relative to *http://localhost*
+All URIs are relative to _http://localhost_
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteApiWorkspacesByWorkspaceIdMembersByMemberUserId**](WorkspacesApi.md#deleteapiworkspacesbyworkspaceidmembersbymemberuserid) | **DELETE** /api/workspaces/{workspaceId}/members/{memberUserId} | 
-[**getApiWorkspaces**](WorkspacesApi.md#getapiworkspaces) | **GET** /api/workspaces | 
-[**getApiWorkspacesByWorkspaceId**](WorkspacesApi.md#getapiworkspacesbyworkspaceid) | **GET** /api/workspaces/{workspaceId} | 
-[**getApiWorkspacesByWorkspaceIdMembers**](WorkspacesApi.md#getapiworkspacesbyworkspaceidmembers) | **GET** /api/workspaces/{workspaceId}/members | 
-[**getApiWorkspacesByWorkspaceIdUpdates**](WorkspacesApi.md#getapiworkspacesbyworkspaceidupdates) | **GET** /api/workspaces/{workspaceId}/updates | 
-[**patchApiWorkspacesByWorkspaceIdMembersByMemberUserId**](WorkspacesApi.md#patchapiworkspacesbyworkspaceidmembersbymemberuserid) | **PATCH** /api/workspaces/{workspaceId}/members/{memberUserId} | 
-[**postApiWorkspaces**](WorkspacesApi.md#postapiworkspaces) | **POST** /api/workspaces | 
-[**postApiWorkspacesByWorkspaceIdConvertToTeam**](WorkspacesApi.md#postapiworkspacesbyworkspaceidconverttoteam) | **POST** /api/workspaces/{workspaceId}/convert-to-team | 
-[**postApiWorkspacesByWorkspaceIdInvitations**](WorkspacesApi.md#postapiworkspacesbyworkspaceidinvitations) | **POST** /api/workspaces/{workspaceId}/invitations | 
-[**postApiWorkspacesByWorkspaceIdLeave**](WorkspacesApi.md#postapiworkspacesbyworkspaceidleave) | **POST** /api/workspaces/{workspaceId}/leave | 
-[**postApiWorkspacesByWorkspaceIdMembers**](WorkspacesApi.md#postapiworkspacesbyworkspaceidmembers) | **POST** /api/workspaces/{workspaceId}/members | 
-[**postApiWorkspacesJoin**](WorkspacesApi.md#postapiworkspacesjoin) | **POST** /api/workspaces/join | 
-
+| Method                                                                                                                              | HTTP request                                                    | Description |
+| ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
+| [**deleteApiWorkspacesByWorkspaceIdMembersByMemberUserId**](WorkspacesApi.md#deleteapiworkspacesbyworkspaceidmembersbymemberuserid) | **DELETE** /api/workspaces/{workspaceId}/members/{memberUserId} |
+| [**getApiWorkspaces**](WorkspacesApi.md#getapiworkspaces)                                                                           | **GET** /api/workspaces                                         |
+| [**getApiWorkspacesByWorkspaceId**](WorkspacesApi.md#getapiworkspacesbyworkspaceid)                                                 | **GET** /api/workspaces/{workspaceId}                           |
+| [**getApiWorkspacesByWorkspaceIdMembers**](WorkspacesApi.md#getapiworkspacesbyworkspaceidmembers)                                   | **GET** /api/workspaces/{workspaceId}/members                   |
+| [**getApiWorkspacesByWorkspaceIdUpdates**](WorkspacesApi.md#getapiworkspacesbyworkspaceidupdates)                                   | **GET** /api/workspaces/{workspaceId}/updates                   |
+| [**patchApiWorkspacesByWorkspaceIdMembersByMemberUserId**](WorkspacesApi.md#patchapiworkspacesbyworkspaceidmembersbymemberuserid)   | **PATCH** /api/workspaces/{workspaceId}/members/{memberUserId}  |
+| [**postApiWorkspaces**](WorkspacesApi.md#postapiworkspaces)                                                                         | **POST** /api/workspaces                                        |
+| [**postApiWorkspacesByWorkspaceIdConvertToTeam**](WorkspacesApi.md#postapiworkspacesbyworkspaceidconverttoteam)                     | **POST** /api/workspaces/{workspaceId}/convert-to-team          |
+| [**postApiWorkspacesByWorkspaceIdInvitations**](WorkspacesApi.md#postapiworkspacesbyworkspaceidinvitations)                         | **POST** /api/workspaces/{workspaceId}/invitations              |
+| [**postApiWorkspacesByWorkspaceIdLeave**](WorkspacesApi.md#postapiworkspacesbyworkspaceidleave)                                     | **POST** /api/workspaces/{workspaceId}/leave                    |
+| [**postApiWorkspacesByWorkspaceIdMembers**](WorkspacesApi.md#postapiworkspacesbyworkspaceidmembers)                                 | **POST** /api/workspaces/{workspaceId}/members                  |
+| [**postApiWorkspacesJoin**](WorkspacesApi.md#postapiworkspacesjoin)                                                                 | **POST** /api/workspaces/join                                   |
 
 # **deleteApiWorkspacesByWorkspaceIdMembersByMemberUserId**
+
 > PostApiAuthLogout200Response deleteApiWorkspacesByWorkspaceIdMembersByMemberUserId(workspaceId, memberUserId)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getWorkspacesApi();
-final int workspaceId = 56; // int | 
-final int memberUserId = 56; // int | 
+final int workspaceId = 56; // int |
+final int memberUserId = 56; // int |
 
 try {
     final response = api.deleteApiWorkspacesByWorkspaceIdMembersByMemberUserId(workspaceId, memberUserId);
@@ -46,10 +46,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **memberUserId** | **int**|  | 
+| Name             | Type    | Description | Notes |
+| ---------------- | ------- | ----------- | ----- |
+| **workspaceId**  | **int** |             |
+| **memberUserId** | **int** |             |
 
 ### Return type
 
@@ -61,17 +61,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspaces**
+
 > GetApiWorkspaces200Response getApiWorkspaces()
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
@@ -86,6 +86,7 @@ try {
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -98,22 +99,22 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceId**
+
 > PostApiWorkspaces201Response getApiWorkspacesByWorkspaceId(workspaceId)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getWorkspacesApi();
-final int workspaceId = 56; // int | 
+final int workspaceId = 56; // int |
 
 try {
     final response = api.getApiWorkspacesByWorkspaceId(workspaceId);
@@ -125,9 +126,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
+| Name            | Type    | Description | Notes |
+| --------------- | ------- | ----------- | ----- |
+| **workspaceId** | **int** |             |
 
 ### Return type
 
@@ -139,22 +140,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdMembers**
+
 > GetApiWorkspacesByWorkspaceIdMembers200Response getApiWorkspacesByWorkspaceIdMembers(workspaceId)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getWorkspacesApi();
-final int workspaceId = 56; // int | 
+final int workspaceId = 56; // int |
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdMembers(workspaceId);
@@ -166,9 +167,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
+| Name            | Type    | Description | Notes |
+| --------------- | ------- | ----------- | ----- |
+| **workspaceId** | **int** |             |
 
 ### Return type
 
@@ -180,24 +181,24 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdUpdates**
+
 > GetApiWorkspacesByWorkspaceIdUpdates200Response getApiWorkspacesByWorkspaceIdUpdates(workspaceId, limit, since)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getWorkspacesApi();
-final int workspaceId = 56; // int | 
-final int limit = 56; // int | 
-final int since = 56; // int | 
+final int workspaceId = 56; // int |
+final int limit = 56; // int |
+final int since = 56; // int |
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdUpdates(workspaceId, limit, since);
@@ -209,11 +210,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **limit** | **int**|  | [optional] [default to 50]
- **since** | **int**|  | [optional] [default to 0]
+| Name            | Type    | Description | Notes                      |
+| --------------- | ------- | ----------- | -------------------------- |
+| **workspaceId** | **int** |             |
+| **limit**       | **int** |             | [optional] [default to 50] |
+| **since**       | **int** |             | [optional] [default to 0]  |
 
 ### Return type
 
@@ -225,24 +226,24 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchApiWorkspacesByWorkspaceIdMembersByMemberUserId**
+
 > PostApiWorkspacesByWorkspaceIdMembers201Response patchApiWorkspacesByWorkspaceIdMembersByMemberUserId(workspaceId, memberUserId, patchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getWorkspacesApi();
-final int workspaceId = 56; // int | 
-final int memberUserId = 56; // int | 
-final PatchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest patchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest = ; // PatchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest | 
+final int workspaceId = 56; // int |
+final int memberUserId = 56; // int |
+final PatchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest patchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest = ; // PatchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest |
 
 try {
     final response = api.patchApiWorkspacesByWorkspaceIdMembersByMemberUserId(workspaceId, memberUserId, patchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest);
@@ -254,11 +255,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **memberUserId** | **int**|  | 
- **patchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest** | [**PatchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest**](PatchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest.md)|  | 
+| Name                                                            | Type                                                                                                                              | Description | Notes |
+| --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **workspaceId**                                                 | **int**                                                                                                                           |             |
+| **memberUserId**                                                | **int**                                                                                                                           |             |
+| **patchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest** | [**PatchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest**](PatchApiWorkspacesByWorkspaceIdMembersByMemberUserIdRequest.md) |             |
 
 ### Return type
 
@@ -270,22 +271,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspaces**
+
 > PostApiWorkspaces201Response postApiWorkspaces(postApiWorkspacesRequest)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getWorkspacesApi();
-final PostApiWorkspacesRequest postApiWorkspacesRequest = ; // PostApiWorkspacesRequest | 
+final PostApiWorkspacesRequest postApiWorkspacesRequest = ; // PostApiWorkspacesRequest |
 
 try {
     final response = api.postApiWorkspaces(postApiWorkspacesRequest);
@@ -297,9 +298,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **postApiWorkspacesRequest** | [**PostApiWorkspacesRequest**](PostApiWorkspacesRequest.md)|  | 
+| Name                         | Type                                                        | Description | Notes |
+| ---------------------------- | ----------------------------------------------------------- | ----------- | ----- |
+| **postApiWorkspacesRequest** | [**PostApiWorkspacesRequest**](PostApiWorkspacesRequest.md) |             |
 
 ### Return type
 
@@ -311,23 +312,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspacesByWorkspaceIdConvertToTeam**
+
 > PostApiWorkspaces201Response postApiWorkspacesByWorkspaceIdConvertToTeam(workspaceId, postApiWorkspacesByWorkspaceIdConvertToTeamRequest)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getWorkspacesApi();
-final int workspaceId = 56; // int | 
-final PostApiWorkspacesByWorkspaceIdConvertToTeamRequest postApiWorkspacesByWorkspaceIdConvertToTeamRequest = ; // PostApiWorkspacesByWorkspaceIdConvertToTeamRequest | 
+final int workspaceId = 56; // int |
+final PostApiWorkspacesByWorkspaceIdConvertToTeamRequest postApiWorkspacesByWorkspaceIdConvertToTeamRequest = ; // PostApiWorkspacesByWorkspaceIdConvertToTeamRequest |
 
 try {
     final response = api.postApiWorkspacesByWorkspaceIdConvertToTeam(workspaceId, postApiWorkspacesByWorkspaceIdConvertToTeamRequest);
@@ -339,10 +340,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **postApiWorkspacesByWorkspaceIdConvertToTeamRequest** | [**PostApiWorkspacesByWorkspaceIdConvertToTeamRequest**](PostApiWorkspacesByWorkspaceIdConvertToTeamRequest.md)|  | 
+| Name                                                   | Type                                                                                                            | Description | Notes |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **workspaceId**                                        | **int**                                                                                                         |             |
+| **postApiWorkspacesByWorkspaceIdConvertToTeamRequest** | [**PostApiWorkspacesByWorkspaceIdConvertToTeamRequest**](PostApiWorkspacesByWorkspaceIdConvertToTeamRequest.md) |             |
 
 ### Return type
 
@@ -354,23 +355,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspacesByWorkspaceIdInvitations**
+
 > PostApiWorkspacesByWorkspaceIdInvitations201Response postApiWorkspacesByWorkspaceIdInvitations(workspaceId, postApiWorkspacesByWorkspaceIdInvitationsRequest)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getWorkspacesApi();
-final int workspaceId = 56; // int | 
-final PostApiWorkspacesByWorkspaceIdInvitationsRequest postApiWorkspacesByWorkspaceIdInvitationsRequest = ; // PostApiWorkspacesByWorkspaceIdInvitationsRequest | 
+final int workspaceId = 56; // int |
+final PostApiWorkspacesByWorkspaceIdInvitationsRequest postApiWorkspacesByWorkspaceIdInvitationsRequest = ; // PostApiWorkspacesByWorkspaceIdInvitationsRequest |
 
 try {
     final response = api.postApiWorkspacesByWorkspaceIdInvitations(workspaceId, postApiWorkspacesByWorkspaceIdInvitationsRequest);
@@ -382,10 +383,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **postApiWorkspacesByWorkspaceIdInvitationsRequest** | [**PostApiWorkspacesByWorkspaceIdInvitationsRequest**](PostApiWorkspacesByWorkspaceIdInvitationsRequest.md)|  | 
+| Name                                                 | Type                                                                                                        | Description | Notes |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **workspaceId**                                      | **int**                                                                                                     |             |
+| **postApiWorkspacesByWorkspaceIdInvitationsRequest** | [**PostApiWorkspacesByWorkspaceIdInvitationsRequest**](PostApiWorkspacesByWorkspaceIdInvitationsRequest.md) |             |
 
 ### Return type
 
@@ -397,22 +398,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspacesByWorkspaceIdLeave**
+
 > PostApiAuthLogout200Response postApiWorkspacesByWorkspaceIdLeave(workspaceId)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getWorkspacesApi();
-final int workspaceId = 56; // int | 
+final int workspaceId = 56; // int |
 
 try {
     final response = api.postApiWorkspacesByWorkspaceIdLeave(workspaceId);
@@ -424,9 +425,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
+| Name            | Type    | Description | Notes |
+| --------------- | ------- | ----------- | ----- |
+| **workspaceId** | **int** |             |
 
 ### Return type
 
@@ -438,23 +439,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspacesByWorkspaceIdMembers**
+
 > PostApiWorkspacesByWorkspaceIdMembers201Response postApiWorkspacesByWorkspaceIdMembers(workspaceId, postApiWorkspacesByWorkspaceIdInvitationsRequest)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getWorkspacesApi();
-final int workspaceId = 56; // int | 
-final PostApiWorkspacesByWorkspaceIdInvitationsRequest postApiWorkspacesByWorkspaceIdInvitationsRequest = ; // PostApiWorkspacesByWorkspaceIdInvitationsRequest | 
+final int workspaceId = 56; // int |
+final PostApiWorkspacesByWorkspaceIdInvitationsRequest postApiWorkspacesByWorkspaceIdInvitationsRequest = ; // PostApiWorkspacesByWorkspaceIdInvitationsRequest |
 
 try {
     final response = api.postApiWorkspacesByWorkspaceIdMembers(workspaceId, postApiWorkspacesByWorkspaceIdInvitationsRequest);
@@ -466,10 +467,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **postApiWorkspacesByWorkspaceIdInvitationsRequest** | [**PostApiWorkspacesByWorkspaceIdInvitationsRequest**](PostApiWorkspacesByWorkspaceIdInvitationsRequest.md)|  | 
+| Name                                                 | Type                                                                                                        | Description | Notes |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **workspaceId**                                      | **int**                                                                                                     |             |
+| **postApiWorkspacesByWorkspaceIdInvitationsRequest** | [**PostApiWorkspacesByWorkspaceIdInvitationsRequest**](PostApiWorkspacesByWorkspaceIdInvitationsRequest.md) |             |
 
 ### Return type
 
@@ -481,22 +482,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspacesJoin**
+
 > PostApiWorkspaces201Response postApiWorkspacesJoin(postApiWorkspacesJoinRequest)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getWorkspacesApi();
-final PostApiWorkspacesJoinRequest postApiWorkspacesJoinRequest = ; // PostApiWorkspacesJoinRequest | 
+final PostApiWorkspacesJoinRequest postApiWorkspacesJoinRequest = ; // PostApiWorkspacesJoinRequest |
 
 try {
     final response = api.postApiWorkspacesJoin(postApiWorkspacesJoinRequest);
@@ -508,9 +509,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **postApiWorkspacesJoinRequest** | [**PostApiWorkspacesJoinRequest**](PostApiWorkspacesJoinRequest.md)|  | 
+| Name                             | Type                                                                | Description | Notes |
+| -------------------------------- | ------------------------------------------------------------------- | ----------- | ----- |
+| **postApiWorkspacesJoinRequest** | [**PostApiWorkspacesJoinRequest**](PostApiWorkspacesJoinRequest.md) |             |
 
 ### Return type
 
@@ -522,8 +523,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

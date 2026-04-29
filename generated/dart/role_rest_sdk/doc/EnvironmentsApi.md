@@ -1,38 +1,38 @@
 # role_rest_sdk.api.EnvironmentsApi
 
 ## Load the API package
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 ```
 
-All URIs are relative to *http://localhost*
+All URIs are relative to _http://localhost_
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId**](EnvironmentsApi.md#deleteapiworkspacesbyworkspaceidenvironmentsbyenvironmentid) | **DELETE** /api/workspaces/{workspaceId}/environments/{environmentId} | 
-[**deleteApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId**](EnvironmentsApi.md#deleteapiworkspacesbyworkspaceidenvironmentsbyenvironmentidvariablesbyvariableid) | **DELETE** /api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId} | 
-[**getApiWorkspacesByWorkspaceIdEnvironments**](EnvironmentsApi.md#getapiworkspacesbyworkspaceidenvironments) | **GET** /api/workspaces/{workspaceId}/environments | 
-[**getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId**](EnvironmentsApi.md#getapiworkspacesbyworkspaceidenvironmentsbyenvironmentid) | **GET** /api/workspaces/{workspaceId}/environments/{environmentId} | 
-[**getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables**](EnvironmentsApi.md#getapiworkspacesbyworkspaceidenvironmentsbyenvironmentidvariables) | **GET** /api/workspaces/{workspaceId}/environments/{environmentId}/variables | 
-[**getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId**](EnvironmentsApi.md#getapiworkspacesbyworkspaceidenvironmentsbyenvironmentidvariablesbyvariableid) | **GET** /api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId} | 
-[**patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId**](EnvironmentsApi.md#patchapiworkspacesbyworkspaceidenvironmentsbyenvironmentid) | **PATCH** /api/workspaces/{workspaceId}/environments/{environmentId} | 
-[**patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId**](EnvironmentsApi.md#patchapiworkspacesbyworkspaceidenvironmentsbyenvironmentidvariablesbyvariableid) | **PATCH** /api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId} | 
-[**postApiWorkspacesByWorkspaceIdEnvironments**](EnvironmentsApi.md#postapiworkspacesbyworkspaceidenvironments) | **POST** /api/workspaces/{workspaceId}/environments | 
-[**postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables**](EnvironmentsApi.md#postapiworkspacesbyworkspaceidenvironmentsbyenvironmentidvariables) | **POST** /api/workspaces/{workspaceId}/environments/{environmentId}/variables | 
-
+| Method                                                                                                                                                                                      | HTTP request                                                                                 | Description |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ----------- |
+| [**deleteApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId**](EnvironmentsApi.md#deleteapiworkspacesbyworkspaceidenvironmentsbyenvironmentid)                                           | **DELETE** /api/workspaces/{workspaceId}/environments/{environmentId}                        |
+| [**deleteApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId**](EnvironmentsApi.md#deleteapiworkspacesbyworkspaceidenvironmentsbyenvironmentidvariablesbyvariableid) | **DELETE** /api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId} |
+| [**getApiWorkspacesByWorkspaceIdEnvironments**](EnvironmentsApi.md#getapiworkspacesbyworkspaceidenvironments)                                                                               | **GET** /api/workspaces/{workspaceId}/environments                                           |
+| [**getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId**](EnvironmentsApi.md#getapiworkspacesbyworkspaceidenvironmentsbyenvironmentid)                                                 | **GET** /api/workspaces/{workspaceId}/environments/{environmentId}                           |
+| [**getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables**](EnvironmentsApi.md#getapiworkspacesbyworkspaceidenvironmentsbyenvironmentidvariables)                               | **GET** /api/workspaces/{workspaceId}/environments/{environmentId}/variables                 |
+| [**getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId**](EnvironmentsApi.md#getapiworkspacesbyworkspaceidenvironmentsbyenvironmentidvariablesbyvariableid)       | **GET** /api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId}    |
+| [**patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId**](EnvironmentsApi.md#patchapiworkspacesbyworkspaceidenvironmentsbyenvironmentid)                                             | **PATCH** /api/workspaces/{workspaceId}/environments/{environmentId}                         |
+| [**patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId**](EnvironmentsApi.md#patchapiworkspacesbyworkspaceidenvironmentsbyenvironmentidvariablesbyvariableid)   | **PATCH** /api/workspaces/{workspaceId}/environments/{environmentId}/variables/{variableId}  |
+| [**postApiWorkspacesByWorkspaceIdEnvironments**](EnvironmentsApi.md#postapiworkspacesbyworkspaceidenvironments)                                                                             | **POST** /api/workspaces/{workspaceId}/environments                                          |
+| [**postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables**](EnvironmentsApi.md#postapiworkspacesbyworkspaceidenvironmentsbyenvironmentidvariables)                             | **POST** /api/workspaces/{workspaceId}/environments/{environmentId}/variables                |
 
 # **deleteApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId**
+
 > PostApiAuthLogout200Response deleteApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId(workspaceId, environmentId)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getEnvironmentsApi();
-final int workspaceId = 56; // int | 
-final int environmentId = 56; // int | 
+final int workspaceId = 56; // int |
+final int environmentId = 56; // int |
 
 try {
     final response = api.deleteApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId(workspaceId, environmentId);
@@ -44,10 +44,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **environmentId** | **int**|  | 
+| Name              | Type    | Description | Notes |
+| ----------------- | ------- | ----------- | ----- |
+| **workspaceId**   | **int** |             |
+| **environmentId** | **int** |             |
 
 ### Return type
 
@@ -59,24 +59,24 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId**
+
 > PostApiAuthLogout200Response deleteApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId(workspaceId, environmentId, variableId)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getEnvironmentsApi();
-final int workspaceId = 56; // int | 
-final int environmentId = 56; // int | 
-final int variableId = 56; // int | 
+final int workspaceId = 56; // int |
+final int environmentId = 56; // int |
+final int variableId = 56; // int |
 
 try {
     final response = api.deleteApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId(workspaceId, environmentId, variableId);
@@ -88,11 +88,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **environmentId** | **int**|  | 
- **variableId** | **int**|  | 
+| Name              | Type    | Description | Notes |
+| ----------------- | ------- | ----------- | ----- |
+| **workspaceId**   | **int** |             |
+| **environmentId** | **int** |             |
+| **variableId**    | **int** |             |
 
 ### Return type
 
@@ -104,22 +104,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdEnvironments**
+
 > GetApiWorkspacesByWorkspaceIdEnvironments200Response getApiWorkspacesByWorkspaceIdEnvironments(workspaceId)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getEnvironmentsApi();
-final int workspaceId = 56; // int | 
+final int workspaceId = 56; // int |
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdEnvironments(workspaceId);
@@ -131,9 +131,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
+| Name            | Type    | Description | Notes |
+| --------------- | ------- | ----------- | ----- |
+| **workspaceId** | **int** |             |
 
 ### Return type
 
@@ -145,23 +145,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId**
+
 > PostApiWorkspacesByWorkspaceIdEnvironments201Response getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId(workspaceId, environmentId)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getEnvironmentsApi();
-final int workspaceId = 56; // int | 
-final int environmentId = 56; // int | 
+final int workspaceId = 56; // int |
+final int environmentId = 56; // int |
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId(workspaceId, environmentId);
@@ -173,10 +173,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **environmentId** | **int**|  | 
+| Name              | Type    | Description | Notes |
+| ----------------- | ------- | ----------- | ----- |
+| **workspaceId**   | **int** |             |
+| **environmentId** | **int** |             |
 
 ### Return type
 
@@ -188,23 +188,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables**
+
 > GetApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables200Response getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables(workspaceId, environmentId)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getEnvironmentsApi();
-final int workspaceId = 56; // int | 
-final int environmentId = 56; // int | 
+final int workspaceId = 56; // int |
+final int environmentId = 56; // int |
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables(workspaceId, environmentId);
@@ -216,10 +216,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **environmentId** | **int**|  | 
+| Name              | Type    | Description | Notes |
+| ----------------- | ------- | ----------- | ----- |
+| **workspaceId**   | **int** |             |
+| **environmentId** | **int** |             |
 
 ### Return type
 
@@ -231,24 +231,24 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId**
+
 > PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId(workspaceId, environmentId, variableId)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getEnvironmentsApi();
-final int workspaceId = 56; // int | 
-final int environmentId = 56; // int | 
-final int variableId = 56; // int | 
+final int workspaceId = 56; // int |
+final int environmentId = 56; // int |
+final int variableId = 56; // int |
 
 try {
     final response = api.getApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId(workspaceId, environmentId, variableId);
@@ -260,11 +260,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **environmentId** | **int**|  | 
- **variableId** | **int**|  | 
+| Name              | Type    | Description | Notes |
+| ----------------- | ------- | ----------- | ----- |
+| **workspaceId**   | **int** |             |
+| **environmentId** | **int** |             |
+| **variableId**    | **int** |             |
 
 ### Return type
 
@@ -276,24 +276,24 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId**
+
 > PostApiWorkspacesByWorkspaceIdEnvironments201Response patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId(workspaceId, environmentId, patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getEnvironmentsApi();
-final int workspaceId = 56; // int | 
-final int environmentId = 56; // int | 
-final PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest = ; // PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest | 
+final int workspaceId = 56; // int |
+final int environmentId = 56; // int |
+final PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest = ; // PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest |
 
 try {
     final response = api.patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentId(workspaceId, environmentId, patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest);
@@ -305,11 +305,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **environmentId** | **int**|  | 
- **patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest** | [**PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest**](PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest.md)|  | 
+| Name                                                                  | Type                                                                                                                                          | Description | Notes |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **workspaceId**                                                       | **int**                                                                                                                                       |             |
+| **environmentId**                                                     | **int**                                                                                                                                       |             |
+| **patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest** | [**PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest**](PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdRequest.md) |             |
 
 ### Return type
 
@@ -321,25 +321,25 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId**
+
 > PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId(workspaceId, environmentId, variableId, patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getEnvironmentsApi();
-final int workspaceId = 56; // int | 
-final int environmentId = 56; // int | 
-final int variableId = 56; // int | 
-final PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest = ; // PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest | 
+final int workspaceId = 56; // int |
+final int environmentId = 56; // int |
+final int variableId = 56; // int |
+final PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest = ; // PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest |
 
 try {
     final response = api.patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableId(workspaceId, environmentId, variableId, patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest);
@@ -351,12 +351,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **environmentId** | **int**|  | 
- **variableId** | **int**|  | 
- **patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest** | [**PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest**](PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest.md)|  | 
+| Name                                                                                       | Type                                                                                                                                                                                    | Description | Notes |
+| ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **workspaceId**                                                                            | **int**                                                                                                                                                                                 |             |
+| **environmentId**                                                                          | **int**                                                                                                                                                                                 |             |
+| **variableId**                                                                             | **int**                                                                                                                                                                                 |             |
+| **patchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest** | [**PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest**](PatchApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesByVariableIdRequest.md) |             |
 
 ### Return type
 
@@ -368,23 +368,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspacesByWorkspaceIdEnvironments**
+
 > PostApiWorkspacesByWorkspaceIdEnvironments201Response postApiWorkspacesByWorkspaceIdEnvironments(workspaceId, postApiWorkspacesByWorkspaceIdEnvironmentsRequest)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getEnvironmentsApi();
-final int workspaceId = 56; // int | 
-final PostApiWorkspacesByWorkspaceIdEnvironmentsRequest postApiWorkspacesByWorkspaceIdEnvironmentsRequest = ; // PostApiWorkspacesByWorkspaceIdEnvironmentsRequest | 
+final int workspaceId = 56; // int |
+final PostApiWorkspacesByWorkspaceIdEnvironmentsRequest postApiWorkspacesByWorkspaceIdEnvironmentsRequest = ; // PostApiWorkspacesByWorkspaceIdEnvironmentsRequest |
 
 try {
     final response = api.postApiWorkspacesByWorkspaceIdEnvironments(workspaceId, postApiWorkspacesByWorkspaceIdEnvironmentsRequest);
@@ -396,10 +396,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **postApiWorkspacesByWorkspaceIdEnvironmentsRequest** | [**PostApiWorkspacesByWorkspaceIdEnvironmentsRequest**](PostApiWorkspacesByWorkspaceIdEnvironmentsRequest.md)|  | 
+| Name                                                  | Type                                                                                                          | Description | Notes |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **workspaceId**                                       | **int**                                                                                                       |             |
+| **postApiWorkspacesByWorkspaceIdEnvironmentsRequest** | [**PostApiWorkspacesByWorkspaceIdEnvironmentsRequest**](PostApiWorkspacesByWorkspaceIdEnvironmentsRequest.md) |             |
 
 ### Return type
 
@@ -411,24 +411,24 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables**
+
 > PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables201Response postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables(workspaceId, environmentId, postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest)
 
-
-
 ### Example
+
 ```dart
 import 'package:role_rest_sdk/api.dart';
 
 final api = RoleRestSdk().getEnvironmentsApi();
-final int workspaceId = 56; // int | 
-final int environmentId = 56; // int | 
-final PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest = ; // PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest | 
+final int workspaceId = 56; // int |
+final int environmentId = 56; // int |
+final PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest = ; // PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest |
 
 try {
     final response = api.postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariables(workspaceId, environmentId, postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest);
@@ -440,11 +440,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspaceId** | **int**|  | 
- **environmentId** | **int**|  | 
- **postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest** | [**PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest**](PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest.md)|  | 
+| Name                                                                          | Type                                                                                                                                                          | Description | Notes |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **workspaceId**                                                               | **int**                                                                                                                                                       |             |
+| **environmentId**                                                             | **int**                                                                                                                                                       |             |
+| **postApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest** | [**PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest**](PostApiWorkspacesByWorkspaceIdEnvironmentsByEnvironmentIdVariablesRequest.md) |             |
 
 ### Return type
 
@@ -456,8 +456,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

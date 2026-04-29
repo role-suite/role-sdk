@@ -32,9 +32,7 @@ if (!remoteTarget || !remoteRepoPath) {
   process.exit(1);
 }
 
-const envAssignments = [
-  `DART_REST_SDK_OUTPUT_DIR=${shellQuote(remoteOutputDir)}`
-];
+const envAssignments = [`DART_REST_SDK_OUTPUT_DIR=${shellQuote(remoteOutputDir)}`];
 
 if (process.env.OPENAPI_GENERATOR_IMAGE) {
   envAssignments.push(`OPENAPI_GENERATOR_IMAGE=${shellQuote(process.env.OPENAPI_GENERATOR_IMAGE)}`);
