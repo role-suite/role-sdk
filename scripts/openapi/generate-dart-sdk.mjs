@@ -7,7 +7,10 @@ import { generatedDartOpenApiPath, targetOpenApiPath } from "./utils.mjs";
 const workspaceRoot = process.cwd();
 const dockerImage =
   process.env.OPENAPI_GENERATOR_IMAGE ?? "openapitools/openapi-generator-cli:v7.7.0";
-const outputDir = process.env.DART_SDK_OUTPUT_DIR ?? "generated/dart/role_sdk";
+const outputDir =
+  process.env.DART_REST_SDK_OUTPUT_DIR ??
+  process.env.DART_SDK_OUTPUT_DIR ??
+  "generated/dart/role_rest_sdk";
 const dockerVolumeOptions = process.env.OPENAPI_DOCKER_VOLUME_OPTIONS ?? "";
 
 if (!existsSync(targetOpenApiPath)) {
@@ -41,7 +44,7 @@ const dockerArgs = [
   "--name-mappings",
   "_id=legacyId",
   "--additional-properties",
-  "pubName=role_sdk,pubAuthor=Role,pubVersion=0.1.0,sourceFolder=lib,modelPropertyNaming=original,enumUnknownDefaultCase=true,disallowAdditionalPropertiesByDefault=false"
+  "pubName=role_rest_sdk,pubAuthor=Role,pubVersion=0.1.0,sourceFolder=lib,modelPropertyNaming=original,enumUnknownDefaultCase=true,disallowAdditionalPropertiesByDefault=false"
 ];
 
 console.log(`[contracts:openapi:generate:dart] Generating Dart SDK -> ${path.resolve(outputDir)}`);

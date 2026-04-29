@@ -1,0 +1,16 @@
+import 'package:test/test.dart';
+import 'package:role_rest_sdk/role_rest_sdk.dart';
+
+// tests for PostApiAuthLogout200ResponseData
+void main() {
+  final instance = PostApiAuthLogout200ResponseDataBuilder();
+  // TODO add properties to the builder and call build()
+
+  group(PostApiAuthLogout200ResponseData, () {
+    // String action
+    test('to test the property `action`', () async {
+      // TODO
+    });
+
+  });
+}

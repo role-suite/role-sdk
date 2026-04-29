@@ -18,7 +18,10 @@ const shellQuote = (value) => `'${String(value).replace(/'/g, "'\\''")}'`;
 
 const remoteTarget = process.env.REMOTE_SSH_TARGET;
 const remoteRepoPath = process.env.REMOTE_ROLE_SDK_PATH;
-const remoteOutputDir = process.env.REMOTE_DART_SDK_OUTPUT_DIR ?? "generated/dart/role_sdk";
+const remoteOutputDir =
+  process.env.REMOTE_DART_REST_SDK_OUTPUT_DIR ??
+  process.env.REMOTE_DART_SDK_OUTPUT_DIR ??
+  "generated/dart/role_rest_sdk";
 const remoteSshOpts = parseFlagArgs(process.env.REMOTE_SSH_OPTS);
 
 if (!remoteTarget || !remoteRepoPath) {
@@ -30,7 +33,7 @@ if (!remoteTarget || !remoteRepoPath) {
 }
 
 const envAssignments = [
-  `DART_SDK_OUTPUT_DIR=${shellQuote(remoteOutputDir)}`
+  `DART_REST_SDK_OUTPUT_DIR=${shellQuote(remoteOutputDir)}`
 ];
 
 if (process.env.OPENAPI_GENERATOR_IMAGE) {

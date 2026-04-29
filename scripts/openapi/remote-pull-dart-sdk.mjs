@@ -52,8 +52,14 @@ const joinRemotePath = (...segments) => {
 
 const remoteTarget = process.env.REMOTE_SSH_TARGET;
 const remoteRepoPath = process.env.REMOTE_ROLE_SDK_PATH;
-const remoteOutputDir = process.env.REMOTE_DART_SDK_OUTPUT_DIR ?? "generated/dart/role_sdk";
-const localOutputDir = process.env.LOCAL_DART_SDK_OUTPUT_DIR ?? "generated/dart/role_sdk";
+const remoteOutputDir =
+  process.env.REMOTE_DART_REST_SDK_OUTPUT_DIR ??
+  process.env.REMOTE_DART_SDK_OUTPUT_DIR ??
+  "generated/dart/role_rest_sdk";
+const localOutputDir =
+  process.env.LOCAL_DART_REST_SDK_OUTPUT_DIR ??
+  process.env.LOCAL_DART_SDK_OUTPUT_DIR ??
+  "generated/dart/role_rest_sdk";
 const keepConfig = parseBoolean(process.env.REMOTE_SYNC_KEEP_CONFIG, true);
 const remoteRsyncOpts = parseFlagArgs(process.env.REMOTE_RSYNC_OPTS);
 

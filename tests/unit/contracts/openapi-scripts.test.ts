@@ -430,7 +430,7 @@ describe("openapi scripts", () => {
       ...process.env,
       PATH: `${fakeDocker.binDir}:${process.env.PATH ?? ""}`,
       DOCKER_ARGS_OUT: fakeDocker.outputFile,
-      DART_SDK_OUTPUT_DIR: "./out/sdk"
+      DART_REST_SDK_OUTPUT_DIR: "./out/sdk"
     });
 
     expect(result.status).toBe(0);

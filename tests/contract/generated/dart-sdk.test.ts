@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 import { describe, expect, it } from "vitest";
 
-const DART_SDK_ROOT = join(process.cwd(), "generated", "dart", "role_sdk");
+const DART_SDK_ROOT = join(process.cwd(), "generated", "dart", "role_rest_sdk");
 const SDK_SPEC_PATH = join(process.cwd(), "contracts", "generated", "role-node-sdk-spec.json");
 
 type SdkOperation = {
@@ -35,24 +35,24 @@ describe("generated dart sdk", () => {
 
     expect(existsSync(join(DART_SDK_ROOT, "pubspec.yaml"))).toBe(true);
     expect(existsSync(join(DART_SDK_ROOT, "README.md"))).toBe(true);
-    expect(existsSync(join(DART_SDK_ROOT, "lib", "role_sdk.dart"))).toBe(true);
+    expect(existsSync(join(DART_SDK_ROOT, "lib", "role_rest_sdk.dart"))).toBe(true);
     expect(existsSync(join(DART_SDK_ROOT, "lib", "lib", "api.dart"))).toBe(true);
   });
 
-  it("exports core generated APIs from role_sdk.dart", () => {
+  it("exports core generated APIs from role_rest_sdk.dart", () => {
     if (!existsSync(DART_SDK_ROOT)) {
       expect(true).toBe(true);
       return;
     }
 
-    const entry = readFileSync(join(DART_SDK_ROOT, "lib", "role_sdk.dart"), "utf8");
+    const entry = readFileSync(join(DART_SDK_ROOT, "lib", "role_rest_sdk.dart"), "utf8");
     expect(entry).toContain("AUTO-GENERATED FILE, DO NOT MODIFY");
-    expect(entry).toContain("export 'package:role_sdk/lib/api/auth_api.dart';");
-    expect(entry).toContain("export 'package:role_sdk/lib/api/workspaces_api.dart';");
-    expect(entry).toContain("export 'package:role_sdk/lib/api/collections_api.dart';");
-    expect(entry).toContain("export 'package:role_sdk/lib/api/environments_api.dart';");
-    expect(entry).toContain("export 'package:role_sdk/lib/api/runs_api.dart';");
-    expect(entry).toContain("export 'package:role_sdk/lib/api/import_export_api.dart';");
+    expect(entry).toContain("export 'package:role_rest_sdk/lib/api/auth_api.dart';");
+    expect(entry).toContain("export 'package:role_rest_sdk/lib/api/workspaces_api.dart';");
+    expect(entry).toContain("export 'package:role_rest_sdk/lib/api/collections_api.dart';");
+    expect(entry).toContain("export 'package:role_rest_sdk/lib/api/environments_api.dart';");
+    expect(entry).toContain("export 'package:role_rest_sdk/lib/api/runs_api.dart';");
+    expect(entry).toContain("export 'package:role_rest_sdk/lib/api/import_export_api.dart';");
   });
 
   it("includes generated API methods for all OpenAPI operations with mapped tags", () => {
