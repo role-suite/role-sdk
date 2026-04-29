@@ -226,6 +226,45 @@ If `role-node` is not at `../role-node`, set:
 ROLE_NODE_OPENAPI_PATH=/absolute/path/to/openapi.json pnpm contracts:openapi:sync
 ```
 
+Generate Dart REST SDK (renamed target):
+
+```bash
+pnpm contracts:openapi:generate:dart-rest
+```
+
+Default output: `generated/dart/role_rest_sdk`.
+
+## Dart gRPC SDK workflow
+
+You can generate a Dart gRPC client SDK directly from `role-node` proto contracts.
+
+```bash
+# Sync proto contracts from role-node
+pnpm contracts:grpc:sync
+
+# Generate Dart gRPC SDK files
+pnpm contracts:grpc:generate:dart
+```
+
+Defaults:
+
+- Proto source: `../role-node/proto`
+- Synced contracts: `contracts/role-node/proto`
+- Dart gRPC output: `generated/dart/role_grpc_sdk`
+
+Optional overrides:
+
+```bash
+ROLE_NODE_PROTO_DIR=/absolute/path/to/role-node/proto pnpm contracts:grpc:sync
+DART_GRPC_SDK_OUTPUT_DIR=generated/dart/custom_role_grpc_sdk pnpm contracts:grpc:generate:dart
+```
+
+Requirements:
+
+- Dart SDK installed and available as `dart`
+- `protoc` installed and available as `protoc`
+- Dart `protoc_plugin` available (the script auto-installs it with `dart pub global activate protoc_plugin`)
+
 ## License
 
 MIT — see `LICENSE` file.

@@ -21,7 +21,8 @@
     "api",
     "typescript",
     "client",
-    "rest"
+    "rest",
+    "grpc"
   ],
   "author": "Role Technologies, Inc. <hello@role.com>",
   "exports": {
@@ -36,26 +37,28 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:contracts": "vitest run --config vitest.contract.config.ts",
-    "test:e2e": "vitest run --config vitest.e2e.config.ts",
+    "contracts:grpc:generate:dart": "pnpm contracts:grpc:sync && node ./scripts/grpc/generate-dart-grpc-sdk.mjs",
+    "contracts:grpc:sync": "node ./scripts/grpc/sync-role-node-proto.mjs",
+    "contracts:openapi:build-dart-openapi": "node ./scripts/openapi/build-dart-openapi.mjs",
+    "contracts:openapi:build-spec": "node ./scripts/openapi/build-sdk-spec.mjs",
     "contracts:openapi:sync": "node ./scripts/openapi/sync-role-node-openapi.mjs",
     "contracts:openapi:check": "node ./scripts/openapi/check-openapi-artifact.mjs",
     "contracts:openapi:check:required": "node ./scripts/openapi/check-openapi-artifact.mjs --required --strict",
-    "contracts:openapi:build-spec": "node ./scripts/openapi/build-sdk-spec.mjs",
-    "contracts:openapi:build-dart-openapi": "node ./scripts/openapi/build-dart-openapi.mjs",
-    "contracts:openapi:generate:dart": "pnpm contracts:openapi:build-dart-openapi && node ./scripts/openapi/generate-dart-sdk.mjs",
-    "contracts:openapi:remote:preflight": "node ./scripts/openapi/remote-preflight.mjs",
-    "contracts:openapi:remote:generate:dart": "node ./scripts/openapi/remote-generate-dart-sdk.mjs",
-    "contracts:openapi:remote:pull:dart": "node ./scripts/openapi/remote-pull-dart-sdk.mjs",
-    "contracts:openapi:remote:generate-and-pull:dart": "pnpm contracts:openapi:remote:preflight && pnpm contracts:openapi:remote:generate:dart && pnpm contracts:openapi:remote:pull:dart",
+    "contracts:openapi:generate:dart-rest": "pnpm contracts:openapi:build-dart-openapi && node ./scripts/openapi/generate-dart-sdk.mjs",
     "contracts:openapi:prepare": "pnpm contracts:openapi:sync && pnpm contracts:openapi:check && pnpm contracts:openapi:build-spec",
-    "lint": "eslint .",
+    "contracts:openapi:remote:preflight": "node ./scripts/openapi/remote-preflight.mjs",
+    "contracts:openapi:remote:generate-and-pull:dart-rest": "pnpm contracts:openapi:remote:preflight && pnpm contracts:openapi:remote:generate:dart-rest && pnpm contracts:openapi:remote:pull:dart-rest",
+    "contracts:openapi:remote:generate:dart-rest": "node ./scripts/openapi/remote-generate-dart-sdk.mjs",
+    "contracts:openapi:remote:pull:dart-rest": "node ./scripts/openapi/remote-pull-dart-sdk.mjs",
     "format": "prettier --check .",
     "format:write": "prettier --write .",
-    "release": "semantic-release"
+    "lint": "eslint .",
+    "release": "semantic-release",
+    "test": "vitest run",
+    "test:contracts": "vitest run --config vitest.contract.config.ts",
+    "test:e2e": "vitest run --config vitest.e2e.config.ts",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "engines": {
     "node": ">=18"

@@ -112,12 +112,17 @@ The SDK exposes feature availability at runtime:
 ### 4.6 Contract artifact boundary
 
 - `role-node` owns endpoint/schema source-of-truth and exports `contracts/generated/openapi.json`.
+- `role-node` gRPC source-of-truth is `proto/*.proto`.
 - `role-sdk` consumes that artifact into `contracts/role-node/openapi.json`.
+- `role-sdk` consumes proto artifacts into `contracts/role-node/proto/`.
 - SDK metadata for generation is derived into `contracts/generated/role-node-sdk-spec.json`.
 - Current local pipeline commands:
   - `pnpm contracts:openapi:sync`
   - `pnpm contracts:openapi:check`
   - `pnpm contracts:openapi:build-spec`
+- gRPC Dart generation commands:
+  - `pnpm contracts:grpc:sync`
+  - `pnpm contracts:grpc:generate:dart`
 - Generated SDK layers (TypeScript and Dart) should be produced from the same OpenAPI artifact revision.
 
 ## 5) Proposed package shape

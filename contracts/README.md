@@ -30,7 +30,7 @@ Generated local artifacts:
 ## Generate Dart SDK (OpenAPI)
 
 ```bash
-pnpm contracts:openapi:generate:dart
+pnpm contracts:openapi:generate:dart-rest
 ```
 
 This command automatically builds a Dart-compatible OpenAPI variant before generation.
@@ -38,7 +38,8 @@ This command automatically builds a Dart-compatible OpenAPI variant before gener
 Optional env overrides:
 
 - `OPENAPI_GENERATOR_IMAGE` (default: `openapitools/openapi-generator-cli:v7.7.0`)
-- `DART_SDK_OUTPUT_DIR` (default: `generated/dart/role_sdk`)
+- `DART_REST_SDK_OUTPUT_DIR` (default: `generated/dart/role_rest_sdk`)
+- `DART_SDK_OUTPUT_DIR` (legacy alias, still supported)
 - `OPENAPI_DOCKER_VOLUME_OPTIONS` (default: empty; set `:z` on SELinux hosts)
 
 ## Remote Docker execution + pull generated files
@@ -54,8 +55,8 @@ export REMOTE_SSH_TARGET=user@remote-host
 export REMOTE_ROLE_SDK_PATH=/abs/path/to/role-sdk
 
 # Optional
-export REMOTE_DART_SDK_OUTPUT_DIR=generated/dart/role_sdk
-export LOCAL_DART_SDK_OUTPUT_DIR=generated/dart/role_sdk
+export REMOTE_DART_REST_SDK_OUTPUT_DIR=generated/dart/role_rest_sdk
+export LOCAL_DART_REST_SDK_OUTPUT_DIR=generated/dart/role_rest_sdk
 export REMOTE_SYNC_KEEP_CONFIG=true
 export OPENAPI_DOCKER_VOLUME_OPTIONS=:z
 export REMOTE_SSH_OPTS="-p 22"
@@ -63,19 +64,19 @@ export REMOTE_RSYNC_OPTS="--progress"
 
 # 1) Run docker/openapi generation remotely
 pnpm contracts:openapi:remote:preflight
-pnpm contracts:openapi:remote:generate:dart
+pnpm contracts:openapi:remote:generate:dart-rest
 
 # 2) Pull generated files into local repo
-pnpm contracts:openapi:remote:pull:dart
+pnpm contracts:openapi:remote:pull:dart-rest
 
 # Or do both in one command
-pnpm contracts:openapi:remote:generate-and-pull:dart
+pnpm contracts:openapi:remote:generate-and-pull:dart-rest
 ```
 
 Defaults and behavior:
 
-- `REMOTE_DART_SDK_OUTPUT_DIR` defaults to `generated/dart/role_sdk` on remote.
-- `LOCAL_DART_SDK_OUTPUT_DIR` defaults to `generated/dart/role_sdk` locally.
+- `REMOTE_DART_REST_SDK_OUTPUT_DIR` defaults to `generated/dart/role_rest_sdk` on remote.
+- `LOCAL_DART_REST_SDK_OUTPUT_DIR` defaults to `generated/dart/role_rest_sdk` locally.
 - `contracts:openapi:remote:preflight` verifies remote path + required tools (`git`, `node`, `pnpm`, `docker`).
 - `contracts:openapi:remote:preflight` also validates Docker can read the bind mount path.
 - `REMOTE_SYNC_KEEP_CONFIG=true` preserves local config files by excluding:

@@ -17,7 +17,8 @@ This folder contains planning and architecture documentation for the SDK with a 
 5. `docs/IMPLEMENTATION_PLAN.md`
 6. `docs/TESTING_STRATEGY.md`
 7. `docs/VERSION_COMPATIBILITY_POLICY.md`
-8. `docs/OPEN_QUESTIONS.md` (decision log)
+8. `docs/GRPC_DART_SDK_WORKFLOW.md`
+9. `docs/OPEN_QUESTIONS.md` (decision log)
 
 ## Document ownership
 
@@ -42,6 +43,7 @@ The SDK must not maintain route or schema assumptions independently of the backe
 ### Contract artifact sources
 
 - **role-node**: REST API contracts are maintained in the `role-node` repository under `contracts/` and exported as OpenAPI at `contracts/generated/openapi.json`.
+- **role-node**: gRPC contracts are maintained in `role-node/proto/*.proto`.
 - **role-serverpod**: RPC module contracts are maintained in the `role-serverpod` repository.
 
 ### Sync workflow
@@ -69,7 +71,14 @@ The SDK must not maintain route or schema assumptions independently of the backe
    - `pnpm contracts:openapi:build-spec`
    - Run contract tests to identify mapping drift
    - Update SDK types/mappers as needed
-   - Do not manually edit route definitions in SDK
+    - Do not manually edit route definitions in SDK
+
+4. **Sync and generate gRPC Dart artifacts**:
+
+   ```bash
+   pnpm contracts:grpc:sync
+   pnpm contracts:grpc:generate:dart
+   ```
 
 ### CI contract validation
 
@@ -124,6 +133,8 @@ Add to `package.json`:
 contracts/
   role-node/
     openapi.json
+    proto/
+      *.proto
   generated/
     role-node-sdk-spec.json
 ```
